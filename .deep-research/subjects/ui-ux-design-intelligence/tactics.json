@@ -1,0 +1,197 @@
+{
+  "subject": "UI/UX Design Intelligence — UX Flow Design & Information Architecture",
+  "generated_at": "2026-04-14",
+  "total_tactics": 135,
+  "clusters": {
+    "information-architecture": {
+      "name": "Information Architecture & Research Methods",
+      "tactics": [
+        "Use open card sorting to discover natural user categorizations before designing IA",
+        "Target 30-50 cards per session to prevent fatigue",
+        "Require 30+ participants for statistically valid quantitative patterns",
+        "Combine quantitative patterns with moderated sessions for reasoning insights",
+        "Use similarity matrices and dendrograms to identify hierarchical groupings",
+        "Use tree testing to evaluate existing IA before redesigning",
+        "Run tree test → card sort → tree test cycle for IA redesigns",
+        "Analyze success rate, first click accuracy, and directness metrics",
+        "Design navigation matching users existing mental models from competitor products",
+        "Measure cognitive load via error rates and time-on-task metrics",
+        "Reduce extraneous cognitive load by eliminating unnecessary UI elements",
+        "Limit navigation choices to 5-7 primary items per level",
+        "Apply NNg tab design guidelines: distinguish between types, ensure visual clarity",
+        "Use menu design checklist: ensure menus serve content discovery and feature access"
+      ]
+    },
+    "navigation-taxonomy": {
+      "name": "Navigation Taxonomy & Structural Patterns",
+      "tactics": [
+        "Use hub-and-spoke for mobile apps with 3-5 top-level sections",
+        "Prefer shallow broad taxonomy over deep hierarchy to reduce drill-down fatigue",
+        "Implement faceted navigation for content-heavy apps with multiple filter dimensions",
+        "Reserve linear navigation for sequential task flows (checkout, onboarding)",
+        "Test navigation with task completion rate as primary metric",
+        "Use tabs for equal-importance views — max 5 tabs recommended",
+        "Use bottom navigation bar for 3-5 top-level mobile destinations",
+        "Reserve navigation drawer for secondary navigation hidden by default",
+        "Group content into logical chunks showing clear relationships",
+        "Design responsive navigation: side-by-side panes on wide screens, stacked on narrow",
+        "Limit iPhone tab bar to 5 tabs maximum",
+        "Ensure main functions reachable within 2 taps from home screen",
+        "Use modal presentations only for focused tasks requiring user decisions",
+        "Design for the 3-interaction rule — users leave if lost after 3 attempts"
+      ]
+    },
+    "navigation-components": {
+      "name": "Navigation Component Patterns",
+      "tactics": [
+        "Use location-based breadcrumbs for hierarchical sites with 3+ depth levels",
+        "Skip breadcrumbs for flat structures — use Back to Parent links instead",
+        "On mobile use parent-only breadcrumb pattern to save space",
+        "Use chevrons as separators not slashes — clearer directional flow",
+        "Position breadcrumbs below global navigation, above page title consistently",
+        "Limit tab bar to 3-5 primary destinations maximum",
+        "Place most frequent actions in lower screen half for thumb accessibility",
+        "Never bury high-frequency actions in hamburger menus",
+        "Use gestures as optional accelerators not primary navigation",
+        "Replace desktop sidebar with bottom tab bar or drawer on mobile",
+        "Redesign navigation when users rely on search for basic features"
+      ]
+    },
+    "onboarding": {
+      "name": "Onboarding Flow Patterns & PLG",
+      "tactics": [
+        "Use checklists for multi-step setups requiring sequential completion tracking",
+        "Deploy tooltips for action-driven guidance on specific features",
+        "Reserve product tours for initial broad overview only — not detailed training",
+        "Implement progressive onboarding for complex products with many features",
+        "Design empty states as onboarding opportunities with CTAs and educational content",
+        "Track activation rate, time-to-value, and feature discovery rate as onboarding KPIs",
+        "Design onboarding to minimize Time to Initial Value as primary metric",
+        "Target activation rate as core conversion signal in PLG",
+        "Use automated onboarding flows to reduce manual setup by 30-50%",
+        "Design for the aha moment — identify and accelerate path to first value realization",
+        "Monitor freemium-to-paid conversion as ultimate onboarding effectiveness measure"
+      ]
+    },
+    "wizard-stepper": {
+      "name": "Wizard & Multi-Step Form Patterns",
+      "tactics": [
+        "Keep wizard steps between 3-7 to balance complexity with completion motivation",
+        "Implement branching logic to personalize flow based on user inputs",
+        "Always allow backward navigation without losing entered data",
+        "Use inline validation with actionable error messages not generic warnings",
+        "Show numbered progress indicators with remaining step count",
+        "Optimize for mobile with larger tap targets and minimal per-step content"
+      ]
+    },
+    "command-palette": {
+      "name": "Command Palette & Search-as-Navigation",
+      "tactics": [
+        "Implement Cmd+K as primary power-user navigation for apps with 50+ actions",
+        "Use fuzzy search with synonym support — users rarely remember exact command names",
+        "Categorize results into groups: navigation, actions, recent, settings",
+        "Show keyboard shortcuts inline within palette results for progressive learning",
+        "Support three palette types: universal launcher, contextual, and recent-first",
+        "Use cmdk library for unstyled composable implementation with React",
+        "Use cmdk-engine for production apps needing route discovery and RBAC",
+        "Support up to 2000-3000 items for performant command palette experience"
+      ]
+    },
+    "progressive-disclosure": {
+      "name": "Progressive Disclosure & Complexity Management",
+      "tactics": [
+        "Limit progressive disclosure to exactly 2 levels — primary and secondary",
+        "Use task analysis and frequency-of-use data to determine feature placement",
+        "Ensure clear information scent on triggers — users must know what expanding reveals",
+        "Distinguish from staged disclosure (wizards) which is linear vs hierarchical",
+        "Base progressive disclosure decisions on observed user behavior not assumptions"
+      ]
+    },
+    "dashboard": {
+      "name": "Dashboard Design & Information Hierarchy",
+      "tactics": [
+        "Design for 5-second comprehension — place primary KPI at top-left",
+        "Use progressive disclosure: summaries visible, details expandable",
+        "Allow widget customization per user role — rearrange, add, remove",
+        "Group related metrics into logical sections with clear headings",
+        "Reserve alerts/notifications for critical events only to prevent fatigue",
+        "Implement consistent data formatting: scales, time intervals, currency across all widgets"
+      ]
+    },
+    "error-flows": {
+      "name": "Error Flows & Recovery Patterns",
+      "tactics": [
+        "Classify errors into 5 types and design specific recovery flows for each",
+        "Implement inline validation on form submission — not on field blur",
+        "Preserve user progress with local drafts during network failures",
+        "Provide Resume option not Restart after session expiry or network loss",
+        "Use smart defaults and input masks to prevent errors proactively",
+        "Design fail-safe backends: retry failed steps, degrade gracefully",
+        "Include search, homepage link, and popular page links on every 404 page",
+        "Use empathetic language — mistake instead of error reduces user stress",
+        "Keep error pages clean and focused on single recovery goal",
+        "Maintain full brand consistency on error pages",
+        "For permission errors explain why access is denied and provide next steps",
+        "Design error pages as opportunities not dead ends — suggest related content"
+      ]
+    },
+    "zero-data-states": {
+      "name": "Zero-Data & Empty State Design",
+      "tactics": [
+        "Design three distinct empty state types: no-data, user-action, error-management",
+        "Frame titles positively: Start by adding not You dont have",
+        "Include primary CTA button in every empty state — never leave dead ends",
+        "Use starter content (pre-built samples) for complex features requiring exploration",
+        "Consider text-only empty states when multiple appear simultaneously",
+        "Always include backup basic empty state even when using starter content"
+      ]
+    },
+    "notification-architecture": {
+      "name": "Notification Architecture",
+      "tactics": [
+        "Categorize notifications by urgency: action-required vs informational vs passive",
+        "Use badges for glanceable info that doesnt interrupt — clear on app open",
+        "Implement notification center as single location for all notification types",
+        "Use inbox pattern for persistent browsable notifications with lasting value",
+        "Synchronize badge counts with actual unread message totals",
+        "Provide granular user preferences for notification channels and frequency"
+      ]
+    },
+    "settings-architecture": {
+      "name": "Settings Page Architecture",
+      "tactics": [
+        "Always include search in settings — 5x improvement in findability over categories alone",
+        "Limit top-level setting categories to 4-5 maximum",
+        "Prioritize frequently-used settings at top based on usage analytics",
+        "Use card sorting to determine how users naturally group settings",
+        "Choose layout based on complexity: single-page simple, tabbed moderate, side-nav extensive",
+        "Apply progressive disclosure to hide advanced settings behind expandable sections"
+      ]
+    },
+    "deep-linking": {
+      "name": "Deep Linking & State Preservation",
+      "tactics": [
+        "Store shareable UI state in URL parameters: filters, tabs, view configurations",
+        "Use URL state for anything two users should see identically when sharing a link",
+        "Leverage browser history/back-forward as state navigation — dont break it",
+        "Implement synthetic back stacks for deep-linked entry points",
+        "Use libraries like nuqs or useSearchParams for React URL state management",
+        "Avoid URL state for sensitive data — passwords, tokens, PII"
+      ]
+    },
+    "code-libraries": {
+      "name": "Implementation Libraries & Tools",
+      "tactics": [
+        "Use cmdk for design-system-aligned command palette implementations",
+        "Use react-cmdk for rapid prototyping with pre-built UI",
+        "Use cmdk-engine for production apps needing route discovery and RBAC",
+        "Use React Joyride for most tooltip-based product tour needs",
+        "Use Onborda for Next.js + Tailwind + shadcn/ui stacks",
+        "Consider react-tourlight for modern React-native tour needs",
+        "Use Material UI Stepper for Material Design aligned projects",
+        "Use rhf-wizard for React Hook Form integration in multi-step forms",
+        "Use react-step-wizard for maximum flexibility in step management"
+      ]
+    }
+  }
+}

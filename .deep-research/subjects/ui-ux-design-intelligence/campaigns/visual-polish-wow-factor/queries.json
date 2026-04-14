@@ -1,0 +1,121 @@
+{
+  "campaign": "Visual Polish & Wow Factor Micro-Details",
+  "generated_at": "2026-04-14T14:00:00Z",
+  "query_layers": {
+    "academic": [
+      "CSS shadow systems elevation design tokens research",
+      "glassmorphism backdrop-filter performance optimization study",
+      "micro-animation user experience impact research UX delight",
+      "motion choreography staggered animation cognitive load",
+      "typography optical sizing web font rendering research"
+    ],
+    "practitioner": [
+      "CSS shadow system design tokens elevation layered shadows",
+      "glassmorphism CSS backdrop-filter blur implementation 2025 2026",
+      "border radius system nested border radius calculation CSS",
+      "gradient system CSS mesh gradient subtle depth effect",
+      "micro-animation confetti magnetic button morphing transition CSS",
+      "scroll-driven animation CSS scroll-timeline parallax alternative",
+      "premium polish checklist CSS selection color scrollbar caret focus-visible",
+      "typography CSS kerning text-wrap balance gradient heading optical-sizing",
+      "motion choreography CSS staggered animation view transition API",
+      "Linear Vercel Stripe Raycast Arc premium UI analysis what makes premium"
+    ],
+    "code": [
+      "CSS box-shadow elevation system design tokens",
+      "backdrop-filter glassmorphism component React CSS",
+      "border-radius nested calculation CSS custom properties",
+      "CSS mesh gradient generator library",
+      "confetti animation library canvas-confetti react",
+      "scroll-driven animations CSS scroll-timeline API",
+      "CSS micro-interaction library magnetic button",
+      "framer-motion staggered animation orchestration",
+      "view-transitions-api morphing page transition",
+      "CSS scrollbar styling custom webkit"
+    ],
+    "community": [
+      "what makes UI feel premium polish details reddit webdev",
+      "CSS shadow system tips tricks frontend",
+      "glassmorphism done right performance issues",
+      "micro animation wow moment website examples",
+      "scroll animation best practices performance",
+      "Linear app UI design what makes it special",
+      "Stripe website design breakdown CSS techniques",
+      "UI design delight Easter egg examples",
+      "when CSS animation becomes too much kitsch restraint",
+      "premium website design small details that matter"
+    ],
+    "official": [
+      "CSS scroll-driven animations spec MDN",
+      "view transitions API specification W3C",
+      "CSS backdrop-filter specification browser support",
+      "CSS text-wrap balance pretty specification",
+      "CSS custom highlight API selection styling",
+      "CSS animation-timeline scroll specification",
+      "CSS color-mix function gradient systems",
+      "CSS anchor positioning popover API"
+    ]
+  },
+  "topic_clusters": [
+    {
+      "id": "shadows",
+      "label": "Shadow Systems",
+      "keywords": ["box-shadow", "elevation", "colored shadows", "inner shadows", "ambient", "directional", "design tokens"]
+    },
+    {
+      "id": "glass",
+      "label": "Glassmorphism",
+      "keywords": ["backdrop-filter", "blur", "frosted glass", "readability", "performance", "noise texture"]
+    },
+    {
+      "id": "radius",
+      "label": "Border Radius Systems",
+      "keywords": ["border-radius", "nested radius", "squircle", "consistent radii", "design tokens"]
+    },
+    {
+      "id": "gradients",
+      "label": "Gradient Systems",
+      "keywords": ["linear-gradient", "radial-gradient", "conic-gradient", "mesh gradient", "gradient text", "subtle depth"]
+    },
+    {
+      "id": "micro-animations",
+      "label": "Micro-Animation Wow Moments",
+      "keywords": ["confetti", "magnetic buttons", "morphing", "hover effects", "spring physics", "canvas-confetti"]
+    },
+    {
+      "id": "scroll-effects",
+      "label": "Scroll-Driven Effects",
+      "keywords": ["scroll-timeline", "parallax", "scroll-linked", "reveal animations", "intersection observer", "scroll progress"]
+    },
+    {
+      "id": "polish-checklist",
+      "label": "Premium Polish Checklist",
+      "keywords": ["::selection", "scrollbar", "focus-visible", "::placeholder", "caret-color", "accent-color", "outline"]
+    },
+    {
+      "id": "delight",
+      "label": "Delight Patterns",
+      "keywords": ["Easter eggs", "micro-copy", "personality", "achievement", "celebration", "surprise"]
+    },
+    {
+      "id": "typography",
+      "label": "Typography Details",
+      "keywords": ["kerning", "optical-sizing", "text-wrap", "balance", "gradient heading", "font-feature-settings"]
+    },
+    {
+      "id": "motion",
+      "label": "Motion Choreography",
+      "keywords": ["staggered", "orchestration", "coordinated", "view transitions", "FLIP", "spring animation"]
+    },
+    {
+      "id": "case-studies",
+      "label": "Premium Case Studies",
+      "keywords": ["Linear", "Vercel", "Stripe", "Raycast", "Arc", "premium feel", "design analysis"]
+    },
+    {
+      "id": "anti-wow",
+      "label": "Anti-Wow / Tasteful Restraint",
+      "keywords": ["performance cost", "kitsch", "over-animation", "restraint", "accessibility", "reduced motion"]
+    }
+  ]
+}

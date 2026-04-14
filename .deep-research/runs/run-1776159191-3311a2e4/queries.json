@@ -1,0 +1,83 @@
+{
+  "subject": "UI/UX Design Intelligence — UX Flow Design & Information Architecture",
+  "generated_at": "2026-04-14T09:33:00Z",
+  "query_layers": {
+    "academic": [
+      "information architecture card sorting tree testing user research methodology",
+      "mental models cognitive load navigation design empirical study",
+      "progressive disclosure UI complexity management research",
+      "onboarding user experience product-led growth effectiveness study",
+      "dashboard information hierarchy visualization cognitive science",
+      "error recovery UX flow design patterns heuristic evaluation",
+      "notification architecture user attention management research",
+      "wizard multi-step form completion rate UX research"
+    ],
+    "practitioner": [
+      "information architecture best practices 2025 2026 content hierarchy",
+      "navigation patterns flat vs deep hub-and-spoke faceted search UX",
+      "onboarding flow patterns product-led growth checklist tooltip tours",
+      "wizard stepper multi-step form progress indicator branching logic",
+      "command palette Cmd+K search as navigation design pattern",
+      "breadcrumb tab sidebar bottom navigation mobile web patterns",
+      "progressive disclosure accordion expandable sections UX",
+      "dashboard design widget layout personalization best practices",
+      "settings page architecture flat grouped search UX pattern",
+      "error page 404 permission denied recovery flow UX design",
+      "zero-data empty state first-run experience feature discovery",
+      "notification system in-app push inbox badge count architecture",
+      "deep linking state preservation shareable URLs back button UX"
+    ],
+    "code": [
+      "react navigation component library sidebar tabs breadcrumb",
+      "multi-step form wizard react typescript stepper component",
+      "command palette cmdk react implementation",
+      "onboarding tour library react tooltip spotlight",
+      "notification system react inbox component architecture",
+      "empty state zero data component react design system",
+      "dashboard layout grid widget react draggable",
+      "progressive disclosure accordion component accessibility"
+    ],
+    "community": [
+      "best information architecture tools card sorting tree testing",
+      "navigation UX debate flat vs deep hierarchy",
+      "onboarding flow that actually works product-led growth",
+      "command palette Cmd+K UX design tips",
+      "dashboard design information overload solutions",
+      "error page UX recovery flow best practices",
+      "notification inbox design overwhelm solutions",
+      "settings page UX searchable grouped flat",
+      "deep linking state preservation URL design",
+      "zero state empty state first run experience design",
+      "wizard multi-step form UX completion rate tips",
+      "progressive disclosure when to use accordion expand"
+    ],
+    "official": [
+      "Material Design navigation patterns guidelines",
+      "Apple Human Interface Guidelines navigation information architecture",
+      "Nielsen Norman Group information architecture",
+      "Baymard Institute checkout flow wizard patterns",
+      "W3C WAI-ARIA navigation accessibility patterns",
+      "Shopify Polaris navigation patterns guidelines",
+      "Atlassian Design System navigation onboarding patterns",
+      "Carbon Design System IBM navigation dashboard patterns"
+    ]
+  },
+  "apify_queries": {
+    "reddit": [
+      {"subreddit": "userexperience", "query": "information architecture navigation patterns 2025 2026"},
+      {"subreddit": "UXDesign", "query": "onboarding flow wizard stepper best practices"},
+      {"subreddit": "webdev", "query": "command palette Cmd+K implementation tips"},
+      {"subreddit": "userexperience", "query": "dashboard design notification architecture empty state"}
+    ],
+    "twitter": [
+      "UX information architecture navigation patterns 2026",
+      "onboarding flow product-led growth wizard UX",
+      "command palette Cmd+K search navigation UX"
+    ],
+    "hackernews": [
+      "information architecture UX navigation patterns",
+      "command palette search navigation design",
+      "onboarding wizard progressive disclosure"
+    ]
+  }
+}

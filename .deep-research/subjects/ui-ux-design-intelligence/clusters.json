@@ -1,0 +1,130 @@
+{
+  "subject": "UI/UX Design Intelligence — UX Flow Design & Information Architecture",
+  "generated_at": "2026-04-14T09:40:00Z",
+  "clusters": [
+    {
+      "id": "information-architecture",
+      "name": "Information Architecture & Research Methods",
+      "evidence_ids": ["E001", "E002", "E003", "E024"],
+      "summary": "Card sorting and tree testing methodologies for discovering and validating navigation structures. Mental models and cognitive load theory as foundations for IA decisions.",
+      "strength": "strong",
+      "tactic_count": 18
+    },
+    {
+      "id": "navigation-taxonomy",
+      "name": "Navigation Taxonomy & Structural Patterns",
+      "evidence_ids": ["E005", "E019", "E020"],
+      "summary": "Flat vs deep, hub-and-spoke, faceted, and linear navigation patterns. Material Design and Apple HIG guidelines for choosing navigation structures.",
+      "strength": "strong",
+      "tactic_count": 16
+    },
+    {
+      "id": "navigation-components",
+      "name": "Navigation Component Patterns",
+      "evidence_ids": ["E010", "E011"],
+      "summary": "Breadcrumb types and usage rules, mobile navigation patterns (tab bars, hamburger, bottom sheets, gestures), and responsive adaptation strategies.",
+      "strength": "strong",
+      "tactic_count": 12
+    },
+    {
+      "id": "onboarding",
+      "name": "Onboarding Flow Patterns & PLG",
+      "evidence_ids": ["E006", "E007"],
+      "summary": "Five onboarding pattern types (checklists, tooltips, tours, progressive, empty-state), PLG metrics, retention/conversion data, and pattern selection framework.",
+      "strength": "strong",
+      "tactic_count": 11
+    },
+    {
+      "id": "wizard-stepper",
+      "name": "Wizard & Multi-Step Form Patterns",
+      "evidence_ids": ["E008"],
+      "summary": "Wizard UI design principles: step count, branching logic, progress indication, validation, mobile optimization, and completion rate factors.",
+      "strength": "moderate",
+      "tactic_count": 6
+    },
+    {
+      "id": "command-palette",
+      "name": "Command Palette & Search-as-Navigation",
+      "evidence_ids": ["E009", "E021"],
+      "summary": "Cmd+K pattern: history, variations (universal/contextual/recent-first), implementation libraries (cmdk ecosystem), accessibility requirements, and fuzzy search design.",
+      "strength": "strong",
+      "tactic_count": 11
+    },
+    {
+      "id": "progressive-disclosure",
+      "name": "Progressive Disclosure & Complexity Management",
+      "evidence_ids": ["E004"],
+      "summary": "Two-level disclosure principles, 30-50% faster initial completion, Carroll/Rosson IBM research, distinction from staged disclosure (wizards).",
+      "strength": "moderate",
+      "tactic_count": 5
+    },
+    {
+      "id": "dashboard",
+      "name": "Dashboard Design & Information Hierarchy",
+      "evidence_ids": ["E012"],
+      "summary": "5-second comprehension rule, KPI placement, widget customization, AI personalization, minimalist trends, alert management, and accessibility.",
+      "strength": "moderate",
+      "tactic_count": 6
+    },
+    {
+      "id": "error-flows",
+      "name": "Error Flows & Recovery Patterns",
+      "evidence_ids": ["E013", "E014"],
+      "summary": "Five error types with specific recovery flows, Nielsen's Recognize-Diagnose-Recover framework, session expiry handling, network error resilience, 404 page design.",
+      "strength": "strong",
+      "tactic_count": 12
+    },
+    {
+      "id": "zero-data-states",
+      "name": "Zero-Data & Empty State Design",
+      "evidence_ids": ["E015"],
+      "summary": "Three empty state types (no-data, user-action, error-management), Carbon Design System anatomy, positive framing, starter content strategy, accessibility.",
+      "strength": "moderate",
+      "tactic_count": 6
+    },
+    {
+      "id": "notification-architecture",
+      "name": "Notification Architecture & Attention Management",
+      "evidence_ids": ["E016"],
+      "summary": "Notification types and channels, badge count synchronization, inbox pattern for persistent browsable notifications, notification center design, user preference management.",
+      "strength": "moderate",
+      "tactic_count": 6
+    },
+    {
+      "id": "settings-architecture",
+      "name": "Settings Page Architecture",
+      "evidence_ids": ["E017"],
+      "summary": "Six layout types, search-in-settings (5x improvement), category limits, component patterns (toggles, dropdowns, sliders), mobile adaptation, progressive disclosure.",
+      "strength": "moderate",
+      "tactic_count": 6
+    },
+    {
+      "id": "deep-linking",
+      "name": "Deep Linking & State Preservation",
+      "evidence_ids": ["E018"],
+      "summary": "URL-as-state pattern, shareable state via URL parameters, browser history integration, synthetic back stacks, React implementation approaches.",
+      "strength": "moderate",
+      "tactic_count": 6
+    },
+    {
+      "id": "code-libraries",
+      "name": "Implementation Libraries & Tools",
+      "evidence_ids": ["E021", "E022", "E023"],
+      "summary": "React ecosystem libraries for command palettes (cmdk), onboarding tours (Joyride, Shepherd, Onborda), and wizard/stepper components (MUI, rhf-wizard).",
+      "strength": "moderate",
+      "tactic_count": 14
+    }
+  ],
+  "gaps": [
+    "Limited empirical data on faceted navigation effectiveness in SaaS vs ecommerce contexts",
+    "No quantitative studies found on settings page search adoption rates",
+    "Deep linking patterns for SPAs with complex state machines need more coverage",
+    "Notification fatigue thresholds and optimal frequency data is sparse"
+  ],
+  "agent_generation_assessment": {
+    "agent_eligible": true,
+    "reason": "14 clusters with 135+ actionable tactics spanning IA research methods, navigation design, onboarding patterns, error flows, and implementation libraries. Sufficient depth for a UI/UX flow design specialist agent.",
+    "recommended_type": "ui-ux-flow-advisor",
+    "recommended_capabilities": ["navigation pattern selection", "onboarding flow design", "error recovery design", "settings architecture", "command palette implementation"]
+  }
+}
