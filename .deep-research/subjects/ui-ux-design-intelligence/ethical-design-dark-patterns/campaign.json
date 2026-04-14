@@ -1,0 +1,57 @@
+{
+  "campaign": "Ethical Design & Dark Pattern Detection",
+  "subject": "ui-ux-design-intelligence",
+  "run_id": "run-1776159221068-d2aa68",
+  "completed_at": "2026-04-14",
+  "evidence_chunks": 30,
+  "clusters": 11,
+  "files": [
+    "OVERVIEW.md",
+    "01-taxonomy.md",
+    "02-detection.md",
+    "03-regulatory-landscape.md",
+    "04-cookie-consent.md",
+    "05-subscription-parity.md",
+    "06-urgency-scarcity.md",
+    "07-deceptive-hierarchy.md",
+    "08-trust-ethical-design.md",
+    "09-notification-permission.md",
+    "10-account-deletion.md",
+    "campaign.json"
+  ],
+  "research_areas": [
+    "Dark pattern taxonomy (Brignull 16 types + 68-type academic + CHI 64-type ontology)",
+    "EU Digital Services Act (DSA) Article 25 enforcement",
+    "California CPRA dark pattern provisions",
+    "FTC dark pattern enforcement ($2.5B Amazon, Adobe, ABCmouse, Vonage)",
+    "Cookie consent UX (GDPR-compliant, non-hostile patterns)",
+    "Subscription UX (sign-up/cancellation parity)",
+    "Notification permission (pre-permission patterns, timing)",
+    "Manipulative urgency (40% of timers fake, trust erosion)",
+    "Deceptive UI hierarchy (visual prominence, pre-checked options)",
+    "Trust architecture (transparency, consistency, error recovery)",
+    "Ethical gamification (autonomy, progress without manipulation)",
+    "Account deletion (GDPR right to erasure, EDPB 2025 enforcement)",
+    "Dark pattern detection (ML/CV/NLP tools, 45.5% coverage, LLM vulnerability)"
+  ],
+  "key_statistics": {
+    "dark_pattern_types_known": 68,
+    "detection_coverage_pct": 45.5,
+    "subscription_sites_with_dark_patterns_pct": 76,
+    "cookie_users_never_customize_pct": 93,
+    "fake_countdown_timers_pct": 40,
+    "llm_agent_susceptibility_pct": 41,
+    "practitioner_awareness_pct": 61,
+    "practitioner_mitigation_pct": 30,
+    "amazon_settlement_usd": 2500000000,
+    "cookie_popup_wasted_hours_per_year": 575000000
+  },
+  "sources_count": {
+    "academic": 8,
+    "official": 6,
+    "practitioner": 8,
+    "code": 4,
+    "community": 4
+  },
+  "agent_generation_eligible": true
+}

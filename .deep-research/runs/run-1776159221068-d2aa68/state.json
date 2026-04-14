@@ -1,0 +1,33 @@
+{
+  "id": "run-1776159221068-d2aa68",
+  "subject": "ui-ux-design-intelligence",
+  "slug": "ui-ux-design-intelligence",
+  "campaign": "Ethical Design & Dark Pattern Detection",
+  "status": "running",
+  "phase": "extract",
+  "loop": 1,
+  "budget": {
+    "searches_used": 17,
+    "fetches_used": 4,
+    "apify_calls_used": 4,
+    "apify_credits_estimated": 0.12,
+    "agents_dispatched": 0,
+    "total_agent_turns": 0
+  },
+  "evidence_count": 0,
+  "validated_count": 0,
+  "rejected_count": 0,
+  "started_at": "2026-04-14T00:00:00Z",
+  "completed_at": null,
+  "phases": {
+    "expand": { "status": "complete" },
+    "scout": { "status": "complete" },
+    "extract": { "status": "running" },
+    "validate": { "status": "pending" },
+    "cluster": { "status": "pending" },
+    "write": { "status": "pending" },
+    "assess": { "status": "pending" },
+    "commit": { "status": "pending" },
+    "export": { "status": "pending" }
+  }
+}

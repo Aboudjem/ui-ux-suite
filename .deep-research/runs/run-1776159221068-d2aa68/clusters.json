@@ -1,0 +1,104 @@
+{
+  "campaign": "Ethical Design & Dark Pattern Detection",
+  "clusters": [
+    {
+      "id": "C1-taxonomy",
+      "name": "Dark Pattern Taxonomy & Classification",
+      "evidence_ids": ["dp-taxonomy-brignull-001", "dp-taxonomy-comprehensive-002", "dp-ontology-chi2024-003", "chi2025-instagram-evolution-024"],
+      "summary": "Three complementary taxonomies: Brignull's 16-type practitioner taxonomy, a 68-type academic taxonomy (6 categories, 32 subcategories), and CHI 2024's synthesized 64-type ontology across 3 levels. Instagram evolution study adds 4 new types. Confirmshaming, roach motel (hard-to-cancel), hidden costs, forced continuity, misdirection, privacy zuckering, bait-and-switch, and disguised ads are core Brignull patterns.",
+      "depth": "expert",
+      "actionable": true
+    },
+    {
+      "id": "C2-detection",
+      "name": "Automated Dark Pattern Detection",
+      "evidence_ids": ["dp-detection-ml-004", "dp-detection-yolo-005", "dp-detection-bert-006", "dp-llm-susceptibility-007", "detection-tools-github-022"],
+      "summary": "Detection approaches: CV (UIGuard F1=0.79, YOLOv12x real-time), NLP (BERT, DistilBERT for text), DOM analysis, and multi-modal pipelines. Current tools cover only 45.5% of pattern types. LLM agents themselves are vulnerable to dark patterns (41% susceptibility, rising to 80% with multiple patterns). Open-source tools: AidUI, Dapde, CogniGuard, DarkPatternLLM.",
+      "depth": "expert",
+      "actionable": true
+    },
+    {
+      "id": "C3-regulatory-landscape",
+      "name": "Regulatory Landscape (EU, US, Global)",
+      "evidence_ids": ["reg-dsa-art25-008", "reg-ftc-enforcement-009", "reg-ftc-click-cancel-010", "reg-cpra-dark-patterns-011", "chi2025-ccpa-opt-out-023"],
+      "summary": "EU DSA Article 25 first explicit dark pattern prohibition (Feb 2024). Digital Fairness Act Q4 2026 for coherence. FTC: $2.5B Amazon settlement, Click-to-Cancel vacated but enforcement continues under ROSCA/Section 5. CPRA: $2,500-$7,500/violation, symmetry requirement. ICPEN: 76% of subscription sites use dark patterns. Insurance sector (IRDAI) expanding scope.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C4-cookie-consent",
+      "name": "Cookie Consent UX & Compliance",
+      "evidence_ids": ["cookie-consent-gdpr-012", "cookie-consent-edpb-013", "cookie-consent-tools-014", "cookie-consent-eu-failure-027", "cookie-game-skipthe-tips-030"],
+      "summary": "EDPB requires equal prominence accept/reject, no pre-ticked boxes, prior blocking, granular consent. 93% of users never go past first screen. EU admits system is 'long overdue' for fix. DNT failed. Article 88b proposes machine-readable signals but may repeat failure. Open-source CMPs: Klaro, Osano (2B+ monthly), consent.io. Cookie pop-ups waste 575M hours/year.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C5-subscription-parity",
+      "name": "Subscription UX: Sign-up/Cancel Parity",
+      "evidence_ids": ["subscription-parity-015", "reg-ftc-click-cancel-010", "reg-ftc-enforcement-009"],
+      "summary": "Core problem: asymmetrical effort (easy join, hard leave). FTC Click-to-Cancel vacated but precedent set. Amazon $2.5B settlement. Loss Aversion Manipulation, Emotional Exploitation, Hidden Options most common cancellation dark patterns. 76% of sites use patterns. Cancellation must be as easy as signup -- same channel, same effort.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C6-manipulative-urgency",
+      "name": "Manipulative Urgency vs Legitimate Scarcity",
+      "evidence_ids": ["fake-urgency-scarcity-017"],
+      "summary": "40% of countdown timers are fake. Fake scarcity increases frustration/stress/irritation. Legitimate urgency: real deadlines, backend-connected inventory, verifiable claims. Combining real inventory + real time pressure is effective and honest. Fake urgency erodes trust despite short-term conversion lift.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C7-deceptive-hierarchy",
+      "name": "Deceptive UI Hierarchy & Pre-checked Options",
+      "evidence_ids": ["deceptive-hierarchy-018", "privacy-settings-reset-026"],
+      "summary": "Visual prominence manipulation: large/bold preferred action, small/pale alternatives. Pre-checked checkboxes exploit default effect. Double negatives in opt-outs. High-contrast accept vs low-contrast reject. Princeton/UChicago: 10%+ of 11K e-commerce sites use deceptive patterns. Privacy settings that reset after updates are a systematic dark pattern.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C8-trust-ethical-design",
+      "name": "Trust Architecture & Ethical Alternatives",
+      "evidence_ids": ["trust-architecture-021", "chi2024-ethical-framework-025", "ethical-gamification-019"],
+      "summary": "Ethical design framework: transparency, consistency, error recovery. CHI 2024 concept-based framework shifts from pattern-avoidance to proactive ethics. Ethical gamification: visible progress, user autonomy, no forced participation. Honest UX converts better long-term. Quarterly ethics audits recommended. Remove false urgency, make accessibility standard.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C9-notification-permission",
+      "name": "Notification Permission Patterns",
+      "evidence_ids": ["notification-permission-016"],
+      "summary": "Pre-permission (double-permission) pattern: custom dialog first, native prompt only if user agrees. Never prompt on page load. Best timing: after relevant user action. Communicate value clearly. Cost-benefit analysis drives user decisions. Pre-permission preserves native prompt for when user is ready.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C10-account-deletion",
+      "name": "Account Deletion & Right to Erasure",
+      "evidence_ids": ["account-deletion-020"],
+      "summary": "EDPB 2025 enforcement focus on Article 17 GDPR right to erasure. Most frequently exercised and complained-about right. Key gaps: no systematic data classification, no automated deletion labels, procedural inconsistencies. Must respond within 1 month. CNIL, CNPD, IMY using findings for 2026 inspections. Need: data mapping, erasure classes, clear deletion protocols.",
+      "depth": "advanced",
+      "actionable": true
+    },
+    {
+      "id": "C11-practitioner-gap",
+      "name": "Industry Awareness & Implementation Gap",
+      "evidence_ids": ["practitioner-awareness-028", "insurance-dark-patterns-029"],
+      "summary": "61% of practitioners aware their apps contain dark patterns, only 30% have mitigation measures. A/B testing enables hiding unethical design. Dark patterns expanding to insurance (IRDAI), financial services. The implementation-practice disconnect is the core systemic problem.",
+      "depth": "advanced",
+      "actionable": true
+    }
+  ],
+  "gaps": [
+    "Need more empirical data on dark pattern detection accuracy across different industries",
+    "Limited coverage of mixed-reality/VR dark patterns (referenced in ACM but not deeply explored)",
+    "Accessibility intersection with dark patterns (how patterns disproportionately affect disabled users)"
+  ],
+  "agent_generation_assessment": {
+    "agent_eligible": true,
+    "reason": "11 clusters with 5+ actionable items each across taxonomy, detection, regulation, and ethical alternatives. Sufficient depth for a dark-pattern-auditor agent or ethical-design-reviewer skill.",
+    "suggested_type": "dark-pattern-auditor",
+    "suggested_capabilities": ["UI screenshot analysis for dark patterns", "Cookie consent compliance check", "Subscription flow parity audit", "Regulatory compliance mapping (DSA/FTC/CPRA)", "Ethical alternative suggestions"]
+  }
+}
