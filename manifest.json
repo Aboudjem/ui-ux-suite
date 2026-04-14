@@ -1,0 +1,38 @@
+{
+  "name": "ui-ux-suite",
+  "version": "0.1.0",
+  "description": "Comprehensive UI/UX design intelligence suite — audit, score, recommend, and generate design improvements for any project",
+  "author": "Adam Boudjemaa",
+  "license": "MIT",
+  "agents": [
+    "agents/design-auditor.md",
+    "agents/color-analyst.md",
+    "agents/typography-analyst.md",
+    "agents/layout-analyst.md",
+    "agents/component-reviewer.md",
+    "agents/accessibility-auditor.md",
+    "agents/interaction-analyst.md",
+    "agents/psychology-analyst.md",
+    "agents/visual-style-advisor.md",
+    "agents/platform-advisor.md",
+    "agents/ux-flow-analyst.md",
+    "agents/performance-ux-analyst.md"
+  ],
+  "skills": [
+    "skills/design-audit.md",
+    "skills/color-audit.md",
+    "skills/type-audit.md",
+    "skills/layout-audit.md",
+    "skills/a11y-audit.md",
+    "skills/component-audit.md",
+    "skills/flow-audit.md",
+    "skills/style-direction.md",
+    "skills/design-tokens.md",
+    "skills/theme-builder.md",
+    "skills/refactor-plan.md",
+    "skills/design-score.md",
+    "skills/design-compare.md",
+    "skills/design-checklist.md"
+  ],
+  "mcpServer": "lib/mcp-server.js"
+}

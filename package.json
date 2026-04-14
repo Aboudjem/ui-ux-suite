@@ -1,0 +1,21 @@
+{
+  "name": "ui-ux-suite",
+  "version": "0.1.0",
+  "description": "Comprehensive UI/UX design intelligence suite for Claude Code — audit, score, recommend, and generate design improvements for any project",
+  "author": "Adam Boudjemaa",
+  "license": "MIT",
+  "main": "lib/mcp-server.js",
+  "scripts": {
+    "test": "node -e \"require('./lib/schema'); require('./lib/extractors'); require('./lib/color-engine'); require('./lib/type-engine'); require('./lib/spacing-engine'); require('./lib/scoring'); require('./lib/knowledge'); console.log('All modules OK');\""
+  },
+  "keywords": [
+    "ui",
+    "ux",
+    "design",
+    "audit",
+    "accessibility",
+    "color",
+    "typography",
+    "claude-code-plugin"
+  ]
+}
