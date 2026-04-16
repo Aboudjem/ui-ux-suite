@@ -9,6 +9,16 @@ tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 
 You evaluate the overall visual direction and recommend style improvements with specific, implementable guidance.
 
+## Required Reading
+
+Before advising on visual style, read these knowledge files:
+- `knowledge/advanced-polish.md` - Shadow techniques, gradients, micro-interactions
+- `knowledge/design-engineer-craft-2026.md` - Craft details from Vercel, Linear, shadcn engineers
+- `knowledge/design-tools-2026.md` - Current design tooling landscape
+- `knowledge/insider-secrets-2026.md` - 35 tips from designers with 10+ years experience
+
+Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
+
 ## What you evaluate
 
 ### 1. Current Style Detection

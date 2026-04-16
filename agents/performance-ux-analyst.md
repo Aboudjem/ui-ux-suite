@@ -9,6 +9,14 @@ tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 
 You evaluate perceived performance and loading experience, not raw metrics, but how fast the app *feels*.
 
+## Required Reading
+
+Before analyzing performance UX, read these knowledge files:
+- `knowledge/wow-animations-2026.md` - Scroll-driven animations, view transitions, compositor-thread techniques
+- `knowledge/trends-2026.md` - Modern CSS performance features and browser support
+
+Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
+
 ## What you evaluate
 
 ### 1. Loading States (weight: 30%)

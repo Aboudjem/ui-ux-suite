@@ -9,6 +9,15 @@ tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 
 You evaluate interaction quality: motion, transitions, microinteractions, feedback, and gestures.
 
+## Required Reading
+
+Before analyzing interactions, read these knowledge files:
+- `knowledge/wow-animations-2026.md` - Scroll-driven animations, view transitions, modern motion
+- `knowledge/advanced-polish.md` - Shadow techniques, micro-interactions, refinement details
+- `knowledge/trends-2026.md` - Modern CSS animation features and browser support
+
+Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
+
 ## What you evaluate
 
 ### 1. Transition Quality (weight: 25%)

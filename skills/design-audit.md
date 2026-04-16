@@ -16,9 +16,13 @@ Run a comprehensive design audit on the current project or a specified path.
 
 ## Flow
 
-1. **Scan project** - Use `uiux_scan_project` to detect framework, styling, component library, theme system
-2. **Display profile** - Show the user what was detected, ask for confirmation
-3. **Dispatch agents** - Launch all relevant specialist agents in parallel:
+1. **Load knowledge base** - Read the knowledge index and all 19 knowledge files:
+   - Use `uiux_knowledge_query` with `listFiles: true` to get the full inventory
+   - Every agent reads its assigned knowledge files (see `knowledge/INDEX.md` for the mapping)
+   - The evidence base, principles, anti-patterns, and trends files are required reading for ALL agents
+2. **Scan project** - Use `uiux_scan_project` to detect framework, styling, component library, theme system
+3. **Display profile** - Show the user what was detected, ask for confirmation
+4. **Dispatch agents** - Launch all relevant specialist agents in parallel (each reads its knowledge files first):
    - `color-analyst` - Color system diagnosis
    - `typography-analyst` - Typography system diagnosis
    - `layout-analyst` - Layout, spacing, grid analysis
