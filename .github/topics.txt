@@ -1,0 +1,31 @@
+# Recommended GitHub Topics for ui-ux-suite
+# Set these in: Repository Settings > About > Topics
+#
+# Primary (category + ecosystem)
+claude-code
+claude-code-plugin
+design-audit
+design-linter
+ui-ux
+
+# Features
+accessibility
+wcag
+color-contrast
+typography
+design-system
+design-tokens
+css
+
+# Technology
+tailwindcss
+oklch
+apca
+mcp
+
+# Discovery
+developer-tools
+code-quality
+a11y
+open-source
+nodejs

@@ -1,0 +1,5 @@
+# Recommended GitHub Repository Description (under 350 chars)
+# Set this in: Repository Settings > About > Description
+#
+# Current recommendation:
+Open source design audit tool for Claude Code. Scores UI/UX across 12 dimensions (color contrast, typography, accessibility, layout, and more) using WCAG 2.1, APCA, and OKLCH color science. Zero dependencies. One command. Actionable fixes with before/after code.

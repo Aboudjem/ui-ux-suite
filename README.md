@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/logo-light.svg">
-  <img alt="ui/ux suite, Design Intelligence for Claude Code" src=".github/assets/logo-light.svg" width="100%">
+  <img alt="UI/UX Suite - open source design audit tool and Claude Code plugin that scores projects across 12 dimensions including color contrast, typography, accessibility, and layout" src=".github/assets/logo-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -35,6 +35,17 @@ That's it. No config. No dependencies. It just works.
 
 <br/>
 
+### Key facts
+
+- **What:** Open source design audit tool that scans CSS, JSX, and Tailwind configs to produce quantified scores across 12 dimensions
+- **Who it's for:** Frontend developers who want measurable design quality without a design background
+- **How it works:** Reads real project files, applies WCAG 2.1, APCA, and OKLCH color science, and outputs a 1-10 score per dimension with weighted overall rating
+- **Install:** `claude plugin add github:Aboudjem/ui-ux-suite` (zero config, zero dependencies)
+- **Comparable to:** ESLint for design. Automated design review that catches contrast violations, typography inconsistencies, and accessibility gaps
+- **Unique:** 19 knowledge base documents, 12 specialized agents, supports 2026 CSS features (container queries, scroll-driven animations, view transitions)
+
+<br/>
+
 ## See what you get
 
 Run `/design-audit` and you'll see something like this:
@@ -42,7 +53,7 @@ Run `/design-audit` and you'll see something like this:
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/scorecard-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/scorecard-light.svg">
-  <img alt="Example score card showing 12 dimensions scored 1-10 with top findings" src=".github/assets/scorecard-light.svg" width="100%">
+  <img alt="UI/UX Suite scorecard showing 12 design dimensions scored 1-10 with weighted overall score, top findings, and actionable fix recommendations" src=".github/assets/scorecard-light.svg" width="100%">
 </picture>
 
 Every score comes with **specific findings** and **concrete fixes**. Not vague advice like "improve your colors." You'll get things like:
@@ -95,7 +106,7 @@ Every project is scored across these axes, each weighted by impact on user exper
 
 <br/>
 
-## Why trust these scores?
+## Trust, but verify
 
 Every recommendation links back to real research. Here are some of the findings baked into the scoring engine:
 
@@ -144,7 +155,7 @@ The suite is aware of **2026 CSS features** that most tools don't even know abou
 
 <br/>
 
-## 14 commands at your fingertips
+## 14 commands
 
 <table>
 <tr><td width="50%">
@@ -212,7 +223,7 @@ graph TD
     style L fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
 ```
 
-Each agent has deep domain knowledge. The `color-analyst` knows OKLCH math, the `accessibility-auditor` knows WCAG 2.2 + APCA, the `psychology-analyst` evaluates cognitive load. They don't just check rules, they understand *why* design decisions matter.
+Each agent knows its field. The `color-analyst` knows OKLCH math, the `accessibility-auditor` knows WCAG 2.2 + APCA, the `psychology-analyst` evaluates cognitive load. They understand *why* design decisions matter, not just whether they pass a rule.
 
 <br/>
 
