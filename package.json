@@ -21,7 +21,6 @@
     "agents/",
     "skills/",
     "knowledge/",
-    "commands/",
     "templates/",
     "manifest.json",
     "LICENSE"
