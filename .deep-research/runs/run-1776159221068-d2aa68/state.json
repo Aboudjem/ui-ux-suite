@@ -3,8 +3,8 @@
   "subject": "ui-ux-design-intelligence",
   "slug": "ui-ux-design-intelligence",
   "campaign": "Ethical Design & Dark Pattern Detection",
-  "status": "running",
-  "phase": "extract",
+  "status": "complete",
+  "phase": "export",
   "loop": 1,
   "budget": {
     "searches_used": 17,
@@ -14,20 +14,20 @@
     "agents_dispatched": 0,
     "total_agent_turns": 0
   },
-  "evidence_count": 0,
-  "validated_count": 0,
+  "evidence_count": 30,
+  "validated_count": 30,
   "rejected_count": 0,
-  "started_at": "2026-04-14T00:00:00Z",
-  "completed_at": null,
+  "started_at": "2026-04-14T09:30:00Z",
+  "completed_at": "2026-04-14T09:50:00Z",
   "phases": {
     "expand": { "status": "complete" },
     "scout": { "status": "complete" },
-    "extract": { "status": "running" },
-    "validate": { "status": "pending" },
-    "cluster": { "status": "pending" },
-    "write": { "status": "pending" },
-    "assess": { "status": "pending" },
-    "commit": { "status": "pending" },
-    "export": { "status": "pending" }
+    "extract": { "status": "complete" },
+    "validate": { "status": "complete" },
+    "cluster": { "status": "complete" },
+    "write": { "status": "complete" },
+    "assess": { "status": "complete" },
+    "commit": { "status": "complete", "commit_hash": "940c0e6" },
+    "export": { "status": "complete", "destination": "/Users/adamboudj/knowledge-bank/08-research/ui-ux" }
   }
 }

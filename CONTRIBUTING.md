@@ -1,6 +1,6 @@
 # Contributing to UI/UX Suite
 
-Glad you're here. Whether it's a scoring improvement, a new knowledge document, or a bug fix — it all moves the project forward.
+Glad you're here. Whether it's a scoring improvement, a new knowledge document, or a bug fix, it all moves the project forward.
 
 ## Getting set up
 
@@ -9,12 +9,12 @@ Glad you're here. Whether it's a scoring improvement, a new knowledge document, 
 git clone https://github.com/YOUR_USERNAME/ui-ux-suite.git
 cd ui-ux-suite
 
-# No install needed — zero dependencies
+# No install needed, zero dependencies
 # Validate everything loads
 npm test
 ```
 
-You'll need **Node.js 18+**. That's it — no build step, no compilation.
+You'll need **Node.js 18+**. That's it. No build step, no compilation.
 
 ## Where things live
 
@@ -57,7 +57,7 @@ manifest.json           # Claude Code plugin manifest
 ## Making changes
 
 1. **Create a branch** from `main`
-2. **Make your changes** — keep commits focused
+2. **Make your changes** and keep commits focused
 3. **Run tests**: `npm test`
 4. **Submit a PR** with a clear description of what and why
 
@@ -65,7 +65,7 @@ manifest.json           # Claude Code plugin manifest
 
 - Vanilla JavaScript (no TypeScript, no build step)
 - CommonJS `require()` / `module.exports`
-- Zero external dependencies — use only Node.js built-ins
+- Zero external dependencies. Use only Node.js built-ins
 - Functions over classes where possible
 - Descriptive variable names over comments
 
@@ -75,7 +75,7 @@ When adding to `knowledge/`:
 - Include source citations for all claims
 - Use confidence levels: HIGH, MEDIUM, LOW
 - Prefer quantified findings over qualitative opinions
-- Keep entries actionable — "do this" not just "consider this"
+- Keep entries actionable. "Do this" not just "consider this"
 
 ## Questions?
 

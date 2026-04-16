@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/logo-light.svg">
-  <img alt="ui/ux suite — Design Intelligence for Claude Code" src=".github/assets/logo-light.svg" width="100%">
+  <img alt="ui/ux suite, Design Intelligence for Claude Code" src=".github/assets/logo-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <b>Your project's design quality, measured — not guessed.</b><br/>
+  <b>Your project's design quality, measured. Not guessed.</b><br/>
   <sub>Think ESLint, but for UI/UX. Backed by research, not opinions.</sub>
 </p>
 
@@ -25,7 +25,7 @@
 
 You write code. You ship features. But how good does your UI *actually* look?
 
-**ui/ux suite** is a Claude Code plugin that reads your real project files — CSS, JSX, Tailwind configs — and gives you a **quantified design score** across 12 dimensions. Not vibes. Not opinions. Numbers backed by accessibility standards, color science, and UX research.
+**ui/ux suite** is a Claude Code plugin that reads your real project files (CSS, JSX, Tailwind configs) and gives you a **quantified design score** across 12 dimensions. Not vibes. Not opinions. Numbers backed by accessibility standards, color science, and UX research.
 
 ```bash
 claude plugin add github:Aboudjem/ui-ux-suite
@@ -45,9 +45,9 @@ Run `/design-audit` and you'll see something like this:
   <img alt="Example score card showing 12 dimensions scored 1-10 with top findings" src=".github/assets/scorecard-light.svg" width="100%">
 </picture>
 
-Every score comes with **specific findings** and **concrete fixes** — not vague advice like "improve your colors." You'll get things like:
+Every score comes with **specific findings** and **concrete fixes**. Not vague advice like "improve your colors." You'll get things like:
 
-> *"Button text contrast is 2.8:1 — needs 4.5:1 for WCAG AA. Change `#94a3b8` to `#64748b` on your white background."*
+> *"Button text contrast is 2.8:1, needs 4.5:1 for WCAG AA. Change `#94a3b8` to `#64748b` on your white background."*
 
 <br/>
 
@@ -55,10 +55,10 @@ Every score comes with **specific findings** and **concrete fixes** — not vagu
 
 ```mermaid
 graph LR
-    A["Your Project<br/><sub>CSS · JSX · Tailwind · Config</sub>"] --> B["Extractors<br/><sub>Colors · Type · Spacing · Classes</sub>"]
-    B --> C["Engines<br/><sub>Color · Typography · Spacing · OKLCH</sub>"]
-    C --> D["Scoring<br/><sub>12 weighted dimensions</sub>"]
-    D --> E["Report<br/><sub>Score card + Action plan</sub>"]
+    A["🗂️ Your Project<br/><sub>CSS · JSX · Tailwind · Config</sub>"] --> B["🔍 Extractors<br/><sub>Colors · Type · Spacing · Classes</sub>"]
+    B --> C["⚙️ Engines<br/><sub>Color · Typography · Spacing · OKLCH</sub>"]
+    C --> D["📊 Scoring<br/><sub>12 weighted dimensions</sub>"]
+    D --> E["✅ Report<br/><sub>Score card + Action plan</sub>"]
 
     style A fill:#f8fafc,stroke:#6366f1,color:#1e1b4b
     style B fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
@@ -67,7 +67,7 @@ graph LR
     style E fill:#6366f1,stroke:#4f46e5,color:#ffffff
 ```
 
-Your code goes in. A score card with actionable fixes comes out. The suite auto-detects your framework, styling approach, and component library — you don't configure anything.
+Your code goes in. A score card with actionable fixes comes out. The suite auto-detects your framework, styling approach, and component library. You don't configure anything.
 
 <br/>
 
@@ -75,23 +75,23 @@ Your code goes in. A score card with actionable fixes comes out. The suite auto-
 
 Every project is scored across these axes, each weighted by impact on user experience:
 
-| Dimension | Weight | What we look at |
-|:----------|:------:|:----------------|
-| **Color System** | 10% | Contrast ratios (WCAG + APCA), near-duplicates, semantic roles, dark mode |
-| **Typography** | 10% | Scale consistency, font count, body size, line height, fluid type |
-| **Layout & Spacing** | 10% | Spacing grid, breakpoints, container widths, consistency |
-| **Component Quality** | 10% | State coverage (hover, focus, disabled, loading, error) |
-| **Accessibility** | 12% | Focus indicators, skip links, alt text, reduced motion, ARIA |
-| **Visual Hierarchy** | 10% | Type scale, information priority, scannability |
-| **Interaction Quality** | 8% | Animation timing, easing, feedback, motion principles |
-| **Responsiveness** | 8% | Breakpoints, container queries, Tailwind responsive variants |
-| **Visual Polish** | 7% | Shadow quality, gradient animation, border radius tokens |
-| **Performance UX** | 5% | Loading states, scroll-driven animations, perceived speed |
-| **Info Architecture** | 5% | Command palette, i18n, form validation, navigation |
-| **Platform Fit** | 5% | Dark mode toggle, component lib detection, a11y primitives |
+| | Dimension | Weight | What we look at |
+|:--|:----------|:------:|:----------------|
+| 🎨 | **Color System** | 10% | Contrast ratios (WCAG + APCA), near duplicates, semantic roles, dark mode |
+| 🔤 | **Typography** | 10% | Scale consistency, font count, body size, line height, fluid type |
+| 📐 | **Layout & Spacing** | 10% | Spacing grid, breakpoints, container widths, consistency |
+| 🧩 | **Component Quality** | 10% | State coverage (hover, focus, disabled, loading, error) |
+| ♿ | **Accessibility** | 12% | Focus indicators, skip links, alt text, reduced motion, ARIA |
+| 👁️ | **Visual Hierarchy** | 10% | Type scale, information priority, scannability |
+| ✨ | **Interaction Quality** | 8% | Animation timing, easing, feedback, motion principles |
+| 📱 | **Responsiveness** | 8% | Breakpoints, container queries, Tailwind responsive variants |
+| 💎 | **Visual Polish** | 7% | Shadow quality, gradient animation, border radius tokens |
+| ⚡ | **Performance UX** | 5% | Loading states, scroll driven animations, perceived speed |
+| 🧭 | **Info Architecture** | 5% | Command palette, i18n, form validation, navigation |
+| 🖥️ | **Platform Fit** | 5% | Dark mode toggle, component lib detection, a11y primitives |
 
 > [!TIP]
-> Accessibility gets the highest weight (12%) because it affects the most users — and because [5,114 ADA lawsuits were filed in H1 2025 alone](knowledge/evidence-base.md), up 37% year-over-year.
+> Accessibility gets the highest weight (12%) because it affects the most users. [5,114 ADA lawsuits were filed in H1 2025 alone](knowledge/evidence-base.md), up 37% year over year.
 
 <br/>
 
@@ -101,16 +101,16 @@ Every recommendation links back to real research. Here are some of the findings 
 
 | What we found | Number | Source |
 |:--------------|:------:|:-------|
-| Time for users to form an opinion about your design | **50ms** | Academic research |
-| Users who leave after encountering bad design | **88%** | UX survey |
-| ADA lawsuits filed (H1 2025) | **5,114** | WebAIM, UsableNet |
-| Issues that automated a11y tools actually catch | **30-40%** | Deque, W3C |
-| Smartphone users with dark mode enabled | **81.9%** | Mobile analytics |
-| Task completion improvement from good navigation | **+37%** | UX study |
-| Abandonment reduction from skeleton loading | **-40%** | Product experiments |
+| ⏱️ Time for users to form an opinion about your design | **50ms** | Academic research |
+| 👋 Users who leave after encountering bad design | **88%** | UX survey |
+| ⚖️ ADA lawsuits filed (H1 2025) | **5,114** | WebAIM, UsableNet |
+| 🔍 Issues that automated a11y tools actually catch | **30-40%** | Deque, W3C |
+| 🌙 Smartphone users with dark mode enabled | **81.9%** | Mobile analytics |
+| 🧭 Task completion improvement from good navigation | **+37%** | UX study |
+| ⏳ Abandonment reduction from skeleton loading | **-40%** | Product experiments |
 
 <details>
-<summary><b>See all 30+ findings with confidence levels</b></summary>
+<summary><b>📚 See all 30+ findings with confidence levels</b></summary>
 <br/>
 
 The full evidence base lives in [`knowledge/evidence-base.md`](knowledge/evidence-base.md). Every finding is rated **HIGH**, **MEDIUM**, or **LOW** confidence based on source quality and recency.
@@ -127,15 +127,15 @@ The suite is aware of **2026 CSS features** that most tools don't even know abou
 
 | Modern Feature | Detection | Why it matters |
 |:---------------|:----------|:---------------|
-| View Transitions API | `@view-transition`, `::view-transition` | Native page transitions — no JS libraries |
-| Scroll-driven animations | `animation-timeline: view\|scroll` | 60fps on compositor thread, replaces GSAP |
-| Container queries | `@container` | Component-level responsiveness |
-| `@property` animations | `@property --*` | Animatable custom properties (gradients!) |
-| OKLCH color space | `oklch()` values | Perceptually uniform — better than HSL |
-| Tailwind v4 | `@import 'tailwindcss'`, `@theme` | Latest Tailwind architecture |
+| 🔄 View Transitions API | `@view-transition`, `::view-transition` | Native page transitions, no JS libraries needed |
+| 📜 Scroll driven animations | `animation-timeline: view\|scroll` | 60fps on compositor thread, replaces GSAP |
+| 📦 Container queries | `@container` | Component level responsiveness |
+| 🎭 `@property` animations | `@property --*` | Animatable custom properties (gradients!) |
+| 🌈 OKLCH color space | `oklch()` values | Perceptually uniform, better than HSL |
+| 🌊 Tailwind v4 | `@import 'tailwindcss'`, `@theme` | Latest Tailwind architecture |
 
 > [!NOTE]
-> Most design linters are stuck in 2022. We score for the way modern CSS actually works in 2026 — including features with 85-95%+ browser support that your project should be using.
+> Most design linters are stuck in 2022. We score for the way modern CSS actually works in 2026, including features with 85-95%+ browser support that your project should be using.
 
 <br/>
 
@@ -144,13 +144,13 @@ The suite is aware of **2026 CSS features** that most tools don't even know abou
 <table>
 <tr><td width="50%">
 
-**Audit commands**
+**🔍 Audit commands**
 
 | Command | What it does |
 |:--------|:------------|
-| `/design-audit` | Full 12-dimension audit |
+| `/design-audit` | Full 12 dimension audit |
 | `/design-score` | Quick overall score |
-| `/color-audit` | Color system deep-dive |
+| `/color-audit` | Color system deep dive |
 | `/type-audit` | Typography analysis |
 | `/layout-audit` | Spacing & grid check |
 | `/a11y-audit` | Accessibility review |
@@ -158,7 +158,7 @@ The suite is aware of **2026 CSS features** that most tools don't even know abou
 
 </td><td width="50%">
 
-**Generate & plan commands**
+**🛠️ Generate & plan commands**
 
 | Command | What it does |
 |:--------|:------------|
@@ -168,7 +168,7 @@ The suite is aware of **2026 CSS features** that most tools don't even know abou
 | `/theme-builder` | Theme from brand color |
 | `/refactor-plan` | Prioritized action plan |
 | `/design-compare` | Before/after comparison |
-| `/design-checklist` | Pre-launch checklist |
+| `/design-checklist` | Pre launch checklist |
 
 </td></tr>
 </table>
@@ -181,17 +181,17 @@ The plugin dispatches specialized AI agents depending on what you're auditing:
 
 ```mermaid
 graph TD
-    A["design-auditor<br/><sub>Master orchestrator (Opus)</sub>"] --> B["color-analyst"]
-    A --> C["typography-analyst"]
-    A --> D["layout-analyst"]
-    A --> E["accessibility-auditor"]
-    A --> F["component-reviewer"]
-    A --> G["interaction-analyst"]
-    A --> H["psychology-analyst"]
-    A --> I["visual-style-advisor"]
-    A --> J["platform-advisor"]
-    A --> K["ux-flow-analyst"]
-    A --> L["performance-ux-analyst"]
+    A["🎯 design-auditor<br/><sub>Master orchestrator (Opus)</sub>"] --> B["🎨 color-analyst"]
+    A --> C["🔤 typography-analyst"]
+    A --> D["📐 layout-analyst"]
+    A --> E["♿ accessibility-auditor"]
+    A --> F["🧩 component-reviewer"]
+    A --> G["✨ interaction-analyst"]
+    A --> H["🧠 psychology-analyst"]
+    A --> I["💎 visual-style-advisor"]
+    A --> J["🖥️ platform-advisor"]
+    A --> K["🧭 ux-flow-analyst"]
+    A --> L["⚡ performance-ux-analyst"]
 
     style A fill:#6366f1,stroke:#4f46e5,color:#fff
     style B fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
@@ -207,13 +207,13 @@ graph TD
     style L fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
 ```
 
-Each agent has deep domain knowledge — the `color-analyst` knows OKLCH math, the `accessibility-auditor` knows WCAG 2.2 + APCA, the `psychology-analyst` evaluates cognitive load. They don't just check rules — they understand *why* design decisions matter.
+Each agent has deep domain knowledge. The `color-analyst` knows OKLCH math, the `accessibility-auditor` knows WCAG 2.2 + APCA, the `psychology-analyst` evaluates cognitive load. They don't just check rules, they understand *why* design decisions matter.
 
 <br/>
 
-## 19 knowledge documents
+## 📚 19 knowledge documents
 
-The suite ships with **3,081 lines of curated design intelligence**. Not scraped content — hand-curated research from community scouts, academic papers, and practitioners at Vercel, Linear, Stripe, and Google.
+The suite ships with **3,081 lines of curated design intelligence**. Not scraped content. Hand curated research from community scouts, academic papers, and practitioners at Vercel, Linear, Stripe, and Google.
 
 <details>
 <summary><b>Browse the knowledge base</b></summary>
@@ -221,25 +221,25 @@ The suite ships with **3,081 lines of curated design intelligence**. Not scraped
 
 | Document | What's inside |
 |:---------|:-------------|
-| `evidence-base.md` | 30+ quantified findings with confidence levels |
-| `accessibility-guide.md` | WCAG, ARIA, focus management, screen readers |
-| `color-theory.md` | Harmony, semantics, dark mode rules, product palettes |
-| `typography-theory.md` | Scale ratios, 2026 font picks, readability research |
-| `component-patterns.md` | State checklist, button hierarchy, form best practices |
-| `platform-conventions.md` | iOS, Android, web platform-specific patterns |
-| `psychology.md` | Cognitive load, Gestalt principles, trust signals |
-| `principles.md` | Core design principles and heuristics |
-| `anti-patterns.md` | Common mistakes and how to avoid them |
-| `dark-patterns.md` | Deceptive design detection and avoidance |
-| `ux-flows.md` | Navigation, onboarding, information architecture |
-| `trends-2026.md` | CSS features, AI patterns, style directions — rated |
-| `wow-libraries-2026.md` | 15 component libraries deep-dived |
-| `wow-animations-2026.md` | Scroll-driven, view transitions, modern motion |
-| `design-tools-2026.md` | Design tooling landscape |
-| `insider-secrets-2026.md` | 35 tips from pros with 10+ years experience |
-| `design-engineer-craft-2026.md` | Craft details from Vercel, Linear, shadcn engineers |
-| `advanced-polish.md` | Shadow techniques, micro-interactions, refinement |
-| `libraries-tools.md` | Component library comparison guide |
+| 📊 `evidence-base.md` | 30+ quantified findings with confidence levels |
+| ♿ `accessibility-guide.md` | WCAG, ARIA, focus management, screen readers |
+| 🎨 `color-theory.md` | Harmony, semantics, dark mode rules, product palettes |
+| 🔤 `typography-theory.md` | Scale ratios, 2026 font picks, readability research |
+| 🧩 `component-patterns.md` | State checklist, button hierarchy, form best practices |
+| 🖥️ `platform-conventions.md` | iOS, Android, web platform specific patterns |
+| 🧠 `psychology.md` | Cognitive load, Gestalt principles, trust signals |
+| 📏 `principles.md` | Core design principles and heuristics |
+| ⚠️ `anti-patterns.md` | Common mistakes and how to avoid them |
+| 🚫 `dark-patterns.md` | Deceptive design detection and avoidance |
+| 🧭 `ux-flows.md` | Navigation, onboarding, information architecture |
+| 🔮 `trends-2026.md` | CSS features, AI patterns, style directions rated |
+| ✨ `wow-libraries-2026.md` | 15 component libraries deep dived |
+| 🎬 `wow-animations-2026.md` | Scroll driven, view transitions, modern motion |
+| 🛠️ `design-tools-2026.md` | Design tooling landscape |
+| 🤫 `insider-secrets-2026.md` | 35 tips from pros with 10+ years experience |
+| 🏗️ `design-engineer-craft-2026.md` | Craft details from Vercel, Linear, shadcn engineers |
+| 💎 `advanced-polish.md` | Shadow techniques, micro interactions, refinement |
+| 📦 `libraries-tools.md` | Component library comparison guide |
 
 </details>
 
@@ -247,16 +247,16 @@ The suite ships with **3,081 lines of curated design intelligence**. Not scraped
 
 ## Works with your stack
 
-No config needed — the suite auto-detects everything from your `package.json` and source files.
+No config needed. The suite auto-detects everything from your `package.json` and source files.
 
 <table>
 <tr>
-<td align="center" width="14%"><b>React</b></td>
-<td align="center" width="14%"><b>Next.js</b></td>
-<td align="center" width="14%"><b>Vue</b></td>
-<td align="center" width="14%"><b>Svelte</b></td>
-<td align="center" width="14%"><b>Angular</b></td>
-<td align="center" width="14%"><b>Vanilla</b></td>
+<td align="center" width="14%"><b>⚛️ React</b></td>
+<td align="center" width="14%"><b>▲ Next.js</b></td>
+<td align="center" width="14%"><b>💚 Vue</b></td>
+<td align="center" width="14%"><b>🔶 Svelte</b></td>
+<td align="center" width="14%"><b>🅰️ Angular</b></td>
+<td align="center" width="14%"><b>🌐 Vanilla</b></td>
 </tr>
 <tr>
 <td align="center">Tailwind</td>
@@ -286,37 +286,31 @@ node_modules/  →  empty.
 
 The entire suite is **2,934 lines of vanilla Node.js** using only built-in modules. That means:
 
-- **Instant install** — nothing to download
-- **Zero supply chain risk** — nothing to audit
-- **No version conflicts** — nothing to break
-- **Tiny footprint** — 112 KB packaged
+| | Benefit |
+|:--|:--------|
+| ⚡ | **Instant install.** Nothing to download |
+| 🔒 | **Zero supply chain risk.** Nothing to audit |
+| 🧩 | **No version conflicts.** Nothing to break |
+| 📦 | **Tiny footprint.** 112 KB packaged |
 
 > [!IMPORTANT]
-> This is a deliberate design choice. Color science (WCAG contrast, APCA, deltaE, OKLCH) is implemented from scratch — no external color libraries. Typography scale detection, spacing analysis, Tailwind parsing — all built in.
+> This is a deliberate design choice. Color science (WCAG contrast, APCA, deltaE, OKLCH) is implemented from scratch. No external color libraries. Typography scale detection, spacing analysis, Tailwind parsing: all built in.
 
 <br/>
 
 ## Quick start
 
-**Step 1** — Install the plugin
-
-```bash
-claude plugin add github:Aboudjem/ui-ux-suite
-```
-
-**Step 2** — Run your first audit
-
-```
-/design-audit
-```
-
-**Step 3** — Read your score card and start fixing
+| Step | Action |
+|:----:|:-------|
+| **1** | Install the plugin: `claude plugin add github:Aboudjem/ui-ux-suite` |
+| **2** | Run your first audit: `/design-audit` |
+| **3** | Read your score card and start fixing |
 
 The audit produces a prioritized action plan. Quick wins first, major improvements last. Every finding tells you *what's wrong*, *why it matters*, and *exactly how to fix it*.
 
 <br/>
 
-## 14 MCP tools
+## 🛠️ 14 MCP tools
 
 <details>
 <summary><b>For building custom workflows</b></summary>
@@ -331,7 +325,7 @@ These tools are available for agents and custom automations:
 | `uiux_extract_typography` | Extract fonts, sizes, weights, line heights |
 | `uiux_extract_spacing` | Extract padding, margin, gap values |
 | `uiux_check_contrast` | WCAG 2.1 + APCA contrast for color pairs |
-| `uiux_score_dimension` | Score a specific dimension (1-10) |
+| `uiux_score_dimension` | Score a specific dimension (1 to 10) |
 | `uiux_score_overall` | Calculate weighted overall score |
 | `uiux_generate_palette` | Generate palette from brand color |
 | `uiux_generate_type_scale` | Generate type scale (fixed or fluid) |
@@ -349,16 +343,16 @@ These tools are available for agents and custom automations:
 
 | | Manual review | Lighthouse | Stylelint | **ui/ux suite** |
 |:--|:---:|:---:|:---:|:---:|
-| Dimensions scored | subjective | 4 | rules-based | **12** |
-| Color science (APCA + OKLCH) | - | - | - | **yes** |
-| Typography scale detection | - | - | - | **yes** |
-| Accessibility (beyond axe) | manual | partial | - | **yes** |
-| Design token generation | - | - | - | **yes** |
-| 2026 CSS awareness | - | - | - | **yes** |
-| Framework auto-detection | - | - | - | **yes** |
-| Knowledge base (3,081 lines) | your brain | - | - | **yes** |
-| Evidence-backed findings | depends | partially | - | **30+ cited** |
-| Dependencies | - | 200+ | 50+ | **0** |
+| Dimensions scored | subjective | 4 | rules based | **12** |
+| Color science (APCA + OKLCH) | ❌ | ❌ | ❌ | ✅ |
+| Typography scale detection | ❌ | ❌ | ❌ | ✅ |
+| Accessibility (beyond axe) | manual | partial | ❌ | ✅ |
+| Design token generation | ❌ | ❌ | ❌ | ✅ |
+| 2026 CSS awareness | ❌ | ❌ | ❌ | ✅ |
+| Framework auto detection | ❌ | ❌ | ❌ | ✅ |
+| Knowledge base (3,081 lines) | your brain | ❌ | ❌ | ✅ |
+| Evidence backed findings | depends | partially | ❌ | **30+ cited** |
+| Dependencies | varies | 200+ | 50+ | **0** |
 
 <br/>
 
@@ -367,17 +361,17 @@ These tools are available for agents and custom automations:
 We'd love your help. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 **Good first contributions:**
-- Add a knowledge document (with research citations)
-- Improve a framework extractor
-- Report a scoring edge case
+- 📚 Add a knowledge document (with research citations)
+- 🔧 Improve a framework extractor
+- 🐛 Report a scoring edge case
 
 > [!NOTE]
-> The project is intentionally zero-dependency. PRs that add npm packages will not be merged. All logic is implemented from scratch using Node.js built-ins.
+> The project is intentionally zero dependency. PRs that add npm packages will not be merged. All logic is implemented from scratch using Node.js built-ins.
 
 <br/>
 
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> · MIT License · No telemetry, no data collection</sub>
+  <sub>Built by <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> · MIT License · No telemetry · No data collection</sub>
 </p>

@@ -26,7 +26,7 @@ This policy covers:
 
 ## Design Principles
 
-- **Read-only analysis** — the suite never modifies user code
-- **Zero dependencies** — no supply chain attack surface
-- **Local execution** — no data sent to external services
-- **No telemetry** — no usage data collected
+- **Read only analysis.** The suite never modifies user code
+- **Zero dependencies.** No supply chain attack surface
+- **Local execution.** No data sent to external services
+- **No telemetry.** No usage data collected

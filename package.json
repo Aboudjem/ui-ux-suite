@@ -1,7 +1,7 @@
 {
   "name": "ui-ux-suite",
   "version": "0.1.0",
-  "description": "Comprehensive UI/UX design intelligence suite for Claude Code — audit, score, recommend, and generate design improvements for any project",
+  "description": "Comprehensive UI/UX design intelligence suite for Claude Code. Audit, score, and fix design issues across 12 dimensions. Zero dependencies.",
   "author": "Adam Boudjemaa",
   "license": "MIT",
   "main": "lib/mcp-server.js",

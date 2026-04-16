@@ -2,8 +2,8 @@
   "id": "run-1776159191-3311a2e4",
   "subject": "UI/UX Design Intelligence \u2014 UX Flow Design & Information Architecture",
   "slug": "ui-ux-design-intelligence",
-  "status": "committing",
-  "phase": "commit",
+  "status": "complete",
+  "phase": "complete",
   "loop": 1,
   "budget": {
     "searches_used": 21,
@@ -17,7 +17,7 @@
   "validated_count": 24,
   "rejected_count": 0,
   "started_at": "2026-04-14T09:33:11Z",
-  "completed_at": null,
+  "completed_at": "2026-04-14T09:48:12Z",
   "phases": {
     "expand": {
       "status": "complete",
@@ -57,10 +57,14 @@
       "loops_completed": 1
     },
     "commit": {
-      "status": "running"
+      "status": "complete",
+      "completed_at": "2026-04-14T09:48:12Z",
+      "git_commit": "701d1db"
     },
     "export": {
-      "status": "pending"
+      "status": "complete",
+      "completed_at": "2026-04-14T09:48:12Z",
+      "destination": "~/knowledge-bank/08-research/ui-ux-design"
     }
   }
 }
