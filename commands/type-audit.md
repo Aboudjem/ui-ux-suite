@@ -1,10 +1,10 @@
 ---
 name: type-audit
-description: Typography-only audit — font selection, type scale, readability, hierarchy, performance
+description: Typography-only audit covering font selection, type scale, readability, hierarchy, and performance
 trigger: "audit typography|font review|fix my fonts|type system|typography audit|type audit"
 ---
 
-# /type-audit — Typography System Audit
+# /type-audit: Typography System Audit
 
 Focused audit of the project's typography system.
 

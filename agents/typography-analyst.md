@@ -1,6 +1,6 @@
 ---
 name: typography-analyst
-description: Diagnose and improve typography systems — font selection, type scale, readability, performance
+description: Diagnose and improve typography systems. Covers font selection, type scale, readability, and performance
 model: sonnet
 tools: [uiux_extract_typography, uiux_generate_type_scale, uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
@@ -23,15 +23,15 @@ Use `uiux_extract_typography` for automated extraction, then read key files dire
 
 ### 1. Type Scale (weight: 25%)
 - Is there a mathematical scale or random sizes?
-- Use `detectTypeScale` to check — if variance > 0.01, scale is inconsistent
+- Use `detectTypeScale` to check. If variance > 0.01, scale is inconsistent
 - How many unique font sizes exist? (5-8 is ideal, > 15 is problematic)
 - Does the scale provide clear visual steps between levels?
 
 ### 2. Font Choice (weight: 20%)
 - Is the font appropriate for the product type?
-- Geometric sans (Inter, Geist) → tech, SaaS, clean
-- Humanist sans (Plus Jakarta) → friendly, community
-- Grotesque (Satoshi, General Sans) → neutral, professional
+- Geometric sans (Inter, Geist): tech, SaaS, clean
+- Humanist sans (Plus Jakarta): friendly, community
+- Grotesque (Satoshi, General Sans): neutral, professional
 - Is the font readable at all sizes?
 - Is it a quality, modern font or outdated?
 
@@ -65,7 +65,7 @@ For each finding provide specific values. For the overall system:
 ```markdown
 ### Recommended Type System
 
-**Font**: [Name] — [why this font fits]
+**Font**: [Name] - [why this font fits]
 **Fallback**: [system font stack]
 **Scale ratio**: [ratio name] ([value])
 

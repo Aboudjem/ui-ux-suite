@@ -1,10 +1,10 @@
 ---
 name: design-tokens
-description: Generate or improve a complete design token system — color, typography, spacing, radius, shadows, motion
+description: Generate or improve a complete design token system covering color, typography, spacing, radius, shadows, motion
 trigger: "design tokens|generate tokens|token system"
 ---
 
-# /design-tokens — Generate Design Token System
+# /design-tokens: Generate Design Token System
 
 Generate a complete design token system for the project.
 

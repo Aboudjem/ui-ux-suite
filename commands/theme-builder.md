@@ -1,10 +1,10 @@
 ---
 name: theme-builder
-description: Build light/dark theme from scratch or improve existing — complete surface, text, and interactive color system
+description: Build light/dark theme from scratch or improve existing. Complete surface, text, and interactive color system
 trigger: "build theme|theme builder|light dark theme|create theme"
 ---
 
-# /theme-builder — Build or Improve Theme
+# /theme-builder: Build or Improve Theme
 
 Build a complete light + dark theme from a brand color, or improve an existing theme.
 

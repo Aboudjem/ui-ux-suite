@@ -1,6 +1,6 @@
 ---
 name: accessibility-auditor
-description: Practical accessibility audit — WCAG 2.2, contrast, focus, keyboard, screen reader, touch targets
+description: Practical accessibility audit covering WCAG 2.2, contrast, focus, keyboard, screen reader, and touch targets
 model: sonnet
 tools: [uiux_check_contrast, uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---

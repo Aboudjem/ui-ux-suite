@@ -1,6 +1,6 @@
 ---
 name: layout-analyst
-description: Diagnose layout, spacing, grid systems, density, and responsive behavior
+description: Diagnose layout, spacing, grid systems, density, and responsive behavior.
 model: sonnet
 tools: [uiux_extract_spacing, uiux_generate_spacing_scale, uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
@@ -19,7 +19,7 @@ You diagnose and improve layout, spacing, grid systems, density, and responsive 
 - Does spacing follow proximity principle? (related items closer, unrelated farther)
 
 ### 2. Grid System (weight: 20%)
-- CSS Grid vs Flexbox usage — appropriate for each context?
+- CSS Grid vs Flexbox usage: appropriate for each context?
 - Column-based layout? How many columns?
 - Container queries usage (modern) vs media queries only?
 - Consistent alignment across sections?

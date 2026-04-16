@@ -1,10 +1,10 @@
 ---
 name: flow-audit
-description: User flow and navigation audit — information architecture, onboarding, error states
+description: User flow and navigation audit covering information architecture, onboarding, and error states
 trigger: "flow audit|UX flow|navigation audit|onboarding review"
 ---
 
-# /flow-audit — User Flow Audit
+# /flow-audit: User Flow Audit
 
 Focused audit of information architecture and user flows using the `ux-flow-analyst` agent.
 

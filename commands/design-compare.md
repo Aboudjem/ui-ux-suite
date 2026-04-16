@@ -4,7 +4,7 @@ description: Compare current design against a reference or competitor
 trigger: "compare design|design compare|benchmark against"
 ---
 
-# /design-compare — Compare Against Reference
+# /design-compare: Compare Against Reference
 
 Compare the current project's design against a reference product or competitor.
 

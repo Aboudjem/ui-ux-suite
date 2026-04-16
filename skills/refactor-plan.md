@@ -1,10 +1,10 @@
 ---
 name: refactor-plan
-description: Prioritized redesign action plan — quick wins, medium effort, major rework
+description: Prioritized redesign action plan covering quick wins, medium effort, major rework
 trigger: "refactor plan|redesign plan|improvement plan|what should I fix first"
 ---
 
-# /refactor-plan — Prioritized Redesign Plan
+# /refactor-plan: Prioritized Redesign Plan
 
 Generate a prioritized action plan for improving the project's design.
 

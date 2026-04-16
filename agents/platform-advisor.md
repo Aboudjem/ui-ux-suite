@@ -1,6 +1,6 @@
 ---
 name: platform-advisor
-description: Evaluate platform conventions — browser vs mobile, iOS vs Android, responsive strategy
+description: Evaluate platform conventions. Covers browser vs mobile, iOS vs Android, and responsive strategy
 model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---

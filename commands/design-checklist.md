@@ -4,7 +4,7 @@ description: Interactive pre-launch design quality checklist
 trigger: "design checklist|launch checklist|pre-launch design"
 ---
 
-# /design-checklist — Pre-Launch Design Checklist
+# /design-checklist: Pre-Launch Design Checklist
 
 Interactive checklist covering all design quality aspects before launch.
 

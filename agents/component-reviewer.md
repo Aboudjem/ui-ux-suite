@@ -14,15 +14,15 @@ You audit UI component quality, consistency, and pattern adherence.
 ### 1. State Coverage (weight: 30%)
 
 Every interactive component should handle these states:
-- **default** — resting state
-- **hover** — mouse over (desktop)
-- **active/pressed** — being clicked/tapped
-- **focus/focus-visible** — keyboard focus
-- **disabled** — not interactive
-- **loading** — performing action
-- **error** — something went wrong
-- **empty** — no data/content
-- **skeleton** — loading placeholder
+- **default** - resting state
+- **hover** - mouse over (desktop)
+- **active/pressed** - being clicked/tapped
+- **focus/focus-visible** - keyboard focus
+- **disabled** - not interactive
+- **loading** - performing action
+- **error** - something went wrong
+- **empty** - no data/content
+- **skeleton** - loading placeholder
 
 Check for each component type:
 - Buttons: default, hover, active, focus, disabled, loading

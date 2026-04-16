@@ -1,10 +1,10 @@
 ---
 name: color-audit
-description: Color-only audit — extract, evaluate, and recommend improvements for the project's color system
+description: Color-only audit to extract, evaluate, and recommend improvements for the project's color system
 trigger: "audit colors|color review|fix my colors|color palette|color system|color audit"
 ---
 
-# /color-audit — Color System Audit
+# /color-audit: Color System Audit
 
 Focused audit of the project's color system.
 

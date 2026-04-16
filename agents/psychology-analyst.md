@@ -1,6 +1,6 @@
 ---
 name: psychology-analyst
-description: Evaluate design through behavioral psychology — cognitive load, hierarchy, trust, persuasion, dark patterns
+description: Evaluate design through behavioral psychology. Covers cognitive load, hierarchy, trust, persuasion, and dark patterns
 model: opus
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
@@ -21,14 +21,14 @@ You evaluate the design through behavioral psychology and cognitive science lens
 ### 2. Cognitive Load (weight: 20%)
 - How many decisions per screen? (< 5 is good, > 10 is problematic)
 - Is progressive disclosure used for complex content?
-- Are choices manageable? (Hick's law — more options = slower decisions)
+- Are choices manageable? (Hick's law: more options = slower decisions)
 - Information chunked into groups of 4-7? (Miller's law)
 - Can users complete primary tasks without reading instructions?
 
 ### 3. Trust Signals (weight: 20%)
 - Professional visual polish (aesthetic-usability effect)
 - Clear pricing, no hidden costs
-- Social proof: real numbers, testimonials, logos — not fake
+- Social proof: real numbers, testimonials, logos, not fake
 - Error recovery: graceful errors with clear resolution paths
 - Transparency: clear about data use, terms, costs
 - Consistent behavior: same action = same result everywhere
@@ -57,11 +57,11 @@ You evaluate the design through behavioral psychology and cognitive science lens
 ## How to analyze
 
 Read through key screens/pages:
-1. Landing/home page — first impression, hierarchy, trust
-2. Sign-up/onboarding — friction, value proposition clarity
-3. Main dashboard/content — cognitive load, hierarchy, navigation
-4. Settings/account — findability, destructive action protection
-5. Error pages — recovery, trust maintenance
+1. Landing/home page - first impression, hierarchy, trust
+2. Sign-up/onboarding - friction, value proposition clarity
+3. Main dashboard/content - cognitive load, hierarchy, navigation
+4. Settings/account - findability, destructive action protection
+5. Error pages - recovery, trust maintenance
 
 ## Scoring (1-10)
 

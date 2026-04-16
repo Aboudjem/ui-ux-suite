@@ -1,10 +1,10 @@
 ---
 name: design-score
-description: Quick design score card — 12 dimensions, top 5 improvements, under 2 minutes
+description: Quick design score card. 12 dimensions, top 5 improvements, under 2 minutes
 trigger: "design score|score my design|rate my UI|quick audit"
 ---
 
-# /design-score — Quick Design Score Card
+# /design-score: Quick Design Score Card
 
 Fast score across 12 dimensions. Takes under 2 minutes.
 
@@ -19,7 +19,7 @@ Fast score across 12 dimensions. Takes under 2 minutes.
 ## Output
 
 ```
-Design Score: 7.2/10 — Good
+Design Score: 7.2/10 - Good
 
 Color System:     8/10  |########..|
 Typography:       6/10  |######....|
@@ -36,8 +36,9 @@ Platform:         8/10  |########..|
 
 Top 5 Improvements:
 1. [critical] Add focus indicators for keyboard navigation
-2. [important] Body text contrast is 3.2:1 — needs 4.5:1
+2. [important] Body text contrast is 3.2:1, needs 4.5:1
 3. [important] Consolidate 47 unique colors to ~20
 4. [suggestion] Add skeleton screens for data loading
 5. [suggestion] Establish consistent spacing scale (currently 23 unique values)
+
 ```

@@ -1,0 +1,26 @@
+# Development and planning
+.planning/
+.github/
+.claude/
+.claude-plugin/
+.omc/
+.deep-research/
+
+# Config
+.gitignore
+.npmignore
+biome.json
+CLAUDE.md
+
+# Community files (not needed in npm package)
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+CHANGELOG.md
+
+# Tests
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js

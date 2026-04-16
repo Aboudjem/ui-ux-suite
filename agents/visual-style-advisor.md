@@ -1,6 +1,6 @@
 ---
 name: visual-style-advisor
-description: Evaluate visual direction and recommend style improvements — 10 viable style directions with durability ratings
+description: Evaluate visual direction and recommend style improvements. 10 viable style directions with durability ratings
 model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
@@ -50,7 +50,7 @@ For each recommendation, provide:
 4. **Risk factors** and how to mitigate
 5. **Durability estimate** (how long this will feel current)
 6. **Reference products** that execute this well
-7. **Implementation checklist** — specific CSS/design changes to make
+7. **Implementation checklist** - specific CSS/design changes to make
 
 ## Scoring (1-10)
 
