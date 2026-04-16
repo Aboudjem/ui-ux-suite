@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Internal development artifacts
+.deep-research/
+.omc/
+.planning/
+.claude-plugin/
+
+# Environment and secrets
+.env
+.env.*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Coverage
+coverage/
+
+# Build output
+dist/

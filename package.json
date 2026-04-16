@@ -5,10 +5,36 @@
   "author": "Adam Boudjemaa",
   "license": "MIT",
   "main": "lib/mcp-server.js",
+  "bin": {
+    "ui-ux-suite": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aboudjem/ui-ux-suite.git"
+  },
+  "homepage": "https://github.com/Aboudjem/ui-ux-suite#readme",
+  "bugs": {
+    "url": "https://github.com/Aboudjem/ui-ux-suite/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "lib/",
+    "agents/",
+    "skills/",
+    "knowledge/",
+    "commands/",
+    "templates/",
+    "manifest.json",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "node -e \"require('./lib/schema'); require('./lib/extractors'); require('./lib/color-engine'); require('./lib/type-engine'); require('./lib/spacing-engine'); require('./lib/scoring'); require('./lib/knowledge'); console.log('All modules OK');\""
   },
   "keywords": [
+    "claude-code",
+    "claude-code-plugin",
     "ui",
     "ux",
     "design",
@@ -16,6 +42,11 @@
     "accessibility",
     "color",
     "typography",
-    "claude-code-plugin"
+    "design-system",
+    "design-tokens",
+    "tailwind",
+    "css",
+    "wcag",
+    "apca"
   ]
 }
