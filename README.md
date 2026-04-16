@@ -373,5 +373,11 @@ We'd love your help. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 ---
 
 <p align="center">
+  <a href="https://www.linkedin.com/in/adam-boudjemaa/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://x.com/AdamBoudj"><img src="https://img.shields.io/badge/X-000000?style=flat-square&logo=x&logoColor=white" alt="X"></a>
+  <a href="https://adam-boudjemaa.com/"><img src="https://img.shields.io/badge/Website-6366f1?style=flat-square&logo=googlechrome&logoColor=white" alt="Website"></a>
+</p>
+
+<p align="center">
   <sub>Built by <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> · MIT License · No telemetry · No data collection</sub>
 </p>
