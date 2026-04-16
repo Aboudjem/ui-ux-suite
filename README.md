@@ -108,6 +108,8 @@ Every recommendation links back to real research. Here are some of the findings 
 | 🌙 Smartphone users with dark mode enabled | **81.9%** | Mobile analytics |
 | 🧭 Task completion improvement from good navigation | **+37%** | UX study |
 | ⏳ Abandonment reduction from skeleton loading | **-40%** | Product experiments |
+| 🚫 Subscription sites using dark patterns | **76%** | ICPEN sweep |
+| 📜 EU Digital Fairness Act compliance deadline | **Q4 2026** | European Commission |
 
 <details>
 <summary><b>📚 See all 30+ findings with confidence levels</b></summary>
@@ -118,6 +120,9 @@ The full evidence base lives in [`knowledge/evidence-base.md`](knowledge/evidenc
 We don't make claims we can't back up.
 
 </details>
+
+> [!TIP]
+> The EU Digital Fairness Act (Q4 2026) will make design auditing a compliance requirement. ICPEN data shows 76% of subscription sites use dark patterns. Running `/design-audit` today gives you a head start on regulatory readiness.
 
 <br/>
 
@@ -310,6 +315,21 @@ The audit produces a prioritized action plan. Quick wins first, major improvemen
 
 <br/>
 
+## Install
+
+One command. Zero config. No dependencies to install.
+
+| Platform | Command | Status |
+|:---------|:--------|:------:|
+| **Claude Code** | `claude plugin add github:Aboudjem/ui-ux-suite` | **Available now** |
+| **npx** | `npx ui-ux-suite` | Coming soon |
+| **Codex CLI** | Plugin support planned | Coming soon |
+| **Cursor / Windsurf** | MCP integration planned | Coming soon |
+
+That single Claude Code command is all you need. The plugin registers 14 MCP tools, 14 slash commands, and 12 agents. Nothing else to configure.
+
+<br/>
+
 ## 🛠️ 14 MCP tools
 
 <details>
@@ -353,6 +373,22 @@ These tools are available for agents and custom automations:
 | Knowledge base (3,081 lines) | your brain | ❌ | ❌ | ✅ |
 | Evidence backed findings | depends | partially | ❌ | **30+ cited** |
 | Dependencies | varies | 200+ | 50+ | **0** |
+
+<br/>
+
+## Security & Trust
+
+AI plugins run inside your development environment. You should be paranoid about what they do. Here is what this one does not do:
+
+| | Guarantee |
+|:--|:----------|
+| 📡 | **No telemetry, no data collection, no phone home.** Zero network calls. Ever. |
+| 📖 | **Read-only analysis.** Never modifies your code. Never writes to your project. |
+| 📦 | **Zero dependencies.** Nothing to audit. No transitive supply chain risk. |
+| 🔒 | **All findings are local.** Nothing leaves your machine. No cloud, no API, no analytics. |
+
+> [!WARNING]
+> Snyk's ToxicSkills research found a **36% prompt injection rate** across AI agent skills and plugins. That is more than one in three. This plugin is immune by design: it contains no LLM-generated logic, no dynamic prompt construction, and no external data ingestion. Every line is hand-written, deterministic Node.js.
 
 <br/>
 
