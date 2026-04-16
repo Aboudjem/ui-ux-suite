@@ -27,6 +27,12 @@
 
 **UI hint**: no
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Create .gitignore and MIT LICENSE, scan for secrets
+- [ ] 01-02-PLAN.md — Complete package.json metadata and validate manifest.json paths
+
 **Success criteria:**
 1. `.gitignore` excludes .deep-research/, .omc/, .planning/, .claude-plugin/, node_modules/, and all dev artifacts
 2. `LICENSE` file contains full MIT license text with correct copyright
@@ -121,4 +127,4 @@
 
 ---
 *Roadmap created: 2026-04-16*
-*Last updated: 2026-04-16 after initial creation*
+*Last updated: 2026-04-16 after phase 1 planning*
