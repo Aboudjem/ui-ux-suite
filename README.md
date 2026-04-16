@@ -328,16 +328,154 @@ The audit produces a prioritized action plan. Quick wins first, major improvemen
 
 ## Install
 
-One command. Zero config. No dependencies to install.
+### Claude Code (recommended)
 
-| Platform | Command | Status |
-|:---------|:--------|:------:|
-| **Claude Code** | `claude plugin add github:Aboudjem/ui-ux-suite` | **Available now** |
-| **npx** | `npx ui-ux-suite` | Coming soon |
-| **Codex CLI** | Plugin support planned | Coming soon |
-| **Cursor / Windsurf** | MCP integration planned | Coming soon |
+```bash
+claude plugin add github:Aboudjem/ui-ux-suite
+```
 
-That single Claude Code command is all you need. The plugin registers 14 MCP tools, 14 slash commands, and 12 agents. Nothing else to configure.
+That's it. The plugin registers 14 MCP tools, 14 slash commands, and 12 agents automatically.
+
+### Other AI editors (MCP)
+
+The suite runs as an MCP server. Pick your tool and copy the config.
+
+<details>
+<summary><b>Codex CLI</b></summary>
+
+```bash
+codex mcp add ui-ux-suite -- npx -y ui-ux-suite
+```
+
+Or add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.ui-ux-suite]
+command = "npx"
+args = ["-y", "ui-ux-suite"]
+```
+
+</details>
+
+<details>
+<summary><b>Cursor</b></summary>
+
+Add to `~/.cursor/mcp.json` or `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "ui-ux-suite": {
+      "command": "npx",
+      "args": ["-y", "ui-ux-suite"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><b>Windsurf</b></summary>
+
+Add to `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "ui-ux-suite": {
+      "command": "npx",
+      "args": ["-y", "ui-ux-suite"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><b>Gemini CLI</b></summary>
+
+Add to `~/.gemini/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "ui-ux-suite": {
+      "command": "npx",
+      "args": ["-y", "ui-ux-suite"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><b>VS Code + Copilot</b></summary>
+
+Add to `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "ui-ux-suite": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "ui-ux-suite"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><b>Continue.dev</b></summary>
+
+Add to `.continue/mcpServers/ui-ux-suite.yaml`:
+
+```yaml
+mcpServers:
+  - name: ui-ux-suite
+    command: npx
+    args:
+      - "-y"
+      - ui-ux-suite
+```
+
+</details>
+
+<details>
+<summary><b>OpenClaw</b></summary>
+
+```bash
+clawhub install ui-ux-suite
+```
+
+Or add MCP config to `~/.openclaw/openclaw.json`:
+
+```json
+{
+  "mcpServers": {
+    "ui-ux-suite": {
+      "command": "npx",
+      "args": ["-y", "ui-ux-suite"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><b>npx (standalone)</b></summary>
+
+```bash
+npx ui-ux-suite
+```
+
+</details>
 
 <br/>
 
