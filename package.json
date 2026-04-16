@@ -5,6 +5,9 @@
   "author": "Adam Boudjemaa",
   "license": "MIT",
   "main": "lib/mcp-server.js",
+  "bin": {
+    "ui-ux-suite": "bin/ui-ux-suite.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aboudjem/ui-ux-suite.git"
@@ -17,6 +20,7 @@
     "node": ">=18"
   },
   "files": [
+    "bin/",
     "lib/",
     "agents/",
     "skills/",
@@ -26,7 +30,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node -e \"require('./lib/schema'); require('./lib/extractors'); require('./lib/color-engine'); require('./lib/type-engine'); require('./lib/spacing-engine'); require('./lib/scoring'); require('./lib/knowledge'); console.log('All modules OK');\""
+    "test": "node --test 'test/*.test.js'"
   },
   "keywords": [
     "claude-code",
