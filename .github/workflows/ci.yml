@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        node-version: [18, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Validate modules
+        run: npm test
+
+      - name: Validate manifest
+        run: |
+          node -e "
+          const m = require('./manifest.json');
+          const fs = require('fs');
+          if (!m.name) { console.error('Missing name'); process.exit(1); }
+          if (!m.agents || !m.agents.length) { console.error('Missing agents'); process.exit(1); }
+          if (!m.skills || !m.skills.length) { console.error('Missing skills'); process.exit(1); }
+          if (!m.mcpServer) { console.error('Missing mcpServer'); process.exit(1); }
+          let bad = [];
+          [...m.agents, ...m.skills, m.mcpServer].forEach(p => {
+            if (!fs.existsSync(p)) bad.push(p);
+          });
+          if (bad.length) { console.error('Missing files:', bad); process.exit(1); }
+          console.log('Manifest valid:', m.agents.length, 'agents,', m.skills.length, 'skills, mcpServer OK');
+          "
+
+      - name: Verify package.json
+        run: |
+          node -e "
+          const p = require('./package.json');
+          const required = ['name','version','description','license','repository','engines','files','keywords'];
+          const missing = required.filter(k => !p[k]);
+          if (missing.length) { console.error('Missing fields:', missing); process.exit(1); }
+          console.log('package.json valid');
+          "
