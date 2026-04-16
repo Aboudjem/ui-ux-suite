@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" fill="none">
+  <style>
+    .title { font: 700 18px system-ui, sans-serif; fill: #1e1b4b; }
+    .grade { font: 700 48px system-ui, sans-serif; fill: #6366f1; }
+    .grade-label { font: 500 14px system-ui, sans-serif; fill: #64748b; }
+    .dim-label { font: 400 13px system-ui, sans-serif; fill: #334155; }
+    .dim-score { font: 600 13px system-ui, sans-serif; fill: #1e1b4b; }
+    .bar-bg { fill: #e2e8f0; rx: 4; }
+    .finding-critical { font: 500 12px system-ui, sans-serif; fill: #dc2626; }
+    .finding-important { font: 500 12px system-ui, sans-serif; fill: #d97706; }
+    .finding-suggestion { font: 500 12px system-ui, sans-serif; fill: #6366f1; }
+  </style>
+  <!-- Card -->
+  <rect width="680" height="420" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <!-- Header -->
+  <text x="28" y="38" class="title">Design Score Card</text>
+  <text x="28" y="88" class="grade">7.2</text>
+  <text x="108" y="78" class="grade-label">/10</text>
+  <text x="108" y="96" class="grade-label">Good</text>
+  <!-- Dimension bars -->
+  <g transform="translate(28, 120)">
+    <!-- Color System -->
+    <text x="0" y="12" class="dim-label">Color System</text>
+    <rect x="140" y="2" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="2" width="160" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
+    <text x="350" y="12" class="dim-score">8.0</text>
+    <!-- Typography -->
+    <text x="0" y="38" class="dim-label">Typography</text>
+    <rect x="140" y="28" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="28" width="130" height="12" rx="4" fill="#818cf8" opacity="0.8"/>
+    <text x="350" y="38" class="dim-score">6.5</text>
+    <!-- Layout -->
+    <text x="0" y="64" class="dim-label">Layout &amp; Spacing</text>
+    <rect x="140" y="54" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="54" width="140" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
+    <text x="350" y="64" class="dim-score">7.0</text>
+    <!-- Components -->
+    <text x="0" y="90" class="dim-label">Components</text>
+    <rect x="140" y="80" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="80" width="150" height="12" rx="4" fill="#818cf8" opacity="0.8"/>
+    <text x="350" y="90" class="dim-score">7.5</text>
+    <!-- Accessibility -->
+    <text x="0" y="116" class="dim-label">Accessibility</text>
+    <rect x="140" y="106" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="106" width="120" height="12" rx="4" fill="#f59e0b" opacity="0.8"/>
+    <text x="350" y="116" class="dim-score">6.0</text>
+    <!-- Hierarchy -->
+    <text x="0" y="142" class="dim-label">Visual Hierarchy</text>
+    <rect x="140" y="132" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="132" width="140" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
+    <text x="350" y="142" class="dim-score">7.0</text>
+    <!-- Interaction -->
+    <text x="0" y="168" class="dim-label">Interactions</text>
+    <rect x="140" y="158" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="158" width="160" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
+    <text x="350" y="168" class="dim-score">8.0</text>
+    <!-- Responsive -->
+    <text x="0" y="194" class="dim-label">Responsiveness</text>
+    <rect x="140" y="184" width="200" height="12" class="bar-bg" rx="4"/>
+    <rect x="140" y="184" width="180" height="12" rx="4" fill="#22c55e" opacity="0.8"/>
+    <text x="350" y="194" class="dim-score">9.0</text>
+  </g>
+  <!-- Findings -->
+  <line x1="420" y1="120" x2="420" y2="380" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="436" y="138" class="title" font-size="14">Top Findings</text>
+  <circle cx="444" cy="162" r="4" fill="#dc2626"/>
+  <text x="456" y="166" class="finding-critical">No focus indicators</text>
+  <circle cx="444" cy="186" r="4" fill="#dc2626"/>
+  <text x="456" y="190" class="finding-critical">No type scale detected</text>
+  <circle cx="444" cy="210" r="4" fill="#d97706"/>
+  <text x="456" y="214" class="finding-important">24 colors — consolidate</text>
+  <circle cx="444" cy="234" r="4" fill="#d97706"/>
+  <text x="456" y="238" class="finding-important">No reduced-motion</text>
+  <circle cx="444" cy="258" r="4" fill="#6366f1"/>
+  <text x="456" y="262" class="finding-suggestion">6 near-duplicate colors</text>
+  <circle cx="444" cy="282" r="4" fill="#6366f1"/>
+  <text x="456" y="286" class="finding-suggestion">Body text 14px → 16px</text>
+</svg>
