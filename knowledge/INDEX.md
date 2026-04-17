@@ -25,11 +25,12 @@ This index maps every knowledge file to the agents and dimensions that should re
 | `design-engineer-craft-2026.md` | Vercel, Linear, shadcn engineering | visual-style-advisor, component-reviewer |
 | `advanced-polish.md` | shadows, micro-interactions, refinement | visual-style-advisor, interaction-analyst |
 | `libraries-tools.md` | component library comparison | component-reviewer, platform-advisor |
+| `laws-of-ux.md` | Hicks, Fittss, Millers, Jakobs, Doherty, Peak-End, Gestalt, 17 others | psychology-analyst, interaction-analyst, ux-flow-analyst, layout-analyst, accessibility-auditor, design-auditor |
 
 ## Agent-to-Knowledge Mapping
 
 ### design-auditor (orchestrator)
-Read before every audit: `principles.md`, `evidence-base.md`, `anti-patterns.md`, `trends-2026.md`
+Read before every audit: `principles.md`, `evidence-base.md`, `anti-patterns.md`, `trends-2026.md`, `laws-of-ux.md`
 
 ### color-analyst
 Read: `color-theory.md`, `evidence-base.md`, `trends-2026.md`
@@ -38,19 +39,19 @@ Read: `color-theory.md`, `evidence-base.md`, `trends-2026.md`
 Read: `typography-theory.md`, `evidence-base.md`
 
 ### layout-analyst
-Read: `principles.md`, `evidence-base.md`
+Read: `principles.md`, `evidence-base.md`, `laws-of-ux.md`
 
 ### accessibility-auditor
-Read: `accessibility-guide.md`, `dark-patterns.md`, `evidence-base.md`
+Read: `accessibility-guide.md`, `dark-patterns.md`, `evidence-base.md`, `laws-of-ux.md`
 
 ### component-reviewer
 Read: `component-patterns.md`, `libraries-tools.md`, `wow-libraries-2026.md`
 
 ### interaction-analyst
-Read: `wow-animations-2026.md`, `advanced-polish.md`, `trends-2026.md`
+Read: `wow-animations-2026.md`, `advanced-polish.md`, `trends-2026.md`, `laws-of-ux.md`
 
 ### psychology-analyst
-Read: `psychology.md`, `dark-patterns.md`, `evidence-base.md`
+Read: `psychology.md`, `dark-patterns.md`, `evidence-base.md`, `laws-of-ux.md`
 
 ### visual-style-advisor
 Read: `advanced-polish.md`, `design-engineer-craft-2026.md`, `design-tools-2026.md`, `insider-secrets-2026.md`
@@ -59,7 +60,7 @@ Read: `advanced-polish.md`, `design-engineer-craft-2026.md`, `design-tools-2026.
 Read: `platform-conventions.md`, `libraries-tools.md`
 
 ### ux-flow-analyst
-Read: `ux-flows.md`, `psychology.md`
+Read: `ux-flows.md`, `psychology.md`, `laws-of-ux.md`
 
 ### performance-ux-analyst
 Read: `wow-animations-2026.md`, `trends-2026.md`

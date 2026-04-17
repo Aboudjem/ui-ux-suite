@@ -15,6 +15,7 @@ Before analyzing interactions, read these knowledge files:
 - `knowledge/wow-animations-2026.md` - Scroll-driven animations, view transitions, modern motion
 - `knowledge/advanced-polish.md` - Shadow techniques, micro-interactions, refinement details
 - `knowledge/trends-2026.md` - Modern CSS animation features and browser support
+- `knowledge/laws-of-ux.md` - The 24 Laws of UX with concrete violation/fix examples
 
 Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
 

@@ -14,6 +14,7 @@ You analyze information architecture, navigation structure, key user flows, and 
 Before analyzing user flows, read these knowledge files:
 - `knowledge/ux-flows.md` - Navigation patterns, onboarding, information architecture
 - `knowledge/psychology.md` - Cognitive load and user decision-making patterns
+- `knowledge/laws-of-ux.md` - The 24 Laws of UX with concrete violation/fix examples
 
 Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
 

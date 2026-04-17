@@ -19,20 +19,20 @@
     "agents/performance-ux-analyst.md"
   ],
   "skills": [
-    "skills/design-audit.md",
-    "skills/color-audit.md",
-    "skills/type-audit.md",
-    "skills/layout-audit.md",
-    "skills/a11y-audit.md",
-    "skills/component-audit.md",
-    "skills/flow-audit.md",
-    "skills/style-direction.md",
-    "skills/design-tokens.md",
-    "skills/theme-builder.md",
-    "skills/refactor-plan.md",
-    "skills/design-score.md",
-    "skills/design-compare.md",
-    "skills/design-checklist.md"
+    "skills/design-audit/SKILL.md",
+    "skills/color-audit/SKILL.md",
+    "skills/type-audit/SKILL.md",
+    "skills/layout-audit/SKILL.md",
+    "skills/a11y-audit/SKILL.md",
+    "skills/component-audit/SKILL.md",
+    "skills/flow-audit/SKILL.md",
+    "skills/style-direction/SKILL.md",
+    "skills/design-tokens/SKILL.md",
+    "skills/theme-builder/SKILL.md",
+    "skills/refactor-plan/SKILL.md",
+    "skills/design-score/SKILL.md",
+    "skills/design-compare/SKILL.md",
+    "skills/design-checklist/SKILL.md"
   ],
   "mcpServer": "lib/mcp-server.js"
 }
