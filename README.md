@@ -13,127 +13,80 @@
 
 <p align="center">Your project's design quality, measured. Not guessed.</p>
 
----
-
-## Get started
-
-### Use from the terminal
-
 ```bash
-cd ~/projects/my-app
 npx ui-ux-suite
 ```
 
-Scans your CSS, JSX, and Tailwind configs. Outputs a score card across 12 design dimensions with actionable fixes. Auto-detects your framework, styling approach, and component library. No config needed.
+Scans your CSS, JSX, and Tailwind config. Scores 12 design dimensions. Cites the UX law each finding violates. Gives you the fix. Zero deps. Zero config. Runs 100% locally.
 
-```bash
-npx ui-ux-suite ~/projects/my-app    # scan a specific directory
-npx ui-ux-suite --json                # JSON output for scripts
-```
+---
 
-> **No API keys. No config files. Zero dependencies.** Everything works out of the box.
-
-### Use from your AI editor
-
-UI/UX Suite ships as an MCP server. Add it to your editor, then ask your AI to audit.
+## Install
 
 <details>
-<summary><b>Claude Code</b></summary>
+<summary><b>From your AI editor (MCP)</b></summary>
 
 ```bash
+# Claude Code
 claude mcp add ui-ux-suite npx ui-ux-suite --mcp
-```
-</details>
 
-<details>
-<summary><b>Cursor</b></summary>
-
-Add to `~/.cursor/mcp.json`:
-```json
-{ "mcpServers": { "ui-ux-suite": { "type": "stdio", "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
-```
-</details>
-
-<details>
-<summary><b>VS Code + Copilot</b></summary>
-
-Add to `.vscode/mcp.json`:
-```json
-{ "servers": { "ui-ux-suite": { "type": "stdio", "command": "npx", "args": ["-y", "ui-ux-suite", "--mcp"] } } }
-```
-</details>
-
-<details>
-<summary><b>Codex CLI</b></summary>
-
-```bash
+# Codex CLI
 codex mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
-</details>
 
-<details>
-<summary><b>Windsurf</b></summary>
-
-Add to `~/.codeium/windsurf/mcp_config.json`:
+**Cursor** - `~/.cursor/mcp.json`:
 ```json
 { "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
 ```
-</details>
 
-<details>
-<summary><b>Gemini CLI</b></summary>
+**VS Code + Copilot** - `.vscode/mcp.json`:
+```json
+{ "servers": { "ui-ux-suite": { "command": "npx", "args": ["-y", "ui-ux-suite", "--mcp"] } } }
+```
 
-Add to `~/.gemini/mcp_config.json`:
+**Windsurf** - `~/.codeium/windsurf/mcp_config.json`:
 ```json
 { "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
 ```
-</details>
 
-<details>
-<summary><b>Continue.dev</b></summary>
+**Gemini CLI** - `~/.gemini/mcp_config.json`:
+```json
+{ "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
+```
 
-Add to `.continue/mcpServers/ui-ux-suite.yaml`:
+**Continue.dev** - `.continue/mcpServers/ui-ux-suite.yaml`:
 ```yaml
 mcpServers:
   ui-ux-suite: { command: npx, args: [ui-ux-suite, --mcp], type: stdio }
 ```
+
+Then ask your AI: *"Audit this project's design."*
 </details>
 
 <details>
-<summary><b>OpenClaw</b></summary>
-
-```bash
-clawhub install ui-ux-suite
-```
-</details>
-
-Then ask: *"Audit this project's design"* or *"Check my color contrast"*
-
-**MCP tools:** `uiux_scan_project` (detect stack) · `uiux_extract_colors` (pull colors) · `uiux_check_contrast` (WCAG + APCA) · `uiux_score_overall` (full score card) · [11 more](#mcp-tools)
-
-### Install as a Claude Code plugin
+<summary><b>As a Claude Code plugin</b></summary>
 
 ```bash
 claude plugin add github:Aboudjem/ui-ux-suite
 ```
 
-This gives you 14 slash commands, 12 specialized agents, and 19 knowledge documents inside Claude Code.
+Adds 14 slash commands, 12 specialist agents, 19 knowledge docs.
+</details>
 
-### Install as a dev dependency
+<details>
+<summary><b>As a dev dependency</b></summary>
 
 ```bash
 npm install -D ui-ux-suite
 ```
 
+Add to `package.json`:
 ```json
-{
-  "scripts": {
-    "design-audit": "ui-ux-suite"
-  }
-}
+{ "scripts": { "design-audit": "ui-ux-suite" } }
 ```
 
-Requires Node.js 18+.
+Requires Node 18+.
+</details>
 
 ---
 
@@ -145,89 +98,101 @@ Requires Node.js 18+.
   <img alt="UI/UX Suite scorecard" src=".github/assets/scorecard-light.svg" width="100%">
 </picture>
 
-Every project is scored across 12 dimensions, each weighted by impact on user experience:
+12 weighted dimensions. Accessibility gets the highest weight because it affects the most users.
 
-| Dimension | Weight | What it checks |
-|:----------|:------:|:---------------|
-| **Color System** | 10% | Contrast ratios (WCAG + APCA), near duplicates, semantic roles, dark mode |
-| **Typography** | 10% | Scale consistency, font count, body size, line height, fluid type |
-| **Layout & Spacing** | 10% | Spacing grid, breakpoints, container widths, consistency |
-| **Component Quality** | 10% | State coverage (hover, focus, disabled, loading, error) |
-| **Accessibility** | 12% | Focus indicators, skip links, alt text, reduced motion, ARIA |
-| **Visual Hierarchy** | 10% | Type scale, information priority, scannability |
-| **Interaction Quality** | 8% | Animation timing, easing, feedback, motion principles |
-| **Responsiveness** | 8% | Breakpoints, container queries, Tailwind responsive variants |
-| **Visual Polish** | 7% | Shadow quality, gradient animation, border radius tokens |
-| **Performance UX** | 5% | Loading states, scroll driven animations, perceived speed |
-| **Info Architecture** | 5% | Command palette, i18n, form validation, navigation |
-| **Platform Fit** | 5% | Dark mode toggle, component lib detection, a11y primitives |
+| Dimension | Weight | Checks |
+|:----------|:------:|:-------|
+| Accessibility | 12% | Focus, skip links, alt text, reduced motion, ARIA |
+| Color System | 10% | WCAG + APCA contrast, duplicates, semantic roles, dark mode |
+| Typography | 10% | Scale consistency, font count, body size, line height |
+| Layout & Spacing | 10% | Grid, breakpoints, container widths |
+| Component Quality | 10% | States: hover, focus, disabled, loading, error |
+| Visual Hierarchy | 10% | Type scale, information priority, scannability |
+| Interaction | 8% | Animation timing, easing, feedback |
+| Responsiveness | 8% | Breakpoints, container queries |
+| Visual Polish | 7% | Shadow quality, gradient animation, radius tokens |
+| Performance UX | 5% | Loading states, perceived speed |
+| Info Architecture | 5% | Command palette, validation, navigation |
+| Platform Fit | 5% | Dark mode, component lib, a11y primitives |
 
-Accessibility gets the highest weight (12%) because it affects the most users.
-
-Every score comes with specific findings and concrete fixes. Not vague advice like "improve your colors." You get things like:
+Findings are concrete, not vague:
 
 > *"Button text contrast is 2.8:1, needs 4.5:1 for WCAG AA. Change `#94a3b8` to `#64748b` on your white background."*
 
 ---
 
-## Laws of UX coverage
+## Grounded in 24 UX laws
 
-The suite grounds its findings in 24 named UX laws, each drawn from a primary academic paper, IETF RFC, or canonical book. Audits attach `laws: [...]` slugs to findings and end with a Laws of UX Coverage table that counts violations per law.
+Every finding cites the law it violates. Reports end with a Laws of UX coverage table counting violations per law.
 
-| Law | Definition | Cited by agents | Dimensions | Source |
-|-----|------------|-----------------|------------|--------|
-| Hick's Law | Decision time grows logarithmically with the number of equally probable choices. | psychology-analyst, ux-flow-analyst, design-auditor | flows, hierarchy | Hick 1952 [^hick1952] |
-| Fitts's Law | Time to acquire a target depends on the distance to and size of the target. | interaction-analyst, accessibility-auditor, design-auditor | accessibility, interaction | Fitts 1954 [^fitts1954] |
-| Miller's Law | Short-term working memory holds about 7 items plus or minus 2. | psychology-analyst, ux-flow-analyst, design-auditor | flows, hierarchy, typography | Miller 1956 [^miller1956] |
-| Jakob's Law | Users spend most time on other sites and expect your site to work the same way. | ux-flow-analyst, accessibility-auditor, design-auditor | flows, platform, responsive | Nielsen 2000 [^nielsen2000] |
-| Doherty Threshold | Productivity soars when system response time is below 400 ms. | interaction-analyst, design-auditor | interaction, performance | Doherty 1982 [^doherty1982] |
-| Peak-End Rule | People judge an experience by its peak moment and its end, not the average. | psychology-analyst, interaction-analyst, ux-flow-analyst, design-auditor | interaction, performance, polish | Kahneman 1993 [^kahneman1993] |
-| Goal-Gradient Effect | Motivation to reach a goal increases as perceived progress grows. | psychology-analyst, interaction-analyst, design-auditor | interaction | Hull 1932 [^hull1932] |
-| Aesthetic-Usability Effect | Users perceive aesthetically pleasing designs as more usable. | psychology-analyst, design-auditor | color, polish, typography | Kurosu 1995 [^kurosu1995] |
-| Serial Position Effect | Items at the start and end of a sequence are remembered best. | psychology-analyst, ux-flow-analyst, design-auditor | flows, hierarchy | Ebbinghaus 1913 [^ebbinghaus1913] |
-| Von Restorff Effect | An item that stands out is more likely to be remembered. | psychology-analyst, design-auditor | hierarchy, color | von Restorff 1933 [^vonrestorff1933] |
-| Zeigarnik Effect | Incomplete tasks occupy memory more than completed ones. | psychology-analyst, interaction-analyst, design-auditor | interaction, flows | Zeigarnik 1927 [^zeigarnik1927] |
-| Pareto Principle | Roughly 80 percent of outcomes come from 20 percent of causes. | ux-flow-analyst, design-auditor | flows | Pareto 1896 [^pareto1896] |
-| Parkinson's Law | Work expands to fill the time available. | ux-flow-analyst, design-auditor | flows | Parkinson 1955 [^parkinson1955] |
-| Postel's Law | Be conservative in what you do, be liberal in what you accept. | accessibility-auditor, design-auditor | accessibility, components | Postel 1980 [^postel1980] |
-| Tesler's Law | Every application has an inherent amount of complexity that cannot be removed. | ux-flow-analyst, design-auditor | components, flows | Saffer 2010 [^saffer2010] |
-| Occam's Razor | Among equal solutions prefer the one with fewest assumptions. | ux-flow-analyst, design-auditor | flows, platform | Ockham c.1323 [^ockham1323] |
-| Law of Proximity | Elements placed close together are perceived as grouped. | layout-analyst, design-auditor | layout | Wertheimer 1923 [^wertheimer1923] |
-| Law of Common Region | Elements in a shared region are perceived as grouped. | layout-analyst, design-auditor | layout | Palmer 1992 [^palmer1992] |
-| Law of Pragnanz | People perceive ambiguous images in the simplest possible form. | layout-analyst, design-auditor | layout, typography | Wertheimer 1923 [^wertheimer1923] |
-| Law of Similarity | Elements that look alike are perceived as related. | layout-analyst, design-auditor | layout, color | Wertheimer 1923 [^wertheimer1923] |
-| Law of Uniform Connectedness | Visually connected elements are perceived as more related than disconnected ones. | layout-analyst, design-auditor | layout | Palmer 1994 [^palmer1994] |
-| Chunking | Grouping items into meaningful chunks improves recall. | psychology-analyst, ux-flow-analyst, design-auditor | flows, typography | Miller 1956 [^miller1956] |
-| Choice Overload | Too many options cause decision paralysis and regret. | psychology-analyst, ux-flow-analyst, design-auditor | flows | Iyengar 2000 [^iyengar2000] |
-| Cognitive Load | Working memory capacity is limited; excess cognitive demand degrades performance. | psychology-analyst, design-auditor | flows, hierarchy | Sweller 1988 [^sweller1988] |
+**Examples:** Hick's Law (choice cost), Fitts's Law (target size), Miller's Law (7±2), Jakob's Law (conventions), Doherty Threshold (400ms), Peak-End Rule, Gestalt (Proximity, Similarity, Common Region, Prägnanz, Uniform Connectedness), Aesthetic-Usability Effect, Choice Overload, Cognitive Load, Tesler's Law, Postel's Law, Occam's Razor, Pareto, Parkinson, Serial Position, Von Restorff, Zeigarnik, Goal-Gradient.
 
-[^hick1952]: Hick, W. E. (1952). On the rate of gain of information. Quarterly Journal of Experimental Psychology, 4(1), 11-26.
-[^fitts1954]: Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. Journal of Experimental Psychology, 47(6), 381-391.
-[^miller1956]: Miller, G. A. (1956). The magical number seven, plus or minus two. Psychological Review, 63(2), 81-97.
-[^nielsen2000]: Nielsen, J. (2000). End of Web Design. Nielsen Norman Group Alertbox.
-[^doherty1982]: Doherty, W. J., & Thadhani, A. J. (1982). The Economic Value of Rapid Response Time. IBM Report GE20-0752-0.
-[^kahneman1993]: Kahneman, D., Fredrickson, B. L., Schreiber, C. A., & Redelmeier, D. A. (1993). When more pain is preferred to less. Psychological Science, 4(6), 401-405.
-[^hull1932]: Hull, C. L. (1932). The goal-gradient hypothesis and maze learning. Psychological Review, 39(1), 25-43.
-[^kurosu1995]: Kurosu, M., & Kashimura, K. (1995). Apparent usability vs. inherent usability. CHI 95 Conference Companion, 292-293.
-[^ebbinghaus1913]: Ebbinghaus, H. (1913). Memory: A Contribution to Experimental Psychology.
-[^vonrestorff1933]: von Restorff, H. (1933). Psychologische Forschung, 18, 299-342.
-[^zeigarnik1927]: Zeigarnik, B. (1927). Psychologische Forschung, 9, 1-85.
-[^pareto1896]: Pareto, V. (1896). Cours d economie politique. Lausanne.
-[^parkinson1955]: Parkinson, C. N. (1955). Parkinson s Law. The Economist, November 19.
-[^postel1980]: Postel, J. (1980). RFC 761: Transmission Control Protocol. IETF.
-[^saffer2010]: Saffer, D. (2010). Designing for Interaction (2nd ed.). New Riders.
-[^ockham1323]: William of Ockham, c. 1323. Summa Logicae.
-[^wertheimer1923]: Wertheimer, M. (1923). Untersuchungen zur Lehre von der Gestalt II. Psychologische Forschung, 4, 301-350.
-[^palmer1992]: Palmer, S. E. (1992). Common region: A new principle of perceptual grouping. Cognitive Psychology, 24(3), 436-447.
-[^palmer1994]: Palmer, S. E., & Rock, I. (1994). Rethinking perceptual organization. Psychonomic Bulletin & Review, 1(1), 29-55.
-[^iyengar2000]: Iyengar, S. S., & Lepper, M. R. (2000). When choice is demotivating. Journal of Personality and Social Psychology, 79(6), 995-1006.
-[^sweller1988]: Sweller, J. (1988). Cognitive load during problem solving. Cognitive Science, 12(2), 257-285.
+<details>
+<summary><b>Full 24-law coverage table</b></summary>
+
+| Law | Definition | Cited by | Dimensions |
+|-----|------------|----------|------------|
+| Hick's Law | Decision time grows logarithmically with choices. | psychology, ux-flow, design | flows, hierarchy |
+| Fitts's Law | Time to target depends on distance and size. | interaction, a11y, design | a11y, interaction |
+| Miller's Law | Working memory holds 7 ± 2 items. | psychology, ux-flow, design | flows, hierarchy, typography |
+| Jakob's Law | Users expect your site to work like others. | ux-flow, a11y, design | flows, platform, responsive |
+| Doherty Threshold | Productivity surges below 400ms response. | interaction, design | interaction, performance |
+| Peak-End Rule | Experience judged by peak + end moments. | psychology, interaction, ux-flow, design | interaction, performance, polish |
+| Goal-Gradient Effect | Motivation rises near the finish line. | psychology, interaction, design | interaction |
+| Aesthetic-Usability Effect | Pretty feels more usable. | psychology, design | color, polish, typography |
+| Serial Position Effect | First and last items remembered best. | psychology, ux-flow, design | flows, hierarchy |
+| Von Restorff Effect | Standouts get remembered. | psychology, design | hierarchy, color |
+| Zeigarnik Effect | Incomplete tasks hold memory. | psychology, interaction, design | interaction, flows |
+| Pareto Principle | 80% of outcomes from 20% of causes. | ux-flow, design | flows |
+| Parkinson's Law | Work expands to fill the time given. | ux-flow, design | flows |
+| Postel's Law | Conservative output, liberal input. | a11y, design | a11y, components |
+| Tesler's Law | Complexity is conserved, not removed. | ux-flow, design | components, flows |
+| Occam's Razor | Prefer the simpler solution. | ux-flow, design | flows, platform |
+| Law of Proximity | Close elements feel grouped. | layout, design | layout |
+| Law of Common Region | Shared region implies grouping. | layout, design | layout |
+| Law of Prägnanz | Eye prefers simplicity. | layout, design | layout, typography |
+| Law of Similarity | Similar looks mean related. | layout, design | layout, color |
+| Law of Uniform Connectedness | Visual connection implies group. | layout, design | layout |
+| Chunking | Group items to expand recall. | psychology, ux-flow, design | flows, typography |
+| Choice Overload | Too many options paralyzes. | psychology, ux-flow, design | flows |
+| Cognitive Load | Working memory is a finite budget. | psychology, design | flows, hierarchy |
+
+Sources in [References](#references) at the end.
+</details>
+
+---
+
+## Works with any stack
+
+<table>
+<tr>
+<td align="center" width="16%"><b>React</b></td>
+<td align="center" width="16%"><b>Next.js</b></td>
+<td align="center" width="16%"><b>Vue</b></td>
+<td align="center" width="16%"><b>Svelte</b></td>
+<td align="center" width="16%"><b>Angular</b></td>
+<td align="center" width="16%"><b>Vanilla</b></td>
+</tr>
+</table>
+
+**Styling:** Tailwind · CSS Modules · SCSS · styled-components · Emotion · vanilla-extract · plain CSS.
+**Libraries:** shadcn/ui · MUI · Chakra · Radix · Mantine · Headless UI · Ark UI.
+
+Auto-detects your framework. No config.
 
 ---
 
 ## Commands
 
-### Slash commands (Claude Code plugin)
+```
+ui-ux-suite              Audit current directory
+ui-ux-suite <path>       Audit a specific project
+ui-ux-suite --json       JSON output for scripts
+ui-ux-suite --mcp        Start as MCP server
+```
+
+<details>
+<summary><b>14 slash commands (Claude Code plugin)</b></summary>
 
 | Command | What it does |
 |:--------|:-------------|
@@ -245,61 +210,29 @@ The suite grounds its findings in 24 named UX laws, each drawn from a primary ac
 | `/refactor-plan` | Prioritized action plan |
 | `/design-compare` | Before/after comparison |
 | `/design-checklist` | Pre-launch checklist |
+</details>
 
-### CLI
-
-```
-ui-ux-suite                     Audit current directory
-ui-ux-suite <path>              Audit a specific project
-ui-ux-suite --json              JSON output for scripts
-ui-ux-suite --mcp               Start as MCP server
-ui-ux-suite --version           Show version
-ui-ux-suite --help              Show all options
-```
-
----
-
-## MCP tools
-
-14 tools available when running as an MCP server:
+<details>
+<summary><b>14 MCP tools</b></summary>
 
 | Tool | What it does |
 |:-----|:-------------|
-| `uiux_scan_project` | Detect framework, styling, component library, tokens |
+| `uiux_scan_project` | Detect framework, styling, component lib |
 | `uiux_extract_colors` | Pull all colors from CSS, Tailwind, tokens |
 | `uiux_extract_typography` | Extract fonts, sizes, weights, line heights |
 | `uiux_extract_spacing` | Extract padding, margin, gap values |
-| `uiux_check_contrast` | WCAG 2.1 + APCA contrast for color pairs |
-| `uiux_score_dimension` | Score a single dimension (1-10) |
-| `uiux_score_overall` | Weighted overall score from all dimensions |
+| `uiux_check_contrast` | WCAG 2.1 + APCA contrast |
+| `uiux_score_dimension` | Score a single dimension |
+| `uiux_score_overall` | Weighted overall score |
 | `uiux_generate_palette` | Generate palette from brand color |
-| `uiux_generate_type_scale` | Generate type scale from base size + ratio |
-| `uiux_generate_spacing_scale` | Generate spacing scale from base unit |
-| `uiux_generate_tokens` | Generate complete token set (CSS vars, Tailwind, JSON) |
-| `uiux_knowledge_query` | Query 19 knowledge documents (3,081 lines) |
+| `uiux_generate_type_scale` | Generate type scale |
+| `uiux_generate_spacing_scale` | Generate spacing scale |
+| `uiux_generate_tokens` | Generate complete token set |
+| `uiux_knowledge_query` | Query 19 knowledge documents |
+| `uiux_laws_query` | Query 24 Laws of UX |
 | `uiux_audit_log` | Append finding to audit log |
 | `uiux_audit_report` | Generate formatted audit report |
-
----
-
-## Works with any stack
-
-Auto-detects your framework. No config needed.
-
-<table>
-<tr>
-<td align="center" width="14%"><b>React</b><br/><sub>JSX / TSX</sub></td>
-<td align="center" width="14%"><b>Next.js</b><br/><sub>App + Pages</sub></td>
-<td align="center" width="14%"><b>Vue</b><br/><sub>SFC</sub></td>
-<td align="center" width="14%"><b>Svelte</b><br/><sub>Components</sub></td>
-<td align="center" width="14%"><b>Angular</b><br/><sub>Templates</sub></td>
-<td align="center" width="14%"><b>Vanilla</b><br/><sub>HTML / CSS</sub></td>
-</tr>
-</table>
-
-Styling detection: **Tailwind**, **CSS Modules**, **SCSS**, **styled-components**, **Emotion**, **vanilla-extract**, **vanilla CSS**.
-
-Component libraries: **shadcn/ui**, **MUI**, **Chakra**, **Radix**, **Mantine**, **Headless UI**, **Ark UI**.
+</details>
 
 ---
 
@@ -307,10 +240,10 @@ Component libraries: **shadcn/ui**, **MUI**, **Chakra**, **Radix**, **Mantine**,
 
 ```mermaid
 graph LR
-    A["Your Project<br/><sub>CSS, JSX, Tailwind, Config</sub>"] --> B["Extractors<br/><sub>Colors, Type, Spacing, Classes</sub>"]
-    B --> C["Engines<br/><sub>Color, Typography, Spacing, OKLCH</sub>"]
+    A["Your Project<br/><sub>CSS, JSX, Tailwind</sub>"] --> B["Extractors"]
+    B --> C["Engines<br/><sub>Color · Type · Spacing · OKLCH</sub>"]
     C --> D["Scoring<br/><sub>12 weighted dimensions</sub>"]
-    D --> E["Report<br/><sub>Score card + Action plan</sub>"]
+    D --> E["Report<br/><sub>Score + fixes + citations</sub>"]
 
     style A fill:#f8fafc,stroke:#0ea5e9,color:#0c4a6e
     style B fill:#f0f9ff,stroke:#0ea5e9,color:#0c4a6e
@@ -324,82 +257,39 @@ graph LR
 
 ```
 lib/
-  mcp-server.js       MCP JSON-RPC server (14 tools)
-  runner.js           End-to-end audit orchestrator
-  color-engine.js     WCAG, APCA, deltaE, palette generation
-  type-engine.js      Scale math, readability scoring, font analysis
-  spacing-engine.js   Grid detection, consistency analysis
-  oklch-parser.js     OKLCH color space conversion
-  tailwind-parser.js  Class extraction and token mapping
+  mcp-server.js       MCP JSON-RPC server
+  runner.js           Audit orchestrator
+  color-engine.js     WCAG, APCA, deltaE, palette
+  type-engine.js      Scale math, readability
+  spacing-engine.js   Grid detection, consistency
+  oklch-parser.js     OKLCH color space
+  tailwind-parser.js  Class extraction
   extractors.js       CSS, Tailwind, SCSS parsing
-  scoring.js          Multi-axis weighted scoring
-  schema.js           Data structures for scores and findings
-  knowledge.js        Built-in design knowledge base
+  scoring.js          Weighted scoring
+  schema.js           Data structures
+  knowledge.js        Built-in knowledge base
 
-knowledge/            19 markdown docs (3,081 lines)
-agents/               12 specialized agent definitions
-skills/               14 slash command definitions
-templates/            5 report templates
+knowledge/   19 markdown docs (3,081 lines)
+agents/      12 specialist agents
+skills/      14 slash commands
+templates/   5 report templates
 ```
-
 </details>
 
----
-
-## The science
-
-Every recommendation links back to real research:
-
-| What we found | Number | Source |
-|:--------------|:------:|:-------|
-| Time for users to judge your design | **50ms** | Academic research |
-| Users who leave after bad design | **88%** | UX survey |
-| ADA lawsuits filed (H1 2025) | **5,114** | WebAIM, UsableNet |
-| Issues automated a11y tools catch | **30-40%** | Deque, W3C |
-| Smartphone users with dark mode on | **81.9%** | Mobile analytics |
-
 <details>
-<summary><b>All 30+ findings with confidence levels</b></summary>
+<summary><b>Knowledge base (19 docs, 3,081 lines)</b></summary>
 
-The full evidence base lives in [`knowledge/evidence-base.md`](knowledge/evidence-base.md). Every finding is rated HIGH, MEDIUM, or LOW confidence based on source quality and recency.
-
-</details>
-
----
-
-## Modern CSS detection
-
-The suite knows about 2026 CSS features that most tools don't:
-
-| Feature | Detection | Why it matters |
-|:--------|:----------|:---------------|
-| View Transitions API | `@view-transition`, `::view-transition` | Native page transitions, no JS needed |
-| Scroll driven animations | `animation-timeline: view\|scroll` | 60fps on compositor thread |
-| Container queries | `@container` | Component-level responsiveness |
-| `@property` animations | `@property --*` | Animatable custom properties |
-| `@starting-style` | `@starting-style { }` | Animate from display:none |
-| OKLCH colors | `oklch()` notation | Perceptually uniform color space |
-
----
-
-## Knowledge base
-
-19 curated documents, 3,081 lines of design intelligence:
-
-<details>
-<summary><b>All knowledge documents</b></summary>
-
-| Document | Lines | What it covers |
-|:---------|:-----:|:---------------|
+| Document | Lines | Covers |
+|:---------|:-----:|:-------|
 | accessibility-guide.md | 213 | WCAG, ARIA, focus management |
 | color-theory.md | 142 | Harmony, semantics, dark mode |
 | typography-theory.md | 131 | Scale ratios, 2026 font picks |
 | component-patterns.md | 139 | State checklist, button hierarchy |
 | ux-flows.md | 155 | Navigation, onboarding, IA |
 | design-engineer-craft-2026.md | 355 | Tips from Vercel, Linear, shadcn |
-| insider-secrets-2026.md | 233 | 35 tips from 10+ year veterans |
+| insider-secrets-2026.md | 233 | 35 tips from veterans |
 | wow-animations-2026.md | 214 | Scroll driven, view transitions |
-| wow-libraries-2026.md | 178 | 15 component libraries deep dive |
+| wow-libraries-2026.md | 178 | 15 component libraries |
 | design-tools-2026.md | 253 | Design tooling landscape |
 | evidence-base.md | 78 | 30+ quantified findings |
 | dark-patterns.md | 154 | Deceptive design detection |
@@ -408,38 +298,57 @@ The suite knows about 2026 CSS features that most tools don't:
 | anti-patterns.md | 90 | Common mistakes |
 | libraries-tools.md | 133 | Component library comparison |
 | principles.md | 90 | Core design principles |
-| psychology.md | 119 | Cognitive load, Gestalt principles |
+| psychology.md | 119 | Cognitive load, Gestalt |
 | trends-2026.md | 111 | CSS features, AI patterns |
-
+| laws-of-ux.md | 320 | 24 named UX laws |
 </details>
 
 ---
 
-## Trust
+## Evidence
 
-No telemetry. No data collection. No API calls. No cloud anything.
+Every recommendation traces to research.
 
-All analysis runs locally. Your code never leaves your machine. The entire suite is vanilla Node.js with zero dependencies.
+| Finding | Number | Source |
+|:--------|:------:|:-------|
+| Time users take to judge your design | **50ms** | Academic research |
+| Users who leave after a bad impression | **88%** | UX survey |
+| ADA lawsuits filed in H1 2025 | **5,114** | WebAIM, UsableNet |
+| A11y issues automated tools catch | **30-40%** | Deque, W3C |
+| Smartphone users with dark mode on | **81.9%** | Mobile analytics |
+
+Full evidence base with HIGH/MEDIUM/LOW confidence ratings lives in [`knowledge/evidence-base.md`](knowledge/evidence-base.md).
+
+<details>
+<summary><b>2026 CSS features detected</b></summary>
+
+| Feature | Detection |
+|:--------|:----------|
+| View Transitions API | `@view-transition`, `::view-transition` |
+| Scroll-driven animations | `animation-timeline: view\|scroll` |
+| Container queries | `@container` |
+| `@property` animations | `@property --*` |
+| `@starting-style` | `@starting-style { }` |
+| OKLCH colors | `oklch()` notation |
+</details>
+
+---
+
+## Privacy
+
+All analysis runs locally. Your code never leaves your machine. No telemetry. No API calls. No network.
 
 ---
 
 ## Contributing
 
-Found a bug? Have a scoring idea? PRs welcome.
+```bash
+git clone https://github.com/Aboudjem/ui-ux-suite
+cd ui-ux-suite
+npm test   # 148 tests
+```
 
-1. Fork the repo
-2. Run `npm test` (118 tests across 7 modules)
-3. Make your changes
-4. Open a PR
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
----
-
-<p align="center">
-  If this tool helped you ship a better UI, consider giving it a star.<br/>
-  It helps others find it.
-</p>
+Open a PR. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
@@ -449,6 +358,61 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
   <a href="https://adam-boudjemaa.com/"><img src="https://img.shields.io/badge/Website-0ea5e9?style=flat-square&logo=googlechrome&logoColor=white" alt="Website"></a>
 </p>
 
-<p align="center">
-  <sub>Built by <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> · MIT License · No telemetry · No data collection</sub>
-</p>
+<p align="center"><sub>MIT · Built by <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> · Star ⭐ to help others find it</sub></p>
+
+---
+
+## References
+
+<sub>Academic and canonical sources for the 24 Laws of UX.</sub>
+
+<details>
+<summary><sub>Expand sources</sub></summary>
+
+<sub>
+
+Hick, W. E. (1952). On the rate of gain of information. *Quarterly Journal of Experimental Psychology*, 4(1), 11-26.
+
+Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. *Journal of Experimental Psychology*, 47(6), 381-391.
+
+Miller, G. A. (1956). The magical number seven, plus or minus two. *Psychological Review*, 63(2), 81-97.
+
+Nielsen, J. (2000). End of Web Design. *Nielsen Norman Group Alertbox*.
+
+Doherty, W. J., & Thadhani, A. J. (1982). *The Economic Value of Rapid Response Time*. IBM Report GE20-0752-0.
+
+Kahneman, D., Fredrickson, B. L., Schreiber, C. A., & Redelmeier, D. A. (1993). When more pain is preferred to less. *Psychological Science*, 4(6), 401-405.
+
+Hull, C. L. (1932). The goal-gradient hypothesis and maze learning. *Psychological Review*, 39(1), 25-43.
+
+Kurosu, M., & Kashimura, K. (1995). Apparent usability vs. inherent usability. *CHI '95 Conference Companion*, 292-293.
+
+Ebbinghaus, H. (1913). *Memory: A Contribution to Experimental Psychology*.
+
+von Restorff, H. (1933). *Psychologische Forschung*, 18, 299-342.
+
+Zeigarnik, B. (1927). *Psychologische Forschung*, 9, 1-85.
+
+Pareto, V. (1896). *Cours d'économie politique*. Lausanne.
+
+Parkinson, C. N. (1955). Parkinson's Law. *The Economist*, Nov 19.
+
+Postel, J. (1980). *RFC 761: Transmission Control Protocol*. IETF.
+
+Saffer, D. (2010). *Designing for Interaction* (2nd ed.). New Riders.
+
+William of Ockham, c. 1323. *Summa Logicae*.
+
+Wertheimer, M. (1923). Untersuchungen zur Lehre von der Gestalt II. *Psychologische Forschung*, 4, 301-350.
+
+Palmer, S. E. (1992). Common region: A new principle of perceptual grouping. *Cognitive Psychology*, 24(3), 436-447.
+
+Palmer, S. E., & Rock, I. (1994). Rethinking perceptual organization. *Psychonomic Bulletin & Review*, 1(1), 29-55.
+
+Iyengar, S. S., & Lepper, M. R. (2000). When choice is demotivating. *Journal of Personality and Social Psychology*, 79(6), 995-1006.
+
+Sweller, J. (1988). Cognitive load during problem solving. *Cognitive Science*, 12(2), 257-285.
+
+</sub>
+
+</details>
