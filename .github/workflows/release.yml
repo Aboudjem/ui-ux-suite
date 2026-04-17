@@ -60,3 +60,25 @@ jobs:
           name: ${{ github.ref_name }}
           draft: false
           prerelease: false
+
+  sync-10x:
+    name: Sync 10x marketplace
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract version
+        id: version
+        run: echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+      - name: Dispatch plugin-released to 10x
+        env:
+          DISPATCH_TOKEN: ${{ secrets.TEN_X_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$DISPATCH_TOKEN" ]; then
+            echo "TEN_X_DISPATCH_TOKEN secret not set; skipping 10x sync."
+            exit 0
+          fi
+          curl -sS -X POST \
+            -H "Authorization: token $DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/Aboudjem/10x/dispatches \
+            -d '{"event_type":"plugin-released","client_payload":{"plugin":"ui-ux-suite","version":"${{ steps.version.outputs.value }}"}}'
