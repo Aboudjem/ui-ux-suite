@@ -342,13 +342,38 @@ All analysis runs locally. Your code never leaves your machine. No telemetry. No
 
 ## Contributing
 
+Contributions are welcome. This project is maintained in public and every PR is reviewed.
+
+### Setup
+
 ```bash
 git clone https://github.com/Aboudjem/ui-ux-suite
 cd ui-ux-suite
-npm test   # 148 tests
+npm test   # 148 tests, zero dependencies
 ```
 
-Open a PR. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+### What makes a good PR
+
+- **Bug fixes** always welcome. Include a test that would have caught the bug.
+- **New scoring rules** should cite a named UX law or a primary-source study in the finding. See `knowledge/laws-of-ux.md` for the 24-law vocabulary.
+- **New MCP tools** must follow the registration pattern in `lib/mcp-server.js`. Add a test in `test/` that exercises the handler without starting the server.
+- **Knowledge docs** should be evidence-backed. Add new citations to `knowledge/evidence-base.md` with HIGH/MEDIUM/LOW confidence ratings.
+- **No new runtime dependencies.** The suite is zero-dep by design; dev dependencies are fine.
+- **No em-dashes** in user-facing copy (reports, README, knowledge files).
+
+### Good first issues
+
+Look for the [`good first issue`](https://github.com/Aboudjem/ui-ux-suite/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) label. Typical starting points: add a new knowledge doc, extend a scorer with a new finding, add a new generator preset.
+
+### Process
+
+1. Fork and branch from `main`.
+2. Add or update tests under `test/`.
+3. Run `npm test` locally (CI also runs on Node 18 + 22).
+4. Open a PR describing the problem, the approach, and any trade-offs.
+5. Reviewer feedback usually within 48 hours.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [SECURITY.md](SECURITY.md) for the full policies.
 
 ---
 
@@ -364,55 +389,45 @@ Open a PR. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## References
 
-<sub>Academic and canonical sources for the 24 Laws of UX.</sub>
-
-<details>
-<summary><sub>Expand sources</sub></summary>
+<sub>Academic and canonical sources for the 24 Laws of UX. Each finding in the audit report cites one or more of these primary sources. No content is copied from external UX reference sites; prose in `knowledge/laws-of-ux.md` is authored fresh from these papers.</sub>
 
 <sub>
 
-Hick, W. E. (1952). On the rate of gain of information. *Quarterly Journal of Experimental Psychology*, 4(1), 11-26.
+**Decision-making and choice**
 
-Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. *Journal of Experimental Psychology*, 47(6), 381-391.
+1. Hick, W. E. (1952). On the rate of gain of information. *Quarterly Journal of Experimental Psychology*, 4(1), 11-26.
+2. Iyengar, S. S., & Lepper, M. R. (2000). When choice is demotivating: Can one desire too much of a good thing? *Journal of Personality and Social Psychology*, 79(6), 995-1006.
+3. Hull, C. L. (1932). The goal-gradient hypothesis and maze learning. *Psychological Review*, 39(1), 25-43.
+4. Pareto, V. (1896). *Cours d'economie politique*. Lausanne.
+5. Parkinson, C. N. (1955). Parkinson's Law. *The Economist*, November 19.
+6. William of Ockham, c. 1323. *Summa Logicae*.
 
-Miller, G. A. (1956). The magical number seven, plus or minus two. *Psychological Review*, 63(2), 81-97.
+**Memory and attention**
 
-Nielsen, J. (2000). End of Web Design. *Nielsen Norman Group Alertbox*.
+7. Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. *Psychological Review*, 63(2), 81-97.
+8. Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. *Cognitive Science*, 12(2), 257-285.
+9. Ebbinghaus, H. (1913). *Memory: A Contribution to Experimental Psychology*.
+10. von Restorff, H. (1933). Uber die Wirkung von Bereichsbildungen im Spurenfeld. *Psychologische Forschung*, 18, 299-342.
+11. Zeigarnik, B. (1927). Uber das Behalten von erledigten und unerledigten Handlungen. *Psychologische Forschung*, 9, 1-85.
+12. Kahneman, D., Fredrickson, B. L., Schreiber, C. A., & Redelmeier, D. A. (1993). When more pain is preferred to less: Adding a better end. *Psychological Science*, 4(6), 401-405.
 
-Doherty, W. J., & Thadhani, A. J. (1982). *The Economic Value of Rapid Response Time*. IBM Report GE20-0752-0.
+**Motor and interaction**
 
-Kahneman, D., Fredrickson, B. L., Schreiber, C. A., & Redelmeier, D. A. (1993). When more pain is preferred to less. *Psychological Science*, 4(6), 401-405.
+13. Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. *Journal of Experimental Psychology*, 47(6), 381-391.
+14. Doherty, W. J., & Thadhani, A. J. (1982). *The Economic Value of Rapid Response Time*. IBM Report GE20-0752-0.
 
-Hull, C. L. (1932). The goal-gradient hypothesis and maze learning. *Psychological Review*, 39(1), 25-43.
+**Perception (Gestalt)**
 
-Kurosu, M., & Kashimura, K. (1995). Apparent usability vs. inherent usability. *CHI '95 Conference Companion*, 292-293.
+15. Wertheimer, M. (1923). Untersuchungen zur Lehre von der Gestalt II. *Psychologische Forschung*, 4, 301-350.
+16. Koffka, K. (1935). *Principles of Gestalt Psychology*. Harcourt, Brace and World.
+17. Palmer, S. E. (1992). Common region: A new principle of perceptual grouping. *Cognitive Psychology*, 24(3), 436-447.
+18. Palmer, S. E., & Rock, I. (1994). Rethinking perceptual organization: The role of uniform connectedness. *Psychonomic Bulletin & Review*, 1(1), 29-55.
+19. Kurosu, M., & Kashimura, K. (1995). Apparent usability vs. inherent usability: Experimental analysis on the determinants of the apparent usability. *CHI '95 Conference Companion*, 292-293.
 
-Ebbinghaus, H. (1913). *Memory: A Contribution to Experimental Psychology*.
+**Convention and complexity**
 
-von Restorff, H. (1933). *Psychologische Forschung*, 18, 299-342.
-
-Zeigarnik, B. (1927). *Psychologische Forschung*, 9, 1-85.
-
-Pareto, V. (1896). *Cours d'économie politique*. Lausanne.
-
-Parkinson, C. N. (1955). Parkinson's Law. *The Economist*, Nov 19.
-
-Postel, J. (1980). *RFC 761: Transmission Control Protocol*. IETF.
-
-Saffer, D. (2010). *Designing for Interaction* (2nd ed.). New Riders.
-
-William of Ockham, c. 1323. *Summa Logicae*.
-
-Wertheimer, M. (1923). Untersuchungen zur Lehre von der Gestalt II. *Psychologische Forschung*, 4, 301-350.
-
-Palmer, S. E. (1992). Common region: A new principle of perceptual grouping. *Cognitive Psychology*, 24(3), 436-447.
-
-Palmer, S. E., & Rock, I. (1994). Rethinking perceptual organization. *Psychonomic Bulletin & Review*, 1(1), 29-55.
-
-Iyengar, S. S., & Lepper, M. R. (2000). When choice is demotivating. *Journal of Personality and Social Psychology*, 79(6), 995-1006.
-
-Sweller, J. (1988). Cognitive load during problem solving. *Cognitive Science*, 12(2), 257-285.
+20. Nielsen, J. (2000). End of Web Design. *Nielsen Norman Group Alertbox*.
+21. Postel, J. (1980). *RFC 761: Transmission Control Protocol*. IETF.
+22. Saffer, D. (2010). *Designing for Interaction* (2nd ed.). New Riders.
 
 </sub>
-
-</details>

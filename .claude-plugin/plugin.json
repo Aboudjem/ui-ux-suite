@@ -1,6 +1,6 @@
 {
   "name": "ui-ux-suite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Design audit tool. Scores projects across 12 dimensions: color, typography, accessibility, layout, and more. WCAG, APCA, OKLCH color science. Zero dependencies.",
   "author": {
     "name": "Adam Boudjemaa",
