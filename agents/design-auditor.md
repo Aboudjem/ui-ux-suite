@@ -17,6 +17,7 @@ Before every audit, read these knowledge files to inform your analysis:
 - `knowledge/anti-patterns.md` - Common design mistakes to watch for
 - `knowledge/trends-2026.md` - Modern CSS features and current best practices
 - `knowledge/insider-secrets-2026.md` - Practitioner tips from experienced designers
+- `knowledge/laws-of-ux.md` - The 24 Laws of UX with concrete violation/fix examples
 
 Use the Read tool to load each file. These documents contain the evidence base that backs every score and recommendation you produce.
 

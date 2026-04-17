@@ -170,6 +170,61 @@ Every score comes with specific findings and concrete fixes. Not vague advice li
 
 ---
 
+## Laws of UX coverage
+
+The suite grounds its findings in 24 named UX laws, each drawn from a primary academic paper, IETF RFC, or canonical book. Audits attach `laws: [...]` slugs to findings and end with a Laws of UX Coverage table that counts violations per law.
+
+| Law | Definition | Cited by agents | Dimensions | Source |
+|-----|------------|-----------------|------------|--------|
+| Hick's Law | Decision time grows logarithmically with the number of equally probable choices. | psychology-analyst, ux-flow-analyst, design-auditor | flows, hierarchy | Hick 1952 [^hick1952] |
+| Fitts's Law | Time to acquire a target depends on the distance to and size of the target. | interaction-analyst, accessibility-auditor, design-auditor | accessibility, interaction | Fitts 1954 [^fitts1954] |
+| Miller's Law | Short-term working memory holds about 7 items plus or minus 2. | psychology-analyst, ux-flow-analyst, design-auditor | flows, hierarchy, typography | Miller 1956 [^miller1956] |
+| Jakob's Law | Users spend most time on other sites and expect your site to work the same way. | ux-flow-analyst, accessibility-auditor, design-auditor | flows, platform, responsive | Nielsen 2000 [^nielsen2000] |
+| Doherty Threshold | Productivity soars when system response time is below 400 ms. | interaction-analyst, design-auditor | interaction, performance | Doherty 1982 [^doherty1982] |
+| Peak-End Rule | People judge an experience by its peak moment and its end, not the average. | psychology-analyst, interaction-analyst, ux-flow-analyst, design-auditor | interaction, performance, polish | Kahneman 1993 [^kahneman1993] |
+| Goal-Gradient Effect | Motivation to reach a goal increases as perceived progress grows. | psychology-analyst, interaction-analyst, design-auditor | interaction | Hull 1932 [^hull1932] |
+| Aesthetic-Usability Effect | Users perceive aesthetically pleasing designs as more usable. | psychology-analyst, design-auditor | color, polish, typography | Kurosu 1995 [^kurosu1995] |
+| Serial Position Effect | Items at the start and end of a sequence are remembered best. | psychology-analyst, ux-flow-analyst, design-auditor | flows, hierarchy | Ebbinghaus 1913 [^ebbinghaus1913] |
+| Von Restorff Effect | An item that stands out is more likely to be remembered. | psychology-analyst, design-auditor | hierarchy, color | von Restorff 1933 [^vonrestorff1933] |
+| Zeigarnik Effect | Incomplete tasks occupy memory more than completed ones. | psychology-analyst, interaction-analyst, design-auditor | interaction, flows | Zeigarnik 1927 [^zeigarnik1927] |
+| Pareto Principle | Roughly 80 percent of outcomes come from 20 percent of causes. | ux-flow-analyst, design-auditor | flows | Pareto 1896 [^pareto1896] |
+| Parkinson's Law | Work expands to fill the time available. | ux-flow-analyst, design-auditor | flows | Parkinson 1955 [^parkinson1955] |
+| Postel's Law | Be conservative in what you do, be liberal in what you accept. | accessibility-auditor, design-auditor | accessibility, components | Postel 1980 [^postel1980] |
+| Tesler's Law | Every application has an inherent amount of complexity that cannot be removed. | ux-flow-analyst, design-auditor | components, flows | Saffer 2010 [^saffer2010] |
+| Occam's Razor | Among equal solutions prefer the one with fewest assumptions. | ux-flow-analyst, design-auditor | flows, platform | Ockham c.1323 [^ockham1323] |
+| Law of Proximity | Elements placed close together are perceived as grouped. | layout-analyst, design-auditor | layout | Wertheimer 1923 [^wertheimer1923] |
+| Law of Common Region | Elements in a shared region are perceived as grouped. | layout-analyst, design-auditor | layout | Palmer 1992 [^palmer1992] |
+| Law of Prägnanz | People perceive ambiguous images in the simplest possible form. | layout-analyst, design-auditor | layout, typography | Wertheimer 1923 [^wertheimer1923] |
+| Law of Similarity | Elements that look alike are perceived as related. | layout-analyst, design-auditor | layout, color | Wertheimer 1923 [^wertheimer1923] |
+| Law of Uniform Connectedness | Visually connected elements are perceived as more related than disconnected ones. | layout-analyst, design-auditor | layout | Palmer 1994 [^palmer1994] |
+| Chunking | Grouping items into meaningful chunks improves recall. | psychology-analyst, ux-flow-analyst, design-auditor | flows, typography | Miller 1956 [^miller1956] |
+| Choice Overload | Too many options cause decision paralysis and regret. | psychology-analyst, ux-flow-analyst, design-auditor | flows | Iyengar 2000 [^iyengar2000] |
+| Cognitive Load | Working memory capacity is limited; excess cognitive demand degrades performance. | psychology-analyst, design-auditor | flows, hierarchy | Sweller 1988 [^sweller1988] |
+
+[^hick1952]: Hick, W. E. (1952). On the rate of gain of information. Quarterly Journal of Experimental Psychology, 4(1), 11-26.
+[^fitts1954]: Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. Journal of Experimental Psychology, 47(6), 381-391.
+[^miller1956]: Miller, G. A. (1956). The magical number seven, plus or minus two. Psychological Review, 63(2), 81-97.
+[^nielsen2000]: Nielsen, J. (2000). End of Web Design. Nielsen Norman Group Alertbox.
+[^doherty1982]: Doherty, W. J., & Thadhani, A. J. (1982). The Economic Value of Rapid Response Time. IBM Report GE20-0752-0.
+[^kahneman1993]: Kahneman, D., Fredrickson, B. L., Schreiber, C. A., & Redelmeier, D. A. (1993). When more pain is preferred to less. Psychological Science, 4(6), 401-405.
+[^hull1932]: Hull, C. L. (1932). The goal-gradient hypothesis and maze learning. Psychological Review, 39(1), 25-43.
+[^kurosu1995]: Kurosu, M., & Kashimura, K. (1995). Apparent usability vs. inherent usability. CHI 95 Conference Companion, 292-293.
+[^ebbinghaus1913]: Ebbinghaus, H. (1913). Memory: A Contribution to Experimental Psychology.
+[^vonrestorff1933]: von Restorff, H. (1933). Psychologische Forschung, 18, 299-342.
+[^zeigarnik1927]: Zeigarnik, B. (1927). Psychologische Forschung, 9, 1-85.
+[^pareto1896]: Pareto, V. (1896). Cours d economie politique. Lausanne.
+[^parkinson1955]: Parkinson, C. N. (1955). Parkinson s Law. The Economist, November 19.
+[^postel1980]: Postel, J. (1980). RFC 761: Transmission Control Protocol. IETF.
+[^saffer2010]: Saffer, D. (2010). Designing for Interaction (2nd ed.). New Riders.
+[^ockham1323]: William of Ockham, c. 1323. Summa Logicae.
+[^wertheimer1923]: Wertheimer, M. (1923). Untersuchungen zur Lehre von der Gestalt II. Psychologische Forschung, 4, 301-350.
+[^palmer1992]: Palmer, S. E. (1992). Common region: A new principle of perceptual grouping. Cognitive Psychology, 24(3), 436-447.
+[^palmer1994]: Palmer, S. E., & Rock, I. (1994). Rethinking perceptual organization. Psychonomic Bulletin & Review, 1(1), 29-55.
+[^iyengar2000]: Iyengar, S. S., & Lepper, M. R. (2000). When choice is demotivating. Journal of Personality and Social Psychology, 79(6), 995-1006.
+[^sweller1988]: Sweller, J. (1988). Cognitive load during problem solving. Cognitive Science, 12(2), 257-285.
+
+---
+
 ## Commands
 
 ### Slash commands (Claude Code plugin)

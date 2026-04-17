@@ -54,3 +54,5 @@ Launch agents in parallel waves:
 
 Full audit report saved to `design-audit-report.md` in the project root.
 Score card displayed inline for quick overview.
+
+Each finding may cite one or more UX laws inline (for example, `[!] psychology: 12-item nav menu - violates Hick's Law, Choice Overload`). When any finding carries laws, the report ends with a `## Laws of UX Coverage` markdown table summarizing violation counts and worst offenders per law. Agents look up law display names and primary-source citations from `knowledge/laws-of-ux.md` and the `uiux_laws_query` MCP tool.

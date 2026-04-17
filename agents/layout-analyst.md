@@ -14,6 +14,7 @@ You diagnose and improve layout, spacing, grid systems, density, and responsive 
 Before analyzing layout, read these knowledge files:
 - `knowledge/principles.md` - Core design principles including spacing and hierarchy
 - `knowledge/evidence-base.md` - Quantified findings on layout and user behavior
+- `knowledge/laws-of-ux.md` - The 24 Laws of UX with concrete violation/fix examples
 
 Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
 

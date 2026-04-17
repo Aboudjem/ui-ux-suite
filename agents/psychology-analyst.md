@@ -15,6 +15,7 @@ Before analyzing psychological aspects, read these knowledge files:
 - `knowledge/psychology.md` - Cognitive load, Gestalt principles, trust signals, persuasion
 - `knowledge/dark-patterns.md` - Deceptive design patterns and manipulation detection
 - `knowledge/evidence-base.md` - Quantified findings on user behavior and perception
+- `knowledge/laws-of-ux.md` - The 24 Laws of UX with concrete violation/fix examples
 
 Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
 

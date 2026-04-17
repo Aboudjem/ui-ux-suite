@@ -15,6 +15,7 @@ Before auditing accessibility, read these knowledge files:
 - `knowledge/accessibility-guide.md` - WCAG 2.2, ARIA patterns, focus management, screen readers
 - `knowledge/dark-patterns.md` - Deceptive design detection that harms accessibility
 - `knowledge/evidence-base.md` - Legal data (ADA lawsuits), quantified a11y impact
+- `knowledge/laws-of-ux.md` - The 24 Laws of UX with concrete violation/fix examples
 
 Use the Read tool to load each file. Apply this knowledge when scoring and recommending.
 
