@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ui-ux-suite": {
+      "command": "npx",
+      "args": ["ui-ux-suite", "--mcp"],
+      "env": {}
+    }
+  }
+}
