@@ -194,7 +194,7 @@ The suite grounds its findings in 24 named UX laws, each drawn from a primary ac
 | Occam's Razor | Among equal solutions prefer the one with fewest assumptions. | ux-flow-analyst, design-auditor | flows, platform | Ockham c.1323 [^ockham1323] |
 | Law of Proximity | Elements placed close together are perceived as grouped. | layout-analyst, design-auditor | layout | Wertheimer 1923 [^wertheimer1923] |
 | Law of Common Region | Elements in a shared region are perceived as grouped. | layout-analyst, design-auditor | layout | Palmer 1992 [^palmer1992] |
-| Law of Prägnanz | People perceive ambiguous images in the simplest possible form. | layout-analyst, design-auditor | layout, typography | Wertheimer 1923 [^wertheimer1923] |
+| Law of Pragnanz | People perceive ambiguous images in the simplest possible form. | layout-analyst, design-auditor | layout, typography | Wertheimer 1923 [^wertheimer1923] |
 | Law of Similarity | Elements that look alike are perceived as related. | layout-analyst, design-auditor | layout, color | Wertheimer 1923 [^wertheimer1923] |
 | Law of Uniform Connectedness | Visually connected elements are perceived as more related than disconnected ones. | layout-analyst, design-auditor | layout | Palmer 1994 [^palmer1994] |
 | Chunking | Grouping items into meaningful chunks improves recall. | psychology-analyst, ux-flow-analyst, design-auditor | flows, typography | Miller 1956 [^miller1956] |
