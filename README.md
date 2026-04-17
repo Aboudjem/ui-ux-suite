@@ -64,13 +64,24 @@ Then ask your AI: *"Audit this project's design."*
 </details>
 
 <details>
-<summary><b>As a Claude Code plugin</b></summary>
+<summary><b>Claude Code plugin marketplace</b> (recommended)</summary>
+
+```bash
+claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x
+```
+
+Installs from the [10x marketplace](https://github.com/Aboudjem/10x). Adds 14 slash commands, 12 specialist agents, 19 knowledge docs, and the MCP server in one command.
+</details>
+
+<details>
+<summary><b>Claude Code plugin (direct)</b></summary>
 
 ```bash
 claude plugin add github:Aboudjem/ui-ux-suite
 ```
 
-Adds 14 slash commands, 12 specialist agents, 19 knowledge docs.
+Installs the plugin directly from this repo without the marketplace indirection.
 </details>
 
 <details>
