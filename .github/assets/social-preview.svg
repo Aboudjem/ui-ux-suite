@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#0a1422"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect x="0" y="0" width="8" height="640" fill="url(#accent)"/>
+  <circle cx="1100" cy="160" r="220" fill="#0ea5e9" opacity="0.08"/>
+  <text x="96" y="240" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="128" font-weight="900" fill="#ffffff" letter-spacing="-3">UI/UX Suite</text>
+  <text x="96" y="310" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="38" font-weight="600" fill="#0ea5e9">Design audit. Measured. Not guessed.</text>
+  <text x="96" y="380" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">Scores 12 dimensions grounded in 24 named UX laws with</text>
+  <text x="96" y="420" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">primary-source citations. WCAG + APCA + OKLCH. Zero deps.</text>
+  <g transform="translate(96, 500)">
+    <rect x="0" y="0" width="130" height="40" rx="20" fill="#0ea5e9" opacity="0.15"/>
+    <text x="65" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#0ea5e9" text-anchor="middle">v0.2.0</text>
+    <rect x="145" y="0" width="155" height="40" rx="20" fill="#6366f1" opacity="0.15"/>
+    <text x="222" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#a5b4fc" text-anchor="middle">24 UX laws</text>
+    <rect x="320" y="0" width="190" height="40" rx="20" fill="#ffffff" opacity="0.08"/>
+    <text x="415" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">npx ui-ux-suite</text>
+  </g>
+  <text x="1184" y="592" font-family="Inter, monospace" font-size="20" fill="#64748b" text-anchor="end">github.com/Aboudjem/ui-ux-suite</text>
+</svg>
