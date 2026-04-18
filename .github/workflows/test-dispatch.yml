@@ -1,0 +1,32 @@
+name: Test 10x dispatch token
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Aboudjem/10x dispatches
+        env:
+          DISPATCH_TOKEN: ${{ secrets.TEN_X_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$DISPATCH_TOKEN" ]; then
+            echo "TEN_X_DISPATCH_TOKEN is EMPTY."
+            exit 1
+          fi
+          HTTP_CODE=$(curl -sS -o /tmp/out.json -w "%{http_code}" -X POST \
+            -H "Authorization: token $DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/Aboudjem/10x/dispatches \
+            -d '{"event_type":"plugin-released","client_payload":{"plugin":"ui-ux-suite","version":"0.3.0"}}')
+          echo "HTTP $HTTP_CODE"
+          cat /tmp/out.json || true
+          if [ "$HTTP_CODE" = "204" ]; then
+            echo "OK: token works."
+          else
+            echo "FAIL: token rejected."
+            exit 1
+          fi
