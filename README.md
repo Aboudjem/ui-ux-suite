@@ -202,8 +202,20 @@ ui-ux-suite --json       JSON output for scripts
 ui-ux-suite --mcp        Start as MCP server
 ```
 
+**One-command audit via slash command** (v0.3, recommended):
+
+```
+/ui-ux-suite:audit                 Full 12-dimension audit, one report
+/ui-ux-suite:colors                Color-only audit
+/ui-ux-suite:a11y [--deep]         Accessibility-only audit (Playwright + axe-core in deep mode)
+/ui-ux-suite:typography            Typography and hierarchy audit
+/ui-ux-suite:components            Component-quality audit
+```
+
+These dispatch to the single `uiux_audit_run` MCP tool, which chains scan -> extract -> score -> report in one call. No manual tool chaining.
+
 <details>
-<summary><b>14 slash commands (Claude Code plugin)</b></summary>
+<summary><b>14 detailed slash commands (Claude Code plugin)</b></summary>
 
 | Command | What it does |
 |:--------|:-------------|
@@ -224,16 +236,17 @@ ui-ux-suite --mcp        Start as MCP server
 </details>
 
 <details>
-<summary><b>14 MCP tools</b></summary>
+<summary><b>15 MCP tools</b></summary>
 
 | Tool | What it does |
 |:-----|:-------------|
-| `uiux_scan_project` | Detect framework, styling, component lib |
+| `uiux_audit_run` | **One-call full audit. v0.3.** Scan + extract + score all 12 dimensions + format report. Supports `depth: "quick"\|"deep"` and `dimensions` scoping. |
+| `uiux_scan_project` | Detect framework, styling (Tailwind v3 vs v4), component lib, animation lib, icon lib, theme system. Returns structured diagnostics, no silent nulls. |
 | `uiux_extract_colors` | Pull all colors from CSS, Tailwind, tokens |
 | `uiux_extract_typography` | Extract fonts, sizes, weights, line heights |
 | `uiux_extract_spacing` | Extract padding, margin, gap values |
 | `uiux_check_contrast` | WCAG 2.1 + APCA contrast |
-| `uiux_score_dimension` | Score a single dimension |
+| `uiux_score_dimension` | Score any of 12 dimensions (v0.3: was 4) |
 | `uiux_score_overall` | Weighted overall score |
 | `uiux_generate_palette` | Generate palette from brand color |
 | `uiux_generate_type_scale` | Generate type scale |
@@ -243,6 +256,25 @@ ui-ux-suite --mcp        Start as MCP server
 | `uiux_laws_query` | Query 24 Laws of UX |
 | `uiux_audit_log` | Append finding to audit log |
 | `uiux_audit_report` | Generate formatted audit report |
+</details>
+
+<details>
+<summary><b>Deep mode (optional Playwright + axe-core)</b></summary>
+
+Quick mode is static analysis only (zero dependencies). For live accessibility and touch-target scanning, install the optional peer dependencies:
+
+```bash
+npm i -D playwright-core @axe-core/playwright
+npx playwright install chromium
+```
+
+Then:
+
+```
+/ui-ux-suite:a11y --deep
+```
+
+Deep mode injects axe-core into the running app at `baseUrl`, measures live contrast on rendered elements, flags touch targets smaller than 44x44px, and screenshots routes. Runs only when you ask for it — the default install stays zero-dep.
 </details>
 
 ---
