@@ -62,10 +62,8 @@ jobs:
           console.log('Claude Code plugin version matches package.json:', plugin.version);
           "
 
-      - name: Publish to npm with provenance
+      - name: Publish to npm with provenance (OIDC)
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
