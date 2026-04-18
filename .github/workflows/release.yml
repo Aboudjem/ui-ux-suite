@@ -20,8 +20,20 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22.14'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Ensure npm supports trusted publishing (>=11.5.1)
+        run: |
+          CURRENT=$(npm --version)
+          echo "Node $(node --version), npm $CURRENT"
+          node -e "
+          const [a,b,c] = process.argv[1].split('.').map(n => parseInt(n,10));
+          const ok = a > 11 || (a === 11 && (b > 5 || (b === 5 && c >= 1)));
+          if (!ok) { console.log('Upgrading npm from', process.argv[1], 'to >=11.5.1'); }
+          process.exit(ok ? 0 : 42);
+          " "$CURRENT" || npm install -g npm@latest
+          echo "Using npm $(npm --version)"
 
       - name: Verify tag matches package.json version
         run: |
