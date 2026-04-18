@@ -1,6 +1,6 @@
 {
   "name": "ui-ux-suite",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Comprehensive UI/UX design intelligence suite. Audit, score, recommend, and generate design improvements for any project.",
   "author": "Adam Boudjemaa",
   "license": "MIT",
@@ -33,6 +33,13 @@
     "skills/design-score/SKILL.md",
     "skills/design-compare/SKILL.md",
     "skills/design-checklist/SKILL.md"
+  ],
+  "commands": [
+    "commands/audit.md",
+    "commands/colors.md",
+    "commands/a11y.md",
+    "commands/typography.md",
+    "commands/components.md"
   ],
   "mcpServer": "lib/mcp-server.js"
 }

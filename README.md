@@ -71,7 +71,7 @@ claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
 ```
 
-Installs from the [10x marketplace](https://github.com/Aboudjem/10x). Adds 14 slash commands, 12 specialist agents, 19 knowledge docs, and the MCP server in one command.
+Installs from the [10x marketplace](https://github.com/Aboudjem/10x). Adds 19 slash commands (5 top-level `/ui-ux-suite:*` + 14 specialist skills), 12 specialist agents, 19 knowledge docs, and the MCP server in one command.
 </details>
 
 <details>
@@ -300,21 +300,24 @@ graph LR
 
 ```
 lib/
-  mcp-server.js       MCP JSON-RPC server
-  runner.js           Audit orchestrator
+  mcp-server.js       MCP JSON-RPC server (15 tools)
+  runner.js           Full 12-dimension audit orchestrator
+  browser.js          Optional Playwright + axe-core deep mode
   color-engine.js     WCAG, APCA, deltaE, palette
   type-engine.js      Scale math, readability
   spacing-engine.js   Grid detection, consistency
   oklch-parser.js     OKLCH color space
-  tailwind-parser.js  Class extraction
-  extractors.js       CSS, Tailwind, SCSS parsing
-  scoring.js          Weighted scoring
+  theme-parser.js     Tailwind v4 @theme / @theme inline parser
+  tailwind-parser.js  Class extraction + breakpoint bucketing
+  extractors.js       CSS, Tailwind, SCSS, stack detection
+  scoring.js          12 weighted dimension scorers
   schema.js           Data structures
   knowledge.js        Built-in knowledge base
 
+commands/    5 top-level slash commands (/ui-ux-suite:audit, ...)
 knowledge/   19 markdown docs (3,081 lines)
 agents/      12 specialist agents
-skills/      14 slash commands
+skills/      14 specialist slash commands
 templates/   5 report templates
 ```
 </details>
@@ -392,7 +395,7 @@ Contributions are welcome. This project is maintained in public and every PR is 
 ```bash
 git clone https://github.com/Aboudjem/ui-ux-suite
 cd ui-ux-suite
-npm test   # 148 tests, zero dependencies
+npm test   # 234 tests, zero dependencies
 ```
 
 ### What makes a good PR

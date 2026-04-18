@@ -37,13 +37,46 @@ jobs:
           if (!m.name) { console.error('Missing name'); process.exit(1); }
           if (!m.agents || !m.agents.length) { console.error('Missing agents'); process.exit(1); }
           if (!m.skills || !m.skills.length) { console.error('Missing skills'); process.exit(1); }
+          if (!m.commands || !m.commands.length) { console.error('Missing commands'); process.exit(1); }
           if (!m.mcpServer) { console.error('Missing mcpServer'); process.exit(1); }
           let bad = [];
-          [...m.agents, ...m.skills, m.mcpServer].forEach(p => {
+          [...m.agents, ...m.skills, ...m.commands, m.mcpServer].forEach(p => {
             if (!fs.existsSync(p)) bad.push(p);
           });
           if (bad.length) { console.error('Missing files:', bad); process.exit(1); }
-          console.log('Manifest valid:', m.agents.length, 'agents,', m.skills.length, 'skills, mcpServer OK');
+          console.log('Manifest valid:', m.agents.length, 'agents,', m.skills.length, 'skills,', m.commands.length, 'commands, mcpServer OK');
+          "
+
+      - name: Validate Claude Code plugin manifest
+        run: |
+          node -e "
+          const fs = require('fs');
+          const plugin = JSON.parse(fs.readFileSync('.claude-plugin/plugin.json', 'utf8'));
+          const pkg = require('./package.json');
+          if (!plugin.name) { console.error('.claude-plugin/plugin.json missing name'); process.exit(1); }
+          if (plugin.version !== pkg.version) {
+            console.error('.claude-plugin/plugin.json version', plugin.version, 'does not match package.json version', pkg.version);
+            process.exit(1);
+          }
+          console.log('Claude Code plugin manifest valid: name=' + plugin.name + ' version=' + plugin.version);
+          "
+
+      - name: Validate slash commands
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          if (!fs.existsSync('commands')) { console.log('No commands/ dir, skipping.'); return; }
+          const files = fs.readdirSync('commands').filter(f => f.endsWith('.md'));
+          if (files.length === 0) { console.error('commands/ directory is empty'); process.exit(1); }
+          let bad = [];
+          for (const f of files) {
+            const content = fs.readFileSync(path.join('commands', f), 'utf8');
+            if (!content.startsWith('---')) bad.push(f + ': missing YAML frontmatter');
+            else if (!/description:/m.test(content)) bad.push(f + ': frontmatter missing description');
+          }
+          if (bad.length) { console.error('Invalid slash commands:', bad); process.exit(1); }
+          console.log('Slash commands valid:', files.length, 'files');
           "
 
       - name: Verify package.json
