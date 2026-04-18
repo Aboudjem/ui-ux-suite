@@ -67,7 +67,11 @@ Then ask your AI: *"Audit this project's design."*
 <summary><b>Claude Code plugin marketplace</b> (recommended)</summary>
 
 ```bash
-claude plugin marketplace add Aboudjem/10x
+# In Claude Code
+/plugin marketplace add Aboudjem/10x
+/plugin install ui-ux-suite@10x
+
+# Or from the terminal
 claude plugin install ui-ux-suite@10x
 ```
 
@@ -78,10 +82,15 @@ Installs from the [10x marketplace](https://github.com/Aboudjem/10x). Adds 19 sl
 <summary><b>Claude Code plugin (direct)</b></summary>
 
 ```bash
-claude plugin add github:Aboudjem/ui-ux-suite
+# In Claude Code
+/plugin marketplace add Aboudjem/ui-ux-suite
+/plugin install ui-ux-suite@ui-ux-suite
+
+# Or from the terminal
+claude plugin install ui-ux-suite@ui-ux-suite
 ```
 
-Installs the plugin directly from this repo without the marketplace indirection.
+This repo ships its own `.claude-plugin/marketplace.json`, so it registers as a single-plugin marketplace. Installs directly without the 10x indirection.
 </details>
 
 <details>

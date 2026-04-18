@@ -1,0 +1,20 @@
+{
+  "name": "ui-ux-suite",
+  "metadata": {
+    "description": "Design audit tool for Claude Code — single-plugin marketplace."
+  },
+  "owner": {
+    "name": "Adam Boudjemaa"
+  },
+  "plugins": [
+    {
+      "name": "ui-ux-suite",
+      "source": ".",
+      "description": "Design audit tool. Scores projects across 12 dimensions (color, typography, a11y, layout) grounded in 24 named UX laws with primary-source citations. WCAG, APCA, OKLCH color science. Zero dependencies.",
+      "version": "0.3.0",
+      "homepage": "https://github.com/Aboudjem/ui-ux-suite",
+      "license": "MIT",
+      "keywords": ["design", "audit", "accessibility", "ui", "ux", "wcag", "apca", "laws-of-ux", "mcp"]
+    }
+  ]
+}

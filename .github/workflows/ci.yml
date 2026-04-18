@@ -47,7 +47,7 @@ jobs:
           console.log('Manifest valid:', m.agents.length, 'agents,', m.skills.length, 'skills,', m.commands.length, 'commands, mcpServer OK');
           "
 
-      - name: Validate Claude Code plugin manifest
+      - name: Validate Claude Code plugin + marketplace manifests
         run: |
           node -e "
           const fs = require('fs');
@@ -59,6 +59,20 @@ jobs:
             process.exit(1);
           }
           console.log('Claude Code plugin manifest valid: name=' + plugin.name + ' version=' + plugin.version);
+
+          if (fs.existsSync('.claude-plugin/marketplace.json')) {
+            const mp = JSON.parse(fs.readFileSync('.claude-plugin/marketplace.json', 'utf8'));
+            if (!mp.name || !Array.isArray(mp.plugins) || mp.plugins.length === 0) {
+              console.error('.claude-plugin/marketplace.json invalid: missing name or plugins');
+              process.exit(1);
+            }
+            const self = mp.plugins.find(p => p.name === plugin.name);
+            if (self && self.version !== pkg.version) {
+              console.error('marketplace.json version for', plugin.name, '(' + self.version + ') does not match package.json (' + pkg.version + ')');
+              process.exit(1);
+            }
+            console.log('Marketplace manifest valid:', mp.name, 'listing', mp.plugins.length, 'plugins');
+          }
           "
 
       - name: Validate slash commands
