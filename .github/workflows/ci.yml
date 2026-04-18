@@ -80,17 +80,20 @@ jobs:
           node -e "
           const fs = require('fs');
           const path = require('path');
-          if (!fs.existsSync('commands')) { console.log('No commands/ dir, skipping.'); return; }
-          const files = fs.readdirSync('commands').filter(f => f.endsWith('.md'));
-          if (files.length === 0) { console.error('commands/ directory is empty'); process.exit(1); }
-          let bad = [];
-          for (const f of files) {
-            const content = fs.readFileSync(path.join('commands', f), 'utf8');
-            if (!content.startsWith('---')) bad.push(f + ': missing YAML frontmatter');
-            else if (!/description:/m.test(content)) bad.push(f + ': frontmatter missing description');
+          if (!fs.existsSync('commands')) {
+            console.log('No commands/ dir, skipping.');
+          } else {
+            const files = fs.readdirSync('commands').filter(f => f.endsWith('.md'));
+            if (files.length === 0) { console.error('commands/ directory is empty'); process.exit(1); }
+            const bad = [];
+            for (const f of files) {
+              const content = fs.readFileSync(path.join('commands', f), 'utf8');
+              if (!content.startsWith('---')) bad.push(f + ': missing YAML frontmatter');
+              else if (!/description:/m.test(content)) bad.push(f + ': frontmatter missing description');
+            }
+            if (bad.length) { console.error('Invalid slash commands:', bad); process.exit(1); }
+            console.log('Slash commands valid:', files.length, 'files');
           }
-          if (bad.length) { console.error('Invalid slash commands:', bad); process.exit(1); }
-          console.log('Slash commands valid:', files.length, 'files');
           "
 
       - name: Verify package.json
