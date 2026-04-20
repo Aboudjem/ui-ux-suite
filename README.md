@@ -11,13 +11,43 @@
   <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=0ea5e9" alt="Stars"></a>
 </p>
 
-<p align="center">Your project's design quality, measured. Not guessed.</p>
+<p align="center"><b>Your project's design quality — measured, not guessed.</b></p>
+
+<p align="center">
+  <a href="#install">Install</a> ·
+  <a href="#what-it-scores">What it scores</a> ·
+  <a href="#commands">Commands</a> ·
+  <a href="docs/VIDEO-PLAN.md">Demo videos</a>
+</p>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/scorecard-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/scorecard-light.svg">
+  <img alt="UI/UX Suite scorecard" src=".github/assets/scorecard-light.svg" width="100%">
+</picture>
+
+---
+
+## The 30-second pitch
+
+> Design reviews are vibes. This turns them into data.
+
+`ui-ux-suite` scans your CSS, JSX, and Tailwind config and scores **12 design dimensions** — color system, typography, layout, components, accessibility, hierarchy, interactions, responsiveness, and more. Every finding cites an authority (WCAG, APCA, Hick's Law, Miller's Law, Fitts's Law). Every fix comes with code.
 
 ```bash
 npx ui-ux-suite
 ```
 
-Scans your CSS, JSX, and Tailwind config. Scores 12 design dimensions. Cites the UX law each finding violates. Gives you the fix. Zero deps. Zero config. Runs 100% locally.
+No dependencies. No config. No API keys. 100% local.
+
+### Why developers love it
+
+- **ESLint for design.** One command produces a quantified 1–10 score per dimension and a weighted overall grade you can track over time.
+- **Cites real UX laws, not opinions.** WCAG 2.2, APCA contrast, OKLCH color science, deltaE near-duplicate detection — not "this feels off."
+- **Runs anywhere.** Works with React, Vue, Svelte, Angular, vanilla. Detects Tailwind, shadcn, Radix, Framer Motion automatically.
+- **Talks to your AI editor.** Ships as an MCP server. Just ask *"audit my design"* in Claude / Cursor / Copilot.
+- **Gives you the code.** `/uiux-fix` generates the before/after patch for the top finding. `uiux_generate_palette` does an OKLCH-based recolor of your tokens.
+- **Zero dependencies.** The project is vanilla JS, by design. Ships under 200KB.
 
 ---
 
