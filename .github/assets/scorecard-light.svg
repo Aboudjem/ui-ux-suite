@@ -1,78 +1,313 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 604" fill="none" role="img" aria-label="UI/UX Suite design audit scorecard">
   <style>
-    .title { font: 700 18px system-ui, sans-serif; fill: #1e1b4b; }
-    .grade { font: 700 48px system-ui, sans-serif; fill: #6366f1; }
-    .grade-label { font: 500 14px system-ui, sans-serif; fill: #64748b; }
-    .dim-label { font: 400 13px system-ui, sans-serif; fill: #334155; }
-    .dim-score { font: 600 13px system-ui, sans-serif; fill: #1e1b4b; }
-    .bar-bg { fill: #e2e8f0; rx: 4; }
-    .finding-critical { font: 500 12px system-ui, sans-serif; fill: #dc2626; }
-    .finding-important { font: 500 12px system-ui, sans-serif; fill: #d97706; }
-    .finding-suggestion { font: 500 12px system-ui, sans-serif; fill: #6366f1; }
+    .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+    .inset { fill: #f8fafc; stroke: #e2e8f0; stroke-opacity: 0.9; stroke-width: 1; }
+    .title { font: 800 20px 'SF Pro Display', system-ui, sans-serif; fill: #0f172a; }
+    .label { font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: 0.8px; fill: #7c3aed; }
+    .muted { font: 500 12px system-ui, sans-serif; fill: #64748b; }
+    .strong { font: 600 13px system-ui, sans-serif; fill: #1e293b; }
+    .grade-num { font: 800 60px 'SF Pro Display', system-ui, sans-serif; fill: url(#grade-g); }
+    .grade-suffix { font: 600 16px system-ui, sans-serif; fill: #7c3aed; }
+    .grade-tag { font: 700 11px system-ui, sans-serif; letter-spacing: 0.6px; fill: #059669; }
+    .dim { font: 500 13px system-ui, sans-serif; fill: #334155; }
+    .dim-score { font: 700 13px system-ui, sans-serif; fill: #0f172a; }
+    .bar-bg { fill: #eef2ff; }
+    .mono { font: 500 11px ui-monospace, Menlo, monospace; fill: #1e293b; }
+    .mono-dim { font: 500 11px ui-monospace, Menlo, monospace; fill: #94a3b8; }
+    .cmd-accent { font: 600 11px ui-monospace, Menlo, monospace; fill: #db2777; }
+    .usecase { font: 600 11px system-ui, sans-serif; fill: #334155; }
+    .finding-crit { font: 600 12px system-ui, sans-serif; fill: #dc2626; }
+    .finding-warn { font: 600 12px system-ui, sans-serif; fill: #d97706; }
+    .finding-hint { font: 600 12px system-ui, sans-serif; fill: #7c3aed; }
+
+    @keyframes bar-grow { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+    .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8 { transform-origin: left center; transform-box: fill-box; }
+    .b1 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.1s both; }
+    .b2 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.2s both; }
+    .b3 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.3s both; }
+    .b4 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.4s both; }
+    .b5 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.5s both; }
+    .b6 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.6s both; }
+    .b7 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.7s both; }
+    .b8 { animation: bar-grow 0.9s cubic-bezier(.3,.8,.4,1) 0.8s both; }
+
+    @keyframes grade-pulse {
+      0%,100% { filter: drop-shadow(0 0 4px rgba(124,58,237,0.25)); }
+      50% { filter: drop-shadow(0 0 10px rgba(124,58,237,0.5)); }
+    }
+    .grade-num { animation: grade-pulse 3s ease-in-out infinite; }
+
+    @keyframes slide-in { 0% { opacity: 0; transform: translateX(10px); } 100% { opacity: 1; transform: translateX(0); } }
+    .f1 { animation: slide-in 0.6s ease-out 1.0s both; }
+    .f2 { animation: slide-in 0.6s ease-out 1.2s both; }
+    .f3 { animation: slide-in 0.6s ease-out 1.4s both; }
+    .f4 { animation: slide-in 0.6s ease-out 1.6s both; }
+    .f5 { animation: slide-in 0.6s ease-out 1.8s both; }
+    .f6 { animation: slide-in 0.6s ease-out 2.0s both; }
+
+    @keyframes dot-pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.7; } }
+    .d1,.d2,.d3,.d4,.d5,.d6 { transform-origin: center; transform-box: fill-box; }
+    .d1 { animation: dot-pulse 2s ease-in-out infinite; }
+    .d2 { animation: dot-pulse 2s ease-in-out infinite 0.3s; }
+    .d3 { animation: dot-pulse 2s ease-in-out infinite 0.6s; }
+    .d4 { animation: dot-pulse 2s ease-in-out infinite 0.9s; }
+    .d5 { animation: dot-pulse 2s ease-in-out infinite 1.2s; }
+    .d6 { animation: dot-pulse 2s ease-in-out infinite 1.5s; }
+
+    @keyframes scan-sweep {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 0.55; }
+      90% { opacity: 0.55; }
+      100% { transform: translateY(220px); opacity: 0; }
+    }
+    .scan { animation: scan-sweep 4s ease-in-out infinite; }
+
+    @keyframes blink { 0%,49% { opacity:1; } 50%,100% { opacity: 0; } }
+    .caret { animation: blink 1s step-end infinite; }
+
+    @keyframes live-pulse {
+      0%,100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px rgba(16,185,129,0.5)); }
+      50% { transform: scale(1.3); opacity: 0.85; filter: drop-shadow(0 0 6px rgba(16,185,129,0.9)); }
+    }
+    .pulse-dot { animation: live-pulse 1.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+    @keyframes icon-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+    .icon { animation: icon-float 2.5s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+    .icon-1 { animation-delay: 0s; }
+    .icon-2 { animation-delay: 0.2s; }
+    .icon-3 { animation-delay: 0.4s; }
+    .icon-4 { animation-delay: 0.6s; }
+    .icon-5 { animation-delay: 0.8s; }
+    .icon-6 { animation-delay: 1.0s; }
+    .icon-7 { animation-delay: 1.2s; }
+    .icon-8 { animation-delay: 1.4s; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .bg-spk-1, .bg-spk-2, .bg-spk-3, .bg-spk-4 { transform-origin: center; transform-box: fill-box; }
+    .bg-spk-1 { animation: twinkle 3s ease-in-out infinite; }
+    .bg-spk-2 { animation: twinkle 3s ease-in-out infinite 0.8s; }
+    .bg-spk-3 { animation: twinkle 3s ease-in-out infinite 1.6s; }
+    .bg-spk-4 { animation: twinkle 3s ease-in-out infinite 2.2s; }
+
+    @keyframes score-pop {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    .dim-score { animation: score-pop 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
   </style>
-  <!-- Card -->
-  <rect width="680" height="420" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
-  <!-- Header -->
-  <text x="28" y="38" class="title">Design Score Card</text>
-  <text x="28" y="88" class="grade">7.2</text>
-  <text x="108" y="78" class="grade-label">/10</text>
-  <text x="108" y="96" class="grade-label">Good</text>
-  <!-- Dimension bars -->
-  <g transform="translate(28, 120)">
-    <!-- Color System -->
-    <text x="0" y="12" class="dim-label">Color System</text>
-    <rect x="140" y="2" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="2" width="160" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
-    <text x="350" y="12" class="dim-score">8.0</text>
-    <!-- Typography -->
-    <text x="0" y="38" class="dim-label">Typography</text>
-    <rect x="140" y="28" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="28" width="130" height="12" rx="4" fill="#818cf8" opacity="0.8"/>
-    <text x="350" y="38" class="dim-score">6.5</text>
-    <!-- Layout -->
-    <text x="0" y="64" class="dim-label">Layout &amp; Spacing</text>
-    <rect x="140" y="54" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="54" width="140" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
-    <text x="350" y="64" class="dim-score">7.0</text>
-    <!-- Components -->
-    <text x="0" y="90" class="dim-label">Components</text>
-    <rect x="140" y="80" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="80" width="150" height="12" rx="4" fill="#818cf8" opacity="0.8"/>
-    <text x="350" y="90" class="dim-score">7.5</text>
-    <!-- Accessibility -->
-    <text x="0" y="116" class="dim-label">Accessibility</text>
-    <rect x="140" y="106" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="106" width="120" height="12" rx="4" fill="#f59e0b" opacity="0.8"/>
-    <text x="350" y="116" class="dim-score">6.0</text>
-    <!-- Hierarchy -->
-    <text x="0" y="142" class="dim-label">Visual Hierarchy</text>
-    <rect x="140" y="132" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="132" width="140" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
-    <text x="350" y="142" class="dim-score">7.0</text>
-    <!-- Interaction -->
-    <text x="0" y="168" class="dim-label">Interactions</text>
-    <rect x="140" y="158" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="158" width="160" height="12" rx="4" fill="#6366f1" opacity="0.85"/>
-    <text x="350" y="168" class="dim-score">8.0</text>
-    <!-- Responsive -->
-    <text x="0" y="194" class="dim-label">Responsiveness</text>
-    <rect x="140" y="184" width="200" height="12" class="bar-bg" rx="4"/>
-    <rect x="140" y="184" width="180" height="12" rx="4" fill="#22c55e" opacity="0.8"/>
-    <text x="350" y="194" class="dim-score">9.0</text>
+
+  <defs>
+    <linearGradient id="grade-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="bar-color" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="bar-typo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="bar-layout" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <linearGradient id="bar-comp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#65a30d"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="bar-a11y" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="bar-hier" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="bar-int" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="bar-resp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="scan-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#7c3aed" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="604" rx="20" class="card"/>
+
+  <g class="bg-spk-1"><path d="M 680 60 l 2 5 l 5 2 l -5 2 l -2 5 l -2 -5 l -5 -2 l 5 -2 Z" fill="#ec4899" opacity="0.55"/></g>
+  <g class="bg-spk-2"><circle cx="740" cy="280" r="2" fill="#7c3aed"/></g>
+  <g class="bg-spk-3"><circle cx="40" cy="440" r="2" fill="#0ea5e9"/></g>
+  <g class="bg-spk-4"><path d="M 760 460 l 2 4 l 4 2 l -4 2 l -2 4 l -2 -4 l -4 -2 l 4 -2 Z" fill="#d97706" opacity="0.55"/></g>
+
+  <g transform="translate(32,30)">
+    <text class="label">UI/UX SUITE · DESIGN AUDIT SCORECARD</text>
   </g>
-  <!-- Findings -->
-  <line x1="420" y1="120" x2="420" y2="380" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="436" y="138" class="title" font-size="14">Top Findings</text>
-  <circle cx="444" cy="162" r="4" fill="#dc2626"/>
-  <text x="456" y="166" class="finding-critical">No focus indicators</text>
-  <circle cx="444" cy="186" r="4" fill="#dc2626"/>
-  <text x="456" y="190" class="finding-critical">No type scale detected</text>
-  <circle cx="444" cy="210" r="4" fill="#d97706"/>
-  <text x="456" y="214" class="finding-important">24 colors — consolidate</text>
-  <circle cx="444" cy="234" r="4" fill="#d97706"/>
-  <text x="456" y="238" class="finding-important">No reduced-motion</text>
-  <circle cx="444" cy="258" r="4" fill="#6366f1"/>
-  <text x="456" y="262" class="finding-suggestion">6 near-duplicate colors</text>
-  <circle cx="444" cy="282" r="4" fill="#6366f1"/>
-  <text x="456" y="286" class="finding-suggestion">Body text 14px → 16px</text>
+
+  <text x="32" y="68" class="title">Your design, measured across 12 dimensions</text>
+  <text x="32" y="90" class="muted">ESLint for design — evidence-backed scores, real UX laws, code-ready fixes.</text>
+
+  <g transform="translate(32,110)">
+    <rect width="240" height="110" rx="14" class="inset"/>
+    <text x="24" y="72" class="grade-num">7.2</text>
+    <text x="130" y="50" class="grade-suffix">/ 10</text>
+    <text x="130" y="74" class="strong">Good</text>
+    <g transform="translate(130,84)">
+      <rect width="100" height="20" rx="10" fill="#05966922" stroke="#059669" stroke-opacity="0.7"/>
+      <text x="50" y="14" text-anchor="middle" class="grade-tag">▲ +1.4 vs last</text>
+    </g>
+  </g>
+
+  <g transform="translate(290,110)">
+    <rect width="478" height="44" rx="10" class="inset"/>
+    <text x="16" y="28" class="cmd-accent">$ npx ui-ux-suite</text>
+    <rect class="caret" x="132" y="18" width="2" height="14" fill="#db2777"/>
+    <text x="148" y="28" class="mono-dim">scans CSS · JSX · Tailwind · design tokens</text>
+  </g>
+
+  <g transform="translate(290,162)">
+    <rect width="478" height="44" rx="10" class="inset"/>
+    <circle cx="18" cy="22" r="4" fill="#10b981" class="pulse-dot"/>
+    <text x="32" y="26" class="mono">84 files scanned · 1.9s · 0 API calls · 100% local</text>
+  </g>
+
+  <g transform="translate(290,212)">
+    <rect width="478" height="2" rx="1" fill="#e2e8f0"/>
+  </g>
+
+  <text x="32" y="238" class="label">DIMENSION SCORES</text>
+
+  <g transform="translate(32,252)">
+    <rect class="scan" x="0" y="-6" width="420" height="24" fill="url(#scan-grad)"/>
+
+    <g transform="translate(0,0)">
+      <text x="0" y="12" class="dim">🎨  Color System</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b1" x="160" y="2" width="160" height="12" rx="4" fill="url(#bar-color)"/>
+      <text x="370" y="12" class="dim-score">8.0</text>
+    </g>
+    <g transform="translate(0,26)">
+      <text x="0" y="12" class="dim">🔤  Typography</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b2" x="160" y="2" width="130" height="12" rx="4" fill="url(#bar-typo)"/>
+      <text x="370" y="12" class="dim-score">6.5</text>
+    </g>
+    <g transform="translate(0,52)">
+      <text x="0" y="12" class="dim">📐  Layout &amp; Spacing</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b3" x="160" y="2" width="140" height="12" rx="4" fill="url(#bar-layout)"/>
+      <text x="370" y="12" class="dim-score">7.0</text>
+    </g>
+    <g transform="translate(0,78)">
+      <text x="0" y="12" class="dim">🧩  Components</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b4" x="160" y="2" width="150" height="12" rx="4" fill="url(#bar-comp)"/>
+      <text x="370" y="12" class="dim-score">7.5</text>
+    </g>
+    <g transform="translate(0,104)">
+      <text x="0" y="12" class="dim">♿  Accessibility</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b5" x="160" y="2" width="120" height="12" rx="4" fill="url(#bar-a11y)"/>
+      <text x="370" y="12" class="dim-score">6.0</text>
+    </g>
+    <g transform="translate(0,130)">
+      <text x="0" y="12" class="dim">🎯  Visual Hierarchy</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b6" x="160" y="2" width="140" height="12" rx="4" fill="url(#bar-hier)"/>
+      <text x="370" y="12" class="dim-score">7.0</text>
+    </g>
+    <g transform="translate(0,156)">
+      <text x="0" y="12" class="dim">✨  Interactions</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b7" x="160" y="2" width="160" height="12" rx="4" fill="url(#bar-int)"/>
+      <text x="370" y="12" class="dim-score">8.0</text>
+    </g>
+    <g transform="translate(0,182)">
+      <text x="0" y="12" class="dim">📱  Responsiveness</text>
+      <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
+      <rect class="b8" x="160" y="2" width="180" height="12" rx="4" fill="url(#bar-resp)"/>
+      <text x="370" y="12" class="dim-score">9.0</text>
+    </g>
+  </g>
+
+  <g transform="translate(460,238)">
+    <text x="0" y="0" class="label">TOP FINDINGS · click → AI fix</text>
+    <g transform="translate(0,16)">
+      <g transform="translate(0,0)"><g class="f1">
+        <circle class="d1" cx="8" cy="10" r="4" fill="#dc2626"/>
+        <text x="22" y="14" class="finding-crit">No focus indicators — WCAG 2.4.7 fail</text>
+      </g></g>
+      <g transform="translate(0,24)"><g class="f2">
+        <circle class="d2" cx="8" cy="10" r="4" fill="#dc2626"/>
+        <text x="22" y="14" class="finding-crit">No type scale — violates Miller's Law</text>
+      </g></g>
+      <g transform="translate(0,48)"><g class="f3">
+        <circle class="d3" cx="8" cy="10" r="4" fill="#d97706"/>
+        <text x="22" y="14" class="finding-warn">24 colors found · consolidate to 8</text>
+      </g></g>
+      <g transform="translate(0,72)"><g class="f4">
+        <circle class="d4" cx="8" cy="10" r="4" fill="#d97706"/>
+        <text x="22" y="14" class="finding-warn">No prefers-reduced-motion guard</text>
+      </g></g>
+      <g transform="translate(0,96)"><g class="f5">
+        <circle class="d5" cx="8" cy="10" r="4" fill="#7c3aed"/>
+        <text x="22" y="14" class="finding-hint">6 near-duplicate hues (deltaE &lt; 3)</text>
+      </g></g>
+      <g transform="translate(0,120)"><g class="f6">
+        <circle class="d6" cx="8" cy="10" r="4" fill="#7c3aed"/>
+        <text x="22" y="14" class="finding-hint">Body text 14px → 16px (readability)</text>
+      </g></g>
+    </g>
+  </g>
+
+  <g transform="translate(32,472)">
+    <text class="label">WHAT IT SCANS · no config · 100% local · zero api keys</text>
+  </g>
+  <g transform="translate(32,484)">
+    <g>
+      <rect width="110" height="22" rx="11" fill="#fdf2f8" stroke="#ec4899" stroke-opacity="0.45"/>
+      <text x="55" y="15" text-anchor="middle" class="usecase">CSS tokens</text>
+    </g>
+    <g transform="translate(118,0)">
+      <rect width="110" height="22" rx="11" fill="#fff7ed" stroke="#f97316" stroke-opacity="0.45"/>
+      <text x="55" y="15" text-anchor="middle" class="usecase">JSX / TSX</text>
+    </g>
+    <g transform="translate(236,0)">
+      <rect width="140" height="22" rx="11" fill="#f7fee7" stroke="#65a30d" stroke-opacity="0.45"/>
+      <text x="70" y="15" text-anchor="middle" class="usecase">Tailwind config</text>
+    </g>
+    <g transform="translate(384,0)">
+      <rect width="124" height="22" rx="11" fill="#ecfeff" stroke="#06b6d4" stroke-opacity="0.45"/>
+      <text x="62" y="15" text-anchor="middle" class="usecase">shadcn / Radix</text>
+    </g>
+    <g transform="translate(516,0)">
+      <rect width="140" height="22" rx="11" fill="#faf5ff" stroke="#a855f7" stroke-opacity="0.45"/>
+      <text x="70" y="15" text-anchor="middle" class="usecase">Framer Motion</text>
+    </g>
+  </g>
+
+  <g transform="translate(32,516)">
+    <text class="label">3 COMMANDS · that's all you need</text>
+  </g>
+  <g transform="translate(32,534)" font-family="ui-monospace, Menlo, monospace" font-size="12">
+    <text y="12" class="cmd-accent">$ npx ui-ux-suite</text>
+    <text x="260" y="12" class="mono-dim">→  run the full 12-dimension audit</text>
+
+    <text y="32" class="cmd-accent">$ ui-ux-suite --mcp</text>
+    <text x="260" y="32" class="mono-dim">→  use it from Claude / Cursor / Copilot</text>
+
+    <text y="52" class="cmd-accent">/uiux-fix</text>
+    <text x="260" y="52" class="mono-dim">→  AI generates the code fix for you</text>
+  </g>
 </svg>
