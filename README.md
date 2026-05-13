@@ -8,10 +8,11 @@
   <a href="https://www.npmjs.com/package/ui-ux-suite"><img src="https://img.shields.io/npm/v/ui-ux-suite?color=0ea5e9&logo=npm&label=npm&style=flat-square" alt="npm"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0ea5e9?style=flat-square" alt="License"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%E2%89%A518-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node"></a>
+  <a href="https://github.com/Aboudjem/10x"><img src="https://img.shields.io/badge/10x-marketplace-0ea5e9?style=flat-square" alt="10x marketplace"></a>
   <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=0ea5e9" alt="Stars"></a>
 </p>
 
-<p align="center"><b>Your project's design quality — measured, not guessed.</b></p>
+<p align="center"><b>Your project's design quality, measured, not guessed.</b></p>
 
 <p align="center">
   <a href="#install">Install</a> ·
@@ -30,15 +31,20 @@
 
 ## The 30-second pitch
 
+> [!NOTE]
 > Design reviews are vibes. This turns them into data.
 
-`ui-ux-suite` scans your CSS, JSX, and Tailwind config and scores **12 design dimensions** — color system, typography, layout, components, accessibility, hierarchy, interactions, responsiveness, and more. Every finding cites an authority (WCAG, APCA, Hick's Law, Miller's Law, Fitts's Law). Every fix comes with code.
+`ui-ux-suite` scans your CSS, JSX, and Tailwind config and scores **12 design dimensions**: color system, typography, layout, components, accessibility, hierarchy, interactions, responsiveness, and more. Every finding cites an authority (WCAG, APCA, Hick's Law, Miller's Law, Fitts's Law). Every fix comes with code.
 
 ```bash
 npx ui-ux-suite
 ```
 
-No dependencies. No config. No API keys. 100% local.
+> [!IMPORTANT]
+> No dependencies. No config. No API keys. 100% local.
+
+> [!TIP]
+> Part of the [10x marketplace](https://github.com/Aboudjem/10x). Pull it plus the rest of the curated set with one command: `claude plugin marketplace add Aboudjem/10x`.
 
 ### Why developers love it
 
@@ -52,6 +58,17 @@ No dependencies. No config. No API keys. 100% local.
 ---
 
 ## Install
+
+<details open>
+<summary><b>Claude Code plugin marketplace</b> (one-command install)</summary>
+
+```bash
+claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x
+```
+
+This installs ui-ux-suite as a Claude Code plugin from the [10x marketplace](https://github.com/Aboudjem/10x). Skills, commands, and the MCP server wire up automatically.
+</details>
 
 <details>
 <summary><b>From your AI editor (MCP)</b></summary>
