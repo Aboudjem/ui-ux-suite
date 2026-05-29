@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "ui-ux-suite",
-      "source": ".",
+      "source": "./",
       "description": "Design audit tool. Scores projects across 12 dimensions (color, typography, a11y, layout) grounded in 24 named UX laws with primary-source citations. WCAG, APCA, OKLCH color science. Zero dependencies.",
       "version": "0.3.0",
       "homepage": "https://github.com/Aboudjem/ui-ux-suite",

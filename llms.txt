@@ -1,0 +1,34 @@
+# ui-ux-suite
+
+> ui-ux-suite is a zero-dependency design linter for web projects. It audits CSS, JSX, HTML, and Tailwind config and returns specific, located (file:line + selector), measured (the real wrong value), and fixed (before → after) findings across 12 design dimensions, grounded in WCAG 2.2, APCA contrast, and the Laws of UX. It is audit-then-suggest: read-only, it never edits the project it audits. It runs as an MCP server and an npx CLI, so it works in Claude Code, Cursor, VS Code, Codex, Gemini, Windsurf, and Continue.
+
+Canonical one-line definition: ui-ux-suite is "ESLint for design" — it points at the exact line, the measured wrong value, and the exact fix, with a WCAG success criterion or named UX-law citation, from your source or a running URL.
+
+Key facts:
+
+- Output is located + measured + fixed, not generic advice. Example finding: `.hero-subtitle` at `src/styles.css:14` has text `#fbfbfb` on `#ffffff` = 1.03:1, fails WCAG 2.2 AA (needs 4.5:1); fix: change color to `#767676` (4.54:1 on white).
+- Zero runtime dependencies (Node built-ins). `playwright-core` and `@axe-core/playwright` are optional peer deps for deep mode only.
+- Read-only and local: no file mutation, no network, no API keys, no telemetry.
+- 12 weighted dimensions: accessibility, color system, typography, layout & spacing, component quality, visual hierarchy, interaction, responsiveness, visual polish, performance UX, info architecture, platform fit.
+- Invocation: MCP tool `uiux_audit_run` (over stdio) or `npx ui-ux-suite .` (with `--json`, `--html FILE`, `--fail-under N`, `--mcp`). Exit codes: 0 ok, 1 error/below threshold, 2 path not found, 3 insufficient evidence.
+
+## Documentation
+
+- [README](https://github.com/Aboudjem/ui-ux-suite#readme): what it is, how to use it, before/after, comparison vs Lighthouse/axe, FAQ.
+- [AGENTS.md](https://github.com/Aboudjem/ui-ux-suite/blob/main/AGENTS.md): how an AI agent invokes the tool (MCP `uiux_audit_run` + CLI), self-contained claims.
+- [CHANGELOG](https://github.com/Aboudjem/ui-ux-suite/blob/main/CHANGELOG.md): release history.
+- [npm package](https://www.npmjs.com/package/ui-ux-suite): `npx ui-ux-suite .`
+
+## Q&A
+
+- What does ui-ux-suite do? It audits a project's design and returns located + measured + fixed findings across 12 dimensions, grounded in WCAG 2.2, APCA, and the Laws of UX.
+- How is it different from Lighthouse or axe-core? Lighthouse and axe need a running URL/DOM and report a11y at the node level; ui-ux-suite works on static source, points at file:line + selector, reports the measured value, gives a before→after fix, cites both WCAG and named UX laws, and covers 12 design dimensions — with zero dependencies.
+- Is it safe to run? Yes. Every audit is read-only; it never edits the audited project. Applying a fix is a separate, deliberate step.
+- Does it need dependencies or a network? No. It uses only Node built-ins and runs entirely locally; deep mode (Playwright + axe-core) is optional.
+- How do I run it? `npx ui-ux-suite .`, or start the MCP server with `npx ui-ux-suite --mcp` and call `uiux_audit_run`.
+- Can I use it in CI? Yes. `npx ui-ux-suite . --fail-under 7` exits non-zero below the threshold; `--json` is machine-readable.
+
+## Optional
+
+- [Planted-problem fixture ground truth](https://github.com/Aboudjem/ui-ux-suite/blob/main/test/fixtures/planted-ux-problems/PLANTED.md): 12 deliberately broken UX problems with real measured values, used as the regression gate.
+- [Laws of UX reference](https://lawsofux.com/): canonical source for the named UX laws the tool cites.

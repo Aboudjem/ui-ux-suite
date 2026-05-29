@@ -2,4 +2,4 @@
 # Set this in: Repository Settings > About > Description
 #
 # Current recommendation:
-Open source design audit tool for Claude Code. Scores UI/UX across 12 dimensions (color contrast, typography, accessibility, layout, and more) using WCAG 2.1, APCA, and OKLCH color science. Zero dependencies. One command. Actionable fixes with before/after code.
+ESLint for design. Audits your CSS/JSX/HTML for specific, located (file:line), measured findings with a concrete fix — across 12 dimensions, grounded in WCAG 2.2, APCA, and the Laws of UX. Read-only, zero-dependency. Works in Claude Code, Cursor, VS Code, Codex, and Gemini via MCP or npx.

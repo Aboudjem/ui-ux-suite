@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-05-29
+
+### Added — the specificity rebuild
+
+- **Located + measured + fixed findings.** Every emitted finding now carries
+  `evidence: { file, line, col, selector, measured, threshold }` plus a concrete `fix` and a
+  `before`/`after`. On the 12-problem planted fixture (`test/fixtures/planted-ux-problems/`),
+  specificity rose from **0/12 to 12/12** — each problem is now detected **and** located **and**
+  measured **and** fixed. The extractors carry `{value, file, line, col, selector}` from source
+  through scoring instead of concatenating all CSS into one blob and emitting bare
+  `{severity, msg}` strings.
+- **Static contrast engine (WCAG 2.2 + APCA).** Source-based contrast is computed directly from
+  CSS without a browser: WCAG 2.2 ratios and APCA Lc, with the real measured value reported in
+  each finding (e.g. `.hero-subtitle` `#fbfbfb` on `#ffffff` = `1.03:1`).
+- **Standalone HTML report** via `--html FILE` — a dark-theme report with the ranked findings.
+- **CLI flags + exit codes.** `--json` (clean document on stdout, banner to stderr for `| jq`),
+  `--fail-under N` (CI gate), `--html FILE`, `--mcp`. Exit codes: `0` ok · `1` audit error or
+  below `--fail-under` · `2` path not found · `3` insufficient evidence.
+- **Zero-evidence guard.** When a project lacks enough evidence to score, the audit returns
+  `insufficientEvidence: true` with `overall`/`grade` set to `null` and no findings, instead of
+  emitting a misleadingly confident number.
+
+### Changed
+
+- **Corrected UX-law citations.** Fixed the broken `von-restorff` slug to `von-restorff-effect`,
+  stored the canonical `law-of-pragnanz` deep-link URL (Law of Prägnanz), and stopped tagging
+  accessibility findings with UX laws — those now cite the WCAG success criterion (`1.4.3`,
+  `1.4.11`, `2.5.8`, `2.4.7`, `1.1.1`, `3.3.2`). A pinned allow-list test fails if any emitted
+  `laws:[...]` value is not a verified slug.
+- **Audit-then-suggest formalized.** The audit path is strictly read-only; a test asserts an
+  audit run creates or modifies no files under the audited project.
+
+### Fixed
+
+- **`claude plugin validate` blocker.** Changed `.claude-plugin/marketplace.json` `source`
+  from `"."` to `"./"` (single-plugin marketplaces require the `./` prefix), renamed the
+  `skills/design-audit/SKILL.md` frontmatter key `trigger:` to the official `when_to_use:`, and
+  removed the legacy root `manifest.json`. `claude plugin validate .` now passes (exit 0).
+
 ## [0.3.0] - 2026-04-18
 
 ### Added — v1.1 UX Rework
