@@ -5,8 +5,10 @@
 </picture>
 
 <p align="center">
+  <a href="https://github.com/Aboudjem/ui-ux-suite/actions/workflows/ci.yml"><img src="https://github.com/Aboudjem/ui-ux-suite/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://www.npmjs.com/package/ui-ux-suite"><img src="https://img.shields.io/npm/v/ui-ux-suite?color=0ea5e9&logo=npm&label=npm&style=flat-square" alt="npm"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0ea5e9?style=flat-square" alt="License"></a>
+  <a href="#real-tests"><img src="https://img.shields.io/badge/tests-311%20passing-0ea5e9?style=flat-square" alt="311 tests passing"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%E2%89%A518-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node 18+"></a>
   <a href="#zero-dependencies"><img src="https://img.shields.io/badge/dependencies-0-0ea5e9?style=flat-square" alt="Zero dependencies"></a>
   <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=0ea5e9" alt="Stars"></a>
@@ -26,13 +28,13 @@
 
 ## What is ui-ux-suite?
 
-**ui-ux-suite is a zero-dependency design linter that audits your CSS, JSX, HTML, and Tailwind config and returns specific, located, measured findings with a concrete fix — not generic advice.**
+**ui-ux-suite is a zero-dependency design linter that audits your CSS, JSX, HTML, and Tailwind config and returns specific, located, measured findings with a concrete fix, not generic advice.**
 
 Most "design review" tools tell you *"improve your contrast."* This tool tells you:
 
 > `.hero-subtitle` at `src/styles.css:14`: text `#fbfbfb` on `#ffffff` = **1.03:1**, fails WCAG 2.2 AA (needs 4.5:1). Fix: change `color` to `#767676` (4.54:1 on white) or darker.
 
-That is the whole point. Every finding is **located** (file:line + selector), **measured** (the real wrong number), and **fixed** (the exact change). It scores **12 design dimensions** grounded in **WCAG 2.2**, **APCA** contrast, and the **Laws of UX** — citing the WCAG success criterion or the named law it depends on.
+That is the whole point. Every finding is **located** (file:line + selector), **measured** (the real wrong number), and **fixed** (the exact change). It scores **12 design dimensions** grounded in **WCAG 2.2**, **APCA** contrast, and the **Laws of UX**, citing the WCAG success criterion or the named law it depends on.
 
 - **It audits, it never edits.** Every run is read-only and outputs suggestions (`before` → `after`). Applying a fix is your call.
 - **It runs anywhere.** One MCP server + one `npx` CLI → works in Claude Code, Cursor, VS Code, Codex, Gemini, Windsurf, and Continue.
@@ -88,27 +90,27 @@ claude mcp add ui-ux-suite npx ui-ux-suite --mcp
 codex mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
 
-**Cursor** — `~/.cursor/mcp.json`:
+**Cursor** (`~/.cursor/mcp.json`):
 ```json
 { "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
 ```
 
-**VS Code + Copilot** — `.vscode/mcp.json`:
+**VS Code + Copilot** (`.vscode/mcp.json`):
 ```json
 { "servers": { "ui-ux-suite": { "command": "npx", "args": ["-y", "ui-ux-suite", "--mcp"] } } }
 ```
 
-**Gemini CLI** — `~/.gemini/mcp_config.json`:
+**Gemini CLI** (`~/.gemini/mcp_config.json`):
 ```json
 { "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
 ```
 
-**Windsurf** — `~/.codeium/windsurf/mcp_config.json`:
+**Windsurf** (`~/.codeium/windsurf/mcp_config.json`):
 ```json
 { "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
 ```
 
-**Continue.dev** — `.continue/mcpServers/ui-ux-suite.yaml`:
+**Continue.dev** (`.continue/mcpServers/ui-ux-suite.yaml`):
 ```yaml
 mcpServers:
   ui-ux-suite: { command: npx, args: [ui-ux-suite, --mcp], type: stdio }
@@ -152,26 +154,26 @@ Requires Node 18+.
 
 The repo ships a fixture with **12 deliberately planted UX problems** and their ground truth (`test/fixtures/planted-ux-problems/PLANTED.md`). It is the regression gate for every release.
 
-The thing that changed in this rebuild is **specificity** — whether a finding is detected **and** located **and** measured **and** fixed:
+The thing that changed in this rebuild is **specificity**: whether a finding is detected **and** located **and** measured **and** fixed:
 
 | | Detected | Located (`file:line`) | Measured (real value) | Fixed (`before`→`after`) | Specificity |
 |:--|:--:|:--:|:--:|:--:|:--:|
 | **Before (v0.3 baseline)** | partial | ✗ | ✗ | ✗ | **0 / 12** |
 | **After (v0.4)** | ✓ | ✓ | ✓ | ✓ | **12 / 12** |
 
-The old engine concatenated every CSS file into one blob and emitted bare `{severity, msg}` strings — file identity died before scoring, so it could never point at a line. The new engine carries `{value, file, line, col, selector}` from the extractor all the way to the finding.
+The old engine concatenated every CSS file into one blob and emitted bare `{severity, msg}` strings; file identity died before scoring, so it could never point at a line. The new engine carries `{value, file, line, col, selector}` from the extractor all the way to the finding.
 
 **A real finding from that fixture** (verbatim from `npx ui-ux-suite test/fixtures/planted-ux-problems`):
 
 ```
-Low text contrast on `.hero-subtitle` — 1.03:1
+Low text contrast on `.hero-subtitle`: 1.03:1
   src/styles.css:14   ·   WCAG 1.4.3 Contrast (Minimum) (AA)
   measured: 1.03:1 (APCA Lc 0)
   fix: change color on `.hero-subtitle` from #fbfbfb to #767676
        (meets 4.5:1 on #ffffff), or darken further.
 ```
 
-That fixture currently scores **3.8 / 10 ("Needs Work")** — because it is supposed to be broken. Run it yourself:
+That fixture currently scores **3.8 / 10 ("Needs Work")**, because it is supposed to be broken. Run it yourself:
 
 ```bash
 npx ui-ux-suite test/fixtures/planted-ux-problems
@@ -181,7 +183,7 @@ npx ui-ux-suite test/fixtures/planted-ux-problems
 
 ## How it compares
 
-The differentiator is **located + measured + fixed, with a WCAG SC or UX-law citation, from your source *or* a URL** — in one zero-dep command across every editor.
+The differentiator is **located + measured + fixed, with a WCAG SC or UX-law citation, from your source *or* a URL**, in one zero-dep command across every editor.
 
 | | ui-ux-suite | Lighthouse | axe-core | CSS / design linters |
 |:--|:--:|:--:|:--:|:--:|
@@ -195,7 +197,7 @@ The differentiator is **located + measured + fixed, with a WCAG SC or UX-law cit
 | Covers **12 design dimensions** (beyond a11y) | ✓ | partial | a11y only | per-rule |
 | Zero runtime dependencies | ✓ | ✗ | ✗ | ✗ |
 
-ui-ux-suite does not replace Lighthouse or axe — it covers the gap they leave: design quality grounded in your **source**, with a fix you can paste.
+ui-ux-suite does not replace Lighthouse or axe. It covers the gap they leave: design quality grounded in your **source**, with a fix you can paste.
 
 ---
 
@@ -207,16 +209,16 @@ ui-ux-suite does not replace Lighthouse or axe — it covers the gap they leave:
 |:----------|:------:|:-------|
 | Accessibility | 12% | Focus visible, alt text, labels, target size, reduced motion |
 | Color System | 10% | WCAG + APCA contrast, duplicate hues, semantic roles, dark mode |
-| Typography | 10% | Scale consistency, font count, body size, line height |
+| Typography System | 10% | Scale consistency, font count, body size, line height |
 | Layout & Spacing | 10% | Grid, off-scale values, breakpoints, container widths |
 | Component Quality | 10% | States: hover, focus, disabled, loading, error |
 | Visual Hierarchy | 10% | Type scale, information priority, scannability |
-| Interaction | 8% | Animation timing, easing, feedback |
+| Interaction Quality | 8% | Animation timing, easing, feedback |
 | Responsiveness | 8% | Breakpoints, container queries, viewport meta |
 | Visual Polish | 7% | Shadow quality, radius tokens, off-scale arbitrary values |
 | Performance UX | 5% | Loading states, perceived speed |
-| Info Architecture | 5% | Validation, navigation, command palette |
-| Platform Fit | 5% | Dark mode, component lib, a11y primitives |
+| Information Architecture | 5% | Validation, navigation, command palette |
+| Platform Appropriateness | 5% | Dark mode, component lib, a11y primitives |
 
 ---
 
@@ -235,7 +237,7 @@ graph LR
     style E fill:#0ea5e9,stroke:#0284c7,color:#ffffff
 ```
 
-Static analysis is the default and the primary deliverable — it needs no browser. **Deep mode** is opt-in: install the optional peer deps (`playwright-core`, `@axe-core/playwright`) and pass a `baseUrl` to also measure live contrast, flag touch targets under 44×44px, and screenshot routes. When the deps are absent, it degrades gracefully to source-based findings.
+Static analysis is the default and the primary deliverable; it needs no browser. **Deep mode** is opt-in: install the optional peer deps (`playwright-core`, `@axe-core/playwright`) and pass a `baseUrl` to also measure live contrast, flag touch targets under 44×44px, and screenshot routes. When the deps are absent, it degrades gracefully to source-based findings.
 
 <details>
 <summary><b>The 16 MCP tools</b></summary>
@@ -272,7 +274,7 @@ Plus 14 specialist `/design-*`, `/color-audit`, `/a11y-audit`, … commands and 
 ## FAQ
 
 **Is it safe to run on my project?**
-Yes. Every audit is strictly read-only. The tool never creates, edits, or deletes files in the project you audit — it only reads and reports. Deep-mode screenshots happen in a throwaway browser page, never against your source.
+Yes. Every audit is strictly read-only. The tool never creates, edits, or deletes files in the project you audit; it only reads and reports. Deep-mode screenshots happen in a throwaway browser page, never against your source.
 
 **Does my code leave my machine?**
 No. All analysis runs locally with Node built-ins. No network calls, no API keys, no telemetry.
@@ -281,7 +283,7 @@ No. All analysis runs locally with Node built-ins. No network calls, no API keys
 React, Next.js, Vue, Svelte, Angular, and vanilla. Styling: Tailwind (v3 and v4 `@theme`), CSS Modules, SCSS, styled-components, Emotion, vanilla-extract, plain CSS. It auto-detects the stack; no config.
 
 **<a id="zero-dependencies"></a>Is it really zero-dependency?**
-Yes — the runtime uses only Node built-ins. `playwright-core` and `@axe-core/playwright` are **optional** peer deps for deep mode only; the default install pulls nothing.
+Yes. The runtime uses only Node built-ins. `playwright-core` and `@axe-core/playwright` are **optional** peer deps for deep mode only; the default install pulls nothing.
 
 **Do I need a running app?**
 No. Source-based findings are the default. A running URL plus deep mode is a bonus, not a requirement.
@@ -297,9 +299,9 @@ Yes. `npx ui-ux-suite . --fail-under 7` exits non-zero when the score drops belo
 ## Why trust it
 
 - **Real color science.** Contrast is computed with the tool's own WCAG 2.2 and APCA math, not estimated. The fixture's measured ratios (e.g. `1.03:1`) are reproducible from `lib/color-engine.js`.
-- **Cited WCAG success criteria.** Accessibility findings cite the exact SC — `1.4.3` Contrast (Minimum), `1.4.11` Non-text Contrast, `2.5.8` Target Size, `2.4.7` Focus Visible, `1.1.1` Non-text Content, `3.3.2` Labels or Instructions.
+- **Cited WCAG success criteria.** Accessibility findings cite the exact SC: `1.4.3` Contrast (Minimum), `1.4.11` Non-text Contrast, `2.5.8` Target Size, `2.4.7` Focus Visible, `1.1.1` Non-text Content, `3.3.2` Labels or Instructions.
 - **Verified Laws of UX.** UX findings cite a named law from a primary-source allow-list, each linking to its canonical [lawsofux.com](https://lawsofux.com/) page (e.g. Hick's Law, Fitts's Law, Law of Prägnanz). A wrong citation is treated as worse than none, so the citation set is pinned by a test.
-- **A regression gate, not a vibe.** The 12-problem fixture asserts every finding carries `evidence.file`, `evidence.line`, and a `fix`. If specificity regresses, the test suite fails.
+- <a id="real-tests"></a>**A regression gate, not a vibe.** **311 tests** (run `npm test`) assert real behavior, including a 12-problem fixture where every finding must carry `evidence.file`, `evidence.line`, and a `fix`. If specificity regresses, the test suite fails.
 
 ---
 
@@ -321,7 +323,7 @@ npm test
 
 - **Bug fixes** should include a test that would have caught the bug.
 - **New scoring rules** must cite a WCAG SC or a named UX law from the allow-list and emit a `createFinding(...)` with `evidence: {file, line, selector, measured, threshold}` plus a `fix`.
-- **No new runtime dependencies** — the suite is zero-dep by design.
+- **No new runtime dependencies.** The suite is zero-dep by design.
 - **No em-dashes** in user-facing copy.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [SECURITY.md](SECURITY.md).

@@ -2,7 +2,7 @@
 
 > ui-ux-suite is a zero-dependency design linter for web projects. It audits CSS, JSX, HTML, and Tailwind config and returns specific, located (file:line + selector), measured (the real wrong value), and fixed (before → after) findings across 12 design dimensions, grounded in WCAG 2.2, APCA contrast, and the Laws of UX. It is audit-then-suggest: read-only, it never edits the project it audits. It runs as an MCP server and an npx CLI, so it works in Claude Code, Cursor, VS Code, Codex, Gemini, Windsurf, and Continue.
 
-Canonical one-line definition: ui-ux-suite is "ESLint for design" — it points at the exact line, the measured wrong value, and the exact fix, with a WCAG success criterion or named UX-law citation, from your source or a running URL.
+Canonical one-line definition: ui-ux-suite is "ESLint for design" that points at the exact line, the measured wrong value, and the exact fix, with a WCAG success criterion or named UX-law citation, from your source or a running URL.
 
 Key facts:
 
@@ -22,7 +22,7 @@ Key facts:
 ## Q&A
 
 - What does ui-ux-suite do? It audits a project's design and returns located + measured + fixed findings across 12 dimensions, grounded in WCAG 2.2, APCA, and the Laws of UX.
-- How is it different from Lighthouse or axe-core? Lighthouse and axe need a running URL/DOM and report a11y at the node level; ui-ux-suite works on static source, points at file:line + selector, reports the measured value, gives a before→after fix, cites both WCAG and named UX laws, and covers 12 design dimensions — with zero dependencies.
+- How is it different from Lighthouse or axe-core? Lighthouse and axe need a running URL/DOM and report a11y at the node level; ui-ux-suite works on static source, points at file:line + selector, reports the measured value, gives a before→after fix, cites both WCAG and named UX laws, and covers 12 design dimensions, with zero dependencies.
 - Is it safe to run? Yes. Every audit is read-only; it never edits the audited project. Applying a fix is a separate, deliberate step.
 - Does it need dependencies or a network? No. It uses only Node built-ins and runs entirely locally; deep mode (Playwright + axe-core) is optional.
 - How do I run it? `npx ui-ux-suite .`, or start the MCP server with `npx ui-ux-suite --mcp` and call `uiux_audit_run`.

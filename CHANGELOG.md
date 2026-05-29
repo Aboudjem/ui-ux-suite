@@ -22,19 +22,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.0] - 2026-05-29
 
-### Added — the specificity rebuild
+### Added: the specificity rebuild
 
 - **Located + measured + fixed findings.** Every emitted finding now carries
   `evidence: { file, line, col, selector, measured, threshold }` plus a concrete `fix` and a
   `before`/`after`. On the 12-problem planted fixture (`test/fixtures/planted-ux-problems/`),
-  specificity rose from **0/12 to 12/12** — each problem is now detected **and** located **and**
+  specificity rose from **0/12 to 12/12**: each problem is now detected **and** located **and**
   measured **and** fixed. The extractors carry `{value, file, line, col, selector}` from source
   through scoring instead of concatenating all CSS into one blob and emitting bare
   `{severity, msg}` strings.
 - **Static contrast engine (WCAG 2.2 + APCA).** Source-based contrast is computed directly from
   CSS without a browser: WCAG 2.2 ratios and APCA Lc, with the real measured value reported in
   each finding (e.g. `.hero-subtitle` `#fbfbfb` on `#ffffff` = `1.03:1`).
-- **Standalone HTML report** via `--html FILE` — a dark-theme report with the ranked findings.
+- **Standalone HTML report** via `--html FILE`: a dark-theme report with the ranked findings.
 - **CLI flags + exit codes.** `--json` (clean document on stdout, banner to stderr for `| jq`),
   `--fail-under N` (CI gate), `--html FILE`, `--mcp`. Exit codes: `0` ok · `1` audit error or
   below `--fail-under` · `2` path not found · `3` insufficient evidence.
@@ -46,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Corrected UX-law citations.** Fixed the broken `von-restorff` slug to `von-restorff-effect`,
   stored the canonical `law-of-pragnanz` deep-link URL (Law of Prägnanz), and stopped tagging
-  accessibility findings with UX laws — those now cite the WCAG success criterion (`1.4.3`,
+  accessibility findings with UX laws; those now cite the WCAG success criterion (`1.4.3`,
   `1.4.11`, `2.5.8`, `2.4.7`, `1.1.1`, `3.3.2`). A pinned allow-list test fails if any emitted
   `laws:[...]` value is not a verified slug.
 - **Audit-then-suggest formalized.** The audit path is strictly read-only; a test asserts an
@@ -61,16 +61,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.0] - 2026-04-18
 
-### Added — v1.1 UX Rework
+### Added: v1.1 UX Rework
 
 - **Five slash commands** at the plugin root: `/ui-ux-suite:audit` (full 12-dimension audit), `/ui-ux-suite:colors`, `/ui-ux-suite:a11y`, `/ui-ux-suite:typography`, `/ui-ux-suite:components`. Each dispatches to the single `uiux_audit_run` MCP tool with scoped `dimensions`, so users get one command, one report, no tool-chaining.
 - **New MCP tool `uiux_audit_run`**: single entry point that exposes the full `lib/runner.js:auditProject` pipeline. Returns structured JSON + formatted markdown in one call. Supports `projectPath` (defaults to `cwd`), `dimensions` (scope), `depth: "quick"|"deep"`, `baseUrl`, and `format: "full"|"summary"|"json"`.
-- **Eight new dimension scorers** in `lib/scoring.js`: `components`, `hierarchy`, `interaction`, `responsive`, `polish`, `performance`, `flows`, `platform`. Each returns `{ score, findings, confidence }` where `confidence` is `high|medium|insufficient` — the first two dimensions previously silently failed with "No scorer for dimension"; now all 12 work. Exports `ALL_SCORERS`.
+- **Eight new dimension scorers** in `lib/scoring.js`: `components`, `hierarchy`, `interaction`, `responsive`, `polish`, `performance`, `flows`, `platform`. Each returns `{ score, findings, confidence }` where `confidence` is `high|medium|insufficient`; the first two dimensions previously silently failed with "No scorer for dimension", but now all 12 work. Exports `ALL_SCORERS`.
 - **Tailwind v4 `@theme` and `@theme inline` parser** in `lib/theme-parser.js`: hand-rolled CSS block extractor with brace-depth, string, and comment tracking. Zero dependencies. Categorizes declarations into colors, fonts, radii, shadows, spacing, breakpoints, and other.
 - **Honest stack detection** in `lib/extractors.js`: `detectStyling` now differentiates `tailwind-v3` from `tailwind-v4` via the version in `package.json` and flags `panda-css`, `vanilla-extract`, `stitches`. New `detectAnimationLib`, `detectIconLib`, and `detectThemeSystemDetails` functions report which component, theme, and icon libraries a project uses.
 - **TSX/JSX/Vue/Svelte className extraction** in `lib/tailwind-parser.js`: balanced-brace capture handles JSX expression containers, ternaries, template literals (including `${...}` embedded expressions), and `cn()`/`clsx()`/`cva()`/`twMerge()`/`tv()` calls. Adds Vue `:class` binding and Svelte `class:foo` directive support.
-- **Breakpoint bucketing** via `bucketByBreakpoint(classes)` and `analyzeResponsiveCoverage(classes)` — sorts classes into `base`/`sm`/`md`/`lg`/`xl`/`2xl`, surfaces `distinctBreakpoints` and `ratioResponsive` for the new responsive scorer.
-- **Arbitrary-value flagging** via `flagArbitraryValues(classes)` — detects `text-[10px]`, `p-[13px]`, etc. and reports them as off-scale usage for the polish scorer.
+- **Breakpoint bucketing** via `bucketByBreakpoint(classes)` and `analyzeResponsiveCoverage(classes)`: sorts classes into `base`/`sm`/`md`/`lg`/`xl`/`2xl`, surfaces `distinctBreakpoints` and `ratioResponsive` for the new responsive scorer.
+- **Arbitrary-value flagging** via `flagArbitraryValues(classes)`: detects `text-[10px]`, `p-[13px]`, etc. and reports them as off-scale usage for the polish scorer.
 - **Optional Playwright + axe-core deep mode** in `lib/browser.js`: `uiux_audit_run({ depth: "deep", baseUrl })` launches `playwright-core` + `@axe-core/playwright` behind a dynamic `import()` probe. Disables noisy axe rules (`region`, `landmark-one-main`) by default, launches with `chromiumSandbox:false` + `--disable-dev-shm-usage` for CI/Docker, and measures touch targets smaller than 44x44. When peer deps are missing, returns `PLAYWRIGHT_MISSING` with the exact install command.
 - **Declared peer dependencies** in `package.json`: `playwright-core >=1.59.0` and `@axe-core/playwright >=4.11.0`, both marked `optional: true` via `peerDependenciesMeta`. No new default install weight.
 - **Expanded project profile** in `lib/schema.js`: `createProjectProfile()` now includes `animationLib`, `iconLib`, `themeSignals`, `isTailwindV4`, and `tailwindV4Theme` (block count, inline/default split, token counts).

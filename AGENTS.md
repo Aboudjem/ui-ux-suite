@@ -1,4 +1,4 @@
-# AGENTS.md — ui-ux-suite
+# AGENTS.md: ui-ux-suite
 
 > Guidance for AI coding agents working with or invoking this repo. Companion to
 > [README.md](README.md) (which is for humans). This file follows the
@@ -19,11 +19,11 @@ Tailwind config and returns findings that are **located** (`file:line` + selecto
 The MCP server runs over stdio with zero dependencies. Start it with `npx ui-ux-suite --mcp`,
 then call the `uiux_audit_run` tool. Arguments:
 
-- `projectPath` (string, default `cwd`) — the directory to audit.
-- `dimensions` (string[], optional) — scope to specific dimensions; omit for all 12.
-- `depth` (`"quick"` | `"deep"`, default `"quick"`) — `"deep"` needs a `baseUrl` and the
+- `projectPath` (string, default `cwd`): the directory to audit.
+- `dimensions` (string[], optional): scope to specific dimensions; omit for all 12.
+- `depth` (`"quick"` | `"deep"`, default `"quick"`): `"deep"` needs a `baseUrl` and the
   optional peer deps; otherwise use `"quick"` (static, no browser).
-- `baseUrl` (string, optional) — running app URL for deep mode.
+- `baseUrl` (string, optional): running app URL for deep mode.
 - `format` (`"full"` | `"summary"` | `"json"`, default `"full"`).
 
 The result includes `scoreCard.overall`, `scoreCard.grade`, `scoreCard.dimensions[]`, and
@@ -32,7 +32,7 @@ The result includes `scoreCard.overall`, `scoreCard.grade`, `scoreCard.dimension
 and a citation (`wcag: []` success criteria and/or `laws: []` slugs).
 
 When `insufficientEvidence` is `true`, `overall`/`grade` are `null` and there are no
-findings — report that the project lacked enough evidence rather than inventing a score.
+findings; report that the project lacked enough evidence rather than inventing a score.
 
 Other useful tools: `uiux_scan_project` (stack detection), `uiux_check_contrast` (WCAG +
 APCA for a color pair), `uiux_extract_colors` / `uiux_extract_typography` /
