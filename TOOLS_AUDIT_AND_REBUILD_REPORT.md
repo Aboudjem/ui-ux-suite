@@ -81,15 +81,29 @@ located tokens) and the finding-emission layer (→ `createFinding` with an `evi
 Example located finding (real output): `accessibility — .hero-subtitle (src/styles.css:14): #fbfbfb
 on #ffffff = 1.03:1, fails WCAG 2.2 §1.4.3 (need 4.5:1). Fix: color → #767676.`
 
-## 5. Verification (Phase 11)
+## 5. Verification (Phase 11) — independent, separate-lane review
 
-Independent, separate-lane review (the builders did not grade their own work):
-- **Skeptical Reviewer** re-derived RED→GREEN from primaries, spot-checked finding correctness, hunted
-  false positives, and confirmed audit-then-suggest + XSS-safety → `docs/audit/VERIFICATION.md`.
-- **First-time-user (GREEN)** re-ran the README-only flow → `docs/audit/11-first-time-user-GREEN.md`.
-- **Multi-editor smoke** (MCP stdio + npx CLI, per-editor config) → `docs/audit/MULTI-EDITOR-SMOKE.md`.
+The builders did not grade their own work. A fresh adversarial Skeptical Reviewer re-derived every
+load-bearing claim from primaries and ran on a corpus of real third-party projects.
 
-_Verdict: see VERIFICATION.md (GO/NO-GO) — summarized in this report's final section after sign-off._
+- **First-time-user (GREEN):** README-only run succeeds in under 5 minutes → `docs/audit/11-first-time-user-GREEN.md`.
+- **Multi-editor smoke:** MCP stdio (`initialize`/`tools/list`/`tools/call`) + npx CLI, per-editor config → `docs/audit/MULTI-EDITOR-SMOKE.md`.
+- **Skeptical Reviewer** (`docs/audit/VERIFICATION*.md`) CONFIRMED: RED→GREEN (12/12), finding
+  correctness (contrast math byte-exact), audit-then-suggest (byte-identical SHA tree before/after a
+  run), XSS-safe HTML, and valid UX-law citations. It also did what a real review must — it found
+  what was still broken:
+
+  | Round | NO-GO found (highest-risk: false positives on real CSS) | Fix |
+  |---|---|---|
+  | 1 | `rgba()` alpha stripped (faint tints read as opaque); aliased vars → impossible `fg===bg` "1:1" | alpha compositing over the surface; `fg===bg` skip; base-over-`@media` vars |
+  | 2 | project-wide pooling → one global surface for a **multi-site monorepo** (hermes: **43 FP**) | per-site contrast scoping; conflicting light+dark surfaces → skip; cascade-aware var map (global `:root` beats component-scoped CSS-Module vars) |
+  | 3 | **descendant-of-dark-section** (white text in a dark footer judged on the light page; lissaglow: **16 FP**) | a backgroundless text rule whose effective surface is the page fallback is skipped when the ratio is near-invisible (`<1.5:1`) — a missing-surface artifact, not real |
+
+  After each NO-GO the defect was fixed, a regression test added, and the claim re-derived. Net result
+  on the verification corpus: **0 contrast false positives across hermes / lissaglow / nitya / recap /
+  ox** (43→0, 16→0), with genuine findings retained (nitya keeps its 7) and the planted fixture at 12/12.
+
+_Final GO/NO-GO recorded in the latest `docs/audit/VERIFICATION-*.md`._
 
 ## 6. Deliverables & next commands
 
