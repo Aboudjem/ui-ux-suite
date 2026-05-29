@@ -18,7 +18,7 @@ Scoped audit focused on color system quality.
 5. Offer palette suggestions via the color-analyst agent if the score is below 7.
 
 ## What color audit covers
-- WCAG 2.1 contrast (AA + AAA) and APCA Lc values
+- WCAG 2.2 contrast (AA + AAA) and APCA Lc values
 - Near-duplicate detection via deltaE (< 3.0 flagged)
 - Color-count hygiene (too many or too few)
 - Semantic coverage (primary, success, warning, destructive)
