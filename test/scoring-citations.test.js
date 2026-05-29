@@ -32,7 +32,9 @@ describe('Law citations on findings', () => {
       `expected teslers-law or millers-law, got ${JSON.stringify(f.laws)}`);
   });
 
-  it('scoreAccessibility cites fittss-law or jakobs-law on missing focus indicators', () => {
+  it('scoreAccessibility cites WCAG 2.4.7 (not a UX law) on missing focus indicators', () => {
+    // Corrected per the UX-law verification audit (DECISIONS.md D4): an accessibility failure
+    // must cite the WCAG success criterion, not a UX law (a UX law is not evidence for a WCAG fail).
     const result = scoreAccessibility({
       hasFocusIndicators: false,
       hasReducedMotion: true,
@@ -42,8 +44,9 @@ describe('Law citations on findings', () => {
     });
     const f = result.findings.find(x => x.msg.toLowerCase().includes('focus'));
     assert.ok(f, 'expected a focus-indicator finding');
-    assert.ok(Array.isArray(f.laws) && (f.laws.includes('fittss-law') || f.laws.includes('jakobs-law')),
-      `expected fittss-law or jakobs-law, got ${JSON.stringify(f.laws)}`);
+    assert.ok(Array.isArray(f.wcag) && f.wcag.includes('2.4.7'),
+      `expected WCAG 2.4.7 citation, got ${JSON.stringify(f.wcag)}`);
+    assert.ok(!f.laws, 'accessibility finding must not cite a UX law');
   });
 
   it('scoreLayout cites law-of-proximity on inconsistent spacing', () => {
