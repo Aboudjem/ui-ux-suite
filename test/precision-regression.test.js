@@ -60,6 +60,25 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     assert.equal(r.filter(x => x.ratio <= 1.5).length, 0, 'no impossible near-1:1 from surface misresolution');
   });
 
+  it('a :root global var WINS over a component-scoped (CSS Module) redefinition', () => {
+    // Skeptic VERIFICATION-2: page.module.css set `.page{--foreground:#fff}` which clobbered the real
+    // `:root{--foreground:#171717}`, making body text resolve to white-on-near-white (1.04:1 FP).
+    const { buildVarMap, resolveColor } = require('../lib/static-contrast');
+    const decls = [
+      d(':root', '--foreground', '#171717', 1),                  // global
+      d(':root', '--background', '#ffffff', 2),                  // global
+      d('.page', '--foreground', '#ffffff', 10),                 // component-local — must NOT win for body
+      d('.page', '--background', '#fafafa', 11),
+    ];
+    const vm = buildVarMap(decls);
+    assert.equal(resolveColor('var(--foreground)', vm), '#171717', 'global :root foreground must win');
+    const r = analyzeTextContrast(decls.concat([
+      d('body', 'color', 'var(--foreground)', 3),
+      d('body', 'background', 'var(--background)', 4),
+    ]));
+    assert.equal(r.length, 0, 'body must resolve to #171717 on #ffffff (16:1), not a white-on-white FP');
+  });
+
   it('still resolves a coherent single-site DARK theme (text on dark measured correctly)', () => {
     const r = analyzeTextContrast([
       d(':root', '--bg', '#0a0e1a', 1),
