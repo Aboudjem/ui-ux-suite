@@ -26,7 +26,6 @@
     "skills/",
     "knowledge/",
     "templates/",
-    "manifest.json",
     "LICENSE"
   ],
   "scripts": {

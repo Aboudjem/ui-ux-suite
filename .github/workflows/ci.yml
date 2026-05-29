@@ -29,24 +29,6 @@ jobs:
       - name: Validate modules
         run: npm test
 
-      - name: Validate manifest
-        run: |
-          node -e "
-          const m = require('./manifest.json');
-          const fs = require('fs');
-          if (!m.name) { console.error('Missing name'); process.exit(1); }
-          if (!m.agents || !m.agents.length) { console.error('Missing agents'); process.exit(1); }
-          if (!m.skills || !m.skills.length) { console.error('Missing skills'); process.exit(1); }
-          if (!m.commands || !m.commands.length) { console.error('Missing commands'); process.exit(1); }
-          if (!m.mcpServer) { console.error('Missing mcpServer'); process.exit(1); }
-          let bad = [];
-          [...m.agents, ...m.skills, ...m.commands, m.mcpServer].forEach(p => {
-            if (!fs.existsSync(p)) bad.push(p);
-          });
-          if (bad.length) { console.error('Missing files:', bad); process.exit(1); }
-          console.log('Manifest valid:', m.agents.length, 'agents,', m.skills.length, 'skills,', m.commands.length, 'commands, mcpServer OK');
-          "
-
       - name: Validate Claude Code plugin + marketplace manifests
         run: |
           node -e "

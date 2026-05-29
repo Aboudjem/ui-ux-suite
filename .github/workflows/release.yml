@@ -47,20 +47,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Validate manifest
-        run: |
-          node -e "
-          const m = require('./manifest.json');
-          const fs = require('fs');
-          let bad = [];
-          const commands = Array.isArray(m.commands) ? m.commands : [];
-          [...m.agents, ...m.skills, ...commands, m.mcpServer].forEach(p => {
-            if (!fs.existsSync(p)) bad.push(p);
-          });
-          if (bad.length) { console.error('Missing files:', bad); process.exit(1); }
-          console.log('Manifest valid:', m.agents.length, 'agents,', m.skills.length, 'skills,', commands.length, 'commands');
-          "
-
       - name: Validate Claude Code plugin manifest matches package.json
         run: |
           node -e "
