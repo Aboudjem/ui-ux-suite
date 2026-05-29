@@ -3,7 +3,7 @@
 
 **UI/UX Design Intelligence Suite**
 
-A Claude Code plugin that gives any developer instant, evidence-based design auditing across 12 dimensions — color, typography, layout, accessibility, interaction quality, and more. It scans real project files (CSS, JSX, Tailwind configs), produces quantified scores (1-10 per dimension, weighted overall), and generates actionable fix recommendations with before/after code. Think "ESLint for design" — but powered by 19 knowledge base documents, 12 specialized agents, and real color science (WCAG 2.1, APCA, OKLCH, deltaE).
+A Claude Code plugin that gives any developer instant, evidence-based design auditing across 12 dimensions — color, typography, layout, accessibility, interaction quality, and more. It scans real project files (CSS, JSX, Tailwind configs), produces quantified scores (1-10 per dimension, weighted overall), and generates actionable fix recommendations with before/after code. Think "ESLint for design" — but powered by 21 knowledge base documents, 12 specialized agents, and real color science (WCAG 2.2, APCA, OKLCH, deltaE).
 
 **Core Value:** **Any developer can audit their project's design quality in one command and get a prioritized, evidence-backed action plan — no design background needed.**
 

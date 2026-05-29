@@ -16,7 +16,7 @@ Run a comprehensive design audit on the current project or a specified path.
 
 ## Flow
 
-1. **Load knowledge base** - Read the knowledge index and all 19 knowledge files:
+1. **Load knowledge base** - Read the knowledge index and all 21 knowledge files:
    - Use `uiux_knowledge_query` with `listFiles: true` to get the full inventory
    - Every agent reads its assigned knowledge files (see `knowledge/INDEX.md` for the mapping)
    - The evidence base, principles, anti-patterns, and trends files are required reading for ALL agents
