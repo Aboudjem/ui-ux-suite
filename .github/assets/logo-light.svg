@@ -25,6 +25,10 @@
     .dot2 { animation: pulse 2s ease-in-out infinite 0.5s; }
     .dot3 { animation: pulse 2s ease-in-out infinite 1s; }
     .bg-shimmer { animation: shimmer 5s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .bar1, .bar2, .bar3, .bar4 { transform: scaleX(1) !important; }
+    }
   </style>
   <rect x="10" y="20" width="700" height="160" rx="24" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="1.5" stroke-opacity="0.2"/>
   <rect class="bg-shimmer" x="10" y="20" width="700" height="160" rx="24" fill="#0ea5e9"/>
@@ -53,7 +57,7 @@
   <!-- Title -->
   <text x="150" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="700" fill="#0c4a6e" letter-spacing="-1">ui-ux-suite</text>
   <!-- Subtitle -->
-  <text x="150" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#0ea5e9" font-weight="500">Design Quality, Measured. Not Guessed.</text>
+  <text x="150" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#0ea5e9" font-weight="500">Design quality, measured, not guessed</text>
   <!-- Tagline -->
   <text x="150" y="144" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">12 dimensions  ·  WCAG + APCA  ·  OKLCH color science  ·  Zero deps</text>
 </svg>

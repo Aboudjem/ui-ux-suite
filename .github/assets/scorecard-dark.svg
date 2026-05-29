@@ -87,7 +87,7 @@
     }
     .pulse-dot { animation: live-pulse 1.8s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
 
-    /* bar shimmer — moving highlight across the filled bar */
+    /* bar shimmer: moving highlight across the filled bar */
     @keyframes shimmer-sweep {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(600%); }
@@ -149,6 +149,13 @@
     .shine-6 { animation: bar-shine 3.5s ease-in-out infinite 2.0s; }
     .shine-7 { animation: bar-shine 3.5s ease-in-out infinite 2.3s; }
     .shine-8 { animation: bar-shine 3.5s ease-in-out infinite 2.6s; }
+
+    /* respect reduced-motion: stop animation but keep everything visible */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .b1, .b2, .b3, .b4, .b5, .b6, .b7, .b8 { transform: scaleX(1) !important; }
+      .f1, .f2, .f3, .f4, .f5, .f6 { opacity: 1 !important; transform: none !important; }
+    }
   </style>
 
   <defs>
@@ -212,7 +219,7 @@
 
   <!-- Title -->
   <text x="32" y="68" class="title">Your design, measured across 12 dimensions</text>
-  <text x="32" y="90" class="muted">ESLint for design — evidence-backed scores, real UX laws, code-ready fixes.</text>
+  <text x="32" y="90" class="muted">ESLint for design: evidence-backed scores, real UX laws, code-ready fixes.</text>
 
   <!-- Grade card -->
   <g transform="translate(32,110)">
@@ -222,7 +229,8 @@
     <text x="130" y="74" class="strong">Good</text>
     <g transform="translate(130,84)">
       <rect width="100" height="20" rx="10" fill="#10b98122" stroke="#10b981" stroke-opacity="0.6"/>
-      <text x="50" y="14" text-anchor="middle" class="grade-tag">▲ +1.4 vs last</text>
+      <path d="M 18 14 l 4 -7 l 4 7 Z" fill="#10b981"/>
+      <text x="56" y="14" text-anchor="middle" class="grade-tag">+1.4 vs last</text>
     </g>
   </g>
 
@@ -256,56 +264,64 @@
 
     <!-- Row 1: Color System -->
     <g transform="translate(0,0)">
-      <text x="0" y="12" class="dim">🎨  Color System</text>
+      <circle class="icon icon-1" cx="6" cy="8" r="5" fill="url(#bar-color)"/>
+      <text x="20" y="12" class="dim">Color System</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b1" x="160" y="2" width="160" height="12" rx="4" fill="url(#bar-color)"/>
       <text x="370" y="12" class="dim-score">8.0</text>
     </g>
     <!-- Row 2: Typography -->
     <g transform="translate(0,26)">
-      <text x="0" y="12" class="dim">🔤  Typography</text>
+      <circle class="icon icon-2" cx="6" cy="8" r="5" fill="url(#bar-typo)"/>
+      <text x="20" y="12" class="dim">Typography System</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b2" x="160" y="2" width="130" height="12" rx="4" fill="url(#bar-typo)"/>
       <text x="370" y="12" class="dim-score">6.5</text>
     </g>
     <!-- Row 3: Layout & Spacing -->
     <g transform="translate(0,52)">
-      <text x="0" y="12" class="dim">📐  Layout &amp; Spacing</text>
+      <circle class="icon icon-3" cx="6" cy="8" r="5" fill="url(#bar-layout)"/>
+      <text x="20" y="12" class="dim">Layout &amp; Spacing</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b3" x="160" y="2" width="140" height="12" rx="4" fill="url(#bar-layout)"/>
       <text x="370" y="12" class="dim-score">7.0</text>
     </g>
     <!-- Row 4: Components -->
     <g transform="translate(0,78)">
-      <text x="0" y="12" class="dim">🧩  Components</text>
+      <circle class="icon icon-4" cx="6" cy="8" r="5" fill="url(#bar-comp)"/>
+      <text x="20" y="12" class="dim">Component Quality</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b4" x="160" y="2" width="150" height="12" rx="4" fill="url(#bar-comp)"/>
       <text x="370" y="12" class="dim-score">7.5</text>
     </g>
     <!-- Row 5: Accessibility -->
     <g transform="translate(0,104)">
-      <text x="0" y="12" class="dim">♿  Accessibility</text>
+      <circle class="icon icon-5" cx="6" cy="8" r="5" fill="url(#bar-a11y)"/>
+      <text x="20" y="12" class="dim">Accessibility</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b5" x="160" y="2" width="120" height="12" rx="4" fill="url(#bar-a11y)"/>
       <text x="370" y="12" class="dim-score">6.0</text>
     </g>
     <!-- Row 6: Hierarchy -->
     <g transform="translate(0,130)">
-      <text x="0" y="12" class="dim">🎯  Visual Hierarchy</text>
+      <circle class="icon icon-6" cx="6" cy="8" r="5" fill="url(#bar-hier)"/>
+      <text x="20" y="12" class="dim">Visual Hierarchy</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b6" x="160" y="2" width="140" height="12" rx="4" fill="url(#bar-hier)"/>
       <text x="370" y="12" class="dim-score">7.0</text>
     </g>
     <!-- Row 7: Interactions -->
     <g transform="translate(0,156)">
-      <text x="0" y="12" class="dim">✨  Interactions</text>
+      <circle class="icon icon-7" cx="6" cy="8" r="5" fill="url(#bar-int)"/>
+      <text x="20" y="12" class="dim">Interaction Quality</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b7" x="160" y="2" width="160" height="12" rx="4" fill="url(#bar-int)"/>
       <text x="370" y="12" class="dim-score">8.0</text>
     </g>
     <!-- Row 8: Responsiveness -->
     <g transform="translate(0,182)">
-      <text x="0" y="12" class="dim">📱  Responsiveness</text>
+      <circle class="icon icon-8" cx="6" cy="8" r="5" fill="url(#bar-resp)"/>
+      <text x="20" y="12" class="dim">Responsiveness</text>
       <rect x="160" y="2" width="200" height="12" rx="4" class="bar-bg"/>
       <rect class="b8" x="160" y="2" width="180" height="12" rx="4" fill="url(#bar-resp)"/>
       <text x="370" y="12" class="dim-score">9.0</text>
@@ -314,15 +330,15 @@
 
   <!-- Findings column -->
   <g transform="translate(460,238)">
-    <text x="0" y="0" class="label">TOP FINDINGS · click → AI fix</text>
+    <text x="0" y="0" class="label">TOP FINDINGS · located + measured + fixed</text>
     <g transform="translate(0,16)">
       <g transform="translate(0,0)"><g class="f1">
         <circle class="d1" cx="8" cy="10" r="4" fill="#ef4444"/>
-        <text x="22" y="14" class="finding-crit">No focus indicators — WCAG 2.4.7 fail</text>
+        <text x="22" y="14" class="finding-crit">No focus indicators · WCAG 2.4.7 fail</text>
       </g></g>
       <g transform="translate(0,24)"><g class="f2">
         <circle class="d2" cx="8" cy="10" r="4" fill="#ef4444"/>
-        <text x="22" y="14" class="finding-crit">No type scale — violates Miller's Law</text>
+        <text x="22" y="14" class="finding-crit">No type scale · violates Miller's Law</text>
       </g></g>
       <g transform="translate(0,48)"><g class="f3">
         <circle class="d3" cx="8" cy="10" r="4" fill="#fbbf24"/>
@@ -381,7 +397,7 @@
     <text y="32" class="cmd-accent">$ ui-ux-suite --mcp</text>
     <text x="260" y="32" class="mono-dim">→  use it from Claude / Cursor / Copilot</text>
 
-    <text y="52" class="cmd-accent">/uiux-fix</text>
-    <text x="260" y="52" class="mono-dim">→  AI generates the code fix for you</text>
+    <text y="52" class="cmd-accent">/ui-ux-suite:audit</text>
+    <text x="260" y="52" class="mono-dim">→  suggests the exact before/after fix you apply</text>
   </g>
 </svg>

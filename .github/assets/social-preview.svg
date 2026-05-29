@@ -13,7 +13,7 @@
   <rect x="0" y="0" width="8" height="640" fill="url(#accent)"/>
   <circle cx="1100" cy="160" r="220" fill="#0ea5e9" opacity="0.08"/>
   <text x="96" y="240" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="128" font-weight="900" fill="#ffffff" letter-spacing="-3">UI/UX Suite</text>
-  <text x="96" y="310" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="38" font-weight="600" fill="#0ea5e9">Design audit. Measured. Not guessed.</text>
+  <text x="96" y="310" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="38" font-weight="600" fill="#0ea5e9">Design quality, measured, not guessed</text>
   <text x="96" y="380" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">Scores 12 dimensions grounded in 24 named UX laws with</text>
   <text x="96" y="420" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">primary-source citations. WCAG + APCA + OKLCH. Zero deps.</text>
   <g transform="translate(96, 500)">
