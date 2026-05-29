@@ -79,14 +79,30 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     assert.equal(r.length, 0, 'body must resolve to #171717 on #ffffff (16:1), not a white-on-white FP');
   });
 
-  it('still resolves a coherent single-site DARK theme (text on dark measured correctly)', () => {
+  it('still resolves a coherent single-site DARK theme (text on its own dark surface measured correctly)', () => {
+    // .panel owns its dark surface, so contrast is measured directly (not via page fallback). A genuine
+    // low-contrast dark-on-dark pair (#3d3d3d on #0a0e1a ≈ 1.6:1) must still flag.
     const r = analyzeTextContrast([
       d(':root', '--bg', '#0a0e1a', 1),
       d('body', 'background', 'var(--bg)', 2),
-      d('.dim', 'color', '#2a2e3a', 3),
+      d('.panel', 'background', '#0a0e1a', 3),
+      d('.panel', 'color', '#3d3d3d', 4),
     ]);
-    assert.equal(r.length, 1, 'dim text on a coherent dark surface should flag');
+    assert.equal(r.length, 1, 'low-contrast text on its own dark surface should flag');
     assert.equal(r[0].bg, '#0a0e1a');
+    assert.equal(r[0].bgFromPage, false);
+  });
+
+  it('does NOT flag white text in a dark section on a light page (descendant-of-dark-section)', () => {
+    // Skeptic VERIFICATION-3 NO-GO: lissaglow is a light page (#FAF7F5) with a dark footer (#2C1810).
+    // The footer's white text has no own background; resolving it against the LIGHT PAGE gives a false
+    // 1.03:1 critical, but its real surface is the dark ancestor (~16:1, passes AAA). Must not flag.
+    const r = analyzeTextContrast([
+      d('body', 'background', '#faf7f5', 1),
+      d('.footer', 'background', '#2c1810', 2),       // dark section
+      d('.footer-link', 'color', '#ffffff', 3),       // white text, no own bg → backgroundless on a light page
+    ]);
+    assert.ok(!r.some(x => x.fg === '#ffffff'), 'white footer text must not be judged invisible on the light page');
   });
 
   it('STILL flags a genuine low-contrast pair (no false negatives from the hardening)', () => {

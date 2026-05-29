@@ -74,9 +74,13 @@ test('suggestAccessibleColor lightens toward white on a dark background', () => 
 });
 
 test('analyzeTextContrast falls back to the page background when a rule has no bg', () => {
+  // Uses a genuine mid-gray (ratio ~2.85, well above the near-invisible artifact floor) so this
+  // validates the page-fallback path. A near-white #fbfbfb here would be a backgroundless near-1:1
+  // artifact (white text meant for a dark ancestor) and is intentionally skipped — see
+  // precision-regression.test.js "white text in a dark section on a light page".
   const decls = [
     { file: 'a.css', selector: 'body', prop: 'background', value: '#ffffff', line: 1, col: 1 },
-    { file: 'a.css', selector: '.muted', prop: 'color', value: '#fbfbfb', line: 5, col: 3 },
+    { file: 'a.css', selector: '.muted', prop: 'color', value: '#999999', line: 5, col: 3 },
   ];
   const findings = analyzeTextContrast(decls);
   assert.equal(findings.length, 1);
