@@ -105,6 +105,31 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     assert.ok(!r.some(x => x.fg === '#ffffff'), 'white footer text must not be judged invisible on the light page');
   });
 
+  it('infers a dark SECTION surface for its descendants (BEM block root) — light text not flagged', () => {
+    // Skeptic VERIFICATION-4: gold/white text in dark footer/announcement/cookie sections (ratio 2–3 on
+    // the cream page) must be measured against the dark section, where it passes.
+    const r = analyzeTextContrast([
+      d('body', 'background', '#faf7f5', 1),
+      d('.footer', 'background', '#2c1810', 2),                  // dark section (block: footer)
+      d('.footer-brand-name span', 'color', '#c4993d', 3),      // gold descendant, no own bg → infer .footer
+      d('.cookie-banner', 'background', 'rgba(26,26,26,.95)', 4),
+      d('.cookie-accept', 'background', '#ffffff', 5),          // a light BUTTON inside cookie — must NOT poison .cookie
+      d('.cookie-text a', 'color', '#d4a0a8', 6),               // rose link, no own bg → infer dark cookie, not page
+    ]);
+    assert.ok(!r.some(x => x.bgFromPage), 'dark-section descendants must be measured on the inferred section, not the page');
+  });
+
+  it('STILL flags genuinely-muted text measured ON the inferred dark section (no false negative)', () => {
+    const r = analyzeTextContrast([
+      d('body', 'background', '#faf7f5', 1),
+      d('.footer', 'background', '#2c1810', 2),
+      d('.footer-copyright', 'color', '#766964', 3),            // muted brown on espresso ≈ 3.2:1 → real fail
+    ]);
+    assert.equal(r.length, 1, 'muted footer text that fails on its real dark surface must still flag');
+    assert.equal(r[0].bg, '#2c1810');
+    assert.ok(r[0].ratio < 4.5 && r[0].ratio > 1.5);
+  });
+
   it('STILL flags a genuine low-contrast pair (no false negatives from the hardening)', () => {
     const r = analyzeTextContrast([
       d('body', 'background', '#f8f9fb'),
