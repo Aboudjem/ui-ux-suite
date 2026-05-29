@@ -47,6 +47,29 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     assert.ok(r[0].bg.toLowerCase() === '#ffffff');
   });
 
+  it('does NOT flag rules when light AND dark page surfaces are pooled (multi-site/monorepo)', () => {
+    // Skeptic VERIFICATION-2 NO-GO: a light site (#fff) + a dark site (#0a0e1a) in one repo must not
+    // make the light surface apply to dark-site text (43 false "light-on-near-white" criticals).
+    const r = analyzeTextContrast([
+      d('body', 'background', '#ffffff', 1),                 // light site
+      d('.kpi', 'color', '#111111', 2),
+      d('body', 'background', '#0a0e1a', 1),                 // dark site (different file)
+      d('.hero-text', 'color', '#e8ecff', 2),               // light text, no own bg
+    ]);
+    assert.ok(!r.some(x => x.bg === '#ffffff' && x.fg === '#e8ecff'), 'dark-site text must not be judged on the light surface');
+    assert.equal(r.filter(x => x.ratio <= 1.5).length, 0, 'no impossible near-1:1 from surface misresolution');
+  });
+
+  it('still resolves a coherent single-site DARK theme (text on dark measured correctly)', () => {
+    const r = analyzeTextContrast([
+      d(':root', '--bg', '#0a0e1a', 1),
+      d('body', 'background', 'var(--bg)', 2),
+      d('.dim', 'color', '#2a2e3a', 3),
+    ]);
+    assert.equal(r.length, 1, 'dim text on a coherent dark surface should flag');
+    assert.equal(r[0].bg, '#0a0e1a');
+  });
+
   it('STILL flags a genuine low-contrast pair (no false negatives from the hardening)', () => {
     const r = analyzeTextContrast([
       d('body', 'background', '#f8f9fb'),
