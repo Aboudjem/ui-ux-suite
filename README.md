@@ -26,6 +26,10 @@
 
 ---
 
+![ui-ux-suite demo](.github/assets/demo.gif)
+
+---
+
 ## What is ui-ux-suite?
 
 **ui-ux-suite is a zero-dependency design linter that audits your CSS, JSX, HTML, and Tailwind config and returns specific, located, measured findings with a concrete fix, not generic advice.**

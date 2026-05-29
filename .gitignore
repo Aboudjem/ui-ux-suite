@@ -30,3 +30,6 @@ coverage/
 
 # Build output
 dist/
+
+# Demo video build artifacts (the committed asset is .github/assets/demo.gif)
+demo-output/
