@@ -87,3 +87,65 @@ jobs:
           if (missing.length) { console.error('Missing fields:', missing); process.exit(1); }
           console.log('package.json valid');
           "
+
+      - name: Check markdown links
+        # Checks relative file links in key markdown files (skips external URLs to avoid network flakiness)
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const files = ['README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', 'AGENTS.md'];
+          const relLinkRe = /\[([^\]]+)\]\((?!https?:\/\/)([^)#]+)\)/g;
+          let bad = [];
+          for (const f of files) {
+            if (!fs.existsSync(f)) continue;
+            const content = fs.readFileSync(f, 'utf8');
+            let m;
+            while ((m = relLinkRe.exec(content)) !== null) {
+              const target = m[2].split('#')[0];
+              if (target && !fs.existsSync(target)) {
+                bad.push(f + ': broken link -> ' + target);
+              }
+            }
+          }
+          if (bad.length) { console.error('Broken relative links found:\\n' + bad.join('\\n')); process.exit(1); }
+          console.log('Markdown relative links OK');
+          "
+
+      - name: Scan for hardcoded secrets
+        # Flags patterns that commonly indicate accidental secret commits
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const PATTERNS = [
+            /(?:api[_-]?key|apikey|secret|password|token|bearer|passwd)\s*[:=]\s*['"][^'"]{8,}['"]/i,
+            /sk-[A-Za-z0-9]{20,}/,
+            /ghp_[A-Za-z0-9]{36}/,
+            /xoxb-[A-Za-z0-9-]{24,}/,
+            /AKIA[0-9A-Z]{16}/,
+          ];
+          const IGNORE_DIRS = new Set(['node_modules', '.git', 'docs/audit', 'test/fixtures']);
+          const IGNORE_EXTS = new Set(['.png', '.svg', '.jpg', '.ico', '.woff', '.woff2']);
+          function walk(dir, files = []) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) {
+                if (!IGNORE_DIRS.has(entry.name) && !entry.name.startsWith('.')) walk(full, files);
+              } else if (!IGNORE_EXTS.has(path.extname(entry.name))) {
+                files.push(full);
+              }
+            }
+            return files;
+          }
+          let hits = [];
+          for (const f of walk('.')) {
+            let content;
+            try { content = fs.readFileSync(f, 'utf8'); } catch { continue; }
+            for (const re of PATTERNS) {
+              if (re.test(content)) { hits.push(f + ': matches secret pattern ' + re); break; }
+            }
+          }
+          if (hits.length) { console.error('Potential secrets found:\\n' + hits.join('\\n')); process.exit(1); }
+          console.log('Secret scan clean');
+          "
