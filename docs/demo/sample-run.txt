@@ -1,0 +1,62 @@
+$ npx ui-ux-suite test/fixtures/planted-ux-problems
+
+# Design Audit Report
+
+**Generated:** 2026-05-29T06:25:01.345Z
+**Duration:** 0.03s
+**Files scanned:** 3 CSS, 1 JSX/TSX/Vue/Svelte, 1 HTML
+
+## Project Profile
+
+- **Framework:** react
+- **Styling:** vanilla-css
+- **Component Library:** *none detected*
+- **Theme System:** *none detected*
+- **Dark Mode:** not detected
+
+## Score Card
+
+# Design Score Card
+
+**Overall: 3.7/10 - Needs Work**
+
+| Dimension | Score | Weight |
+|-----------|-------|--------|
+| Color System | 3.8/10 |####......| | 10% |
+| Typography System | 1.5/10 |##........| | 10% |
+| Layout & Spacing | 3.7/10 |####......| | 10% |
+| Component Quality | 2/10 |##........| | 10% |
+| Accessibility | 1.6/10 |##........| | 12% |
+| Visual Hierarchy | 4.3/10 |####......| | 10% |
+| Interaction Quality | 4/10 |####......| | 8% |
+| Responsiveness | 3.1/10 |###.......| | 8% |
+| Visual Polish | 7/10 |#######...| | 7% |
+| Performance UX | 7.5/10 |########..| | 5% |
+| Information Architecture | 4.7/10 |#####.....| | 5% |
+| Platform Appropriateness | 5.2/10 |#####.....| | 5% |
+
+## Laws of UX Coverage
+
+| Law | Violations | Worst Offender |
+|-----|-----------:|----------------|
+| Law of Similarity (`law-of-similarity`) | 20 | No consistent type scale detected - sizes appear random |
+| Aesthetic-Usability Effect (`aesthetic-usability-effect`) | 15 | Body text too small (11px) - minimum 14px, prefer 16px |
+| Law of Proximity (`law-of-proximity`) | 10 | Inconsistent spacing values - adopt a spacing scale |
+| Jakob's Law (`jakobs-law`) | 8 | No responsive breakpoints detected |
+| Doherty Threshold (`doherty-threshold`) | 7 | Only 2 hover: variants — interactive elements likely lack hover feedback |
+| Law of Pragnanz (`law-of-pragnanz`) | 6 | No consistent type scale detected - sizes appear random |
+| Fitts's Law (`fittss-law`) | 4 | Insufficient focus-visible: variants (1) — keyboard users cannot see focus |
+| Postel's Law (`postels-law`) | 4 | No prefers-reduced-motion media query — motion-sensitive users have no escape |
+| Miller's Law (`millers-law`) | 3 | 43 unique colors - too many, consolidate to a system |
+| Tesler's Law (`teslers-law`) | 3 | 43 unique colors - too many, consolidate to a system |
+| Occam's Razor (`occams-razor`) | 1 | 5 font families — use 1–2 max |
+| Peak-End Rule (`peak-end-rule`) | 1 | No onboarding flow detected — new users dropped at the deep end |
+| Von Restorff Effect (`von-restorff-effect`) | 1 | No display-size type (text-2xl or larger) — hero text likely underscaled for visual anchoring |
+
+## Color System
+
+- Unique colors: **43** (43 hex, 0 OKLCH)
+- CSS variables: **0**
+- Near-duplicate pairs: **13**
+
+## Typography
