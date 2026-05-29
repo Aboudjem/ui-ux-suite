@@ -130,6 +130,30 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     assert.ok(r[0].ratio < 4.5 && r[0].ratio > 1.5);
   });
 
+  it('a decorative accent CHILD must not lend its surface to sibling text (block-root poisoning)', () => {
+    // Skeptic VERIFICATION-5: `.ba-divider` (a rose badge) sets a background and was registering its
+    // color onto block root `.ba`, which `.ba-text` then inherited → false 1.24:1 critical. A non-container
+    // child must only own ITS surface, never a shortened block root.
+    const r = analyzeTextContrast([
+      d('body', 'background', '#faf7f5', 1),
+      d('.before-after-card', 'background', '#ffffff', 2),
+      d('.ba-divider', 'background', '#b76e79', 3),            // decorative rose badge (child)
+      d('.ba-text', 'color', '#807470', 4),                   // taupe text — real surface is the white card
+    ]);
+    assert.ok(!r.some(x => x.selector === '.ba-text' && x.bg === '#b76e79'), '.ba-text must not inherit the rose badge surface');
+    assert.ok(!r.some(x => x.selector === '.ba-text' && x.severity === 'critical'), 'no destructive critical from a poisoned block root');
+  });
+
+  it('suppresses MARGINAL page-fallback fails (within 0.5 of threshold) — approximate surface', () => {
+    // taupe #807470 on a white card is 4.73 (pass); on the cream page fallback it is 4.43 (marginal fail).
+    // Page fallback is approximate, so a marginal fail must not be emitted.
+    const r = analyzeTextContrast([
+      d('body', 'background', '#faf7f5', 1),
+      d('.lonely-text', 'color', '#807470', 2),               // no own bg, no inferable section
+    ]);
+    assert.equal(r.length, 0, 'a 4.43:1 page-fallback marginal fail must be suppressed (true surface may pass)');
+  });
+
   it('STILL flags a genuine low-contrast pair (no false negatives from the hardening)', () => {
     const r = analyzeTextContrast([
       d('body', 'background', '#f8f9fb'),
