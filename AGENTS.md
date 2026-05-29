@@ -98,3 +98,11 @@ claude plugin validate .          # validate the Claude Code plugin + marketplac
 
 Commit under the maintainer's git identity. Conventional, imperative subject lines
 (`fix:`, `feat:`, `docs:`). No em-dashes in user-facing copy.
+
+## Ecosystem
+
+Part of the [10x Claude Code plugin marketplace](https://github.com/Aboudjem/10x). Install all marketplace tools with:
+
+```bash
+claude plugin marketplace add Aboudjem/10x
+```

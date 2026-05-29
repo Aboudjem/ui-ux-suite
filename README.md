@@ -38,6 +38,8 @@ That is the whole point. Every finding is **located** (file:line + selector), **
 - **It runs anywhere.** One MCP server + one `npx` CLI → works in Claude Code, Cursor, VS Code, Codex, Gemini, Windsurf, and Continue.
 - **It needs nothing.** Pure Node built-ins. No install weight, no API keys, no network, no telemetry. Your code stays on your machine.
 
+**See a real run:** [sample audit report](docs/demo/sample-audit.html) · [sample terminal output](docs/demo/sample-run.txt)
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/scorecard-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/scorecard-light.svg">

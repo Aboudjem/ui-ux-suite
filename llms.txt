@@ -28,6 +28,10 @@ Key facts:
 - How do I run it? `npx ui-ux-suite .`, or start the MCP server with `npx ui-ux-suite --mcp` and call `uiux_audit_run`.
 - Can I use it in CI? Yes. `npx ui-ux-suite . --fail-under 7` exits non-zero below the threshold; `--json` is machine-readable.
 
+## Ecosystem
+
+- Part of the [10x Claude Code plugin marketplace](https://github.com/Aboudjem/10x). Install all tools: `claude plugin marketplace add Aboudjem/10x`.
+
 ## Optional
 
 - [Planted-problem fixture ground truth](https://github.com/Aboudjem/ui-ux-suite/blob/main/test/fixtures/planted-ux-problems/PLANTED.md): 12 deliberately broken UX problems with real measured values, used as the regression gate.
