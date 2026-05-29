@@ -1,0 +1,16 @@
+/*
+ * Planted typography problems — too many font families.
+ * PLANTED[I-fonts]: 5 distinct font families (use 1-2 max) @ src/fonts.css — expect typography (too many fonts) finding
+ */
+h1 { font-family: "Playfair Display", serif; font-size: 41px; font-weight: 700; }
+h2 { font-family: "Bebas Neue", sans-serif; font-size: 29px; font-weight: 700; }
+h3 { font-family: "Lobster", cursive; font-size: 22px; }
+.brand { font-family: "Pacifico", cursive; font-size: 18px; }
+.code-sample { font-family: "Comic Sans MS", monospace; font-size: 15px; }
+
+/*
+ * Random, non-systematic type sizes (no consistent ratio) reinforce PLANTED[G].
+ * Sizes present in project: 41, 29, 22, 18, 15, 13, 12, 11 — variance is high → no scale detected.
+ */
+.label { font-size: 13px; }
+.caption { font-size: 12px; }

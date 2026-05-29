@@ -1,0 +1,131 @@
+/*
+ * Planted UX problems — stylesheet.
+ * This file is intentionally broken. Each issue is tagged PLANTED[id].
+ * Measured values are real; see PLANTED.md for expected ideal findings.
+ */
+
+/* ---------------------------------------------------------------------- */
+/* PLANTED[A]: near-white text (#fbfbfb) on near-white bg (#ffffff) — contrast ~1.04:1 @ src/styles.css .hero-subtitle — expect accessibility/color (WCAG AA contrast) finding */
+.hero {
+  background-color: #ffffff;
+  padding: 64px;
+}
+.hero-subtitle {
+  color: #fbfbfb;            /* near-white text */
+  background-color: #ffffff; /* near-white bg → contrast ratio ~1.04:1, fails WCAG AA 4.5:1 */
+  font-size: 13px;
+}
+
+/* PLANTED[B]: primary CTA styled like a low-affordance ghost link @ src/styles.css .cta-primary — expect hierarchy/components/color (CTA affordance) finding */
+.cta-primary {
+  /* This is THE primary call to action but it looks like a tertiary text link. */
+  background: transparent;          /* no fill */
+  color: #9aa0a6;                   /* muted grey text */
+  border: none;                     /* no border */
+  padding: 4px 6px;                 /* tiny hit area */
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 400;                 /* not emphasized */
+}
+
+/* PLANTED[C]: low-contrast section (#f4f5f6) vs surrounding page (#ffffff) — contrast ~1.04:1, section boundary invisible @ src/styles.css .section-muted — expect color/hierarchy (surface separation) finding */
+body {
+  background-color: #ffffff;
+}
+.section-muted {
+  background-color: #f4f5f6; /* barely different from #ffffff → section reads as one flat block */
+  color: #c9ccd1;            /* low-contrast body copy ~1.6:1 */
+  padding: 40px;
+}
+
+/* PLANTED[D]: tiny touch targets (28x28, well under 44x44) @ src/styles.css .icon-btn — expect platform/accessibility (WCAG 2.2 target size) finding */
+.icon-btn {
+  width: 28px;   /* < 44px */
+  height: 28px;  /* < 44px */
+  padding: 0;
+  border-radius: 4px;
+}
+.nav-link {
+  display: inline-block;
+  height: 32px;  /* < 44px tap height */
+  line-height: 32px;
+  padding: 0 6px;
+}
+
+/* PLANTED[F]: NO responsive breakpoints — fixed desktop-only widths, zero @media queries @ src/styles.css .layout — expect responsive/layout finding */
+.layout {
+  width: 1200px;       /* hard-coded desktop width, no max-width, no media query */
+  margin: 0 auto;
+  display: flex;
+}
+.sidebar {
+  width: 320px;
+}
+.content {
+  width: 880px;
+}
+/* (Intentionally NO @media rules anywhere in this project.) */
+
+/* PLANTED[G]: body text too small (11px) @ src/styles.css .body-copy — expect typography (min 14px / 16px body) finding */
+.body-copy {
+  font-size: 11px;     /* far below the 14px minimum / 16px ideal */
+  line-height: 1.2;    /* also too tight */
+  color: #333333;
+}
+/* secondary too-small text just above the engine's 12px filter floor */
+.fine-print {
+  font-size: 12px;
+  line-height: 1.15;
+}
+
+/* PLANTED[H]: random off-scale spacing (7px, 13px, 19px — none divisible by 4 or 8) @ src/styles.css spacing block — expect layout (spacing scale) finding */
+.card {
+  padding: 7px;        /* off-scale */
+  margin-bottom: 13px; /* off-scale */
+  gap: 19px;           /* off-scale */
+}
+.card-header {
+  margin: 7px 13px;    /* off-scale */
+  padding-bottom: 19px;
+}
+
+/* PLANTED[I-colors]: 30+ unique hex colors with no system (part 1) @ src/styles.css palette — expect color (too many unique colors) finding */
+.swatch-01 { color: #1a2b3c; }
+.swatch-02 { color: #2b3c4d; }
+.swatch-03 { color: #3c4d5e; }
+.swatch-04 { color: #4d5e6f; }
+.swatch-05 { color: #5e6f70; }
+.swatch-06 { color: #6f7081; }
+.swatch-07 { color: #708192; }
+.swatch-08 { color: #8192a3; }
+.swatch-09 { color: #92a3b4; }
+.swatch-10 { color: #a3b4c5; }
+.swatch-11 { color: #b4c5d6; }
+.swatch-12 { color: #c5d6e7; }
+.swatch-13 { color: #d6e7f8; }
+.swatch-14 { color: #e7f8a9; }
+.swatch-15 { color: #f80a1b; }
+.swatch-16 { color: #0b1c2d; }
+.swatch-17 { color: #1c2d3e; }
+.swatch-18 { color: #2d3e4f; }
+.swatch-19 { color: #3e4f60; }
+.swatch-20 { color: #4f6071; }
+.swatch-21 { color: #607182; }
+.swatch-22 { color: #718293; }
+.swatch-23 { color: #8293a4; }
+.swatch-24 { color: #93a4b5; }
+.swatch-25 { color: #a4b5c6; }
+.swatch-26 { color: #b5c6d7; }
+.swatch-27 { color: #c6d7e8; }
+.swatch-28 { color: #d7e8f9; }
+.swatch-29 { color: #e8f90a; }
+.swatch-30 { color: #f90a1b; }
+.swatch-31 { color: #aa1133; }
+.swatch-32 { color: #bb2244; }
+.swatch-33 { color: #cc3355; }
+
+/* PLANTED[J]: NO :focus-visible styles anywhere — interactive elements have only :hover @ src/styles.css — expect accessibility/interaction (focus indicator) finding */
+.cta-primary:hover { color: #7a7f85; }
+.icon-btn:hover { background: #eeeeee; }
+.nav-link:hover { color: #555555; }
+/* (Intentionally NO :focus-visible, :focus, or outline rules.) */

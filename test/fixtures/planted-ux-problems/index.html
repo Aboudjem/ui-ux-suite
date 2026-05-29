@@ -1,0 +1,37 @@
+<!doctype html>
+<!--
+  NOTE: index.html is NOT scanned by the current tool (walkFiles only walks
+  .css/.scss/.sass and .tsx/.jsx/.vue/.svelte). Kept here for realism and to
+  prove a serious tool SHOULD parse HTML. Mirrors the same planted problems.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Planted UX Problems</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/fonts.css" />
+    <!-- PLANTED[F]: no <meta name="viewport"> → desktop-only, not responsive -->
+  </head>
+  <body>
+    <main class="layout">
+      <h1>Welcome</h1>
+      <p class="hero-subtitle">Near-white text on near-white background.</p>
+      <p class="body-copy">Body copy at 11px is far too small to read.</p>
+
+      <section class="section-muted">
+        <!-- PLANTED[E-alt]: image with no alt -->
+        <img src="/logo.png" />
+
+        <form>
+          <!-- PLANTED[E-label]: inputs with no labels -->
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <!-- PLANTED[B]: primary CTA as ghost link -->
+          <a class="cta-primary" href="/signup">continue</a>
+          <!-- PLANTED[D]: 28x28 icon button -->
+          <button class="icon-btn">x</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
