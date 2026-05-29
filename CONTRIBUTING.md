@@ -27,17 +27,16 @@ lib/                    # Engine modules (the core logic)
   spacing-engine.js     # Spacing: consistency, grid, breakpoints
   scoring.js            # 12-dimension weighted scoring system
   knowledge.js          # Built-in knowledge base query engine
-  mcp-server.js         # MCP server with 14 tools
+  mcp-server.js         # MCP server with 16 tools
   oklch-parser.js       # OKLCH color space parser
   tailwind-parser.js    # Tailwind class extraction from JSX
   runner.js             # End-to-end audit orchestrator
 
 agents/                 # 12 specialized agent definitions (.md)
 skills/                 # 14 slash command skill definitions (.md)
-commands/               # 14 command definitions (.md)
-knowledge/              # 19 design knowledge documents (.md)
+commands/               # 5 slash commands (.md)
+knowledge/              # 21 design knowledge documents (.md)
 templates/              # Output templates (audit report, score card, etc.)
-manifest.json           # Claude Code plugin manifest
 ```
 
 ## What to work on
