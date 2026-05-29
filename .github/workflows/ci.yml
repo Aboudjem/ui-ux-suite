@@ -125,7 +125,7 @@ jobs:
             /xoxb-[A-Za-z0-9-]{24,}/,
             /AKIA[0-9A-Z]{16}/,
           ];
-          const IGNORE_DIRS = new Set(['node_modules', '.git', 'docs/audit', 'test/fixtures']);
+          const IGNORE_DIRS = new Set(['node_modules', '.git', 'test/fixtures']);
           const IGNORE_EXTS = new Set(['.png', '.svg', '.jpg', '.ico', '.woff', '.woff2']);
           function walk(dir, files = []) {
             for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

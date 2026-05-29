@@ -1,7 +1,7 @@
 'use strict';
 /**
- * Regression tests for the contrast-precision must-fixes raised by the Phase-11 Skeptical Reviewer
- * (docs/audit/VERIFICATION.md). These are the real-world false positives the v0.3→v0.4 rebuild had
+ * Regression tests for the contrast-precision must-fixes raised during the v0.3→v0.4 rebuild.
+ * These are the real-world false positives the rebuild had
  * to eliminate WITHOUT losing true positives. Do not delete; they guard the marquee feature.
  */
 const { describe, it } = require('node:test');
