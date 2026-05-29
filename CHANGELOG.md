@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2026-05-28
+
+### Changed
+
+- Bumped all version references to 0.4.1 (plugin.json, package.json, marketplace.json).
+- Fixed stale WCAG 2.1 references in package.json description to WCAG 2.2 (consistent with README, llms.txt, AGENTS.md, and the engine behaviour since v0.4.0).
+- Updated knowledge document counts from 19 to 21 throughout (lib/mcp-server.js, skills/design-audit/SKILL.md, CONTRIBUTING.md, CLAUDE.md).
+- Fixed CONTRIBUTING.md: corrected MCP tool count (14→16), command count (14→5), removed reference to deleted root manifest.json.
+- Replaced full Contributor Covenant body in CODE_OF_CONDUCT.md with the by-reference form (pledge + link + contact).
+- Removed hardcoded version from templates/audit-report.md footer (no-drift).
+- Updated social-preview.svg version badge text from v0.2.0 to v0.4.1.
+- Added "Part of the 10x marketplace" cross-link to llms.txt and AGENTS.md.
+- Linked docs/demo/ sample files from README near the top.
+- Added markdown link-check and secret scan steps to CI workflow.
+
 ## [0.4.0] - 2026-05-29
 
 ### Added — the specificity rebuild
