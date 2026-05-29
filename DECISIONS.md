@@ -128,3 +128,29 @@ degrades gracefully to source-based findings otherwise.
   (`docs/audit/03-qa-red-baseline.md` "Deep mode availability").
 - **Confidence.** `confirmed`. **Risk.** Low. **Impact.** SC-LOC/MEAS/FIX verifiable without a
   browser; SC-REACH preserved. **Rollback.** N/A.
+
+## D7 — Static contrast is conservative by design: never assume a surface
+
+**Decision.** Flat CSS has no DOM, so a backgroundless element's true surface is sometimes unknowable.
+The engine resolves the surface in this order and **skips rather than guesses** when uncertain:
+(1) the rule's own opaque background; (2) an inferred ancestor SECTION surface (descendant-combinator
+or BEM block root, restricted to container-suffix selectors so decorative children don't lend their
+accent color to siblings); (3) the page surface — but only when unambiguous (a project mixing light
+and dark page surfaces, e.g. a monorepo, yields "indeterminate"); and for page-fallback findings, only
+an **unambiguous** failure is emitted (skip `<1.5:1` near-invisible — implies a missing dark ancestor —
+and skip marginal fails within 0.5 of threshold — the true surface may be lighter). A finding with its
+own background is always exact and bypasses these guards.
+
+- **Evidence.** Five independent adversarial review rounds (`docs/audit/VERIFICATION*.md`) each found a
+  contrast surface-misresolution false-positive class on real third-party repos; each was fixed and
+  regression-tested. Measured false-positive counts fell **43→0** (hermes monorepo), **16→0**
+  (lissaglow dark sections), **3→0** (lissaglow decorative children) while genuine findings were
+  retained (nitya keeps 7; lissaglow keeps ~39 real borderline pairs) and the planted fixture stayed
+  12/12.
+- **Confidence.** `confirmed` (re-derived from primaries on the exact failing repos).
+- **Risk.** The conservative guards skip some genuine borderline page-level findings (rare, low-stakes,
+  by definition near-threshold). **Mitigation/Impact:** deep mode (a running URL) measures the real
+  rendered surface and removes the ambiguity entirely — the preferred path when available (D6).
+- **Test plan.** `test/precision-regression.test.js` pins every found class (alpha, `fg===bg`,
+  multi-site pooling, component-scoped vars, dark-section descendants, decorative-child poisoning,
+  marginal page-fallback) plus genuine-pair retention. **Rollback.** Each guard is independent.
