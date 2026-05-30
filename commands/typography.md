@@ -2,6 +2,7 @@
 description: Run a typography-only audit — scale detection, font count, body size, line height, fluid type. Scoped variant of /ui-ux-suite:audit.
 argument-hint: "[path]"
 model: sonnet
+user-invocable: false
 allowed-tools: [mcp__ui-ux-suite__uiux_audit_run, mcp__ui-ux-suite__uiux_extract_typography, mcp__ui-ux-suite__uiux_generate_type_scale, mcp__ui-ux-suite__uiux_score_dimension, mcp__ui-ux-suite__uiux_knowledge_query, Read, Grep, Glob]
 ---
 

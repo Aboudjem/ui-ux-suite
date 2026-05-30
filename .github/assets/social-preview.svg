@@ -18,7 +18,7 @@
   <text x="96" y="420" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">primary-source citations. WCAG + APCA + OKLCH. Zero deps.</text>
   <g transform="translate(96, 500)">
     <rect x="0" y="0" width="130" height="40" rx="20" fill="#0ea5e9" opacity="0.15"/>
-    <text x="65" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#0ea5e9" text-anchor="middle">v0.4.1</text>
+    <text x="65" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#0ea5e9" text-anchor="middle">v0.5.0</text>
     <rect x="145" y="0" width="155" height="40" rx="20" fill="#6366f1" opacity="0.15"/>
     <text x="222" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#a5b4fc" text-anchor="middle">24 UX laws</text>
     <rect x="320" y="0" width="190" height="40" rx="20" fill="#ffffff" opacity="0.08"/>

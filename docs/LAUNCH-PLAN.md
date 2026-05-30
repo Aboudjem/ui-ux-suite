@@ -8,10 +8,7 @@
 
 ## The one law
 
-Stars come from **borrowed reach**, not cold author posts. Every breakout in 15 studied repos
-rode a third-party submission, an influencer, or an ecosystem event. Engineer the artifact,
-get reach to point at it, stack channels in a tight window. Trending and HN are multipliers,
-never origins.
+Stars come from **borrowed reach**, not cold author posts. Every breakout in 15 studied repos rode a third-party submission, an influencer, or an ecosystem event. Engineer the artifact, get reach to point at it, stack channels in a tight window. Trending and HN are multipliers, never origins.
 
 ---
 
@@ -37,7 +34,7 @@ never origins.
 - [ ] **Queue awesome-mcp-servers PR** (punkpeye/awesome-mcp-servers or appcypher/awesome-mcp-servers):
       Add to the "Developer Tools" section. Merge on launch day.
 - [ ] **Queue hesreallyhim/awesome-claude-code** submission:
-      Use the **web-UI issue form only** — PRs auto-close. Fill it out, submit the day before launch.
+      Web-UI issue form only — PRs auto-close. Fill it out, submit the day before launch.
 - [ ] **Smithery listing** (smithery.ai — MCP discovery hub):
       Submit `npx ui-ux-suite --mcp` as the server command. High passive install surface.
 - [ ] Prep the origin-story post on dev.to (~600 words, problem-first, with the real 1.03:1 finding)
@@ -54,7 +51,7 @@ Open all channels within ~2 hours. Simultaneity is what crosses the velocity thr
 ### 13:00 UTC — Primary channel (borrowed reach)
 
 **Option A (best):** Ask a design/Claude Code creator with 5k+ followers to tweet the demo GIF.
-The nanoGPT fuse: `trekhleb` submitted it, Karpathy didn't cold-tweet it.
+The nanoGPT pattern: `trekhleb` submitted it, Karpathy didn't cold-tweet it.
 
 **Option B (solo):** Post the tweet thread yourself (GIF first). Tag @AnthropicAI,
 @cursor_ai, one Tailwind/shadcn community account.
@@ -82,13 +79,13 @@ pickups (Changelog Nightly, TLDR AI). The Understand-Anything breakout started o
 
 ### 14:00 UTC — Merge queued awesome-list PRs
 
-Merge the awesome-mcp-servers PR (if approved) and any other awesome-list PRs. This activates
+Merge the awesome-mcp-servers PR (if approved) and any other awesome-list PRs. Activates
 long-tail drip discovery and signals legitimacy to HN voters.
 
 ### 14:30 UTC — X/Twitter Tailwind + design-system community
 
 Tag the Tailwind CSS account, shadcn, and one prominent design-system creator. The MCP angle
-("works in every editor, one `npx` command") plays well in this community.
+("works in every editor, one `npx` command") plays well here.
 
 ---
 
@@ -108,8 +105,7 @@ The second wave is where fabric, openclaw, and superpowers all spiked again.
 
 ## MCP registry priority — why it matters
 
-ui-ux-suite ships a first-class MCP server. The highest-leverage discoverability surfaces for
-MCP servers are:
+ui-ux-suite ships a first-class MCP server. The highest-leverage discoverability surfaces:
 
 1. **Official MCP Registry** (registry.mcpservers.org / mcp-publisher) — feeds Cursor, VS Code,
    Claude Desktop passive install. One `npx mcp-publisher publish` after npm publish.
