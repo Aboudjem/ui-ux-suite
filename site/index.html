@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ui-ux-suite - ESLint for design</title>
+  <meta name="description" content="A zero-dependency design linter. It finds the exact line, the measured wrong value, and the exact fix, across 12 dimensions grounded in WCAG 2.2, APCA, and the Laws of UX." />
+  <meta property="og:title" content="ui-ux-suite - ESLint for design" />
+  <meta property="og:description" content="Located, measured, fixed design findings across 12 dimensions. Zero dependencies, no API key, your code stays local." />
+  <meta property="og:image" content="assets/social-preview.png" />
+  <style>
+    :root {
+      --bg: #0a0d14;
+      --panel: #141925;
+      --ink: #e6eaf2;
+      --muted: #a4adc0;
+      --accent: #0ea5e9;
+      --border: #232a3a;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+    header { padding: 64px 0 24px; text-align: center; }
+    header img.logo { width: min(520px, 90%); height: auto; }
+    .tagline { font-size: 1.15rem; color: var(--muted); margin: 18px auto 0; max-width: 660px; }
+    .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 28px 0 8px; }
+    .btn {
+      display: inline-block; padding: 11px 18px; border-radius: 10px;
+      border: 1px solid var(--border); color: var(--ink); font-weight: 600;
+    }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #05121c; }
+    .stats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 22px 0 0; }
+    .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 0.86rem; color: var(--muted); }
+    .stat b { color: var(--ink); }
+    .demo { margin: 36px 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--panel); }
+    .demo img { display: block; width: 100%; height: auto; }
+    section { margin: 44px 0; }
+    h2 { font-size: 1.4rem; margin: 0 0 14px; }
+    pre {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px 16px; overflow-x: auto; font-size: 0.92rem;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+    .card h3 { margin: 0 0 6px; font-size: 1rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+    footer { color: var(--muted); text-align: center; padding: 40px 0 64px; font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 48px; }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <img class="logo" src="assets/logo-dark.svg" alt="ui-ux-suite" onerror="this.style.display='none'" />
+    <p class="tagline">ESLint for design. It finds the exact line, the measured wrong value, and the exact fix, across 12 dimensions grounded in WCAG 2.2, APCA, and the Laws of UX.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/Aboudjem/ui-ux-suite">View on GitHub</a>
+      <a class="btn" href="sample-report.html">See a sample report</a>
+      <a class="btn" href="https://www.npmjs.com/package/ui-ux-suite">npm: ui-ux-suite</a>
+    </div>
+    <div class="stats">
+      <span class="stat"><b>311</b> tests</span>
+      <span class="stat"><b>12</b> dimensions</span>
+      <span class="stat"><b>24</b> UX laws</span>
+      <span class="stat"><b>16</b> MCP tools</span>
+      <span class="stat"><b>zero</b> dependencies</span>
+      <span class="stat">MIT</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="demo">
+      <img src="assets/demo.gif" alt="ui-ux-suite scanning a project and streaming located, measured, fixed findings" />
+    </div>
+
+    <section>
+      <h2>Run it in one command</h2>
+      <pre><code>npx ui-ux-suite .</code></pre>
+      <p>You get a ranked list of located, measured, and fixed findings plus a weighted 0-10 score across 12 dimensions. No config, no API key, no network. Your code stays on your machine.</p>
+    </section>
+
+    <section>
+      <h2>Install into your AI CLI</h2>
+      <p>One line links the ui-ux-suite skills into your CLI's skills directory. The MCP server is the universal fallback.</p>
+      <pre><code>curl -fsSL https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/install.sh | bash -s codex</code></pre>
+      <pre><code>claude mcp add ui-ux-suite npx ui-ux-suite --mcp</code></pre>
+    </section>
+
+    <section>
+      <h2>What it scores</h2>
+      <div class="grid">
+        <div class="card"><h3>Accessibility</h3><p>WCAG 2.2 and APCA contrast, focus, labels, target size, reduced motion.</p></div>
+        <div class="card"><h3>Color system</h3><p>Contrast, duplicate hues, semantic roles, dark mode, OKLCH palettes.</p></div>
+        <div class="card"><h3>Typography</h3><p>Scale consistency, font count, body size, line height.</p></div>
+        <div class="card"><h3>Layout and spacing</h3><p>Grid, off-scale values, breakpoints, container widths.</p></div>
+        <div class="card"><h3>Components and hierarchy</h3><p>State coverage, scannability, information priority.</p></div>
+        <div class="card"><h3>Interaction and polish</h3><p>Animation timing, easing, feedback, shadow and radius tokens.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Located, measured, fixed</h2>
+      <p>Most design-review tools tell you to improve your contrast. This tool tells you that <code>.hero-subtitle</code> at <code>src/styles.css:14</code> is <code>#fbfbfb</code> on <code>#ffffff</code> = 1.03:1, which fails WCAG 1.4.3 AA, and to change the color to <code>#767676</code> (4.54:1 on white) or darker. Every finding is located (file:line + selector), measured (the real wrong number), and fixed (the exact change), with a WCAG success criterion or a named UX law cited. 311 tests lock that specificity as a regression gate.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Built by <a href="https://github.com/Aboudjem">Adam Boudjemaa</a>. MIT.
+    <br />
+    <a href="https://github.com/Aboudjem/ui-ux-suite">github.com/Aboudjem/ui-ux-suite</a>
+  </footer>
+</body>
+</html>

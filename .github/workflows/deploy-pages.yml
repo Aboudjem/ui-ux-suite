@@ -1,0 +1,52 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - ".github/assets/**"
+      - "docs/demo/sample-audit.html"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble static site
+        run: |
+          set -euo pipefail
+          mkdir -p _site/assets
+          cp -r site/. _site/
+          # Reuse the already-shipped demo assets; never rebuild them here.
+          for f in demo.gif logo-light.svg logo-dark.svg scorecard-light.svg scorecard-dark.svg social-preview.png; do
+            [ -f ".github/assets/$f" ] && cp ".github/assets/$f" "_site/assets/$f" || true
+          done
+          # Ship the real sample audit report so visitors can open it.
+          if [ -f docs/demo/sample-audit.html ]; then
+            cp docs/demo/sample-audit.html _site/sample-report.html
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
