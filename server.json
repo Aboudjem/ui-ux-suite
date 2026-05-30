@@ -1,0 +1,7 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Aboudjem/ui-ux-suite",
+  "description": "UI/UX design-audit MCP server: scores a project on 12 dimensions vs WCAG 2.2 + APCA.",
+  "repository": { "url": "https://github.com/Aboudjem/ui-ux-suite", "source": "github" },
+  "version": "0.5.1"
+}
