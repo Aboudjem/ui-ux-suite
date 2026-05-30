@@ -2,6 +2,7 @@
 description: Run a component-quality audit — state coverage, primitive consistency, cn()/CVA patterns. Scoped variant of /ui-ux-suite:audit.
 argument-hint: "[path]"
 model: sonnet
+user-invocable: false
 allowed-tools: [mcp__ui-ux-suite__uiux_audit_run, mcp__ui-ux-suite__uiux_scan_project, mcp__ui-ux-suite__uiux_score_dimension, mcp__ui-ux-suite__uiux_knowledge_query, Read, Grep, Glob]
 ---
 

@@ -1,0 +1,317 @@
+# Design Audit Report
+
+**Generated:** 2026-05-30T06:49:36.524Z
+**Duration:** 0.02s
+**Files scanned:** 1 CSS, 1 JSX/TSX/Vue/Svelte, 0 HTML
+
+## Project Profile
+
+- **Framework:** *no framework detected*
+- **Styling:** *no styling approach detected*
+- **Component Library:** *none detected*
+- **Theme System:** *none detected*
+- **Dark Mode:** not detected
+
+## Score Card
+
+# Design Score Card
+
+**Overall: 4.9/10 - Needs Work**
+
+| Dimension | Score | Weight |
+|-----------|-------|--------|
+| Color System | 7.9/10 |########..| | 10% |
+| Typography System | 2.8/10 |###.......| | 10% |
+| Layout & Spacing | 4.7/10 |#####.....| | 10% |
+| Component Quality | 2/10 |##........| | 10% |
+| Accessibility | 3.9/10 |####......| | 12% |
+| Visual Hierarchy | 6.5/10 |#######...| | 10% |
+| Interaction Quality | 4/10 |####......| | 8% |
+| Responsiveness | 4.3/10 |####......| | 8% |
+| Visual Polish | 6/10 |######....| | 7% |
+| Performance UX | 8.5/10 |#########.| | 5% |
+| Information Architecture | 4.9/10 |#####.....| | 5% |
+| Platform Appropriateness | 5.5/10 |######....| | 5% |
+
+## Laws of UX Coverage
+
+| Law | Violations | Worst Offender |
+|-----|-----------:|----------------|
+| Aesthetic-Usability Effect (`aesthetic-usability-effect`) | 10 | Body text too small (11px) - minimum 14px, prefer 16px |
+| Jakob's Law (`jakobs-law`) | 7 | No responsive breakpoints detected |
+| Doherty Threshold (`doherty-threshold`) | 5 | Only 0 hover: variants — interactive elements likely lack hover feedback |
+| Law of Pragnanz (`law-of-pragnanz`) | 5 | No consistent type scale detected - sizes appear random |
+| Law of Similarity (`law-of-similarity`) | 5 | No consistent type scale detected - sizes appear random |
+| Postel's Law (`postels-law`) | 4 | No prefers-reduced-motion media query — motion-sensitive users have no escape |
+| Law of Proximity (`law-of-proximity`) | 3 | Inconsistent spacing values - adopt a spacing scale |
+| Miller's Law (`millers-law`) | 2 | 5 different fonts - use 1-2 max |
+| Tesler's Law (`teslers-law`) | 2 | 5 different fonts - use 1-2 max |
+| Fitts's Law (`fittss-law`) | 1 | Insufficient focus-visible: variants (1) — keyboard users cannot see focus |
+| Occam's Razor (`occams-razor`) | 1 | 5 font families — use 1–2 max |
+| Peak-End Rule (`peak-end-rule`) | 1 | No onboarding flow detected — new users dropped at the deep end |
+| Von Restorff Effect (`von-restorff-effect`) | 1 | No display-size type (text-2xl or larger) — hero text likely underscaled for visual anchoring |
+
+## Color System
+
+- Unique colors: **17** (17 hex, 0 OKLCH)
+- CSS variables: **0**
+- Near-duplicate pairs: **3**
+
+## Typography
+
+- Fonts: **5** ('Playfair Display', serif, 'Comic Sans MS', cursive, 'Bebas Neue', sans-serif)
+- Sizes: **1**
+- Weights: **0**
+- Scale detected: **no**
+
+## Spacing
+
+- Consistency: **no**
+- Detected base: **n/apx**
+- Unique values: **2**
+- Issues:
+  - 2 values off the nullpx grid: 7, 13px
+
+## Tailwind Usage
+
+- Total classes extracted: **6**
+- Unique colors: **0**
+- Unique spacings: **0**
+- Font sizes: **0**
+- Radii used: **0**
+- Shadows: **0**
+
+### State coverage (from className variants)
+
+- `hover:` — 0
+- `focus:` — 0
+- `active:` — 0
+- `disabled:` — 0
+- `dark:` — 0
+- `group-hover:` — 0
+- `aria-[...]:` — 0
+
+## Accessibility Signals
+
+- `:focus-visible` styling: **yes**
+- `aria-label` usage: **0** occurrences
+- Skip-to-content link: **NO — add one**
+- Images without `alt`: **2**
+- `prefers-reduced-motion` support: **NO — add it**
+
+## Layout
+
+- Grid system: **none**
+- Container queries: **no**
+- Media queries: **0** total
+- Breakpoints: none detected
+- Container max-widths: none detected
+
+## Specific findings (located + measured + fixed)
+
+19 located finding(s). The highest-impact are detailed below; each names the exact element, the measured value, and the concrete fix.
+
+### [!] Low text contrast on `.hero-subtitle` — 1.03:1
+- **Where:** `styles.css:8` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+```diff
+- color: #fbfbfb;
++ color: #767676;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.btn-secondary` — 2.94:1
+- **Where:** `styles.css:21` · selector `.btn-secondary`
+- **Measured:** 2.94:1 (APCA Lc 56.4) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#ff6600` measures 2.94:1 (APCA Lc 56.4). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.btn-secondary` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#ff6600`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.btn-danger` — 2.66:1
+- **Where:** `styles.css:22` · selector `.btn-danger`
+- **Measured:** 2.66:1 (APCA Lc 52.4) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#ff7700` measures 2.66:1 (APCA Lc 52.4). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.btn-danger` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#ff7700`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.btn-warning` — 2.39:1
+- **Where:** `styles.css:23` · selector `.btn-warning`
+- **Measured:** 2.39:1 (APCA Lc 47.8) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#ff8800` measures 2.39:1 (APCA Lc 47.8). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.btn-warning` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#ff8800`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Fixed 960px width on `.layout` with 0 media queries
+- **Where:** `styles.css:44` · selector `.layout`
+- **Measured:** width: 960px, 0 @media (needs fluid + breakpoints)
+- **Why:** `.layout` is hard-coded to `width: 960px` and the project has no `@media` queries — the layout cannot adapt below 960px.
+- **Impact:** On any viewport narrower than 960px the content overflows or is clipped; mobile is broken.
+- **Fix:** Use `max-width: 960px; width: 100%` and add responsive breakpoints (sm/md/lg).
+```diff
+- width: 960px;
++ max-width: 960px; width: 100%;
+```
+- **Cites:** [Jakob's Law](https://lawsofux.com/jakobs-law/)
+
+### [*] Text too small on `.hero-subtitle` — 11px
+- **Where:** `styles.css:10` · selector `.hero-subtitle`
+- **Measured:** 11px (needs 14px min / 16px ideal)
+- **Why:** `.hero-subtitle` sets `font-size: 11px`, below the 14px minimum (16px recommended) for readable text.
+- **Impact:** Small body text strains readability, especially on mobile and for low-vision users.
+- **Fix:** Raise `font-size` on `.hero-subtitle` to `16px` (or ≥14px) with `line-height: 1.5`.
+```diff
+- font-size: 11px;
++ font-size: 16px; line-height: 1.5;
+```
+- **Cites:** [Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/)
+
+### [*] 5 font families — use 1–2 max
+- **Where:** `styles.css:36` · selector `.hero-title`
+- **Measured:** 5 families: Playfair Display, Comic Sans MS, Bebas Neue, Lobster, Pacifico (needs 1–2 families)
+- **Why:** 5 distinct `font-family` declarations found: `Playfair Display` (styles.css:36), `Comic Sans MS` (styles.css:37), `Bebas Neue` (styles.css:38), `Lobster` (styles.css:39), `Pacifico` (styles.css:40). More than two typefaces fragments the visual system.
+- **Impact:** Too many fonts looks unprofessional, hurts brand coherence, and adds web-font payload.
+- **Fix:** Keep one display family + one body family; delete the rest and map usages to the two kept families.
+```diff
+- font-family: Playfair Display;
+- font-family: Comic Sans MS;
+- font-family: Bebas Neue;
+- font-family: Lobster;
+- font-family: Pacifico;
++ font-family: var(--font-display);  /* headings */
++ font-family: var(--font-body);     /* everything else */
+```
+- **Cites:** [Occam's Razor](https://lawsofux.com/occams-razor/) · [Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/)
+
+### [*] Low text contrast on `.btn-primary` — 3.44:1
+- **Where:** `styles.css:20` · selector `.btn-primary`
+- **Measured:** 3.44:1 (APCA Lc 62.4) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#ff4500` measures 3.44:1 (APCA Lc 62.4). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.btn-primary` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#ff4500`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [*] Low text contrast on `.btn-info` — 3.04:1
+- **Where:** `styles.css:24` · selector `.btn-info`
+- **Measured:** 3.04:1 (APCA Lc 57.8) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#1a9aef` measures 3.04:1 (APCA Lc 57.8). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.btn-info` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#1a9aef`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [*] Low text contrast on `.btn-success` — 3.03:1
+- **Where:** `styles.css:25` · selector `.btn-success`
+- **Measured:** 3.03:1 (APCA Lc 57.7) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#1b9af0` measures 3.03:1 (APCA Lc 57.7). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.btn-success` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#1b9af0`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [*] Low text contrast on `.tag-sale` — 3.84:1
+- **Where:** `styles.css:29` · selector `.tag-sale`
+- **Measured:** 3.84:1 (APCA Lc 66.3) (needs 4.5:1)
+- **Why:** Text `#ffffff` on `#5577ff` measures 3.84:1 (APCA Lc 66.3). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.tag-sale` from `#ffffff` to `#ffffff` (meets 4.5:1 on `#5577ff`), or darken further.
+```diff
+- color: #ffffff;
++ color: #ffffff;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [*] <img> missing `alt` at SignupForm.jsx:9
+- **Where:** `SignupForm.jsx:9` · selector `<img>`
+- **Measured:** no alt attribute (needs WCAG 1.1.1)
+- **Why:** `<img src="/logo.png" className="brand" />` has no `alt` attribute (WCAG 2.2 §1.1.1).
+- **Impact:** Screen-reader users get no description; the image is announced as a filename or skipped.
+- **Fix:** Add descriptive `alt="…"` for meaningful images, or `alt=""` for decorative ones.
+```diff
+- <img src="/logo.png" className="brand" />
++ <img alt="describe the image" src="/logo.png" className="brand" />
+```
+- **Cites:** WCAG 1.1.1 Non-text Content (A)
+
+### [*] <img> missing `alt` at SignupForm.jsx:10
+- **Where:** `SignupForm.jsx:10` · selector `<img>`
+- **Measured:** no alt attribute (needs WCAG 1.1.1)
+- **Why:** `<img src="/hero.jpg" width="600" height="300" />` has no `alt` attribute (WCAG 2.2 §1.1.1).
+- **Impact:** Screen-reader users get no description; the image is announced as a filename or skipped.
+- **Fix:** Add descriptive `alt="…"` for meaningful images, or `alt=""` for decorative ones.
+```diff
+- <img src="/hero.jpg" width="600" height="300" />
++ <img alt="describe the image" src="/hero.jpg" width="600" height="300" />
+```
+- **Cites:** WCAG 1.1.1 Non-text Content (A)
+
+### [*] Form input has no associated label at SignupForm.jsx:17
+- **Where:** `SignupForm.jsx:17` · selector `<input>`
+- **Measured:** no label/aria-label (needs WCAG 3.3.2)
+- **Why:** `<input type="email"    placeholder="Email address" className="body-copy" />` has no `<label for>`, `aria-label`, or `aria-labelledby` (a placeholder is not a label) (WCAG 2.2 §3.3.2 / §1.1.1).
+- **Impact:** Screen-reader users cannot tell what the field is for; placeholder text disappears on input.
+- **Fix:** Add a `<label htmlFor="…">` + matching `id`, or an `aria-label`.
+```diff
+- <input type="email"    placeholder="Email address" className="body-copy" />
++ <label htmlFor="field">Label</label>
++ <input id="field" type="email"    placeholder="Email address" className="body-co
+```
+- **Cites:** WCAG 3.3.2 Labels or Instructions (A) · WCAG 1.1.1 Non-text Content (A)
+
+### [*] Form input has no associated label at SignupForm.jsx:18
+- **Where:** `SignupForm.jsx:18` · selector `<input>`
+- **Measured:** no label/aria-label (needs WCAG 3.3.2)
+- **Why:** `<input type="password" placeholder="Password"      className="body-copy" />` has no `<label for>`, `aria-label`, or `aria-labelledby` (a placeholder is not a label) (WCAG 2.2 §3.3.2 / §1.1.1).
+- **Impact:** Screen-reader users cannot tell what the field is for; placeholder text disappears on input.
+- **Fix:** Add a `<label htmlFor="…">` + matching `id`, or an `aria-label`.
+```diff
+- <input type="password" placeholder="Password"      className="body-copy" />
++ <label htmlFor="field">Label</label>
++ <input id="field" type="password" placeholder="Password"      className="body-co
+```
+- **Cites:** WCAG 3.3.2 Labels or Instructions (A) · WCAG 1.1.1 Non-text Content (A)
+
+## Project-level observations
+
+These are systemic (not tied to one line); evidence is the project as a whole.
+
+- [!] **typography** — Body text too small (11px) - minimum 14px, prefer 16px _([Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/))_
+- [!] **layout** — No responsive breakpoints detected _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [!] **components** — Insufficient focus-visible: variants (1) — keyboard users cannot see focus _([Fitts's Law](https://lawsofux.com/fittss-law/))_
+- [!] **responsive** — No responsive breakpoints (sm/md/lg/xl/2xl) used in className — UI is not adaptive _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [*] **color** — Missing semantic colors: primary, error, success, warning _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [*] **typography** — No consistent type scale detected - sizes appear random _([Law of Prägnanz](https://lawsofux.com/law-of-pr%C3%A4gnanz/) · [Law of Similarity](https://lawsofux.com/law-of-similarity/))_
+- [*] **typography** — 5 different fonts - use 1-2 max _([Tesler's Law](https://lawsofux.com/teslers-law/) · [Miller's Law](https://lawsofux.com/millers-law/))_
+- [*] **layout** — Inconsistent spacing values - adopt a spacing scale _([Law of Proximity](https://lawsofux.com/law-of-proximity/) · [Law of Prägnanz](https://lawsofux.com/law-of-pr%C3%A4gnanz/))_
+- [*] **layout** — No container max-width - content stretches on wide screens _([Law of Prägnanz](https://lawsofux.com/law-of-pr%C3%A4gnanz/) · [Miller's Law](https://lawsofux.com/millers-law/))_
+- [*] **components** — No reusable UI primitives detected in components/ui/ — add shadcn/ui or equivalent to stop reinventing buttons _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [*] **components** — Only 0 hover: variants — interactive elements likely lack hover feedback _([Doherty Threshold](https://lawsofux.com/doherty-threshold/) · [Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/))_
+- [*] **accessibility** — 2 images missing alt text _(WCAG 1.1.1 Non-text Content (A))_
+

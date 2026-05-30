@@ -2,6 +2,7 @@
 description: Run a color-only design audit — contrast, near-duplicates, dark mode, semantic coverage. Scoped variant of /ui-ux-suite:audit.
 argument-hint: "[path]"
 model: sonnet
+user-invocable: false
 allowed-tools: [mcp__ui-ux-suite__uiux_audit_run, mcp__ui-ux-suite__uiux_extract_colors, mcp__ui-ux-suite__uiux_check_contrast, mcp__ui-ux-suite__uiux_score_dimension, mcp__ui-ux-suite__uiux_knowledge_query, Read, Grep, Glob]
 ---
 
