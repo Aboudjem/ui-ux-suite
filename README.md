@@ -14,6 +14,14 @@
   <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=0ea5e9" alt="Stars"></a>
 </p>
 
+<p align="center">
+  <b>English</b> ·
+  <a href="READMEs/zh-CN.md">简体中文</a> ·
+  <a href="READMEs/ja.md">日本語</a> ·
+  <a href="READMEs/es.md">Español</a> ·
+  <a href="READMEs/fr.md">Français</a>
+</p>
+
 <p align="center"><b>ESLint for design.</b> It finds the exact line, the measured wrong value, and the exact fix.</p>
 
 <p align="center">
@@ -122,6 +130,29 @@ mcpServers:
 
 </details>
 
+### Or install the skills into any AI CLI
+
+The MCP server above works in every MCP-capable client. To also load the `/design-*` skills directly into another CLI, run the one-line installer. It symlinks the skills into that CLI's skills directory; `--update` pulls the latest and relinks, `--uninstall` removes them.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/install.sh | bash -s codex
+```
+
+On Windows, run `install.ps1 <platform>` from a checkout (Developer Mode or an elevated shell is needed for symlinks).
+
+| Platform | Skills directory | One-liner |
+|:--|:--|:--|
+| Claude Code | (plugin) | `claude plugin install ui-ux-suite@10x` |
+| Codex / Gemini / OpenCode / Pi | `~/.agents/skills` | `install.sh codex` |
+| VS Code (Copilot) | `~/.copilot/skills` | `install.sh copilot` |
+| Trae | `~/.trae/skills` | `install.sh trae` |
+| Vibe | `~/.vibe/skills` | `install.sh vibe` |
+| OpenClaw | `~/.openclaw/skills` | `install.sh openclaw` |
+| Antigravity | `~/.gemini/antigravity/skills` | `install.sh antigravity` |
+| Hermes / Cline / Kimi | `~/.<cli>/skills` | `install.sh hermes` |
+
+Skill-directory conventions change between CLI releases. If a link does not resolve, fall back to the MCP server (it works everywhere). Run `install.sh all` to link every platform at once.
+
 <details>
 <summary><b>Install as a Claude Code plugin</b></summary>
 
@@ -129,10 +160,6 @@ mcpServers:
 # From the 10x marketplace
 claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
-
-# Or directly from this repo (ships its own marketplace.json)
-claude plugin marketplace add Aboudjem/ui-ux-suite
-claude plugin install ui-ux-suite@ui-ux-suite
 ```
 
 Wires up the slash commands, specialist agents, knowledge base, and the MCP server in one step.
@@ -312,6 +339,18 @@ Yes. `npx ui-ux-suite . --fail-under 7` exits non-zero when the score drops belo
 ## Privacy
 
 All analysis runs locally. Your code never leaves your machine. No telemetry, no API calls, no network.
+
+---
+
+## Star History
+
+<a href="https://star-history.com/#Aboudjem/ui-ux-suite&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Aboudjem/ui-ux-suite&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Aboudjem/ui-ux-suite&type=Date" />
+    <img alt="Star history chart for Aboudjem/ui-ux-suite" src="https://api.star-history.com/svg?repos=Aboudjem/ui-ux-suite&type=Date" width="70%" />
+  </picture>
+</a>
 
 ---
 
