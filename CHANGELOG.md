@@ -5,28 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-05-29
+## [0.5.0] - 2026-05-30
 
-Documentation and presentation polish. No behaviour changes.
+Portability and discoverability pass. No engine behaviour changes; the 311-test suite stays green.
 
 ### Added
 
-- Demo video and a CI-status badge in the README.
-- Published the 311-test count.
+- **Multi-CLI installers.** `install.sh` (POSIX) and `install.ps1` (PowerShell) symlink the 14 skills into a target CLI's skills directory (Gemini, Codex, OpenCode, Pi, Vibe, VS Code/Copilot, Trae, OpenClaw, Antigravity, Hermes, Cline, Kimi), with `--update` and `--uninstall`. The MCP server (`npx ui-ux-suite --mcp`) remains the universal fallback.
+- **Dual-mode discovery manifests.** `.cursor-plugin/plugin.json` and `.copilot-plugin/plugin.json` mirror `.claude-plugin/plugin.json` (name, version, description, author, homepage, repository, license, keywords, skills) and each carry an `mcp` block for the `npx ui-ux-suite --mcp` server.
+- **GitHub Pages site.** `site/index.html` (dark landing page) deployed by `.github/workflows/deploy-pages.yml`, reusing the shipped `demo.gif` and the `docs/demo/sample-audit.html` sample report.
+- **Localized READMEs.** Full translations under `READMEs/` (zh-CN, ja, es, fr) with a language-switcher row, an install matrix, and a Star History chart added to the English README.
+- **Contributor notes** in `CLAUDE.md`: the host-agnostic-agents rationale, the installer target-dir table, the manifests-to-keep-in-sync list, and a version-bump checklist.
 
 ### Changed
 
+- **Host-agnostic agents.** Dropped the `model:` frontmatter from all 12 agents so each host CLI uses its own default model. Frontmatter keeps `name`, `description`, and `tools`. The deeper-reasoning intent for `design-auditor` and `psychology-analyst` is now documented in `CLAUDE.md`, not pinned in frontmatter.
+- Demo video and a CI-status badge in the README; published the 311-test count.
 - Aligned the dimension labels in the docs to the schema.
 - Corrected the scorecard SVGs: removed a non-existent `/uiux-fix` command and emoji (the tool is audit-only).
 
 ### Removed
 
+- The stray `.claude-plugin/marketplace.json` and the README "Or directly from this repo" self-marketplace install block. The 10x hub (`claude plugin marketplace add Aboudjem/10x`) is the canonical marketplace.
 - Internal rebuild docs and audit artifacts.
 
 ### Fixed
 
+- `.github/FUNDING.yml` now points at `Aboudjem` (the previous `adamboudj` handle 404'd).
+- Removed em-dashes from `CLAUDE.md`, `docs/VIDEO-EMBED.md`, and the user-facing templates (`audit-report.md`, `score-card.md`, `type-system.md`).
 - Animated SVGs now respect `prefers-reduced-motion`.
-- Removed sentence-break em-dashes from the docs.
 
 ## [0.4.1] - 2026-05-28
 
