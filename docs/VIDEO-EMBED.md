@@ -1,12 +1,12 @@
-# Demo video — embed guide
+# Demo video embed guide
 
-The README hero is a silent, looping GIF (`/.github/assets/demo.gif`) — the only fully
+The README hero is a silent, looping GIF (`/.github/assets/demo.gif`), the only fully
 autonomous, render-anywhere embed GitHub supports in Markdown. A voiced **`output.mp4`**
 (H.264, 1920×1080, ~32s) is also built for the native HTML5 player.
 
 ## What's committed
 
-- `/.github/assets/demo.gif` — the live hero, embedded at the top of `README.md`:
+- `/.github/assets/demo.gif`, the live hero, embedded at the top of `README.md`:
   `![ui-ux-suite demo](.github/assets/demo.gif)`
 - Everything else lives in `demo-output/` (gitignored): `scenes/*.html`, `narration/*.txt`,
   `frames/*.png`, `audio/*.aiff`, per-scene `clip*.mp4`, and `output.mp4`.
@@ -72,5 +72,5 @@ done
 | 5 | Close | "Design quality, measured." + `npx ui-ux-suite` + repo URL | 7.0s |
 
 **Accuracy:** ui-ux-suite is **audit-only / read-only**. It locates, measures, and *shows you* the
-exact before→after fix you apply yourself — it never edits code. The demo says "shows you the exact
+exact before→after fix you apply yourself; it never edits code. The demo says "shows you the exact
 fix," never "applies it for you," and shows no fix-applying command.

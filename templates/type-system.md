@@ -5,7 +5,7 @@
 - **Fallback:** {{fallbackStack}}
 - **Mono:** {{monoFont}}
 
-## Type Scale ({{scaleRatio}} — {{scaleLabel}})
+## Type Scale ({{scaleRatio}}, {{scaleLabel}})
 
 | Role | Size | Line Height | Weight | Letter Spacing | Fluid |
 |------|------|-------------|--------|----------------|-------|

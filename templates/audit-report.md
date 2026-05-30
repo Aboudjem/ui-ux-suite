@@ -21,7 +21,7 @@
 
 ## Score Card
 
-**Overall: {{overallScore}}/10 — {{grade}}**
+**Overall: {{overallScore}}/10 ({{grade}})**
 
 | Dimension | Score | Weight |
 |-----------|-------|--------|
@@ -114,17 +114,17 @@
 
 ### Quick Wins (< 1 hour)
 {{#quickWins}}
-- [ ] {{description}} — **{{dimension}}** ({{severity}})
+- [ ] {{description}}, **{{dimension}}** ({{severity}})
 {{/quickWins}}
 
 ### Medium Effort (1-4 hours)
 {{#mediumEffort}}
-- [ ] {{description}} — **{{dimension}}** ({{severity}})
+- [ ] {{description}}, **{{dimension}}** ({{severity}})
 {{/mediumEffort}}
 
 ### Major Improvements (4+ hours)
 {{#majorWork}}
-- [ ] {{description}} — **{{dimension}}** ({{severity}})
+- [ ] {{description}}, **{{dimension}}** ({{severity}})
 {{/majorWork}}
 
 ---

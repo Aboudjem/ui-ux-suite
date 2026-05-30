@@ -3,14 +3,14 @@
 
 **UI/UX Design Intelligence Suite**
 
-A Claude Code plugin that gives any developer instant, evidence-based design auditing across 12 dimensions — color, typography, layout, accessibility, interaction quality, and more. It scans real project files (CSS, JSX, Tailwind configs), produces quantified scores (1-10 per dimension, weighted overall), and generates actionable fix recommendations with before/after code. Think "ESLint for design" — but powered by 21 knowledge base documents, 12 specialized agents, and real color science (WCAG 2.2, APCA, OKLCH, deltaE).
+A Claude Code plugin that gives any developer instant, evidence-based design auditing across 12 dimensions (color, typography, layout, accessibility, interaction quality, and more). It scans real project files (CSS, JSX, Tailwind configs), produces quantified scores (1-10 per dimension, weighted overall), and generates actionable fix recommendations with before/after code. Think "ESLint for design", but powered by 21 knowledge base documents, 12 specialized agents, and real color science (WCAG 2.2, APCA, OKLCH, deltaE).
 
-**Core Value:** **Any developer can audit their project's design quality in one command and get a prioritized, evidence-backed action plan — no design background needed.**
+**Core Value:** **Any developer can audit their project's design quality in one command and get a prioritized, evidence-backed action plan, no design background needed.**
 
 ### Constraints
 
 - **Platform**: Claude Code plugin (manifest.json format)
-- **Runtime**: Node.js (no external dependencies — zero-dep by design)
+- **Runtime**: Node.js (no external dependencies, zero-dep by design)
 - **License**: MIT (already declared)
 - **Install**: Must work via `claude plugin add` from GitHub URL
 - **Compatibility**: Must work with any frontend project (React, Vue, Svelte, Angular, vanilla)
@@ -169,3 +169,47 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 > Profile not yet configured. Run `/gsd-profile-user` to generate your developer profile.
 > This section is managed by `generate-claude-profile` -- do not edit manually.
 <!-- GSD:profile-end -->
+
+## Contributor notes (portability and discoverability layer)
+
+These notes record the gotchas introduced by the multi-CLI install and discoverability work. Keep them current when you touch the related files.
+
+### Host-agnostic agents (#167)
+
+The 12 agents under `agents/` carry no `model:` frontmatter. Each host CLI falls back to its own default model, so the plugin works the same in Claude Code, Cursor, Codex, Gemini, and every other host. A literal `model: inherit` is a Claude-Code-only keyword that some hosts (for example OpenCode) reject as an unknown model id, which is why each agent frontmatter carries only `name`, `description`, and `tools`. When adding a new agent, omit `model:`. The model-tier intent (the design-auditor and psychology-analyst were the two deeper-reasoning agents) lives here in prose, not in frontmatter.
+
+### Multi-CLI installer target directories
+
+`install.sh` and `install.ps1` symlink the 14 skills under `skills/` into a CLI's skills directory. Current map:
+
+| Platform | Directory | Style |
+|:--|:--|:--|
+| gemini, codex, opencode, pi | `~/.agents/skills` | per-skill |
+| vscode, copilot | `~/.copilot/skills` | per-skill |
+| trae | `~/.trae/skills` | per-skill |
+| vibe | `~/.vibe/skills` | per-skill |
+| openclaw | `~/.openclaw/skills` | folder |
+| antigravity | `~/.gemini/antigravity/skills` | folder |
+| hermes, cline, kimi | `~/.<cli>/skills` | folder |
+
+These conventions change between CLI releases. When one drifts, update `install.sh` (`platform_target`), `install.ps1` (`Get-PlatformTarget`), and the install matrix in the README together. The MCP server (`npx ui-ux-suite --mcp`) is the universal fallback and is unaffected by this table.
+
+### Manifests to keep in sync
+
+Three plugin manifests must stay aligned on `name`, `version`, and `description`: `.claude-plugin/plugin.json`, `.cursor-plugin/plugin.json`, `.copilot-plugin/plugin.json`. ui-ux-suite is dual-mode (it ships an MCP server), so the Cursor and Copilot manifests also carry an `mcp` block mirroring the `npx ui-ux-suite --mcp` invocation documented in the README.
+
+### Version-bump checklist
+
+When cutting a release, bump the version in every version-carrying file and add a `CHANGELOG.md` entry:
+
+- `package.json`
+- `.claude-plugin/plugin.json`
+- `.cursor-plugin/plugin.json`
+- `.copilot-plugin/plugin.json`
+- `CHANGELOG.md` (new dated section)
+
+The npm `files` list does not include the installer, the discovery manifests, `READMEs/`, or `site/`, so those are repo-only and are not shipped to npm.
+
+### GitHub Pages
+
+`site/index.html` is deployed by `.github/workflows/deploy-pages.yml` (`concurrency: pages`). It reuses the already-built demo assets (`.github/assets/demo.gif`) and the sample audit report (`docs/demo/sample-audit.html`); it does not rebuild them. Pages must be set to deploy from GitHub Actions in the repo settings.

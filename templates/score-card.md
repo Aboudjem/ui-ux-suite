@@ -1,6 +1,6 @@
 # Design Score Card
 
-**Overall: {{overallScore}}/10 — {{grade}}**
+**Overall: {{overallScore}}/10 ({{grade}})**
 
 {{#dimensions}}
 | {{label}} | {{score}}/10 | {{bar}} | {{weight}} |
