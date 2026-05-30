@@ -1,0 +1,49 @@
+/* Sample component with deliberate design problems — for demonstration only.
+   Run: npx ui-ux-suite examples/01-cli-audit/src
+   Expected score: ~3.7/10 (Needs Work)
+*/
+
+/* Problem 1: near-invisible text contrast (1.03:1 — WCAG 1.4.3 needs 4.5:1) */
+.hero-subtitle {
+  color: #fbfbfb;
+  background-color: #ffffff;
+  font-size: 11px; /* Problem 2: body text below 14px minimum */
+}
+
+/* Problem 3: arbitrary spacing not on a scale */
+.card {
+  padding: 13px;
+  margin: 7px;
+}
+
+/* Problem 4: 43+ unique colors — no design system */
+.btn-primary    { background: #ff4500; color: #fff; }
+.btn-secondary  { background: #ff6600; color: #fff; }
+.btn-danger     { background: #ff7700; color: #fff; }
+.btn-warning    { background: #ff8800; color: #fff; }
+.btn-info       { background: #1a9aef; color: #fff; }
+.btn-success    { background: #1b9af0; color: #fff; }
+.badge-new      { background: #2244cc; color: #fff; }
+.badge-hot      { background: #3355dd; color: #fff; }
+.tag-featured   { background: #4466ee; color: #fff; }
+.tag-sale       { background: #5577ff; color: #fff; }
+.highlight-a    { background: #aabbcc; }
+.highlight-b    { background: #bbccdd; }
+.highlight-c    { background: #ccddee; }
+.highlight-d    { background: #ddeeff; }
+
+/* Problem 5: multiple font families (5 — should be 1-2) */
+.hero-title    { font-family: 'Playfair Display', serif; }
+.body-copy     { font-family: 'Comic Sans MS', cursive; }
+.nav-link      { font-family: 'Bebas Neue', sans-serif; }
+.footer-text   { font-family: 'Lobster', cursive; }
+.sidebar-text  { font-family: 'Pacifico', cursive; }
+
+/* Problem 6: no responsive breakpoints */
+.layout {
+  width: 960px; /* fixed width, no max-width, no breakpoints */
+}
+
+/* Problem 7: no focus-visible styling */
+button:focus { outline: none; }
+a:focus      { outline: none; }
