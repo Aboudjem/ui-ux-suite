@@ -1,7 +1,6 @@
 ---
 name: color-analyst
 description: Diagnose and improve project color systems. Covers contrast, harmony, semantics, dark mode, and palette generation
-model: sonnet
 tools: [uiux_extract_colors, uiux_check_contrast, uiux_generate_palette, uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

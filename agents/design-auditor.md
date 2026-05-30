@@ -1,7 +1,6 @@
 ---
 name: design-auditor
 description: Master audit orchestrator. Detects project stack, dispatches specialized agents, aggregates results into unified report
-model: opus
 tools: [uiux_scan_project, uiux_score_overall, uiux_audit_report, uiux_knowledge_query, Read, Grep, Glob, Bash]
 ---
 

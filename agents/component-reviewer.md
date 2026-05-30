@@ -1,7 +1,6 @@
 ---
 name: component-reviewer
 description: Audit component quality, consistency, state coverage, and patterns
-model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

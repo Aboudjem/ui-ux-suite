@@ -1,7 +1,6 @@
 ---
 name: typography-analyst
 description: Diagnose and improve typography systems. Covers font selection, type scale, readability, and performance
-model: sonnet
 tools: [uiux_extract_typography, uiux_generate_type_scale, uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

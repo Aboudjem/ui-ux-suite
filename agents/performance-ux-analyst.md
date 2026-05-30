@@ -1,7 +1,6 @@
 ---
 name: performance-ux-analyst
 description: Evaluate perceived performance. Covers loading states, skeleton screens, optimistic updates, and image optimization
-model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

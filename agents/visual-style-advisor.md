@@ -1,7 +1,6 @@
 ---
 name: visual-style-advisor
 description: Evaluate visual direction and recommend style improvements. 10 viable style directions with durability ratings
-model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

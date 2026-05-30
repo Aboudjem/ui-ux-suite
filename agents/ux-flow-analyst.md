@@ -1,7 +1,6 @@
 ---
 name: ux-flow-analyst
 description: Analyze user flows, navigation, onboarding, information architecture, and error recovery
-model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

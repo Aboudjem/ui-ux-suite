@@ -1,7 +1,6 @@
 ---
 name: interaction-analyst
 description: Evaluate interaction patterns, motion design, microinteractions, and animation quality
-model: sonnet
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

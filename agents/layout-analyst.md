@@ -1,7 +1,6 @@
 ---
 name: layout-analyst
 description: Diagnose layout, spacing, grid systems, density, and responsive behavior.
-model: sonnet
 tools: [uiux_extract_spacing, uiux_generate_spacing_scale, uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 

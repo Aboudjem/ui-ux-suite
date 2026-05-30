@@ -1,7 +1,6 @@
 ---
 name: psychology-analyst
 description: Evaluate design through behavioral psychology. Covers cognitive load, hierarchy, trust, persuasion, and dark patterns
-model: opus
 tools: [uiux_knowledge_query, uiux_audit_log, Read, Grep, Glob]
 ---
 
