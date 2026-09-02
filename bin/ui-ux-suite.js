@@ -10,6 +10,7 @@
  *   npx ui-ux-suite [path] --fail-under 7     Exit non-zero if the overall score is below N (for CI)
  *   npx ui-ux-suite [path] --write-baseline .uiux-baseline.json   Freeze today's findings
  *   npx ui-ux-suite [path] --baseline .uiux-baseline.json --fail-on-regression   Fail on new ones
+ *   npx ui-ux-suite [path] --tags wcag2aa --exclude-tags severity:nice-to-have   Narrow the report
  *   npx ui-ux-suite --mcp             Start as MCP server (for AI editors)
  *   npx ui-ux-suite --version | --help
  *
@@ -19,12 +20,16 @@
 const fs = require('fs');
 const path = require('path');
 
+const { parseTagList } = require('../lib/tags');
+
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));
 const argv = process.argv.slice(2);
 
 // Flags that consume the next argument. Parsing them in one pass is what keeps a flag value
 // (`--sarif out.sarif`) from being mistaken for the project path.
-const VALUE_FLAGS = new Set(['--html', '--sarif', '--fail-under', '--write-baseline', '--baseline']);
+const VALUE_FLAGS = new Set([
+  '--html', '--sarif', '--fail-under', '--write-baseline', '--baseline', '--tags', '--exclude-tags',
+]);
 
 function parseArgs(list) {
   const opts = { flags: new Set(), values: {}, positional: [], unknownValueFlags: [] };
@@ -71,6 +76,9 @@ Usage:
   npx ui-ux-suite [path] --write-baseline FILE   Record today's findings, then exit 0
   npx ui-ux-suite [path] --baseline FILE --fail-on-regression
                                        Exit 1 only on a NEW finding or a score drop
+  npx ui-ux-suite [path] --tags a,b    Show only findings carrying any of these tags
+  npx ui-ux-suite [path] --exclude-tags a,b   Drop findings carrying any of these tags
+  npx ui-ux-suite [path] --list-tags   Print every tag this audit produced, then exit
   npx ui-ux-suite --mcp                Start as MCP server (Claude Code, Cursor, VS Code, …)
   npx ui-ux-suite --version | --help
 
@@ -82,10 +90,16 @@ Examples:
   npx ui-ux-suite . --fail-under 7     Fail CI if the design score drops below 7
   npx ui-ux-suite . --write-baseline .uiux-baseline.json
   npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
+  npx ui-ux-suite . --tags wcag2aa,law:fittss-law
+  npx ui-ux-suite . --exclude-tags severity:nice-to-have
 
 What you get: per-finding file:line + selector, the measured wrong value, and the exact fix
 (before -> after), across 12 dimensions grounded in WCAG 2.2, APCA, and the Laws of UX.
 It audits and SUGGESTS. It never edits your files.
+
+Tags are derived from what each finding already cites: dimension:<id>, severity:<level>,
+wcag:<criterion>, wcag2a / wcag2aa / wcag2aaa, law:<slug>, nielsen:<n>. Filtering changes
+what is reported, never the score, so --fail-under is unaffected.
 `);
   process.exit(0);
 }
@@ -108,6 +122,11 @@ if (has('--mcp')) {
   const writeBaselineTo = opts.values['--write-baseline'] || null;
   const baselineFrom = opts.values['--baseline'] || null;
   const failOnRegression = has('--fail-on-regression');
+  const tagFilter = {
+    include: parseTagList(opts.values['--tags']),
+    exclude: parseTagList(opts.values['--exclude-tags']),
+  };
+  const listTags = has('--list-tags');
 
   if (failOnRegression && !baselineFrom) {
     console.error('Error: --fail-on-regression needs --baseline FILE.');
@@ -127,9 +146,18 @@ if (has('--mcp')) {
   }
 
   const { auditProject, formatReport } = require('../lib/runner');
+  const { applyTagFilter, allTags } = require('../lib/tags');
 
   try {
     const result = auditProject(projectPath);
+
+    if (listTags) {
+      process.stdout.write(allTags(result).join('\n') + '\n');
+      process.exit(0);
+    }
+
+    // Filtering is a presentation transform applied after scoring, so the score is untouched.
+    applyTagFilter(result, tagFilter);
 
     if (jsonOutput) {
       process.stdout.write(JSON.stringify(result, null, 2) + '\n');
