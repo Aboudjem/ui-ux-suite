@@ -1,63 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" fill="none" role="img" aria-label="ui-ux-suite: design quality, measured, not guessed">
+  <defs>
+    <linearGradient id="u-bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%" stop-color="#0A0F1C"/>
+      <stop offset="60%" stop-color="#080C16"/>
+      <stop offset="100%" stop-color="#07070C"/>
+    </linearGradient>
+
+    <radialGradient id="u-bloom" cx="0.5" cy="1" r="0.75">
+      <stop offset="0%"  stop-color="#FF2D78" stop-opacity="0.28"/>
+      <stop offset="38%" stop-color="#7C3AED" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="u-sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#FFD59A"/>
+      <stop offset="30%"  stop-color="#FFB341"/>
+      <stop offset="66%"  stop-color="#FF4D8D"/>
+      <stop offset="100%" stop-color="#C77DFF"/>
+    </linearGradient>
+
+    <linearGradient id="u-brand" x1="0" y1="0" x2="1" y2="0.25" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#5B9DFF"/>
+      <animateTransform attributeName="gradientTransform" type="translate"
+        values="-0.12 0; 0.12 0; -0.12 0" dur="18s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <linearGradient id="u-horizonline" gradientUnits="userSpaceOnUse" x1="32" y1="172" x2="688" y2="172">
+      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0"/>
+      <stop offset="22%"  stop-color="#00D4FF" stop-opacity="0.5"/>
+      <stop offset="55%"  stop-color="#C77DFF" stop-opacity="0.8"/>
+      <stop offset="82%"  stop-color="#FF2D78" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="u-gridfade" gradientUnits="userSpaceOnUse" x1="0" y1="172" x2="0" y2="200">
+      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0.55"/>
+      <stop offset="55%"  stop-color="#5B9DFF" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <filter id="u-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="u-sunglow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="16" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <clipPath id="u-sunclip"><circle cx="656" cy="138" r="34"/></clipPath>
+    <clipPath id="u-gridclip"><rect x="0" y="172" width="720" height="28"/></clipPath>
+  </defs>
+
   <style>
-    @keyframes scan {
-      0%,100% { transform: translateY(0); opacity: 0.5; }
-      50% { transform: translateY(40px); opacity: 1; }
-    }
-    @keyframes pulse {
-      0%,100% { opacity: 0.2; }
-      50% { opacity: 0.9; }
-    }
-    @keyframes barGrow {
-      0%,100% { transform: scaleX(0.7); }
-      50% { transform: scaleX(1); }
-    }
-    @keyframes shimmer {
-      0%,100% { opacity: 0.03; }
-      50% { opacity: 0.08; }
-    }
-    .scan-line { animation: scan 3.5s ease-in-out infinite; }
-    .bar1 { animation: barGrow 2.5s ease-in-out infinite; transform-origin: left center; }
-    .bar2 { animation: barGrow 2.5s ease-in-out infinite 0.3s; transform-origin: left center; }
-    .bar3 { animation: barGrow 2.5s ease-in-out infinite 0.6s; transform-origin: left center; }
-    .bar4 { animation: barGrow 2.5s ease-in-out infinite 0.9s; transform-origin: left center; }
-    .dot1 { animation: pulse 2s ease-in-out infinite; }
-    .dot2 { animation: pulse 2s ease-in-out infinite 0.5s; }
-    .dot3 { animation: pulse 2s ease-in-out infinite 1s; }
-    .bg-shimmer { animation: shimmer 5s ease-in-out infinite; }
+    .disp { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+    .sub  { font-size: 15px; font-weight: 500; fill: #B6C2DA; }
+    .tag  { font-size: 11px; letter-spacing: 1.1px; fill: #8494B0; }
+
+    @keyframes u-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 0.95; } }
+    .bloom { animation: u-breathe 9s ease-in-out infinite; }
+
+    @keyframes u-sunpulse { 0%,100% { opacity: 0.42; } 50% { opacity: 0.62; } }
+    .sun { animation: u-sunpulse 10s ease-in-out infinite; }
+
+    @keyframes u-flow { to { stroke-dashoffset: -240; } }
+    .flowline { animation: u-flow 14s linear infinite; }
+
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; }
-      .bar1, .bar2, .bar3, .bar4 { transform: scaleX(1) !important; }
     }
   </style>
-  <rect x="10" y="20" width="700" height="160" rx="24" fill="#0a1628" stroke="#0ea5e9" stroke-width="1.5" stroke-opacity="0.2"/>
-  <rect class="bg-shimmer" x="10" y="20" width="700" height="160" rx="24" fill="#38bdf8"/>
-  <!-- Design audit icon: document with score bars -->
-  <g transform="translate(40, 40)">
-    <!-- Document shadow -->
-    <rect x="4" y="8" width="70" height="90" rx="8" fill="#041225" opacity="0.6"/>
-    <!-- Document -->
-    <rect x="0" y="0" width="70" height="90" rx="8" fill="#0f2440" stroke="#0ea5e9" stroke-width="1.5"/>
-    <!-- Score bars -->
-    <rect class="bar1" x="12" y="16" width="34" height="5" rx="2.5" fill="#38bdf8"/>
-    <rect class="bar2" x="12" y="28" width="28" height="5" rx="2.5" fill="#0ea5e9"/>
-    <rect class="bar3" x="12" y="40" width="40" height="5" rx="2.5" fill="#38bdf8"/>
-    <rect class="bar4" x="12" y="52" width="22" height="5" rx="2.5" fill="#0ea5e9"/>
-    <!-- Score dots -->
-    <circle class="dot1" cx="54" cy="18" r="3.5" fill="#4ade80"/>
-    <circle class="dot2" cx="54" cy="30" r="3.5" fill="#fbbf24"/>
-    <circle class="dot3" cx="54" cy="42" r="3.5" fill="#4ade80"/>
-    <circle class="dot1" cx="54" cy="54" r="3.5" fill="#f87171"/>
-    <!-- Scan line -->
-    <rect class="scan-line" x="6" y="12" width="58" height="2" rx="1" fill="#38bdf8" opacity="0.5"/>
-    <!-- Checkmark badge -->
-    <circle cx="62" cy="78" r="10" fill="#0ea5e9"/>
-    <path d="M56 78 L60 82 L68 74" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect width="720" height="200" fill="url(#u-bg)"/>
+  <ellipse class="bloom" cx="360" cy="204" rx="440" ry="106" fill="url(#u-bloom)"/>
+
+  <g class="sun">
+    <g filter="url(#u-sunglow)"><circle cx="656" cy="138" r="34" fill="url(#u-sun)"/></g>
+    <g clip-path="url(#u-sunclip)" fill="#080C16">
+      <rect x="616" y="144" width="80" height="2"/>
+      <rect x="616" y="150" width="80" height="2.5"/>
+      <rect x="616" y="157" width="80" height="3.5"/>
+      <rect x="616" y="165" width="80" height="5"/>
+    </g>
   </g>
-  <!-- Title -->
-  <text x="150" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="700" fill="#e0f2fe" letter-spacing="-1">ui-ux-suite</text>
-  <!-- Subtitle -->
-  <text x="150" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#38bdf8" font-weight="500">Design quality, measured, not guessed</text>
-  <!-- Tagline -->
-  <text x="150" y="144" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8">12 dimensions  ·  WCAG + APCA  ·  OKLCH color science  ·  Zero deps</text>
+
+  <g id="grid" clip-path="url(#u-gridclip)" opacity="0">
+    <g stroke="url(#u-gridfade)" stroke-width="1" fill="none">
+      <path d="M360 172 L-620 200"/> <path d="M360 172 L-180 200"/> <path d="M360 172 L40 200"/>
+      <path d="M360 172 L170 200"/>  <path d="M360 172 L262 200"/>  <path d="M360 172 L320 200"/>
+      <path d="M360 172 L360 200"/>
+      <path d="M360 172 L400 200"/>  <path d="M360 172 L458 200"/>  <path d="M360 172 L550 200"/>
+      <path d="M360 172 L680 200"/>  <path d="M360 172 L900 200"/>  <path d="M360 172 L1340 200"/>
+    </g>
+    <g stroke="url(#u-gridfade)" stroke-width="1" fill="none">
+      <line x1="0" y1="174"   x2="720" y2="174"/>
+      <line x1="0" y1="177"   x2="720" y2="177"/>
+      <line x1="0" y1="181.5" x2="720" y2="181.5"/>
+      <line x1="0" y1="188"   x2="720" y2="188"/>
+      <line x1="0" y1="197"   x2="720" y2="197"/>
+    </g>
+  </g>
+
+  <g opacity="0.95">
+    <line x1="32" y1="172" x2="688" y2="172" stroke="url(#u-horizonline)" stroke-width="1.25"/>
+    <line class="flowline" x1="32" y1="172" x2="688" y2="172" stroke="url(#u-horizonline)"
+          stroke-width="1.25" stroke-dasharray="3 9" opacity="0.85"/>
+  </g>
+
+  <!-- mark: ruler corner, three graduated ticks on each axis -->
+  <g filter="url(#u-glow)">
+    <g transform="translate(40,54) scale(0.98)">
+      <path d="M6 6 L6 78 L78 78" stroke="url(#u-brand)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M6 58 h8 M6 40 h14 M6 22 h20" stroke="#00D4FF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+      <path d="M26 78 v-8 M44 78 v-14 M62 78 v-20" stroke="#5B9DFF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+    </g>
+  </g>
+
+  <text class="disp" x="150" y="100" font-size="44" font-weight="800" letter-spacing="-1" fill="url(#u-brand)">ui-ux-suite</text>
+  <text class="disp sub"  x="150" y="126">Design quality, measured, not guessed</text>
+  <text class="mono tag"  x="150" y="152">12 dimensions · WCAG 2.2 + APCA · OKLCH · zero deps</text>
 </svg>

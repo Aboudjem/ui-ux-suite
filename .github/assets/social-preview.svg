@@ -1,28 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" fill="none" role="img" aria-label="ui-ux-suite: ESLint for design. It finds the exact line, the measured wrong value, and the exact fix.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#0a1422"/>
+    <linearGradient id="u-bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%" stop-color="#0A0F1C"/>
+      <stop offset="60%" stop-color="#080C16"/>
+      <stop offset="100%" stop-color="#07070C"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#0ea5e9"/>
-      <stop offset="100%" stop-color="#6366f1"/>
+    <radialGradient id="u-bloom" cx="0.5" cy="1" r="0.75">
+      <stop offset="0%"  stop-color="#FF2D78" stop-opacity="0.28"/>
+      <stop offset="38%" stop-color="#7C3AED" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="u-brand" x1="0" y1="0" x2="1" y2="0.25" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#5B9DFF"/>
+    </linearGradient>
+    <linearGradient id="u-horizonline" gradientUnits="userSpaceOnUse" x1="96" y1="548" x2="1184" y2="548">
+      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0"/>
+      <stop offset="22%"  stop-color="#00D4FF" stop-opacity="0.5"/>
+      <stop offset="55%"  stop-color="#C77DFF" stop-opacity="0.8"/>
+      <stop offset="82%"  stop-color="#FF2D78" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect width="1280" height="640" fill="url(#bg)"/>
-  <rect x="0" y="0" width="8" height="640" fill="url(#accent)"/>
-  <circle cx="1100" cy="160" r="220" fill="#0ea5e9" opacity="0.08"/>
-  <text x="96" y="240" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="128" font-weight="900" fill="#ffffff" letter-spacing="-3">UI/UX Suite</text>
-  <text x="96" y="310" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="38" font-weight="600" fill="#0ea5e9">Design quality, measured, not guessed</text>
-  <text x="96" y="380" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">Scores 12 dimensions grounded in 24 named UX laws with</text>
-  <text x="96" y="420" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" fill="#cbd5e1">primary-source citations. WCAG + APCA + OKLCH. Zero deps.</text>
-  <g transform="translate(96, 500)">
-    <rect x="0" y="0" width="130" height="40" rx="20" fill="#0ea5e9" opacity="0.15"/>
-    <text x="65" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#0ea5e9" text-anchor="middle">v0.5.0</text>
-    <rect x="145" y="0" width="155" height="40" rx="20" fill="#6366f1" opacity="0.15"/>
-    <text x="222" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#a5b4fc" text-anchor="middle">24 UX laws</text>
-    <rect x="320" y="0" width="190" height="40" rx="20" fill="#ffffff" opacity="0.08"/>
-    <text x="415" y="27" font-family="Inter, monospace" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">npx ui-ux-suite</text>
+
+  <style>
+    .disp { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+    .head { font-size: 34px; font-weight: 700; fill: #F2F6FF; letter-spacing: -0.4px; }
+    .body { font-size: 26px; font-weight: 500; fill: #B6C2DA; }
+    .chip { font-size: 17px; font-weight: 700; fill: #B6C2DA; }
+    .foot { font-size: 19px; letter-spacing: 1.4px; fill: #8494B0; }
+  </style>
+
+  <rect width="1280" height="640" fill="url(#u-bg)"/>
+  <ellipse cx="640" cy="664" rx="800" ry="210" fill="url(#u-bloom)"/>
+
+  <text class="disp" x="96" y="250" font-size="112" font-weight="800" letter-spacing="-2" fill="url(#u-brand)">ui-ux-suite</text>
+
+  <text class="disp head" x="96" y="322">ESLint for design.</text>
+  <text class="disp body" x="96" y="376">It finds the exact line, the measured wrong value,</text>
+  <text class="disp body" x="96" y="414">and the exact fix.</text>
+
+  <g transform="translate(96,470)">
+    <rect width="110" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
+    <text class="mono chip" x="55" y="26" text-anchor="middle" fill="#00D4FF">v0.6.0</text>
+
+    <rect x="126" width="142" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
+    <text class="mono chip" x="197" y="26" text-anchor="middle">356 tests</text>
+
+    <rect x="284" width="186" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
+    <text class="mono chip" x="377" y="26" text-anchor="middle">12 dimensions</text>
+
+    <rect x="486" width="208" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
+    <text class="mono chip" x="590" y="26" text-anchor="middle">npx ui-ux-suite</text>
   </g>
-  <text x="1184" y="592" font-family="Inter, monospace" font-size="20" fill="#64748b" text-anchor="end">github.com/Aboudjem/ui-ux-suite</text>
+
+  <line x1="96" y1="548" x2="1184" y2="548" stroke="url(#u-horizonline)" stroke-width="1.5"/>
+
+  <text class="mono foot" x="96" y="598">github.com/Aboudjem/ui-ux-suite</text>
+
+  <!-- reserved: x 930 to 1150, y 210 to 430 stays empty for the composited PNG mark -->
 </svg>
