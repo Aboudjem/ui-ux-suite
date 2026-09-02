@@ -8,6 +8,8 @@
  *   npx ui-ux-suite [path] --html out.html   Also write an HTML report with the findings
  *   npx ui-ux-suite [path] --sarif out.sarif Also write SARIF 2.1.0 for GitHub code scanning
  *   npx ui-ux-suite [path] --fail-under 7     Exit non-zero if the overall score is below N (for CI)
+ *   npx ui-ux-suite [path] --write-baseline .uiux-baseline.json   Freeze today's findings
+ *   npx ui-ux-suite [path] --baseline .uiux-baseline.json --fail-on-regression   Fail on new ones
  *   npx ui-ux-suite --mcp             Start as MCP server (for AI editors)
  *   npx ui-ux-suite --version | --help
  *
@@ -22,7 +24,7 @@ const argv = process.argv.slice(2);
 
 // Flags that consume the next argument. Parsing them in one pass is what keeps a flag value
 // (`--sarif out.sarif`) from being mistaken for the project path.
-const VALUE_FLAGS = new Set(['--html', '--sarif', '--fail-under']);
+const VALUE_FLAGS = new Set(['--html', '--sarif', '--fail-under', '--write-baseline', '--baseline']);
 
 function parseArgs(list) {
   const opts = { flags: new Set(), values: {}, positional: [], unknownValueFlags: [] };
@@ -66,6 +68,9 @@ Usage:
   npx ui-ux-suite [path] --html FILE   Write an HTML report (dark theme) to FILE
   npx ui-ux-suite [path] --sarif FILE  Write SARIF 2.1.0 to FILE (GitHub code scanning)
   npx ui-ux-suite [path] --fail-under N Exit 1 if overall score < N (CI gate)
+  npx ui-ux-suite [path] --write-baseline FILE   Record today's findings, then exit 0
+  npx ui-ux-suite [path] --baseline FILE --fail-on-regression
+                                       Exit 1 only on a NEW finding or a score drop
   npx ui-ux-suite --mcp                Start as MCP server (Claude Code, Cursor, VS Code, …)
   npx ui-ux-suite --version | --help
 
@@ -75,6 +80,8 @@ Examples:
   npx ui-ux-suite . --json | jq '.topFindings[0]'
   npx ui-ux-suite . --sarif ui-ux.sarif
   npx ui-ux-suite . --fail-under 7     Fail CI if the design score drops below 7
+  npx ui-ux-suite . --write-baseline .uiux-baseline.json
+  npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
 
 What you get: per-finding file:line + selector, the measured wrong value, and the exact fix
 (before -> after), across 12 dimensions grounded in WCAG 2.2, APCA, and the Laws of UX.
@@ -98,6 +105,18 @@ if (has('--mcp')) {
   const sarifOut = opts.values['--sarif'] || null;
   const failUnderRaw = opts.values['--fail-under'];
   const failUnder = failUnderRaw != null ? parseFloat(failUnderRaw) : null;
+  const writeBaselineTo = opts.values['--write-baseline'] || null;
+  const baselineFrom = opts.values['--baseline'] || null;
+  const failOnRegression = has('--fail-on-regression');
+
+  if (failOnRegression && !baselineFrom) {
+    console.error('Error: --fail-on-regression needs --baseline FILE.');
+    process.exit(1);
+  }
+  if (baselineFrom && !fs.existsSync(baselineFrom)) {
+    console.error(`Error: baseline file not found: ${baselineFrom}`);
+    process.exit(1);
+  }
 
   // Banner to stderr so --json stdout stays a clean, pipeable document.
   process.stderr.write(`\nui-ux-suite v${pkg.version}\nScanning: ${projectPath}\n\n`);
@@ -139,6 +158,15 @@ if (has('--mcp')) {
       }
     }
 
+    if (writeBaselineTo) {
+      const { buildBaseline } = require('../lib/baseline');
+      const baseline = buildBaseline(result);
+      fs.writeFileSync(writeBaselineTo, JSON.stringify(baseline, null, 2) + '\n');
+      const n = Object.keys(baseline.findings).length;
+      process.stderr.write(`Baseline written to ${writeBaselineTo} (${n} keys, overall ${baseline.overall}).\n`);
+      process.exit(0);
+    }
+
     if (result.insufficientEvidence) {
       process.stderr.write('Insufficient evidence: no CSS/JSX/HTML found, nothing to audit.\n');
       process.exit(3);
@@ -146,6 +174,24 @@ if (has('--mcp')) {
     if (failUnder != null && result.scoreCard.overall != null && result.scoreCard.overall < failUnder) {
       process.stderr.write(`Overall ${result.scoreCard.overall} is below --fail-under ${failUnder}.\n`);
       process.exit(1);
+    }
+
+    if (baselineFrom) {
+      const { compareToBaseline, formatRegression } = require('../lib/baseline');
+      let baseline;
+      try {
+        baseline = JSON.parse(fs.readFileSync(baselineFrom, 'utf8'));
+      } catch (e) {
+        console.error(`Error: cannot parse baseline JSON ${baselineFrom}: ${e.message}`);
+        process.exit(1);
+      }
+      const comparison = compareToBaseline(result, baseline);
+      if (comparison.regressed) {
+        process.stderr.write(formatRegression(comparison) + '\n');
+        if (failOnRegression) process.exit(1);
+      } else {
+        process.stderr.write(`No regression against ${baselineFrom}.\n`);
+      }
     }
   } catch (err) {
     console.error('Audit failed:', err.message);
