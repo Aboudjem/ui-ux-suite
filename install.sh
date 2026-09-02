@@ -2,21 +2,28 @@
 #
 # ui-ux-suite multi-CLI installer.
 #
-# Symlinks ui-ux-suite's skills into a target AI coding CLI's skills directory
-# so they are available in that CLI. The MCP server (npx ui-ux-suite --mcp) is
-# the universal fallback and works in every MCP-capable client regardless of
-# this installer.
+# By default this delegates to the Vercel skills CLI, which knows the current
+# skills directory for every agent it supports and keeps up with them as they
+# change:
+#
+#   npx --yes skills@1.5.23 add Aboudjem/ui-ux-suite -a <agent> -y
+#
+# --legacy keeps the original behaviour: symlink skills/ straight into a
+# hardcoded per-CLI directory. Use it on a machine with no npx, or when the
+# skills CLI does not yet know your agent.
+#
+# The MCP server (npx ui-ux-suite --mcp) is the universal fallback and works in
+# every MCP-capable client regardless of this installer.
 #
 # Usage:
-#   ./install.sh <platform> [--update | --uninstall] [--no-mcp]
+#   ./install.sh <platform> [--legacy] [--update | --uninstall] [--no-mcp] [--global]
 #   curl -fsSL https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/install.sh | bash -s <platform>
 #
 # Platforms: gemini codex opencode pi vibe vscode copilot trae
 #            openclaw antigravity hermes cline kimi   (or: all)
 #
-# Skill-directory conventions change between CLI releases. The table below is
-# mirrored from the Sniff installer; verify your CLI's current skills path if a
-# link does not resolve. The MCP path always works.
+# The legacy directory table is mirrored from the Sniff installer; verify your
+# CLI's current skills path if a link does not resolve. The MCP path always works.
 #
 set -euo pipefail
 
@@ -24,6 +31,31 @@ REPO_URL="https://github.com/Aboudjem/ui-ux-suite.git"
 CLONE_DIR="${UI_UX_SUITE_HOME:-$HOME/.ui-ux-suite}"
 SKILLS=(a11y-audit color-audit component-audit design-audit design-checklist design-compare design-score design-tokens flow-audit layout-audit refactor-plan style-direction theme-builder type-audit)
 ALL_IDS=(gemini codex opencode pi vibe vscode copilot trae openclaw antigravity hermes cline kimi)
+
+# Pinned so a CLI release cannot change the install behaviour under a user's feet.
+SKILLS_CLI="skills@1.5.23"
+SKILLS_REPO="Aboudjem/ui-ux-suite"
+
+# Our platform id -> the skills CLI's --agent code. Every code below appears in the
+# supported-agents table at https://github.com/vercel-labs/skills#supported-agents.
+agent_code() {
+  case "$1" in
+    gemini)      printf '%s\n' "gemini-cli" ;;
+    codex)       printf '%s\n' "codex" ;;
+    opencode)    printf '%s\n' "opencode" ;;
+    pi)          printf '%s\n' "pi" ;;
+    vibe)        printf '%s\n' "mistral-vibe" ;;
+    vscode)      printf '%s\n' "github-copilot" ;;
+    copilot)     printf '%s\n' "github-copilot" ;;
+    trae)        printf '%s\n' "trae" ;;
+    openclaw)    printf '%s\n' "openclaw" ;;
+    antigravity) printf '%s\n' "antigravity" ;;
+    hermes)      printf '%s\n' "hermes-agent" ;;
+    cline)       printf '%s\n' "cline" ;;
+    kimi)        printf '%s\n' "kimi-code-cli" ;;
+    *)           printf '%s\n' "" ;;
+  esac
+}
 
 c_red=""; c_grn=""; c_dim=""; c_rst=""
 if [ -t 1 ]; then
@@ -39,7 +71,7 @@ usage() {
 ui-ux-suite installer
 
 Usage:
-  install.sh <platform> [--update | --uninstall] [--no-mcp]
+  install.sh <platform> [--legacy] [--update | --uninstall] [--no-mcp] [--global]
   curl -fsSL https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/install.sh | bash -s <platform>
 
 Platforms:
@@ -47,10 +79,22 @@ Platforms:
   all   apply to every platform above
 
 Options:
-  --update     pull the latest ui-ux-suite and relink
-  --uninstall  remove the symlinks for <platform>
+  --legacy     symlink skills/ into a hardcoded directory instead of using the
+               skills CLI. For machines with no npx.
+  --global     pass -g to the skills CLI (user-level install). Ignored with --legacy,
+               which is always user-level.
+  --update     reinstall the latest skills for <platform>
+  --uninstall  remove the skills for <platform>
   --no-mcp     skip the MCP-server hint
   -h, --help   show this help
+
+Default path (needs npx):
+  npx --yes $SKILLS_CLI add $SKILLS_REPO -a <agent> -y
+
+Any agent the skills CLI supports can be installed directly, without this script:
+  npx skills add $SKILLS_REPO -a cursor
+  npx skills add $SKILLS_REPO --list
+See https://github.com/vercel-labs/skills#supported-agents for the full list.
 
 The MCP server works everywhere regardless of this installer:
   claude mcp add ui-ux-suite npx ui-ux-suite --mcp
@@ -121,6 +165,37 @@ unlink_one() {
   fi
 }
 
+# --- delegated path: hand the work to the skills CLI ------------------------
+
+have_npx() { command -v npx >/dev/null 2>&1; }
+
+skills_cli_install() {
+  local id="$1" code="$2" global="$3"
+  local args=(--yes "$SKILLS_CLI" add "$SKILLS_REPO" -a "$code" -y)
+  [ "$global" -eq 1 ] && args+=(-g)
+  info "npx ${args[*]}"
+  if npx "${args[@]}"; then
+    ok "installed ui-ux-suite skills for $id (agent: $code)"
+    return 0
+  fi
+  warn "skills CLI failed for $id (agent: $code). Retry with --legacy, or use the MCP server."
+  return 1
+}
+
+skills_cli_uninstall() {
+  local id="$1" code="$2" global="$3" list
+  list="$(IFS=,; printf '%s' "${SKILLS[*]}")"
+  local args=(--yes "$SKILLS_CLI" remove -a "$code" -s "$list" -y)
+  [ "$global" -eq 1 ] && args+=(-g)
+  info "npx ${args[*]}"
+  if npx "${args[@]}"; then
+    ok "removed ui-ux-suite skills for $id (agent: $code)"
+    return 0
+  fi
+  warn "skills CLI could not remove for $id (agent: $code). Try --legacy to clear old symlinks."
+  return 1
+}
+
 mcp_hint() {
   info ""
   info "${c_dim}MCP server (works in every MCP-capable client):${c_rst}"
@@ -129,9 +204,11 @@ mcp_hint() {
 }
 
 main() {
-  local platform="" action="install" show_mcp=1 arg
+  local platform="" action="install" show_mcp=1 legacy=0 global=0 arg
   for arg in "$@"; do
     case "$arg" in
+      --legacy)    legacy=1 ;;
+      --global)    global=1 ;;
       --update)    action="update" ;;
       --uninstall) action="uninstall" ;;
       --no-mcp)    show_mcp=0 ;;
@@ -140,6 +217,11 @@ main() {
       *)           platform="$arg" ;;
     esac
   done
+
+  if [ "$legacy" -eq 0 ] && ! have_npx; then
+    warn "npx not found; falling back to the legacy symlink path."
+    legacy=1
+  fi
 
   if [ -z "$platform" ]; then
     usage
@@ -154,13 +236,27 @@ main() {
   fi
 
   local root=""
-  if [ "$action" != "uninstall" ]; then
+  if [ "$legacy" -eq 1 ] && [ "$action" != "uninstall" ]; then
     root="$(resolve_root)"
     info "ui-ux-suite checkout: $root"
   fi
 
-  local id spec dir style any=0
+  local id spec dir style code any=0
   for id in "${ids[@]}"; do
+    if [ "$legacy" -eq 0 ]; then
+      code="$(agent_code "$id")"
+      if [ -z "$code" ]; then
+        warn "unknown platform: $id (run --help for the list). MCP fallback still works."
+        continue
+      fi
+      any=1
+      case "$action" in
+        install|update) skills_cli_install "$id" "$code" "$global" || true ;;
+        uninstall)      skills_cli_uninstall "$id" "$code" "$global" || true ;;
+      esac
+      continue
+    fi
+
     spec="$(platform_target "$id")"
     if [ -z "$spec" ]; then
       warn "unknown platform: $id (run --help for the list). MCP fallback still works."
