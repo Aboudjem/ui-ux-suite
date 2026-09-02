@@ -5,6 +5,63 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-09-02
+
+CI surfaces, install surfaces, and a new visual identity. The engine and the 12 weights are
+unchanged; the suite grows from 311 to 356 tests across 28 test files.
+
+### Added
+
+- **`--sarif FILE`** writes SARIF 2.1.0 for GitHub code scanning, one rule per dimension that
+  produced a finding, with a location only where the evidence names a real file. Validated
+  against the OASIS 2.1.0 schema. `lib/report-sarif.js`, `test/report-sarif.test.js`.
+- **Baseline gating.** `--write-baseline FILE` records today's findings and score, then
+  `--baseline FILE --fail-on-regression` exits 1 only on a new finding or a score drop, so a
+  project already in debt can still gate on new problems. `lib/baseline.js`, `test/baseline.test.js`.
+- **Rule tags.** `--tags` and `--exclude-tags` filter findings by `dimension:`, `severity:`,
+  `wcag:` plus a conformance level, `law:` and `nielsen:`, all derived from what each finding
+  already cites. `--list-tags` prints the vocabulary a run produced. Filtering never recomputes
+  the score and never reaches the baseline. `lib/tags.js`, `test/tags.test.js`.
+- **`npx skills add Aboudjem/ui-ux-suite`** as the primary path for any agent that is not Claude
+  Code, covering 70+ agents. `install.sh` now delegates to it, and `--legacy` keeps the original
+  symlink behavior for machines with no npx. New `--global` passes `-g`.
+- **`docs/editors.md`**, a 16-agent install table plus MCP snippets for Claude Code, Cursor,
+  VS Code, Codex, Gemini CLI, Windsurf, Continue, OpenCode and Zed.
+- **`docs/cli.md`, `docs/scoring.md`, `docs/science.md`, `docs/faq.md`, `docs/comparison.md`**,
+  holding the flag reference, the 12 weights, the WCAG and UX-law citations, the FAQ and the
+  comparison table that used to live in the README.
+- **`server.json`** for the Official MCP Registry, and a PNG logo mark at 1024 and 512.
+
+### Changed
+
+- **New visual identity.** Neon Noir hero banners for the README, the logo banners and the
+  scorecard diagrams restyled in place at the same filenames and viewBoxes, and a re-rendered
+  1280x640 social preview with the logo mark composited in.
+- **README rewritten** from 382 lines to 167, to the plugin skeleton: one first screen, one
+  install block above the first heading, one editor table in place of the 87-line install matrix,
+  and one verbatim finding kept above the fold. The four translations under `READMEs/` are
+  refreshed from it.
+- **Skill frontmatter follows the spec.** The non-spec `trigger:` and `when_to_use:` keys are
+  gone from all 14 `SKILL.md` files and their phrasing is folded into `description:`.
+- **Contributing** moved out of the README into `CONTRIBUTING.md`, which now states the four
+  rules a PR is sent back for.
+
+### Fixed
+
+- **A tag filter no longer reaches the baseline.** `--tags` ran before the baseline was built, so
+  a narrowed `--write-baseline` recorded a partial baseline and a narrowed run could hide a
+  regression outside the filter. The CLI now snapshots the audit before filtering, and both
+  writes and compares that snapshot.
+- **The CLI resolved its project path** by excluding only the values of `--html` and
+  `--fail-under`, so `--sarif out.sarif` would have audited `out.sarif`. Replaced with one parser
+  that consumes every value flag.
+- **SARIF conformance.** The run now declares `columnKind`, `artifactLocation.uri` is
+  percent-encoded, and a failed SARIF write exits 1 instead of printing a note and exiting 0.
+- **Aggregate findings carry no `dimension` field**, so half the SARIF results would have shipped
+  an empty `ruleId`. All three new modules fall back to the dimension they were scored under.
+- **Version parity.** `plugin.json` was 0.5.0 while `package.json` was 0.5.1, which failed the CI
+  manifest check. All five version-carrying files now move together.
+
 ## [0.5.0] - 2026-05-30
 
 Portability and discoverability pass. No engine behaviour changes; the 311-test suite stays green.

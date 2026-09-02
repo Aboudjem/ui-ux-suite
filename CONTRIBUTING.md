@@ -60,6 +60,19 @@ templates/              # Output templates (audit report, score card, etc.)
 3. **Run tests**: `npm test`
 4. **Submit a PR** with a clear description of what and why
 
+## The four house rules
+
+These are the ones a PR gets sent back for.
+
+- **A bug fix ships with a test** that would have caught the bug.
+- **A new scoring rule cites its source.** Either a WCAG success criterion or a named UX law from
+  the allow-list in `LAW_META`, and it emits a `createFinding(...)` carrying
+  `evidence: { file, line, selector, measured, threshold }` plus a `fix`. A finding with no file
+  and no measured value is not a finding this project ships.
+- **No new runtime dependency.** The suite is zero-dependency by design. A dev dependency is a
+  conversation; a runtime one is a no.
+- **No em-dash in user-facing copy.** Use a comma, a colon, parentheses, or a new sentence.
+
 ## Code style
 
 - Vanilla JavaScript (no TypeScript, no build step)

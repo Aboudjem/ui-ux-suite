@@ -174,7 +174,11 @@ When cutting a release, bump the version in every version-carrying file and add 
 - `.claude-plugin/plugin.json`
 - `.cursor-plugin/plugin.json`
 - `.copilot-plugin/plugin.json`
+- `server.json` (the Official MCP Registry entry)
 - `CHANGELOG.md` (new dated section)
+
+Five version files, not four. `ci.yml` fails the build when `plugin.json` and `package.json`
+disagree, which is exactly how 0.5.0 against 0.5.1 was caught.
 
 The npm `files` list does not include the installer, the discovery manifests, `READMEs/`, or `site/`, so those are repo-only and are not shipped to npm.
 

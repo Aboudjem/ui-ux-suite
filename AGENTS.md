@@ -45,17 +45,27 @@ APCA for a color pair), `uiux_extract_colors` / `uiux_extract_typography` /
 npx ui-ux-suite .                      # human-readable report
 npx ui-ux-suite . --json | jq          # machine-readable JSON (banner → stderr)
 npx ui-ux-suite . --html report.html   # standalone HTML report
-npx ui-ux-suite . --fail-under 7        # CI gate
+npx ui-ux-suite . --sarif ui-ux.sarif  # SARIF 2.1.0 for GitHub code scanning
+npx ui-ux-suite . --fail-under 7        # CI gate on the overall score
+npx ui-ux-suite . --write-baseline .uiux-baseline.json
+npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
+npx ui-ux-suite . --tags dimension:accessibility   # also --exclude-tags, --list-tags
 ```
 
-Exit codes: `0` ok · `1` audit error or below `--fail-under` · `2` path not found ·
-`3` insufficient evidence. The `--json` stream is a clean document on stdout (the banner is
-written to stderr), so it is safe to pipe into `jq` or any parser.
+Exit codes: `0` ok · `1` audit error, a tripped gate, or a failed SARIF write · `2` path not
+found · `3` insufficient evidence. The `--json` stream is a clean document on stdout (the banner
+is written to stderr), so it is safe to pipe into `jq` or any parser.
+
+Tags come only from what a finding already cites: `dimension:`, `severity:`, `wcag:` plus a
+conformance level, `law:`, `nielsen:`. Filtering changes what is reported, never the score, and
+the baseline comparison always reads the unfiltered audit. Full reference in `docs/cli.md`.
 
 ## Self-contained facts an agent can rely on
 
-- **Read-only.** The audit creates, edits, and deletes nothing under the audited path.
-  Applying a fix is a separate, explicit action the user must request.
+- **Read-only over source.** The audit creates, edits, and deletes no source file under the
+  audited path. The only files it writes are the ones the caller names: the report from
+  `--html` or `--sarif`, and the baseline from `--write-baseline`. Applying a fix is a
+  separate, explicit action the user must request.
 - **Zero runtime dependencies.** Node built-ins only. `playwright-core` and
   `@axe-core/playwright` are optional peer deps for deep mode only.
 - **Citations are pinned.** UX-law slugs come from an allow-list verified against
@@ -68,7 +78,7 @@ written to stderr), so it is safe to pipe into `jq` or any parser.
 ## Project layout
 
 ```
-bin/ui-ux-suite.js   CLI entry (audit + --mcp + --json + --html + --fail-under)
+bin/ui-ux-suite.js   CLI entry (audit + --mcp + report flags + gate flags + tag filters)
 lib/                 Engine: runner, scoring, located-audit, color/type/spacing engines,
                      static-contrast, locator, schema, mcp-server
 skills/              14 Claude Code skills (each skills/<name>/SKILL.md)
