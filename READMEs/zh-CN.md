@@ -1,172 +1,62 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/logo-light.svg">
-  <img alt="ui-ux-suite" src=".github/assets/logo-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg">
+  <img alt="ui-ux-suite" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
 </picture>
 
 <p align="center">
   <a href="https://github.com/Aboudjem/ui-ux-suite/actions/workflows/ci.yml"><img src="https://github.com/Aboudjem/ui-ux-suite/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://www.npmjs.com/package/ui-ux-suite"><img src="https://img.shields.io/npm/v/ui-ux-suite?color=0ea5e9&logo=npm&label=npm&style=flat-square" alt="npm"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0ea5e9?style=flat-square" alt="License"></a>
-  <a href="#real-tests"><img src="https://img.shields.io/badge/tests-311%20passing-0ea5e9?style=flat-square" alt="311 tests passing"></a>
-  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%E2%89%A518-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node 18+"></a>
-  <a href="#zero-dependencies"><img src="https://img.shields.io/badge/dependencies-0-0ea5e9?style=flat-square" alt="Zero dependencies"></a>
-  <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=0ea5e9" alt="Stars"></a>
+  <a href="https://www.npmjs.com/package/ui-ux-suite"><img src="https://img.shields.io/npm/v/ui-ux-suite?color=00D4FF&logo=npm&label=npm&style=flat-square" alt="npm version"></a>
+  <a href="../LICENSE"><img src="https://img.shields.io/badge/license-MIT-00D4FF?style=flat-square" alt="License MIT"></a>
+  <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=00D4FF" alt="Stars"></a>
 </p>
+
+<p align="center"><a href="../README.md">English</a> · <b>简体中文</b> · <a href="ja.md">日本語</a> · <a href="es.md">Español</a> · <a href="fr.md">Français</a></p>
+
+<p align="center"><b>设计领域的 ESLint。它给出确切的行号、实测的错误数值，以及确切的修改方案。</b></p>
 
 <p align="center">
-  <a href="../README.md">English</a> ·
-  <b>简体中文</b> ·
-  <a href="ja.md">日本語</a> ·
-  <a href="es.md">Español</a> ·
-  <a href="fr.md">Français</a>
+  <a href="#它做什么">它做什么</a> · <a href="#安装">安装</a> · <a href="#使用">使用</a> · <a href="#你会得到什么">你会得到什么</a> · <a href="#在你的编辑器里可用">在你的编辑器里可用</a> · <a href="#需要知道的">需要知道的</a>
 </p>
 
-<p align="center"><b>面向设计的 ESLint。</b>它能找出确切的行、量化出错的数值，以及确切的修复方法。</p>
-
-<p align="center">
-  <a href="#what-is-ui-ux-suite">这是什么</a> ·
-  <a href="#how-to-use-it-3-steps">如何使用</a> ·
-  <a href="#real-beforeafter">修复前 / 修复后</a> ·
-  <a href="#how-it-compares">对比</a> ·
-  <a href="#faq">常见问题</a>
-</p>
-
----
-
-![ui-ux-suite demo](.github/assets/demo.gif)
-
----
-
-## ui-ux-suite 是什么？
-
-**ui-ux-suite 是一个零依赖的设计检查工具，它会审计你的 CSS、JSX、HTML 和 Tailwind 配置，并返回具体的、定位到位置的、量化的发现，附带可落地的修复方案，而不是泛泛的建议。**
-
-大多数“设计评审”工具只会告诉你 *“提高你的对比度”*。而本工具会告诉你：
-
-> `.hero-subtitle`（位于 `src/styles.css:14`）：文本 `#fbfbfb` 在 `#ffffff` 之上 = **1.03:1**，不符合 WCAG 2.2 AA（需要 4.5:1）。修复：将 `color` 改为 `#767676`（在白色上为 4.54:1）或更深的颜色。
-
-这正是关键所在。每一条发现都是**定位的**（file:line + 选择器）、**量化的**（真实的错误数值）和**可修复的**（确切的改动）。它评分 **12 个设计维度**，以 **WCAG 2.2**、**APCA** 对比度和 **UX 法则** 为依据，并引用其所依赖的 WCAG 成功标准或具名法则。
-
-- **它只审计，从不修改。**每次运行都是只读的，并输出修改建议（`before` → `after`）。是否应用修复由你决定。
-- **它可在任何地方运行。**一个 MCP 服务器 + 一个 `npx` CLI → 可在 Claude Code、Cursor、VS Code、Codex、Gemini、Windsurf 和 Continue 中使用。
-- **它无需任何依赖。**纯 Node 内置模块。没有安装负担、没有 API 密钥、没有网络请求、没有遥测。你的代码留在你自己的机器上。
-
-**查看真实运行结果：** [示例审计报告](docs/demo/sample-audit.html) · [示例终端输出](docs/demo/sample-run.txt)
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/scorecard-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/scorecard-light.svg">
-  <img alt="ui-ux-suite scorecard: 12 weighted dimensions with located findings" src=".github/assets/scorecard-light.svg" width="100%">
-</picture>
-
----
-
-## 如何使用（3 步）
-
-### 1. 在任意项目上运行
-
 ```bash
-npx ui-ux-suite .
-```
-
-你会得到一份按优先级排列的“定位 + 量化 + 修复”发现清单，以及一个跨 12 个维度的加权 0–10 分。无需配置，无需安装设置。
-
-### 2. 选择你需要的输出
-
-```bash
-npx ui-ux-suite .                      # human-readable report (default)
-npx ui-ux-suite . --json | jq          # machine-readable JSON (banner goes to stderr)
-npx ui-ux-suite . --html report.html   # standalone dark-theme HTML report
-npx ui-ux-suite . --fail-under 7        # exit 1 if the score drops below 7 (CI gate)
-```
-
-退出码：`0` 正常 · `1` 审计错误或低于 `--fail-under` · `2` 路径未找到 · `3` 证据不足。
-
-### 3. 接入你的 AI 编辑器（可选）
-
-```bash
-npx ui-ux-suite --mcp     # start the MCP server over stdio
-```
-
-然后对你的编辑器说：*“审计这个项目的设计。”* MCP 工具 `uiux_audit_run` 运行的是同一个引擎，并返回相同的定位发现。
-
-<details>
-<summary><b>各编辑器的一行式 MCP 配置</b></summary>
-
-```bash
-# Claude Code
-claude mcp add ui-ux-suite npx ui-ux-suite --mcp
-
-# Codex CLI
-codex mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
-```
-
-**Cursor**（`~/.cursor/mcp.json`）：
-```json
-{ "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
-```
-
-**VS Code + Copilot**（`.vscode/mcp.json`）：
-```json
-{ "servers": { "ui-ux-suite": { "command": "npx", "args": ["-y", "ui-ux-suite", "--mcp"] } } }
-```
-
-**Gemini CLI**（`~/.gemini/mcp_config.json`）：
-```json
-{ "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
-```
-
-**Windsurf**（`~/.codeium/windsurf/mcp_config.json`）：
-```json
-{ "mcpServers": { "ui-ux-suite": { "command": "npx", "args": ["ui-ux-suite", "--mcp"] } } }
-```
-
-**Continue.dev**（`.continue/mcpServers/ui-ux-suite.yaml`）：
-```yaml
-mcpServers:
-  ui-ux-suite: { command: npx, args: [ui-ux-suite, --mcp], type: stdio }
-```
-
-</details>
-
-### 或者将技能安装进任意 AI CLI
-
-上面的 MCP 服务器可在每一个支持 MCP 的客户端中工作。若想把 `/design-*` 技能直接加载进另一个 CLI，运行这个一行式安装脚本。它会把技能软链接到该 CLI 的技能目录；`--update` 拉取最新版本并重新链接，`--uninstall` 移除它们。
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/install.sh | bash -s codex
-```
-
-在 Windows 上，从一个本地检出运行 `install.ps1 <platform>`（创建软链接需要开启开发者模式或使用提升权限的 shell）。
-
-| 平台 | 技能目录 | 一行命令 |
-|:--|:--|:--|
-| Claude Code | （插件） | `claude plugin install ui-ux-suite@10x` |
-| Codex / Gemini / OpenCode / Pi | `~/.agents/skills` | `install.sh codex` |
-| VS Code (Copilot) | `~/.copilot/skills` | `install.sh copilot` |
-| Trae | `~/.trae/skills` | `install.sh trae` |
-| Vibe | `~/.vibe/skills` | `install.sh vibe` |
-| OpenClaw | `~/.openclaw/skills` | `install.sh openclaw` |
-| Antigravity | `~/.gemini/antigravity/skills` | `install.sh antigravity` |
-| Hermes / Cline / Kimi | `~/.<cli>/skills` | `install.sh hermes` |
-
-技能目录约定会随 CLI 版本变化。若某个链接无法解析，请回退到 MCP 服务器（它在任何地方都能工作）。运行 `install.sh all` 可一次性链接所有平台。
-
-<details>
-<summary><b>作为 Claude Code 插件安装</b></summary>
-
-```bash
-# From the 10x marketplace
 claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
 ```
 
-一步即可接好斜杠命令、专家智能体、知识库和 MCP 服务器。
-</details>
+## 它做什么
+
+大多数设计评审只会告诉你「提高对比度」。这个工具会告诉你：`src/styles.css` 第 14 行的
+`.hero-subtitle` 是 `#fbfbfb` 配 `#ffffff`，实测对比度为 1.03 比 1，改成 `#767676` 就能通过。
+形态和一条 lint 报错一样，只是用在设计上。
+
+它读取你的 CSS、JSX、HTML 和 Tailwind 类名。默认不执行任何东西，没有任何东西离开你的机器，
+也永远不需要密钥。结论分两类。你主要会去处理的那类是「已定位」的结论，它带三样东西：
+
+- **定位。** 文件、行号和选择器。
+- **实测。** 真实的错误数值，而不是形容词。
+- **修复。** 确切的 `before` 到 `after` 改动，以及它依据的 WCAG 标准或具名 UX 定律。
+
+其余的是项目级结论，比如「用了 5 种字体，应该收敛到 1 到 2 种」。它们参与打分，也点明了问题，
+但没有某一行可指。
+
+## 安装
+
+```bash
+claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x
+```
+
+这是 Claude Code 的装法。任何读取 Agent Skills 格式的智能体，都可以直接从本仓库装这 14 个 skill：
+
+```bash
+npx skills add Aboudjem/ui-ux-suite
+```
+
+命令行工具则不需要任何安装步骤：`npx ui-ux-suite .` 就能跑。
 
 <details>
-<summary><b>作为开发依赖安装</b></summary>
+<summary><b>也可以作为开发依赖安装</b></summary>
 
 ```bash
 npm install -D ui-ux-suite
@@ -176,209 +66,107 @@ npm install -D ui-ux-suite
 { "scripts": { "design-audit": "ui-ux-suite . --fail-under 7" } }
 ```
 
-需要 Node 18+。
+需要 Node 18 或更高版本。运行时零依赖，所以这条命令不会带进任何其他包。
 </details>
 
----
+## 使用
 
-## 真实的修复前 / 修复后
-
-仓库附带了一个夹具，内含 **12 个刻意植入的 UX 问题** 及其标准答案（`test/fixtures/planted-ux-problems/PLANTED.md`）。它是每次发布的回归门禁。
-
-这次重写中真正改变的是**具体性**：一条发现是否被检测到 **并且** 被定位 **并且** 被量化 **并且** 被修复：
-
-| | 检测到 | 定位（`file:line`） | 量化（真实数值） | 修复（`before`→`after`） | 具体性 |
-|:--|:--:|:--:|:--:|:--:|:--:|
-| **之前（v0.3 基线）** | 部分 | ✗ | ✗ | ✗ | **0 / 12** |
-| **之后（v0.4）** | ✓ | ✓ | ✓ | ✓ | **12 / 12** |
-
-旧引擎把每个 CSS 文件拼接成一整块，并只发出裸的 `{severity, msg}` 字符串；文件身份在评分之前就丢失了，因此它永远无法指向某一行。新引擎将 `{value, file, line, col, selector}` 从提取器一路携带到最终发现。
-
-**来自该夹具的真实发现**（逐字摘自 `npx ui-ux-suite test/fixtures/planted-ux-problems`）：
-
-```
-Low text contrast on `.hero-subtitle`: 1.03:1
-  src/styles.css:14   ·   WCAG 1.4.3 Contrast (Minimum) (AA)
-  measured: 1.03:1 (APCA Lc 0)
-  fix: change color on `.hero-subtitle` from #fbfbfb to #767676
-       (meets 4.5:1 on #ffffff), or darken further.
-```
-
-该夹具目前得分为 **3.8 / 10（“需要改进”）**，因为它本就应当是有缺陷的。你可以自己运行：
+**1. 指向一个项目。**
 
 ```bash
-npx ui-ux-suite test/fixtures/planted-ux-problems
+npx ui-ux-suite .
 ```
 
----
+你会得到一份排好序的问题清单，以及一个横跨 12 个维度的满分 10 分的加权分数。不需要配置文件，
+也没有初始化步骤。
 
-## 它如何与其他工具对比
-
-差异点在于：**定位 + 量化 + 修复，并附带 WCAG SC 或 UX 法则引用，来自你的源代码 *或* 一个 URL**，在每个编辑器中用一条零依赖命令完成。
-
-| | ui-ux-suite | Lighthouse | axe-core | CSS / 设计检查工具 |
-|:--|:--:|:--:|:--:|:--:|
-| 指向确切的 `file:line` + 选择器 | ✓ | ✗（仅 URL） | ✗（仅 DOM 节点） | ✓（lint 规则） |
-| 报告**量化的错误数值** | ✓ | 部分 | ✓（对比度） | ✗ |
-| 给出可落地的 `before` → `after` 修复 | ✓ | ✗ | ✗ | 部分（自动修复） |
-| 同时引用 WCAG 2.2 **和** APCA | ✓ | 仅 WCAG | 仅 WCAG | ✗ |
-| 引用具名的 **UX 法则**（Hick、Fitts、Miller…） | ✓ | ✗ | ✗ | ✗ |
-| 在**静态源代码**上工作（无需运行中的 URL） | ✓ | ✗（需要 URL） | ✗（需要 DOM） | ✓ |
-| 在**运行中的 URL** 上工作（深度模式） | ✓（可选启用） | ✓ | ✓ | ✗ |
-| 覆盖 **12 个设计维度**（不止可访问性） | ✓ | 部分 | 仅 a11y | 按规则 |
-| 零运行时依赖 | ✓ | ✗ | ✗ | ✗ |
-
-ui-ux-suite 并不取代 Lighthouse 或 axe。它填补它们留下的空白：以你的**源代码**为依据的设计质量，附带你可以直接粘贴的修复。
-
----
-
-## 它评分什么
-
-12 个加权维度。可访问性权重最高，因为它影响最多的用户。
-
-| 维度 | 权重 | 检查项 |
-|:----------|:------:|:-------|
-| 可访问性 | 12% | 焦点可见、替代文本、标签、目标尺寸、减少动效 |
-| 色彩系统 | 10% | WCAG + APCA 对比度、重复色相、语义角色、暗色模式 |
-| 排版系统 | 10% | 比例一致性、字体数量、正文尺寸、行高 |
-| 布局与间距 | 10% | 网格、偏离比例的数值、断点、容器宽度 |
-| 组件质量 | 10% | 状态：悬停、焦点、禁用、加载、错误 |
-| 视觉层级 | 10% | 字号比例、信息优先级、可扫读性 |
-| 交互质量 | 8% | 动画时长、缓动、反馈 |
-| 响应式 | 8% | 断点、容器查询、viewport meta |
-| 视觉精修 | 7% | 阴影质量、圆角令牌、偏离比例的任意值 |
-| 性能体验 | 5% | 加载状态、感知速度 |
-| 信息架构 | 5% | 校验、导航、命令面板 |
-| 平台适配 | 5% | 暗色模式、组件库、a11y 原语 |
-
----
-
-## 它如何工作
-
-```mermaid
-graph LR
-    A["Your project<br/><sub>CSS · JSX · HTML · Tailwind</sub>"] --> B["Located extractors<br/><sub>keep file · line · selector</sub>"]
-    B --> C["Engines<br/><sub>WCAG · APCA · OKLCH · ΔE</sub>"]
-    C --> D["12 weighted scorers"]
-    D --> E["Findings<br/><sub>located · measured · fixed · cited</sub>"]
-    style A fill:#f8fafc,stroke:#0ea5e9,color:#0c4a6e
-    style B fill:#f0f9ff,stroke:#0ea5e9,color:#0c4a6e
-    style C fill:#e0f2fe,stroke:#0ea5e9,color:#0c4a6e
-    style D fill:#bae6fd,stroke:#0ea5e9,color:#0c4a6e
-    style E fill:#0ea5e9,stroke:#0284c7,color:#ffffff
-```
-
-静态分析是默认模式，也是主要交付物；它无需浏览器。**深度模式**为可选启用：安装可选的 peer 依赖（`playwright-core`、`@axe-core/playwright`）并传入一个 `baseUrl`，即可额外测量实时对比度、标记小于 44×44px 的触控目标，并对路由截图。当这些依赖缺失时，它会优雅地退化为基于源代码的发现。
-
-<details>
-<summary><b>16 个 MCP 工具</b></summary>
-
-| 工具 | 作用 |
-|:-----|:-------------|
-| `uiux_audit_run` | **一次调用完成完整审计。**扫描 → 提取 → 评分 12 个维度 → 定位发现。支持 `depth: quick\|deep`、`dimensions`、`baseUrl`、`format`。 |
-| `uiux_scan_project` | 检测框架、样式方案（Tailwind v3 与 v4）、组件/主题/图标库。 |
-| `uiux_extract_colors` / `uiux_extract_typography` / `uiux_extract_spacing` | 提取数值，**并附带** file/line/selector。 |
-| `uiux_check_contrast` | 对任意一对颜色计算 WCAG 2.2 + APCA 对比度。 |
-| `uiux_score_dimension` / `uiux_score_overall` | 对 12 个维度之一评分，或给出加权总分。 |
-| `uiux_generate_palette` / `uiux_generate_type_scale` / `uiux_generate_spacing_scale` / `uiux_generate_tokens` | 基于 OKLCH 的令牌生成器。 |
-| `uiux_knowledge_query` / `uiux_laws_query` | 查询知识库与 UX 法则。 |
-| `uiux_audit_log` / `uiux_audit_report` | 追加一条发现 · 渲染一份报告。 |
-
-</details>
-
-<details>
-<summary><b>斜杠命令（Claude Code）</b></summary>
+**2. 读一条结论。** 下面是本仓库自带的那个「故意做坏」的 fixture 的真实输出，它得 3.7 分，
+因为它本来就该是坏的：
 
 ```
-/ui-ux-suite:audit          Full 12-dimension audit, one report
-/ui-ux-suite:colors         Color-only audit
-/ui-ux-suite:a11y [--deep]  Accessibility audit (Playwright + axe-core in deep mode)
-/ui-ux-suite:typography     Typography and hierarchy audit
-/ui-ux-suite:components     Component-quality audit
+- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
 ```
 
-另外还有 14 个专家级 `/design-*`、`/color-audit`、`/a11y-audit`、… 命令以及 12 个专家智能体。
-</details>
+克隆仓库后用 `npx ui-ux-suite test/fixtures/planted-ux-problems` 自己跑一遍。
 
----
-
-## 常见问题
-
-**在我的项目上运行安全吗？**
-安全。每次审计都是严格只读的。本工具绝不会在你审计的项目中创建、修改或删除文件；它只读取并报告。深度模式的截图发生在一个用完即弃的浏览器页面里，绝不针对你的源代码。
-
-**我的代码会离开我的机器吗？**
-不会。所有分析都在本地使用 Node 内置模块运行。没有网络请求、没有 API 密钥、没有遥测。
-
-**它支持哪些框架？**
-React、Next.js、Vue、Svelte、Angular 和原生。样式方案：Tailwind（v3 与 v4 `@theme`）、CSS Modules、SCSS、styled-components、Emotion、vanilla-extract、纯 CSS。它会自动检测技术栈；无需配置。
-
-**<a id="zero-dependencies"></a>它真的是零依赖吗？**
-是的。运行时只使用 Node 内置模块。`playwright-core` 和 `@axe-core/playwright` 是**可选**的 peer 依赖，仅用于深度模式；默认安装不会拉取任何东西。
-
-**我需要一个运行中的应用吗？**
-不需要。基于源代码的发现是默认模式。一个运行中的 URL 加深度模式是加分项，而非必需。
-
-**它会自动修复我的代码吗？**
-不会。它只审计并*建议*（`before` → `after`）。应用修复是你单独、有意采取的一步。
-
-**我能在 CI 中使用吗？**
-能。`npx ui-ux-suite . --fail-under 7` 会在得分低于你的阈值时以非零退出码退出。`--json` 为任何流水线提供机器可读的输出。
-
----
-
-## 为什么可以信任它
-
-- **真实的色彩科学。**对比度由工具自带的 WCAG 2.2 与 APCA 数学计算得出，而非估算。夹具中量化的比值（例如 `1.03:1`）可从 `lib/color-engine.js` 复现。
-- **引用 WCAG 成功标准。**可访问性发现会引用确切的 SC：`1.4.3` 对比度（最低）、`1.4.11` 非文本对比度、`2.5.8` 目标尺寸、`2.4.7` 焦点可见、`1.1.1` 非文本内容、`3.3.2` 标签或说明。
-- **经过核实的 UX 法则。**UX 发现引用来自首要来源白名单的具名法则，每条都链接到其在 [lawsofux.com](https://lawsofux.com/) 上的规范页面（例如 Hick 法则、Fitts 法则、Prägnanz 法则）。错误的引用被视为比没有引用更糟，因此引用集合由一项测试固定。
-- <a id="real-tests"></a>**这是回归门禁，而不是凭感觉。** **311 项测试**（运行 `npm test`）断言真实行为，其中包含一个 12 问题夹具，要求每条发现都必须携带 `evidence.file`、`evidence.line` 和一个 `fix`。如果具体性出现倒退，测试套件就会失败。
-
----
-
-## 隐私
-
-所有分析都在本地运行。你的代码绝不离开你的机器。没有遥测、没有 API 调用、没有网络请求。
-
----
-
-## Star 历史
-
-<a href="https://star-history.com/#Aboudjem/ui-ux-suite&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Aboudjem/ui-ux-suite&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Aboudjem/ui-ux-suite&type=Date" />
-    <img alt="Star history chart for Aboudjem/ui-ux-suite" src="https://api.star-history.com/svg?repos=Aboudjem/ui-ux-suite&type=Date" width="70%" />
-  </picture>
-</a>
-
----
-
-## 参与贡献
-
-欢迎贡献。本项目公开维护。
+**3. 放进 CI。** 挑一个适合你流水线的输出格式和卡口：
 
 ```bash
-git clone https://github.com/Aboudjem/ui-ux-suite
-cd ui-ux-suite
-npm test
+npx ui-ux-suite . --json | jq              # 机器可读，横幅走 stderr
+npx ui-ux-suite . --html report.html       # 独立的 HTML 报告
+npx ui-ux-suite . --sarif ui-ux.sarif      # 给 GitHub code scanning 的 SARIF 2.1.0
+npx ui-ux-suite . --fail-under 7           # 分数低于 7 时退出码为 1
+npx ui-ux-suite . --write-baseline .uiux-baseline.json   # 冻结当前的技术债
+npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
+npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to-have
 ```
 
-- **缺陷修复**应附带一项原本能捕获该缺陷的测试。
-- **新的评分规则**必须引用一个 WCAG SC 或白名单中的具名 UX 法则，并发出一个带 `evidence: {file, line, selector, measured, threshold}` 以及一个 `fix` 的 `createFinding(...)`。
-- **不引入新的运行时依赖。**本套件按设计即为零依赖。
-- 面向用户的文案中**不使用破折号（em-dash）**。
+所有参数都在 [docs/cli.md](../docs/cli.md)。
 
-参见 [CONTRIBUTING.md](CONTRIBUTING.md)、[AGENTS.md](AGENTS.md)、[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) 和 [SECURITY.md](SECURITY.md)。
+## 你会得到什么
+
+- **一份排序过的报告**，格式可选 Markdown、JSON、HTML 或 SARIF，看读它的是人还是机器。
+- **一个满分 10 分的分数**，横跨 12 个加权维度，其中无障碍的权重最高。
+- **一道 CI 卡口**，可以用 `--fail-under` 设绝对线，也可以用基线，在出现新问题或分数下降时失败。
+- **14 个 skill 和 16 个工具**，供你的智能体调用，所以在对话里说「审一下这个项目的设计」就能用。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-light.svg">
+  <img alt="评分卡：总分、各维度分数，以及定位到具体位置的结论" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-light.svg" width="100%">
+</picture>
+
+## 在你的编辑器里可用
+
+| 智能体 | 一行安装命令 |
+|:--|:--|
+| Claude Code | `claude plugin install ui-ux-suite@10x` |
+| 70 多个智能体中的任意一个 | `npx skills add Aboudjem/ui-ux-suite` |
+| Codex、Gemini CLI、OpenCode、Pi | `./install.sh <agent>` |
+| VS Code 和 GitHub Copilot | `./install.sh copilot` |
+| 其他所有 | 见 [docs/editors.md](../docs/editors.md) |
+
+通过 `npx skills add`，它能在 Claude Code、Cursor、Codex、Copilot、Gemini CLI 以及另外 70 多个
+智能体里使用。这些 skill 是 Markdown，所以你的编辑器指向哪个模型，它就跑在哪个模型上。
+
+<details>
+<summary><b>也可以改用 MCP 服务器的方式接入</b></summary>
+
+```bash
+claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+codex mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+```
+
+Cursor、VS Code、Gemini CLI、Windsurf、Continue、OpenCode 和 Zed 用的是同一条命令，只是按各自
+编辑器写成 JSON、TOML 或 YAML 条目。每个编辑器的配置片段，包括那三个用了不同键名的，都在
+[docs/editors.md](../docs/editors.md)。
+</details>
+
+## 需要知道的
+
+> [!IMPORTANT]
+> 它只审查，从不改写。它不会修改你所指定项目里的任何源文件，修复方案只以 `before` 到 `after`
+> 的形式打印出来交给你应用。它唯一会写出的文件是报告和基线文件，而且只在你主动要求时才写。
+
+- **没有任何东西离开你的机器。** 纯 Node 内置模块，没有 API 密钥，没有埋点。静态审查不发任何网络请求，深度模式也只访问你亲手交给它的那个 URL。
+- **默认只做静态源码分析。** 深度模式需要显式开启，依赖 `playwright-core` 和 `@axe-core/playwright`，缺少时会退回到源码结论。
+- **数字是有卡口的。** `npm test` 会跑 356 个测试，而且那个故意做坏的 fixture 必须持续产出带文件、行号和修复方案的结论。
+
+## 了解更多
+
+- [docs/cli.md](../docs/cli.md)，全部参数、退出码和用法示例
+- [docs/editors.md](../docs/editors.md)，各编辑器的安装与 MCP 配置
+- [docs/scoring.md](../docs/scoring.md)，12 个权重以及分数的算法
+- [docs/science.md](../docs/science.md)，结论背后的 WCAG 标准与 UX 定律
+- [docs/faq.md](../docs/faq.md) 和 [docs/comparison.md](../docs/comparison.md)
+- [CHANGELOG.md](../CHANGELOG.md)、[CONTRIBUTING.md](../CONTRIBUTING.md)、[LICENSE](../LICENSE)
 
 ---
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/adam-boudjemaa/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  <a href="https://x.com/AdamBoudj"><img src="https://img.shields.io/badge/X-000000?style=flat-square&logo=x&logoColor=white" alt="X"></a>
-  <a href="https://adam-boudjemaa.com/"><img src="https://img.shields.io/badge/Website-0ea5e9?style=flat-square&logo=googlechrome&logoColor=white" alt="Website"></a>
-</p>
+<p align="center"><sub>MIT · 由 <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> 开发</sub></p>
 
-<p align="center"><sub>MIT · 由 <a href="https://github.com/Aboudjem">Adam Boudjemaa</a> 构建 · 点个 Star ⭐ 帮助更多人发现它</sub></p>
-
-> 本译文由机器辅助翻译，欢迎以英文版 README 为准提交母语修订。
+<sub>本文档由机器辅助翻译，如与英文原文有出入，以 <a href="../README.md">英文版</a> 为准。</sub>
