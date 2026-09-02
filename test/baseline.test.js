@@ -14,7 +14,9 @@ const { execFileSync, spawnSync } = require('node:child_process');
 
 const {
   buildBaseline,
+  compareBaselines,
   compareToBaseline,
+  baselineProblem,
   findingKey,
   countByKey,
   formatRegression,
@@ -226,4 +228,83 @@ test('CLI: usage errors for a missing baseline file and a bare --fail-on-regress
   const bare = spawnSync(process.execPath, [CLI, FIXTURE, '--fail-on-regression'], { encoding: 'utf8' });
   assert.strictEqual(bare.status, 1);
   assert.match(bare.stderr, /needs --baseline/);
+});
+
+test('baselineProblem rejects a foreign or future baseline and accepts a good one', () => {
+  assert.strictEqual(baselineProblem(buildBaseline(auditProject(FIXTURE))), null);
+  assert.match(baselineProblem(null), /not a JSON object/);
+  assert.match(baselineProblem({ tool: 'ui-ux-suite' }), /no findings map/);
+  assert.match(baselineProblem({ tool: 'stylelint', findings: {} }), /written by stylelint/);
+  assert.match(
+    baselineProblem({ tool: 'ui-ux-suite', findings: {}, version: BASELINE_VERSION + 1 }),
+    /newer than this build understands/
+  );
+});
+
+test('compareBaselines works on two documents without re-running an audit', () => {
+  const previous = buildBaseline(auditProject(FIXTURE));
+  const current = JSON.parse(JSON.stringify(previous));
+  assert.strictEqual(compareBaselines(current, previous).regressed, false);
+
+  const key = Object.keys(current.findings)[0];
+  current.findings[key] += 1;
+  const worse = compareBaselines(current, previous);
+  assert.strictEqual(worse.regressed, true);
+  assert.strictEqual(worse.newFindings[0].key, key);
+});
+
+test('CLI: a tag filter cannot write a partial baseline', () => {
+  const dir = tmpdir();
+  const full = path.join(dir, 'full.json');
+  const narrowed = path.join(dir, 'narrowed.json');
+  try {
+    execFileSync(process.execPath, [CLI, FIXTURE, '--write-baseline', full], { stdio: 'ignore' });
+    execFileSync(
+      process.execPath,
+      [CLI, FIXTURE, '--tags', 'dimension:color', '--write-baseline', narrowed],
+      { stdio: 'ignore' }
+    );
+    const a = JSON.parse(fs.readFileSync(full, 'utf8'));
+    const b = JSON.parse(fs.readFileSync(narrowed, 'utf8'));
+    assert.deepStrictEqual(b.findings, a.findings, 'a baseline describes the project, not the filter');
+    assert.strictEqual(b.overall, a.overall);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('CLI: a tag filter cannot hide a regression outside the filter', () => {
+  const dir = tmpdir();
+  const base = path.join(dir, 'base.json');
+  try {
+    const baseline = buildBaseline(auditProject(FIXTURE));
+    const dropped = Object.keys(baseline.findings).find(k => k.startsWith('accessibility'));
+    assert.ok(dropped, 'fixture should have an accessibility key');
+    delete baseline.findings[dropped];
+    fs.writeFileSync(base, JSON.stringify(baseline, null, 2));
+
+    // Report narrowed to color, regression is in accessibility. It must still fail.
+    const run = spawnSync(
+      process.execPath,
+      [CLI, FIXTURE, '--tags', 'dimension:color', '--baseline', base, '--fail-on-regression'],
+      { encoding: 'utf8' }
+    );
+    assert.strictEqual(run.status, 1);
+    assert.match(run.stderr, /New accessibility finding/);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('CLI: a baseline from another tool is refused', () => {
+  const dir = tmpdir();
+  const base = path.join(dir, 'foreign.json');
+  try {
+    fs.writeFileSync(base, JSON.stringify({ tool: 'stylelint', findings: {} }));
+    const run = spawnSync(process.execPath, [CLI, FIXTURE, '--baseline', base], { encoding: 'utf8' });
+    assert.strictEqual(run.status, 1);
+    assert.match(run.stderr, /not a usable baseline/);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });

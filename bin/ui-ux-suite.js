@@ -156,6 +156,12 @@ if (has('--mcp')) {
       process.exit(0);
     }
 
+    // Snapshot BEFORE filtering. A baseline is about the whole project, so --tags must not be
+    // able to record a partial baseline or hide a regression behind a narrowed report.
+    const snapshot = (writeBaselineTo || baselineFrom)
+      ? require('../lib/baseline').buildBaseline(result)
+      : null;
+
     // Filtering is a presentation transform applied after scoring, so the score is untouched.
     applyTagFilter(result, tagFilter);
 
@@ -176,22 +182,23 @@ if (has('--mcp')) {
     }
 
     if (sarifOut) {
+      // Unlike --html, a failed SARIF write is fatal. SARIF is a CI artefact, and a job that
+      // asked for one and silently got none is worse than a job that fails loudly.
       try {
         const { renderSarifReport } = require('../lib/report-sarif');
         const sarif = renderSarifReport(result, { version: pkg.version });
         fs.writeFileSync(sarifOut, JSON.stringify(sarif, null, 2) + '\n');
         process.stderr.write(`SARIF report written to ${sarifOut}\n`);
       } catch (e) {
-        process.stderr.write(`(SARIF report skipped: ${e.message})\n`);
+        console.error(`Error: could not write SARIF to ${sarifOut}: ${e.message}`);
+        process.exit(1);
       }
     }
 
     if (writeBaselineTo) {
-      const { buildBaseline } = require('../lib/baseline');
-      const baseline = buildBaseline(result);
-      fs.writeFileSync(writeBaselineTo, JSON.stringify(baseline, null, 2) + '\n');
-      const n = Object.keys(baseline.findings).length;
-      process.stderr.write(`Baseline written to ${writeBaselineTo} (${n} keys, overall ${baseline.overall}).\n`);
+      fs.writeFileSync(writeBaselineTo, JSON.stringify(snapshot, null, 2) + '\n');
+      const n = Object.keys(snapshot.findings).length;
+      process.stderr.write(`Baseline written to ${writeBaselineTo} (${n} keys, overall ${snapshot.overall}).\n`);
       process.exit(0);
     }
 
@@ -205,7 +212,7 @@ if (has('--mcp')) {
     }
 
     if (baselineFrom) {
-      const { compareToBaseline, formatRegression } = require('../lib/baseline');
+      const { compareBaselines, formatRegression, baselineProblem } = require('../lib/baseline');
       let baseline;
       try {
         baseline = JSON.parse(fs.readFileSync(baselineFrom, 'utf8'));
@@ -213,7 +220,13 @@ if (has('--mcp')) {
         console.error(`Error: cannot parse baseline JSON ${baselineFrom}: ${e.message}`);
         process.exit(1);
       }
-      const comparison = compareToBaseline(result, baseline);
+      const problem = baselineProblem(baseline);
+      if (problem) {
+        console.error(`Error: ${baselineFrom} is not a usable baseline: ${problem}`);
+        process.exit(1);
+      }
+      // snapshot, not result: the comparison must see the unfiltered audit.
+      const comparison = compareBaselines(snapshot, baseline);
       if (comparison.regressed) {
         process.stderr.write(formatRegression(comparison) + '\n');
         if (failOnRegression) process.exit(1);

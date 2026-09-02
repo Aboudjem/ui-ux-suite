@@ -11,7 +11,7 @@ const assert = require('node:assert');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { execFileSync } = require('node:child_process');
+const { execFileSync, spawnSync } = require('node:child_process');
 
 const { renderSarifReport, levelFor, toUri, SARIF_VERSION } = require('../lib/report-sarif');
 const { auditProject } = require('../lib/runner');
@@ -79,15 +79,17 @@ test('a located finding round-trips file and line into physicalLocation', () => 
   assert.ok(located, 'fixture should produce at least one located CSS finding');
 
   const doc = renderSarifReport(audit, { version: '0.0.1' });
+  // Compare normalised to normalised so the assertion holds on a Windows checkout too.
+  const wantUri = toUri(located.evidence.file);
   const match = doc.runs[0].results.find(
     r =>
       r.locations &&
-      r.locations[0].physicalLocation.artifactLocation.uri === located.evidence.file &&
+      r.locations[0].physicalLocation.artifactLocation.uri === wantUri &&
       r.locations[0].physicalLocation.region.startLine === located.evidence.line
   );
   assert.ok(
     match,
-    `no SARIF result for ${located.evidence.file}:${located.evidence.line}`
+    `no SARIF result for ${wantUri}:${located.evidence.line}`
   );
   assert.strictEqual(match.ruleId, located.dimension);
 });
@@ -114,10 +116,34 @@ test('non-file evidence produces no locations, and a missing line produces no re
   assert.strictEqual(results[2].locations[0].physicalLocation.region, undefined, 'no line means no region');
 });
 
-test('uris are forward-slashed and relative', () => {
+test('uris are forward-slashed, relative and percent-encoded', () => {
   assert.strictEqual(toUri('src\\components\\Card.scss'), 'src/components/Card.scss');
   assert.strictEqual(toUri('./index.html'), 'index.html');
   assert.strictEqual(toUri('src/styles.css'), 'src/styles.css');
+  // A space or a URI-significant character must not break the document.
+  assert.strictEqual(toUri('src/my styles.css'), 'src/my%20styles.css');
+  assert.strictEqual(toUri('a#b/c%d.css'), 'a%23b/c%25d.css');
+  assert.ok(!toUri('src/my styles.css').includes(' '));
+});
+
+test('the run declares columnKind, which SARIF requires when columns are reported', () => {
+  const doc = renderSarifReport(auditProject(FIXTURE), { version: '0.0.1' });
+  assert.strictEqual(doc.runs[0].columnKind, 'utf16CodeUnits');
+  const withCol = doc.runs[0].results.find(
+    r => r.locations && r.locations[0].physicalLocation.region
+      && r.locations[0].physicalLocation.region.startColumn != null
+  );
+  assert.ok(withCol, 'the fixture should produce at least one column');
+});
+
+test('a SARIF write that cannot succeed exits 1 rather than passing silently', () => {
+  const run = spawnSync(
+    process.execPath,
+    [CLI, FIXTURE, '--sarif', '/nope/does/not/exist/out.sarif'],
+    { encoding: 'utf8' }
+  );
+  assert.strictEqual(run.status, 1);
+  assert.match(run.stderr, /could not write SARIF/);
 });
 
 test('--sarif writes a file and does not swallow the project path', () => {
