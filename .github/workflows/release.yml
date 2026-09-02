@@ -23,6 +23,10 @@ jobs:
           node-version: '22.14'
           registry-url: 'https://registry.npmjs.org'
 
+      # Trusted publishing needs npm >= 11.5.1. Install npm 11.x, NOT npm@latest:
+      # npm 12 requires node ^22.22.2 || ^24.15.0 || >=26.0.0, which the pinned
+      # node 22.14 does not satisfy, so npm@latest fails with EBADENGINE.
+      # npm 11.x engines are ^20.17.0 || >=22.9.0, which node 22.14 does satisfy.
       - name: Ensure npm supports trusted publishing (>=11.5.1)
         run: |
           CURRENT=$(npm --version)
@@ -30,9 +34,9 @@ jobs:
           node -e "
           const [a,b,c] = process.argv[1].split('.').map(n => parseInt(n,10));
           const ok = a > 11 || (a === 11 && (b > 5 || (b === 5 && c >= 1)));
-          if (!ok) { console.log('Upgrading npm from', process.argv[1], 'to >=11.5.1'); }
+          if (!ok) { console.log('Upgrading npm from', process.argv[1], 'to 11.x'); }
           process.exit(ok ? 0 : 42);
-          " "$CURRENT" || npm install -g npm@latest
+          " "$CURRENT" || npm install -g 'npm@^11'
           echo "Using npm $(npm --version)"
 
       - name: Verify tag matches package.json version
