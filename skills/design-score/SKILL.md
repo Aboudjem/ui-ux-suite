@@ -1,7 +1,6 @@
 ---
 name: design-score
-description: Quick design score card covering 12 dimensions, top 5 improvements, under 2 minutes
-trigger: "design score|score my design|rate my UI|quick audit"
+description: Quick design score card covering 12 dimensions with the top 5 improvements, in under 2 minutes. Use when the user asks for a design score, to score their design, to rate their UI, or for a quick audit.
 ---
 
 # /design-score: Quick Design Score Card

@@ -1,7 +1,6 @@
 ---
 name: component-audit
-description: Component consistency audit covering state coverage, hierarchy, patterns
-trigger: "component audit|UI consistency|component review"
+description: Component consistency audit covering state coverage, hierarchy, and patterns. Use when the user asks for a component audit, a component review, or a check of UI consistency.
 ---
 
 # /component-audit: Component Consistency Audit

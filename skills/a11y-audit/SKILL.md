@@ -1,7 +1,6 @@
 ---
 name: a11y-audit
-description: Accessibility audit covering WCAG 2.2, contrast, focus, keyboard, screen reader, touch targets
-trigger: "accessibility audit|a11y review|WCAG check|accessibility check|a11y audit"
+description: Accessibility audit covering WCAG 2.2, contrast, focus, keyboard, screen reader, and touch targets. Use when the user asks for an accessibility audit, an a11y review, a WCAG check, an accessibility check, or an a11y audit.
 ---
 
 # /a11y-audit: Accessibility Audit

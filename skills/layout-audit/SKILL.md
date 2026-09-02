@@ -1,7 +1,6 @@
 ---
 name: layout-audit
-description: Layout and spacing audit covering grid, spacing consistency, density, responsive behavior
-trigger: "audit layout|spacing review|fix my spacing|layout audit|grid audit"
+description: Layout and spacing audit covering grid, spacing consistency, density, and responsive behavior. Use when the user asks to audit the layout, run a layout audit or grid audit, review spacing, or fix their spacing.
 ---
 
 # /layout-audit: Layout and Spacing Audit

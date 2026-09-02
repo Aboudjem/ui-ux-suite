@@ -1,7 +1,6 @@
 ---
 name: design-compare
-description: Compare current design against a reference or competitor
-trigger: "compare design|design compare|benchmark against"
+description: Compare the current design against a reference product or competitor. Use when the user asks to compare designs, run a design compare, or benchmark against another product.
 ---
 
 # /design-compare: Compare Against Reference

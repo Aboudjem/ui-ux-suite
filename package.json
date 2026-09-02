@@ -1,6 +1,6 @@
 {
   "name": "ui-ux-suite",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "UI/UX design audit tool for Claude Code. Scores projects across 12 dimensions: color contrast, typography, accessibility, layout, and more. WCAG 2.2, APCA, and OKLCH color science. Zero dependencies.",
   "author": "Adam Boudjemaa",
   "license": "MIT",

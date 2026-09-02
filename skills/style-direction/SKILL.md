@@ -1,7 +1,6 @@
 ---
 name: style-direction
-description: Visual style direction recommendation with current style analysis + top 3 directions with implementation guidance
-trigger: "style direction|visual direction|what style should I use|design direction"
+description: Visual style direction recommendation with current style analysis plus the top 3 directions and implementation guidance. Use when the user asks for a style direction, a visual or design direction, or what style they should use.
 ---
 
 # /style-direction: Visual Style Recommendation

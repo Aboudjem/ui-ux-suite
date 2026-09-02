@@ -1,7 +1,6 @@
 ---
 name: theme-builder
-description: Build light/dark theme from scratch or improve existing. Complete surface, text, and interactive color system
-trigger: "build theme|theme builder|light dark theme|create theme"
+description: Build a light/dark theme from scratch or improve an existing one, with a complete surface, text, and interactive color system. Use when the user asks to build or create a theme, use the theme builder, or set up a light and dark theme.
 ---
 
 # /theme-builder: Build or Improve Theme

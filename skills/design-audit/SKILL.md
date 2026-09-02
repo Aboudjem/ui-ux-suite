@@ -1,7 +1,6 @@
 ---
 name: design-audit
-description: Full project design audit that orchestrates all agents, scores across 12 dimensions, generates prioritized action plan
-when_to_use: "audit design|design review|UX audit|how does my design look|review my UI|design audit"
+description: Full project design audit that orchestrates all agents, scores across 12 dimensions, and generates a prioritized action plan. Use when the user asks to audit their design, run a design review or UX audit, review their UI, or asks how their design looks.
 ---
 
 # /design-audit: Full Project Design Audit

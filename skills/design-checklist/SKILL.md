@@ -1,7 +1,6 @@
 ---
 name: design-checklist
-description: Interactive pre-launch design quality checklist
-trigger: "design checklist|launch checklist|pre-launch design"
+description: Interactive pre-launch design quality checklist. Use when the user asks for a design checklist, a launch checklist, or a pre-launch design pass.
 ---
 
 # /design-checklist: Pre-Launch Design Checklist
