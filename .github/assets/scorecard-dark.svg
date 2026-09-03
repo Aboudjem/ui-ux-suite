@@ -1,16 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 604" fill="none" role="img" aria-label="ui-ux-suite design audit scorecard: 12 weighted dimensions, a 0 to 10 score, and located findings">
   <defs>
     <linearGradient id="u-bg" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0%" stop-color="#0A0F1C"/>
-      <stop offset="60%" stop-color="#080C16"/>
-      <stop offset="100%" stop-color="#07070C"/>
+      <stop offset="0%" stop-color="#0C1626"/>
+      <stop offset="60%" stop-color="#0A0F1C"/>
+      <stop offset="100%" stop-color="#080C18"/>
     </linearGradient>
     <linearGradient id="u-brand" x1="0" y1="0" x2="1" y2="0.25" gradientUnits="objectBoundingBox">
-      <stop offset="0%"   stop-color="#00D4FF"/>
-      <stop offset="100%" stop-color="#5B9DFF"/>
-      <animateTransform attributeName="gradientTransform" type="translate"
-        values="-0.1 0; 0.1 0; -0.1 0" dur="18s" repeatCount="indefinite"/>
-    </linearGradient>
+      <stop class="v2d1" offset="0%"   stop-color="#00D4FF"/>
+      <stop class="v2d2" offset="100%" stop-color="#5B9DFF"/>
+</linearGradient>
     <linearGradient id="u-bar" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%"   stop-color="#00D4FF"/>
       <stop offset="100%" stop-color="#5B9DFF"/>
@@ -24,6 +22,14 @@
       <feGaussianBlur stdDeviation="3.2" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+      <radialGradient id="v2-bloomA" cx="0.18" cy="0.22" r="0.72">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="v2-bloomB" cx="0.84" cy="0.86" r="0.68">
+      <stop offset="0%" stop-color="#5B9DFF" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#5B9DFF" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
   <style>
@@ -31,17 +37,17 @@
     .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
     .label   { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; fill: #00D4FF; }
     .title   { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; fill: #F2F6FF; }
-    .muted   { font-size: 12px; font-weight: 500; fill: #B6C2DA; }
+    .muted   { font-size: 12px; font-weight: 500; fill: #C2CDE4; }
     .strong  { font-size: 13px; font-weight: 600; fill: #F2F6FF; }
     .num     { font-size: 60px; font-weight: 800; fill: url(#u-brand); }
-    .suffix  { font-size: 16px; font-weight: 600; fill: #8494B0; }
+    .suffix  { font-size: 16px; font-weight: 600; fill: #93A2BE; }
     .pass    { font-size: 11px; font-weight: 700; letter-spacing: 0.6px; fill: #3DFFAB; }
-    .dim     { font-size: 13px; font-weight: 500; fill: #B6C2DA; }
+    .dim     { font-size: 13px; font-weight: 500; fill: #C2CDE4; }
     .score   { font-size: 13px; font-weight: 700; fill: #F2F6FF; }
-    .ms      { font-size: 11px; font-weight: 500; fill: #B6C2DA; }
-    .md      { font-size: 11px; font-weight: 500; fill: #8494B0; }
+    .ms      { font-size: 11px; font-weight: 500; fill: #C2CDE4; }
+    .md      { font-size: 11px; font-weight: 500; fill: #93A2BE; }
     .cmd     { font-size: 11px; font-weight: 600; fill: #00D4FF; }
-    .chip    { font-size: 11px; font-weight: 600; fill: #B6C2DA; }
+    .chip    { font-size: 11px; font-weight: 600; fill: #C2CDE4; }
     .crit    { font-size: 12px; font-weight: 600; fill: #FF2D78; }
     .warn    { font-size: 12px; font-weight: 600; fill: #FFB341; }
     .hint    { font-size: 12px; font-weight: 600; fill: #8E7BFF; }
@@ -96,6 +102,12 @@
       .r1,.r2,.r3,.r4,.r5,.r6,.r7,.r8,
       .f1,.f2,.f3,.f4,.f5,.f6 { opacity: 1 !important; transform: none !important; }
     }
+      @keyframes v2-d1 { 0%,100% { stop-color:#00D4FF; } 50% { stop-color:#2BE8C8; } }
+    .v2d1 { animation: v2-d1 16s ease-in-out infinite; }
+    @keyframes v2-d2 { 0%,100% { stop-color:#5B9DFF; } 50% { stop-color:#8E7BFF; } }
+    .v2d2 { animation: v2-d2 16s ease-in-out infinite; }
+    @keyframes v2-breathe { 0%,100% { opacity:0.66; } 50% { opacity:1; } }
+    .v2bloom { animation: v2-breathe 11s ease-in-out infinite; }
   </style>
 
   <rect x="0.5" y="0.5" width="799" height="603" rx="20" fill="url(#u-bg)" stroke="#1E2A42"/>
@@ -142,6 +154,7 @@
       <text class="disp dim" x="20" y="12">Color System</text>
       <rect x="160" y="2" width="200" height="12" rx="4" fill="#141C2E"/>
       <rect class="b1" x="160" y="2" width="160" height="12" rx="4" fill="url(#u-bar)"/>
+  <g class="v2bloom"><rect width="800" height="604" fill="url(#v2-bloomA)"/><rect width="800" height="604" fill="url(#v2-bloomB)"/></g>
       <text class="disp score" x="370" y="12">8.0</text>
     </g></g>
     <g transform="translate(0,26)"><g class="r2">

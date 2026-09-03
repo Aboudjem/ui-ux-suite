@@ -1,56 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" fill="none" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" role="img"
      aria-label="ui-ux-suite: a ruler corner measures, its ticks lighting in sequence">
   <title>ui-ux-suite</title>
+  <desc>Animated light-mode logo mark. The whole mark is drawn as a muted track; one bright
+  element travels over it, so no frame is an incomplete logo and the reduced-motion resting frame
+  is the finished mark.</desc>
   <defs>
-    <linearGradient id="ux-ground" x1="0" y1="0" x2="0.4" y2="1">
+    <linearGradient id="ux-plate" x1="0" y1="0" x2="0.4" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="55%" stop-color="#F7F8FB"/>
+      <stop offset="58%" stop-color="#F7F8FB"/>
       <stop offset="100%" stop-color="#EEF1F7"/>
     </linearGradient>
-    <radialGradient id="ux-bloomA" cx="0.15" cy="0.13" r="0.44">
-      <stop offset="0%" stop-color="#006A80" stop-opacity="0.10"/>
+    <radialGradient id="ux-bloomA" cx="0.24" cy="0.24" r="0.68">
+      <stop offset="0%" stop-color="#006A80" stop-opacity="0.16"/>
       <stop offset="100%" stop-color="#006A80" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="ux-bloomB" cx="0.88" cy="0.85" r="0.50">
-      <stop offset="0%" stop-color="#0959D1" stop-opacity="0.09"/>
+    <radialGradient id="ux-bloomB" cx="0.80" cy="0.82" r="0.64">
+      <stop offset="0%" stop-color="#0959D1" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#0959D1" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="ux-bloomC" cx="0.52" cy="0.04" r="0.36">
-      <stop offset="0%" stop-color="#5D4BD1" stop-opacity="0.06"/>
-      <stop offset="100%" stop-color="#5D4BD1" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ux-wash" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%"   stop-color="#006A80" stop-opacity="0.07"/>
-      <stop offset="42%"  stop-color="#0959D1" stop-opacity="0.043"/>
-      <stop offset="76%"  stop-color="#5D4BD1" stop-opacity="0.016"/>
-      <stop offset="100%" stop-color="#5D4BD1" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="ux-frame"><rect width="720" height="200"/></clipPath>
     <linearGradient id="ux-ink" gradientUnits="userSpaceOnUse" x1="62" y1="60" x2="200" y2="220">
       <stop class="uxk1" offset="0%"   stop-color="#006A80"/>
       <stop class="uxk2" offset="52%"  stop-color="#006A80"/>
       <stop class="uxk3" offset="100%" stop-color="#0959D1"/>
     </linearGradient>
     <clipPath id="ux-cal"><rect class="uxcal" x="62" y="208" width="132" height="12"/></clipPath>
-    <linearGradient id="ux-word" x1="0" y1="0" x2="1" y2="0.25">
-      <stop class="uxk1" offset="0%"   stop-color="#006A80"/>
-      <stop class="uxk2" offset="46%"  stop-color="#006A80"/>
-      <stop class="uxk3" offset="100%" stop-color="#0959D1"/>
-    </linearGradient>
   </defs>
 
   <style>
-    .disp { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
-    .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
-    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 4.5px; fill: #006A80; }
-    .head    { font-size: 22px; font-weight: 700; fill: #1A2233; letter-spacing: -0.5px; }
-    .sub     { font-size: 16.5px; font-weight: 500; fill: #48546B; }
-    .tag     { font-size: 11.5px; letter-spacing: 1.6px; fill: #48546B; }
-    .chip    { font-size: 11.5px; letter-spacing: 1.2px; fill: #48546B; }
     @keyframes ux-breathe { 0%,100% { opacity:0.72; } 50% { opacity:1; } }
-    .uxbloom { animation: ux-breathe 11s ease-in-out infinite; }
-    @keyframes ux-sweep { 0% { transform: translateX(-360px); } 100% { transform: translateX(1080px); } }
-    .uxwash { animation: ux-sweep 15s cubic-bezier(.5,0,.5,1) infinite; }
+    .uxbloom { animation: ux-breathe 9s ease-in-out infinite; }
     @keyframes ux-tick { 0%,100% { opacity: 0.34; } 44%,62% { opacity: 1; } }
     .uxt1 { animation: ux-tick 6s ease-in-out infinite 0.0s; }
     .uxt2 { animation: ux-tick 6s ease-in-out infinite 0.16s; }
@@ -72,18 +50,14 @@
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 
-  <rect width="720" height="200" fill="url(#ux-ground)"/>
+  <rect width="256" height="256" rx="56" fill="url(#ux-plate)"/>
   <g class="uxbloom">
-    <rect width="720" height="200" fill="url(#ux-bloomA)"/>
-    <rect width="720" height="200" fill="url(#ux-bloomB)"/>
-    <rect width="720" height="200" fill="url(#ux-bloomC)"/>
+    <rect width="256" height="256" rx="56" fill="url(#ux-bloomA)"/>
+    <rect width="256" height="256" rx="56" fill="url(#ux-bloomB)"/>
   </g>
-  <g clip-path="url(#ux-frame)">
-    <g transform="translate(0,100)">
-      <ellipse class="uxwash" cx="0" cy="0" rx="300" ry="180" fill="url(#ux-wash)"/>
-    </g>
-  </g>
-  <g transform="translate(30,50) scale(0.3906)">
+  <rect x="0.9" y="0.9" width="254.2" height="254.2" rx="55.2" fill="none"
+        stroke="#D8DEE9" stroke-width="1.8"/>
+
   <g opacity="0.26" stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
     <path d="M62 62 L62 196 L196 196" stroke-width="12" stroke-linejoin="round"/>
     <line x1="70" y1="84" x2="92" y2="84"/><line x1="70" y1="108" x2="83" y2="108"/><line x1="70" y1="132" x2="92" y2="132"/><line x1="70" y1="156" x2="83" y2="156"/><line x1="90" y1="188" x2="90" y2="166"/><line x1="114" y1="188" x2="114" y2="175"/><line x1="138" y1="188" x2="138" y2="166"/><line x1="162" y1="188" x2="162" y2="175"/><line x1="186" y1="188" x2="186" y2="166"/>
@@ -98,11 +72,4 @@
   <g clip-path="url(#ux-cal)">
     <rect x="62" y="208" width="132" height="12" rx="6" fill="url(#ux-ink)"/>
   </g>
-  </g>
-  <g>
-    <text class="disp" x="140" y="98" font-size="62" font-weight="800"
-          letter-spacing="-1.9" fill="url(#ux-word)">ui-ux-suite</text>
-  </g>
-  <text class="disp sub" x="140" y="130">Design quality, measured, not guessed</text>
-  <text class="mono tag" x="140" y="160">12 dimensions  &#183;  WCAG 2.2 + APCA  &#183;  OKLCH  &#183;  zero deps</text>
 </svg>

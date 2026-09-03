@@ -1,63 +1,140 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" fill="none" role="img" aria-label="ui-ux-suite: ESLint for design. It finds the exact line, the measured wrong value, and the exact fix.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" fill="none" role="img"
+     aria-label="ui-ux-suite: ESLint for design.">
+  <title>ui-ux-suite</title>
   <defs>
-    <linearGradient id="u-bg" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0%" stop-color="#0A0F1C"/>
-      <stop offset="60%" stop-color="#080C16"/>
-      <stop offset="100%" stop-color="#07070C"/>
+    <linearGradient id="ux-ground" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#0C1626"/>
+      <stop offset="55%" stop-color="#0A0F1C"/>
+      <stop offset="100%" stop-color="#080C18"/>
     </linearGradient>
-    <radialGradient id="u-bloom" cx="0.5" cy="1" r="0.75">
-      <stop offset="0%"  stop-color="#FF2D78" stop-opacity="0.28"/>
-      <stop offset="38%" stop-color="#7C3AED" stop-opacity="0.13"/>
-      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    <radialGradient id="ux-bloomA" cx="0.15" cy="0.13" r="0.44">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="u-brand" x1="0" y1="0" x2="1" y2="0.25" gradientUnits="objectBoundingBox">
-      <stop offset="0%"   stop-color="#00D4FF"/>
-      <stop offset="100%" stop-color="#5B9DFF"/>
+    <radialGradient id="ux-bloomB" cx="0.88" cy="0.85" r="0.50">
+      <stop offset="0%" stop-color="#5B9DFF" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#5B9DFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ux-bloomC" cx="0.52" cy="0.04" r="0.36">
+      <stop offset="0%" stop-color="#8E7BFF" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#8E7BFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ux-wash" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="#7FE4FF" stop-opacity="0.20"/>
+      <stop offset="42%"  stop-color="#5B9DFF" stop-opacity="0.124"/>
+      <stop offset="76%"  stop-color="#8E7BFF" stop-opacity="0.046"/>
+      <stop offset="100%" stop-color="#8E7BFF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="ux-frame"><rect width="1280" height="640"/></clipPath>
+    <linearGradient id="ux-ink" gradientUnits="userSpaceOnUse" x1="62" y1="60" x2="200" y2="220">
+      <stop class="uxk1" offset="0%"   stop-color="#4DE3FF"/>
+      <stop class="uxk2" offset="52%"  stop-color="#00D4FF"/>
+      <stop class="uxk3" offset="100%" stop-color="#5B9DFF"/>
     </linearGradient>
-    <linearGradient id="u-horizonline" gradientUnits="userSpaceOnUse" x1="96" y1="548" x2="1184" y2="548">
-      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0"/>
-      <stop offset="22%"  stop-color="#00D4FF" stop-opacity="0.5"/>
-      <stop offset="55%"  stop-color="#C77DFF" stop-opacity="0.8"/>
-      <stop offset="82%"  stop-color="#FF2D78" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0"/>
+    <filter id="ux-glow" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="6.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ux-glow-sm" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="3.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="ux-cal"><rect class="uxcal" x="62" y="208" width="132" height="12"/></clipPath>
+    <linearGradient id="ux-word" x1="0" y1="0" x2="1" y2="0.25">
+      <stop class="uxk1" offset="0%"   stop-color="#4DE3FF"/>
+      <stop class="uxk2" offset="46%"  stop-color="#00D4FF"/>
+      <stop class="uxk3" offset="100%" stop-color="#5B9DFF"/>
     </linearGradient>
+    <linearGradient id="ux-sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="ux-wordclip">
+      <text x="96" y="358" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+            font-size="119" font-weight="800" letter-spacing="-4.2">ui-ux-suite</text>
+    </clipPath>
   </defs>
 
   <style>
     .disp { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
     .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
-    .head { font-size: 34px; font-weight: 700; fill: #F2F6FF; letter-spacing: -0.4px; }
-    .body { font-size: 26px; font-weight: 500; fill: #B6C2DA; }
-    .chip { font-size: 17px; font-weight: 700; fill: #B6C2DA; }
-    .foot { font-size: 19px; letter-spacing: 1.4px; fill: #8494B0; }
+    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 4.5px; fill: #7FE4FF; }
+    .head    { font-size: 38px; font-weight: 700; fill: #F2F6FF; letter-spacing: -0.5px; }
+    .sub     { font-size: 20px; font-weight: 500; fill: #C2CDE4; }
+    .tag     { font-size: 15px; letter-spacing: 1.6px; fill: #93A2BE; }
+    .chip    { font-size: 11.5px; letter-spacing: 1.2px; fill: #C2CDE4; }
+    .chipbig { font-size: 17px; letter-spacing: 1px; fill: #C2CDE4; }
+    .tagsm { font-size: 12.5px; letter-spacing: 1.6px; fill: #93A2BE; }
+    .eyebrow { font-size: 17px; letter-spacing: 5px; }
+    @keyframes ux-breathe { 0%,100% { opacity:0.62; } 50% { opacity:1; } }
+    .uxbloom { animation: ux-breathe 11s ease-in-out infinite; }
+    @keyframes ux-sweep { 0% { transform: translateX(-360px); } 100% { transform: translateX(1640px); } }
+    .uxwash { animation: ux-sweep 19s cubic-bezier(.5,0,.5,1) infinite; }
+    @keyframes ux-sheen { 0% { transform: translateX(0); } 15%,100% { transform: translateX(547px); } }
+    .uxsheen { animation: ux-sheen 8.5s cubic-bezier(.4,0,.3,1) infinite; }
+    @keyframes ux-tick { 0%,100% { opacity: 0.34; } 44%,62% { opacity: 1; } }
+    .uxt1 { animation: ux-tick 6s ease-in-out infinite 0.0s; }
+    .uxt2 { animation: ux-tick 6s ease-in-out infinite 0.16s; }
+    .uxt3 { animation: ux-tick 6s ease-in-out infinite 0.32s; }
+    .uxt4 { animation: ux-tick 6s ease-in-out infinite 0.48s; }
+    .uxt5 { animation: ux-tick 6s ease-in-out infinite 0.64s; }
+    .uxt6 { animation: ux-tick 6s ease-in-out infinite 0.8s; }
+    .uxt7 { animation: ux-tick 6s ease-in-out infinite 0.96s; }
+    .uxt8 { animation: ux-tick 6s ease-in-out infinite 1.12s; }
+    .uxt9 { animation: ux-tick 6s ease-in-out infinite 1.28s; }
+    @keyframes ux-cal { 0%,8% { width: 0; } 62%,88% { width: 132px; } 98%,100% { width: 0; } }
+    .uxcal { animation: ux-cal 6s cubic-bezier(.3,0,.2,1) infinite; }
+    @keyframes ux-k1 { 0%,100% { stop-color:#4DE3FF; } 50% { stop-color:#00D4FF; } }
+    @keyframes ux-k2 { 0%,100% { stop-color:#00D4FF; } 50% { stop-color:#5B9DFF; } }
+    @keyframes ux-k3 { 0%,100% { stop-color:#5B9DFF; } 50% { stop-color:#8E7BFF; } }
+    .uxk1 { animation: ux-k1 14s ease-in-out infinite; }
+    .uxk2 { animation: ux-k2 14s ease-in-out infinite; }
+    .uxk3 { animation: ux-k3 14s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 
-  <rect width="1280" height="640" fill="url(#u-bg)"/>
-  <ellipse cx="640" cy="664" rx="800" ry="210" fill="url(#u-bloom)"/>
-
-  <text class="disp" x="96" y="250" font-size="112" font-weight="800" letter-spacing="-2" fill="url(#u-brand)">ui-ux-suite</text>
-
-  <text class="disp head" x="96" y="322">ESLint for design.</text>
-  <text class="disp body" x="96" y="376">It finds the exact line, the measured wrong value,</text>
-  <text class="disp body" x="96" y="414">and the exact fix.</text>
-
-  <g transform="translate(96,470)">
-    <rect width="110" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
-    <text class="mono chip" x="55" y="26" text-anchor="middle" fill="#00D4FF">v0.6.0</text>
-
-    <rect x="126" width="142" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
-    <text class="mono chip" x="197" y="26" text-anchor="middle">356 tests</text>
-
-    <rect x="284" width="186" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
-    <text class="mono chip" x="377" y="26" text-anchor="middle">12 dimensions</text>
-
-    <rect x="486" width="208" height="40" rx="20" fill="#0E1524" stroke="#1E2A42"/>
-    <text class="mono chip" x="590" y="26" text-anchor="middle">npx ui-ux-suite</text>
+  <rect width="1280" height="640" fill="url(#ux-ground)"/>
+  <g class="uxbloom">
+    <rect width="1280" height="640" fill="url(#ux-bloomA)"/>
+    <rect width="1280" height="640" fill="url(#ux-bloomB)"/>
+    <rect width="1280" height="640" fill="url(#ux-bloomC)"/>
   </g>
-
-  <line x1="96" y1="548" x2="1184" y2="548" stroke="url(#u-horizonline)" stroke-width="1.5"/>
-
-  <text class="mono foot" x="96" y="598">github.com/Aboudjem/ui-ux-suite</text>
-
-  <!-- reserved: x 930 to 1150, y 210 to 430 stays empty for the composited PNG mark -->
+  <g clip-path="url(#ux-frame)">
+    <g transform="translate(0,320)">
+      <ellipse class="uxwash" cx="0" cy="0" rx="520" ry="380" fill="url(#ux-wash)"/>
+    </g>
+  </g>
+  <g transform="translate(872,126) scale(1.2188)">
+  <g opacity="0.32" stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M62 62 L62 196 L196 196" stroke-width="12" stroke-linejoin="round"/>
+    <line x1="70" y1="84" x2="92" y2="84"/><line x1="70" y1="108" x2="83" y2="108"/><line x1="70" y1="132" x2="92" y2="132"/><line x1="70" y1="156" x2="83" y2="156"/><line x1="90" y1="188" x2="90" y2="166"/><line x1="114" y1="188" x2="114" y2="175"/><line x1="138" y1="188" x2="138" y2="166"/><line x1="162" y1="188" x2="162" y2="175"/><line x1="186" y1="188" x2="186" y2="166"/>
+  </g>
+  <g filter="url(#ux-glow)">
+    <path d="M62 62 L62 196 L196 196" fill="none" stroke="url(#ux-ink)" stroke-width="12"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
+    <line class="uxt1" x1="70" y1="84" x2="92" y2="84"/><line class="uxt2" x1="70" y1="108" x2="83" y2="108"/><line class="uxt3" x1="70" y1="132" x2="92" y2="132"/><line class="uxt4" x1="70" y1="156" x2="83" y2="156"/><line class="uxt5" x1="90" y1="188" x2="90" y2="166"/><line class="uxt6" x1="114" y1="188" x2="114" y2="175"/><line class="uxt7" x1="138" y1="188" x2="138" y2="166"/><line class="uxt8" x1="162" y1="188" x2="162" y2="175"/><line class="uxt9" x1="186" y1="188" x2="186" y2="166"/>
+  </g>
+  <g clip-path="url(#ux-cal)">
+    <rect x="62" y="208" width="132" height="12" rx="6" fill="url(#ux-ink)"/>
+  </g>
+  </g>
+  <g filter="url(#ux-glow)">
+    <text class="disp" x="96" y="358" font-size="119" font-weight="800"
+          letter-spacing="-4.2" fill="url(#ux-word)">ui-ux-suite</text>
+  </g>
+  <g clip-path="url(#ux-wordclip)">
+    <g transform="skewX(-18)">
+      <rect class="uxsheen" x="-35" y="239" width="55"
+            height="161" fill="url(#ux-sheen)" opacity="0.45"/>
+    </g>
+  </g>
+  <text class="mono eyebrow" x="96" y="258">DESIGN LINTER</text>
+  <text class="disp head" x="96" y="416">ESLint for design.</text>
+  <text class="disp sub" x="96" y="458">It finds the exact line, the measured wrong value,</text>
+  <text class="disp sub" x="96" y="490">and the exact fix.</text>
+  <g transform="translate(0,506)"><rect x="96" y="0" width="111" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="118" y="25">v0.6.1</text><rect x="227" y="0" width="144" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="249" y="25">356 tests</text><rect x="391" y="0" width="189" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="413" y="25">12 dimensions</text><rect x="600" y="0" width="212" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="622" y="25">npx ui-ux-suite</text></g>
+  <text class="mono tag" x="96" y="604">github.com/Aboudjem/ui-ux-suite</text>
 </svg>

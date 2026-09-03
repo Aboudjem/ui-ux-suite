@@ -3,5 +3,5 @@
   "name": "io.github.Aboudjem/ui-ux-suite",
   "description": "UI/UX design-audit MCP server: scores a project on 12 dimensions vs WCAG 2.2 + APCA.",
   "repository": { "url": "https://github.com/Aboudjem/ui-ux-suite", "source": "github" },
-  "version": "0.6.0"
+  "version": "0.6.1"
 }

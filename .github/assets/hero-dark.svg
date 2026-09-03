@@ -1,215 +1,157 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none" role="img" aria-label="ui-ux-suite, a design linter: ESLint for design. The exact line, the measured wrong value, and the exact fix.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none" role="img"
+     aria-label="ui-ux-suite, a design linter: the exact line, the measured wrong value, and the exact fix">
+  <title>ui-ux-suite</title>
   <defs>
-    <linearGradient id="u-bg" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0%" stop-color="#0A0F1C"/>
-      <stop offset="60%" stop-color="#080C16"/>
-      <stop offset="100%" stop-color="#07070C"/>
+    <linearGradient id="ux-ground" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#0C1626"/>
+      <stop offset="55%" stop-color="#0A0F1C"/>
+      <stop offset="100%" stop-color="#080C18"/>
     </linearGradient>
-
-    <radialGradient id="u-bloom" cx="0.5" cy="1" r="0.75">
-      <stop offset="0%"  stop-color="#FF2D78" stop-opacity="0.30"/>
-      <stop offset="38%" stop-color="#7C3AED" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    <radialGradient id="ux-bloomA" cx="0.15" cy="0.13" r="0.44">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
     </radialGradient>
-
-    <linearGradient id="u-sun" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#FFD59A"/>
-      <stop offset="30%"  stop-color="#FFB341"/>
-      <stop offset="66%"  stop-color="#FF4D8D"/>
-      <stop offset="100%" stop-color="#C77DFF"/>
-    </linearGradient>
-
-    <linearGradient id="u-brand" x1="0" y1="0" x2="1" y2="0.25" gradientUnits="objectBoundingBox">
-      <stop offset="0%"   stop-color="#00D4FF"/>
-      <stop offset="100%" stop-color="#5B9DFF"/>
-      <animateTransform attributeName="gradientTransform" type="translate"
-        values="-0.12 0; 0.12 0; -0.12 0" dur="18s" repeatCount="indefinite"/>
-    </linearGradient>
-
-    <linearGradient id="u-rule" gradientUnits="userSpaceOnUse" x1="452" y1="112" x2="452" y2="272">
+    <radialGradient id="ux-bloomB" cx="0.88" cy="0.85" r="0.50">
+      <stop offset="0%" stop-color="#5B9DFF" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#5B9DFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ux-bloomC" cx="0.52" cy="0.04" r="0.36">
+      <stop offset="0%" stop-color="#8E7BFF" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#8E7BFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ux-wash" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="#7FE4FF" stop-opacity="0.20"/>
+      <stop offset="42%"  stop-color="#5B9DFF" stop-opacity="0.124"/>
+      <stop offset="76%"  stop-color="#8E7BFF" stop-opacity="0.046"/>
+      <stop offset="100%" stop-color="#8E7BFF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="ux-frame"><rect width="1200" height="400"/></clipPath>
+    <linearGradient id="ux-rule" gradientUnits="userSpaceOnUse" x1="500" y1="100" x2="500" y2="300">
       <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0"/>
-      <stop offset="45%"  stop-color="#00D4FF" stop-opacity="0.75"/>
-      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0"/>
+      <stop offset="45%"  stop-color="#00D4FF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#5B9DFF" stop-opacity="0"/>
     </linearGradient>
-
-    <linearGradient id="u-horizonline" gradientUnits="userSpaceOnUse" x1="60" y1="332" x2="1140" y2="332">
-      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0"/>
-      <stop offset="22%"  stop-color="#00D4FF" stop-opacity="0.5"/>
-      <stop offset="55%"  stop-color="#C77DFF" stop-opacity="0.8"/>
-      <stop offset="82%"  stop-color="#FF2D78" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0"/>
+    <linearGradient id="ux-ink" gradientUnits="userSpaceOnUse" x1="62" y1="60" x2="200" y2="220">
+      <stop class="uxk1" offset="0%"   stop-color="#4DE3FF"/>
+      <stop class="uxk2" offset="52%"  stop-color="#00D4FF"/>
+      <stop class="uxk3" offset="100%" stop-color="#5B9DFF"/>
     </linearGradient>
-
-    <linearGradient id="u-gridfade" gradientUnits="userSpaceOnUse" x1="0" y1="332" x2="0" y2="400">
-      <stop offset="0%"   stop-color="#00D4FF" stop-opacity="0.55"/>
-      <stop offset="55%"  stop-color="#5B9DFF" stop-opacity="0.28"/>
-      <stop offset="100%" stop-color="#FF2D78" stop-opacity="0.05"/>
+    <filter id="ux-glow" x="-45%" y="-45%" width="190%" height="190%">
+      <feGaussianBlur stdDeviation="6.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ux-glow-sm" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="3.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="ux-cal"><rect class="uxcal" x="62" y="208" width="132" height="12"/></clipPath>
+    <linearGradient id="ux-word" x1="0" y1="0" x2="1" y2="0.25">
+      <stop class="uxk1" offset="0%"   stop-color="#4DE3FF"/>
+      <stop class="uxk2" offset="46%"  stop-color="#00D4FF"/>
+      <stop class="uxk3" offset="100%" stop-color="#5B9DFF"/>
     </linearGradient>
-
-    <linearGradient id="u-pips" gradientUnits="userSpaceOnUse" x1="500" y1="0" x2="710" y2="0">
-      <stop offset="0%"   stop-color="#00D4FF"/>
-      <stop offset="100%" stop-color="#5B9DFF"/>
-    </linearGradient>
-
-    <linearGradient id="u-sheen" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.55"/>
+    <linearGradient id="ux-sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.62"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-
-    <filter id="u-glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="10" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <filter id="u-glow-sm" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="3.2" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <filter id="u-sunglow" x="-70%" y="-70%" width="240%" height="240%">
-      <feGaussianBlur stdDeviation="22" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <clipPath id="u-sunclip">
-      <circle cx="1096" cy="268" r="64"/>
-    </clipPath>
-
-    <clipPath id="u-gridclip">
-      <rect x="0" y="332" width="1200" height="68"/>
-    </clipPath>
-
-    <clipPath id="u-wordclip">
-      <text x="82" y="272" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
-            font-size="60" font-weight="800" letter-spacing="-1">ui-ux-suite</text>
+    <clipPath id="ux-wordclip">
+      <text x="76" y="286" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+            font-size="71" font-weight="800" letter-spacing="-2.5">ui-ux-suite</text>
     </clipPath>
   </defs>
 
   <style>
     .disp { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
     .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
-    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 4.5px; fill: #00D4FF; }
-    .head    { font-size: 41px; font-weight: 700; fill: #F2F6FF; letter-spacing: -0.5px; }
-    .sub     { font-size: 16px; font-weight: 500; fill: #B6C2DA; }
-    .tag     { font-size: 11.5px; letter-spacing: 1.6px; fill: #8494B0; }
-
-    @keyframes u-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 0.95; } }
-    .bloom { animation: u-breathe 9s ease-in-out infinite; }
-
-    @keyframes u-sunpulse { 0%,100% { opacity: 0.42; } 50% { opacity: 0.62; } }
-    .sun { animation: u-sunpulse 10s ease-in-out infinite; }
-
-    @keyframes u-flow { to { stroke-dashoffset: -240; } }
-    .flowline { animation: u-flow 14s linear infinite; }
-
-    @keyframes u-dot { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
-    .d1  { animation: u-dot 5s ease-in-out infinite 0s; }
-    .d2  { animation: u-dot 5s ease-in-out infinite 0.18s; }
-    .d3  { animation: u-dot 5s ease-in-out infinite 0.36s; }
-    .d4  { animation: u-dot 5s ease-in-out infinite 0.54s; }
-    .d5  { animation: u-dot 5s ease-in-out infinite 0.72s; }
-    .d6  { animation: u-dot 5s ease-in-out infinite 0.9s; }
-    .d7  { animation: u-dot 5s ease-in-out infinite 1.08s; }
-    .d8  { animation: u-dot 5s ease-in-out infinite 1.26s; }
-    .d9  { animation: u-dot 5s ease-in-out infinite 1.44s; }
-    .d10 { animation: u-dot 5s ease-in-out infinite 1.62s; }
-    .d11 { animation: u-dot 5s ease-in-out infinite 1.8s; }
-    .d12 { animation: u-dot 5s ease-in-out infinite 1.98s; }
-
-    @keyframes u-sheen {
-      0%   { transform: translateX(0); }
-      34%  { transform: translateX(700px); }
-      100% { transform: translateX(700px); }
-    }
-    .sheen { animation: u-sheen 7.5s linear infinite; }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; }
-    }
+    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 4.5px; fill: #7FE4FF; }
+    .head    { font-size: 34px; font-weight: 700; fill: #F2F6FF; letter-spacing: -0.5px; }
+    .sub     { font-size: 16.5px; font-weight: 500; fill: #C2CDE4; }
+    .tag     { font-size: 11.5px; letter-spacing: 1.6px; fill: #93A2BE; }
+    .chip    { font-size: 11.5px; letter-spacing: 1.2px; fill: #C2CDE4; }
+    @keyframes ux-breathe { 0%,100% { opacity:0.62; } 50% { opacity:1; } }
+    .uxbloom { animation: ux-breathe 11s ease-in-out infinite; }
+    @keyframes ux-sweep { 0% { transform: translateX(-360px); } 100% { transform: translateX(1560px); } }
+    .uxwash { animation: ux-sweep 17s cubic-bezier(.5,0,.5,1) infinite; }
+    @keyframes ux-sheen { 0% { transform: translateX(0); } 15%,100% { transform: translateX(326px); } }
+    .uxsheen { animation: ux-sheen 8.5s cubic-bezier(.4,0,.3,1) infinite; }
+    @keyframes ux-pip { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+    .uxp1 { animation: ux-pip 5s ease-in-out infinite 0.0s; }
+    .uxp2 { animation: ux-pip 5s ease-in-out infinite 0.35s; }
+    .uxp3 { animation: ux-pip 5s ease-in-out infinite 0.7s; }
+    .uxp4 { animation: ux-pip 5s ease-in-out infinite 1.05s; }
+    .uxp5 { animation: ux-pip 5s ease-in-out infinite 1.4s; }
+    .uxp6 { animation: ux-pip 5s ease-in-out infinite 1.75s; }
+    .uxp7 { animation: ux-pip 5s ease-in-out infinite 2.1s; }
+    .uxp8 { animation: ux-pip 5s ease-in-out infinite 2.45s; }
+    .uxp9 { animation: ux-pip 5s ease-in-out infinite 2.8s; }
+    .uxp10 { animation: ux-pip 5s ease-in-out infinite 3.15s; }
+    .uxp11 { animation: ux-pip 5s ease-in-out infinite 3.5s; }
+    .uxp12 { animation: ux-pip 5s ease-in-out infinite 3.85s; }
+    @keyframes ux-tick { 0%,100% { opacity: 0.34; } 44%,62% { opacity: 1; } }
+    .uxt1 { animation: ux-tick 6s ease-in-out infinite 0.0s; }
+    .uxt2 { animation: ux-tick 6s ease-in-out infinite 0.16s; }
+    .uxt3 { animation: ux-tick 6s ease-in-out infinite 0.32s; }
+    .uxt4 { animation: ux-tick 6s ease-in-out infinite 0.48s; }
+    .uxt5 { animation: ux-tick 6s ease-in-out infinite 0.64s; }
+    .uxt6 { animation: ux-tick 6s ease-in-out infinite 0.8s; }
+    .uxt7 { animation: ux-tick 6s ease-in-out infinite 0.96s; }
+    .uxt8 { animation: ux-tick 6s ease-in-out infinite 1.12s; }
+    .uxt9 { animation: ux-tick 6s ease-in-out infinite 1.28s; }
+    @keyframes ux-cal { 0%,8% { width: 0; } 62%,88% { width: 132px; } 98%,100% { width: 0; } }
+    .uxcal { animation: ux-cal 6s cubic-bezier(.3,0,.2,1) infinite; }
+    @keyframes ux-k1 { 0%,100% { stop-color:#4DE3FF; } 50% { stop-color:#00D4FF; } }
+    @keyframes ux-k2 { 0%,100% { stop-color:#00D4FF; } 50% { stop-color:#5B9DFF; } }
+    @keyframes ux-k3 { 0%,100% { stop-color:#5B9DFF; } 50% { stop-color:#8E7BFF; } }
+    .uxk1 { animation: ux-k1 14s ease-in-out infinite; }
+    .uxk2 { animation: ux-k2 14s ease-in-out infinite; }
+    .uxk3 { animation: ux-k3 14s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 
-  <rect width="1200" height="400" fill="url(#u-bg)"/>
-  <ellipse class="bloom" cx="600" cy="404" rx="720" ry="190" fill="url(#u-bloom)"/>
-
-  <!-- sun disc, sitting on the horizon at the right, behind everything -->
-  <g class="sun">
-    <g filter="url(#u-sunglow)">
-      <circle cx="1096" cy="268" r="64" fill="url(#u-sun)"/>
-    </g>
-    <g clip-path="url(#u-sunclip)" fill="#080C16">
-      <rect x="1024" y="278" width="144" height="3"/>
-      <rect x="1024" y="288" width="144" height="4"/>
-      <rect x="1024" y="299.5" width="144" height="5.5"/>
-      <rect x="1024" y="313" width="144" height="7.5"/>
-      <rect x="1024" y="329" width="144" height="10"/>
+  <rect width="1200" height="400" fill="url(#ux-ground)"/>
+  <g class="uxbloom">
+    <rect width="1200" height="400" fill="url(#ux-bloomA)"/>
+    <rect width="1200" height="400" fill="url(#ux-bloomB)"/>
+    <rect width="1200" height="400" fill="url(#ux-bloomC)"/>
+  </g>
+  <g clip-path="url(#ux-frame)">
+    <g transform="translate(0,196)">
+      <ellipse class="uxwash" cx="0" cy="0" rx="430" ry="300" fill="url(#ux-wash)"/>
     </g>
   </g>
-
-  <!-- perspective grid below the horizon, off by default -->
-  <g id="grid" clip-path="url(#u-gridclip)" opacity="0">
-    <g stroke="url(#u-gridfade)" stroke-width="1" fill="none">
-      <path d="M600 332 L-1180 400"/><path d="M600 332 L-560 400"/><path d="M600 332 L-190 400"/>
-      <path d="M600 332 L40 400"/>   <path d="M600 332 L200 400"/>  <path d="M600 332 L320 400"/>
-      <path d="M600 332 L415 400"/>  <path d="M600 332 L490 400"/>  <path d="M600 332 L548 400"/>
-      <path d="M600 332 L600 400"/>
-      <path d="M600 332 L652 400"/>  <path d="M600 332 L710 400"/>  <path d="M600 332 L785 400"/>
-      <path d="M600 332 L880 400"/>  <path d="M600 332 L1000 400"/> <path d="M600 332 L1160 400"/>
-      <path d="M600 332 L1390 400"/> <path d="M600 332 L1760 400"/> <path d="M600 332 L2380 400"/>
-    </g>
-    <g stroke="url(#u-gridfade)" stroke-width="1" fill="none">
-      <line x1="0" y1="335"   x2="1200" y2="335"/>
-      <line x1="0" y1="339.5" x2="1200" y2="339.5"/>
-      <line x1="0" y1="345.5" x2="1200" y2="345.5"/>
-      <line x1="0" y1="353.5" x2="1200" y2="353.5"/>
-      <line x1="0" y1="364"   x2="1200" y2="364"/>
-      <line x1="0" y1="378"   x2="1200" y2="378"/>
-      <line x1="0" y1="396"   x2="1200" y2="396"/>
-    </g>
+  <g transform="translate(66,56) scale(0.5781)">
+  <g opacity="0.32" stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M62 62 L62 196 L196 196" stroke-width="12" stroke-linejoin="round"/>
+    <line x1="70" y1="84" x2="92" y2="84"/><line x1="70" y1="108" x2="83" y2="108"/><line x1="70" y1="132" x2="92" y2="132"/><line x1="70" y1="156" x2="83" y2="156"/><line x1="90" y1="188" x2="90" y2="166"/><line x1="114" y1="188" x2="114" y2="175"/><line x1="138" y1="188" x2="138" y2="166"/><line x1="162" y1="188" x2="162" y2="175"/><line x1="186" y1="188" x2="186" y2="166"/>
   </g>
-
-  <g opacity="0.95">
-    <line x1="60" y1="332" x2="1140" y2="332" stroke="url(#u-horizonline)" stroke-width="1.25"/>
-    <line class="flowline" x1="60" y1="332" x2="1140" y2="332" stroke="url(#u-horizonline)"
-          stroke-width="1.25" stroke-dasharray="3 9" opacity="0.85"/>
+  <g filter="url(#ux-glow)">
+    <path d="M62 62 L62 196 L196 196" fill="none" stroke="url(#ux-ink)" stroke-width="12"
+          stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-
-  <!-- mark: ruler corner, three graduated ticks on each axis -->
-  <g transform="translate(82,96) scale(1.32)">
-    <path d="M6 6 L6 78 L78 78" stroke="url(#u-brand)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M6 58 h8 M6 40 h14 M6 22 h20" stroke="#00D4FF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
-    <path d="M26 78 v-8 M44 78 v-14 M62 78 v-20" stroke="#5B9DFF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <g stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
+    <line class="uxt1" x1="70" y1="84" x2="92" y2="84"/><line class="uxt2" x1="70" y1="108" x2="83" y2="108"/><line class="uxt3" x1="70" y1="132" x2="92" y2="132"/><line class="uxt4" x1="70" y1="156" x2="83" y2="156"/><line class="uxt5" x1="90" y1="188" x2="90" y2="166"/><line class="uxt6" x1="114" y1="188" x2="114" y2="175"/><line class="uxt7" x1="138" y1="188" x2="138" y2="166"/><line class="uxt8" x1="162" y1="188" x2="162" y2="175"/><line class="uxt9" x1="186" y1="188" x2="186" y2="166"/>
   </g>
-
-  <g filter="url(#u-glow)">
-    <text class="disp" x="82" y="272" font-size="60" font-weight="800" letter-spacing="-1" fill="url(#u-brand)">ui-ux-suite</text>
+  <g clip-path="url(#ux-cal)">
+    <rect x="62" y="208" width="132" height="12" rx="6" fill="url(#ux-ink)"/>
   </g>
-
-  <g clip-path="url(#u-wordclip)">
+  </g>
+  <g filter="url(#ux-glow)">
+    <text class="disp" x="76" y="286" font-size="71" font-weight="800"
+          letter-spacing="-2.5" fill="url(#ux-word)">ui-ux-suite</text>
+  </g>
+  <g clip-path="url(#ux-wordclip)">
     <g transform="skewX(-18)">
-      <rect class="sheen" x="-160" y="196" width="90" height="110" fill="url(#u-sheen)" opacity="0.7"/>
+      <rect class="uxsheen" x="-2" y="215" width="33"
+            height="96" fill="url(#ux-sheen)" opacity="0.45"/>
     </g>
   </g>
-
-  <line x1="452" y1="112" x2="452" y2="272" stroke="url(#u-rule)" stroke-width="1.5"/>
-
-  <text class="mono eyebrow" x="500" y="130">DESIGN LINTER</text>
-  <text class="disp head"    x="500" y="180">ESLint for design</text>
-  <text class="disp sub"     x="500" y="212">The exact line, the measured wrong value, and the exact fix.</text>
-
-  <g class="d1"><circle cx="500" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d2"><circle cx="519" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d3"><circle cx="538" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d4"><circle cx="557" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d5"><circle cx="576" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d6"><circle cx="595" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d7"><circle cx="614" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d8"><circle cx="633" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d9"><circle cx="652" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d10"><circle cx="671" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d11"><circle cx="690" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <g class="d12"><circle cx="709" cy="248" r="4.5" fill="url(#u-pips)" filter="url(#u-glow-sm)"/></g>
-  <text class="mono tag" x="736" y="252">12 WEIGHTED DIMENSIONS</text>
-
-  <text class="mono tag" x="82" y="318" opacity="0.85">zero dependencies  ·  audits, never edits  ·  runs locally</text>
+  <line x1="500" y1="100" x2="500" y2="300" stroke="url(#ux-rule)" stroke-width="1.5"/>
+  <g transform="translate(544,0)">
+    <text class="mono eyebrow" x="0" y="134">DESIGN LINTER</text>
+    <text class="disp head" x="0" y="186">ESLint for design</text>
+    <text class="disp sub" x="0" y="222">The exact line, the measured wrong value, and the exact fix.</text>
+    <g transform="translate(0,265)"><g class="uxp1"><circle cx="0" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp2"><circle cx="22" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp3"><circle cx="44" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp4"><circle cx="66" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp5"><circle cx="88" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp6"><circle cx="110" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp7"><circle cx="132" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp8"><circle cx="154" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp9"><circle cx="176" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp10"><circle cx="198" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp11"><circle cx="220" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><g class="uxp12"><circle cx="242" cy="0" r="4.5" fill="#00D4FF" filter="url(#ux-glow-sm)"/></g><text class="mono tag" x="278" y="4">12 WEIGHTED DIMENSIONS</text></g>
+  </g>
+  <text class="mono tag" x="76" y="352">zero dependencies  &#183;  audits, never edits  &#183;  runs locally</text>
 </svg>
