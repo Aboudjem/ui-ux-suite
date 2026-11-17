@@ -20,7 +20,11 @@
 |:--|:--|:--|
 | テスト用アプリで位置を特定した指摘 46 件。それぞれにファイルと行があります。 | コントラストは WCAG 2.2 で測ります。各指摘は WCAG の基準か UX の法則を示します。 | 各指摘は実測値と変更を示します。例: `#fbfbfb` から `#767676` へ。 |
 
-**対応:** すべての MCP クライアントと、スキルを読むすべてのエージェント。テスト済み: Claude Code、Cursor、Codex、Gemini CLI、OpenCode。監査は普通のコードなので、モデルは要りません。
+**対応:** すべての MCP クライアントと、スキルを読むすべてのエージェント。テスト済み: Claude Code、Cursor、Codex、Gemini CLI、OpenCode。
+
+どの Web プロジェクトでも、公開の前や push のたびに使えます。普通のコードなので、AI モデルは要りません。
+
+10 点満点のスコアと、最初に直すべき 3 つの修正が出ます。その下に、各指摘と修正、そして分かる場合はファイルと行が並びます。
 
 ```bash
 npx ui-ux-suite .
@@ -46,33 +50,68 @@ npx ui-ux-suite .
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-これはモックではなく、実際の実行結果です。テスト用アプリ (バージョン 0.7.1) のレポートの冒頭です。
-コマンドは「根拠」にあります。テスト用アプリはわざと壊してあるので、スコアは低くなります。
+これはテスト用アプリ (バージョン 0.7.1) での実際の実行結果です。コマンドは「根拠」にあります。
+テスト用アプリはわざと壊してあるので、スコアは低くなります。
 
 ピクセルではなくソースを読みます。高いスコアは WCAG 準拠の証明ではありません。
 
 ## インストール
 
-使っているエージェントの行を選んでください。どれも 1 つのコマンドです。
-インストールも設定も不要で、API キーも要りません。
+**エージェントを選んでください。** クリックするとそのコマンドに移動します。設定も API キーも要りません。
 
-**Claude Code。** プラグインには 14 のスキル、5 つのコマンド、12 のエージェント、MCP サーバーが入っています。
+<p>
+<a href="#install-claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" alt="Claude Code" height="28"></a>
+<a href="#install-codex"><img src="https://img.shields.io/badge/Codex-000000?logoColor=white&style=for-the-badge" alt="Codex" height="28"></a>
+<a href="#install-cursor"><img src="https://img.shields.io/badge/Cursor-000000?logo=cursor&logoColor=white&style=for-the-badge" alt="Cursor" height="28"></a>
+<a href="#install-gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-1A73E8?logo=googlegemini&logoColor=white&style=for-the-badge" alt="Gemini CLI" height="28"></a>
+<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="28"></a>
+<a href="#install-github-copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-24292E?logo=githubcopilot&logoColor=white&style=for-the-badge" alt="GitHub Copilot" height="28"></a>
+</p>
+
+どのコマンドも、すべてのプロジェクト向けにインストールします。このプロジェクトだけなら `-g` を外します。
+
+<a id="install-claude-code"></a>**Claude Code** (テスト済み). プラグインには 14 のスキル、5 つのコマンド、12 のエージェント、MCP サーバーが入っています。
 
 ```bash
 claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
 ```
 
-**Agent Skills を読むその他のエージェント** (Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot):
+<a id="install-codex"></a>**Codex** (MCP テスト済み、スキルのインストールもテスト済み)
 
 ```bash
-npx skills add Aboudjem/ui-ux-suite
+npx skills add Aboudjem/ui-ux-suite -g -a codex
 ```
 
-**任意の MCP クライアント。** MCP は、エージェントがツールを呼び出すためのオープンな標準です。サーバーにキーも設定も要りません。
+<a id="install-cursor"></a>**Cursor** (MCP テスト済み、スキルのインストールもテスト済み)
 
 ```bash
-claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+npx skills add Aboudjem/ui-ux-suite -g -a cursor
+```
+
+<a id="install-gemini-cli"></a>**Gemini CLI** (MCP テスト済み、スキルのインストールもテスト済み)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a gemini-cli
+```
+
+<a id="install-opencode"></a>**OpenCode** (MCP テスト済み、スキルのインストールもテスト済み)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a opencode
+```
+
+<a id="install-github-copilot"></a>**GitHub Copilot** (インストールをテスト済み)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
+```
+
+**次に MCP サーバーを追加します。** Claude Code 以外では、スキルがこれを呼び出します。MCP は、エージェントがツールを呼び出すためのオープンな標準です。
+この行で、Claude Code のすべてのプロジェクトに追加されます。ほかのエージェントの設定は [docs/editors.md](../docs/editors.md) にあります。
+
+```bash
+claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
 
 ```json
@@ -96,10 +135,11 @@ claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
 | Codex                         | `codex mcp add ui-ux-suite`                                      | 2026-11-17 | `codex mcp list` でサーバーが有効と表示される                              |
 | Gemini CLI                    | `gemini mcp add ui-ux-suite`、続けてフォルダーを信頼する         | 2026-11-17 | `gemini mcp list` でサーバーが接続済みと表示される                         |
 | OpenCode                      | `opencode.json`                                                  | 2026-11-17 | `opencode mcp list` でサーバーが接続済みと表示される                       |
-| Skills CLI 1.9.0              | `npx skills add Aboudjem/ui-ux-suite`                            | 2026-11-17 | 14 のスキルが `.agents/skills` と `.claude/skills` に入る                  |
+| Skills CLI 1.9.0 | `npx skills add Aboudjem/ui-ux-suite -g -a <agent>` を上の 6 つのエージェントそれぞれに、新しいホームフォルダーで実行 | 2026-11-17 | 14 のスキルが `~/.agents/skills` (Claude Code は `~/.claude/skills`) に入る |
+| Claude Code の MCP | `claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp` を新しいホームフォルダーで実行 | 2026-11-17 | 別のフォルダーで `claude mcp list` を実行すると、サーバーが接続済みと表示される |
 | 任意の MCP クライアント | `npx -y ui-ux-suite --mcp`                                       | 2026-11-17 | 素の MCP セッションが 16 個のツールを一覧し、テスト用アプリを 3.7 と採点する |
 
-文書化済みで、その日には実行していないもの: VS Code、GitHub Copilot、Windsurf、Continue、Zed、Pi、`install.sh`。
+文書化済みで、その日には実行していないもの: VS Code と GitHub Copilot の MCP 設定、Windsurf、Continue、Zed、Pi、`install.sh`。
 それらの設定例は [docs/editors.md](../docs/editors.md) にあります。
 
 2 つのエージェントは、サーバーを読み込む前にもう 1 手順必要です。
@@ -147,11 +187,7 @@ deep モードは、実測のコントラスト、axe-core のチェック、44 
 
 ## 仕組み
 
-デザインのための ESLint と考えてください。ESLint はコードのスタイルをチェックするツールです。
-このツールは同じやり方でデザインをチェックします。
-コントラスト不足、フォーカスリングの欠落、スマートフォンで崩れる固定幅を見つけます。
-
-ソースコードを読みます。アプリは実行せず、ブラウザーも必要ありません。
+ソースを読み、各値を測り、修正を出力します。アプリは実行せず、ブラウザーも必要ありません。
 
 | 手順        | 何が起きるか                                                                                    |
 | :---------- | :---------------------------------------------------------------------------------------------- |
@@ -159,17 +195,14 @@ deep モードは、実測のコントラスト、axe-core のチェック、44 
 | 2. 測る     | 実際の値を計算します: WCAG 2.2 と APCA のコントラスト、フォントサイズ、余白、ターゲットサイズ。 |
 | 3. 特定する | 各問題をファイル、行、セレクターに結びつけます。                                                |
 | 4. 採点する | 重み付けした 12 の観点を 10 点満点で採点します。最も重いのはアクセシビリティで 12% です。       |
-| 5. 報告する | スコア、3 つの修正、そして各指摘を `before` と `after` 付きで出力します。                       |
+| 5. 報告する | スコア、3 つの修正、そして各指摘を `before`、`after`、根拠となる WCAG の基準か UX の法則と一緒に出力します。 |
 
-1 つの指摘は 3 つの要素を持ちます。
-
-- **特定済み。** ファイル、行、セレクター。
-- **測定済み。** 形容詞ではなく、実際の誤った値。
-- **修正案つき。** 正確な変更と、その根拠となる WCAG 達成基準または名前のある UX の法則。
+デザインのための ESLint と考えてください。ESLint はコードのスタイルをチェックするツールです。
+コントラスト不足、フォーカスリングの欠落、スマートフォンで崩れる固定幅を見つけます。
 
 プロジェクト全体に関する指摘もあります。たとえば「フォントファミリーが 5 つ、1 つか 2 つにする」です。これはスコアに数えられ、特定の 1 行はありません。
 
-同じフィクスチャの実行から、指摘を 1 件まるごと示します:
+同じテスト用アプリの実行から、指摘を 1 件まるごと示します:
 
 ```text
 ### [!] Low text contrast on `.hero-subtitle`: 1.03:1

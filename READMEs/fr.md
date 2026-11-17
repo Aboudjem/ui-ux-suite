@@ -20,7 +20,11 @@ Il lit votre code source et affiche quoi changer, ligne par ligne.
 |:--|:--|:--|
 | 46 problèmes localisés sur l'app de test, chacun avec un fichier et une ligne. | Le contraste est mesuré selon WCAG 2.2 ; chaque problème cite une règle WCAG ou une loi UX. | Chacun montre la valeur mesurée et le changement, par exemple `#fbfbfb` vers `#767676`. |
 
-**Fonctionne avec :** tout client MCP et tout agent qui lit les skills. Testé : Claude Code, Cursor, Codex, Gemini CLI, OpenCode. L'audit est du code simple, il n'a donc besoin d'aucun modèle.
+**Fonctionne avec :** tout client MCP et tout agent qui lit les skills. Testé : Claude Code, Cursor, Codex, Gemini CLI, OpenCode.
+
+Utilisez-le sur tout projet web, avant une mise en ligne ou à chaque push. C'est du code simple, il n'a besoin d'aucun modèle d'IA.
+
+Vous obtenez une note sur 10 et les trois corrections à faire d'abord. Ensuite, chaque problème avec sa correction, et son fichier et sa ligne quand il en a.
 
 ```bash
 npx ui-ux-suite .
@@ -46,33 +50,68 @@ Le rapport s'ouvre sur la note, puis les trois corrections par lesquelles commen
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-C'est une vraie exécution, pas une maquette. Elle montre le début du rapport sur notre app de test, version 0.7.1.
-La commande est dans Preuves. L'app de test est cassée exprès, donc elle obtient une note basse.
+C'est une vraie exécution sur notre app de test, version 0.7.1. La commande est dans Preuves.
+L'app de test est cassée exprès, donc elle obtient une note basse.
 
 Il lit le source, pas les pixels, et une bonne note ne prouve pas la conformité WCAG.
 
 ## Installation
 
-Choisissez la ligne de votre agent. Chacune tient en une seule commande.
-Rien à installer ni à configurer, et pas de clé API.
+**Choisissez votre agent.** Cliquez dessus pour aller à sa commande. Rien à configurer, et pas de clé API.
 
-**Claude Code.** Le plugin apporte les 14 skills, 5 commandes, 12 agents et le serveur MCP.
+<p>
+<a href="#install-claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" alt="Claude Code" height="28"></a>
+<a href="#install-codex"><img src="https://img.shields.io/badge/Codex-000000?logoColor=white&style=for-the-badge" alt="Codex" height="28"></a>
+<a href="#install-cursor"><img src="https://img.shields.io/badge/Cursor-000000?logo=cursor&logoColor=white&style=for-the-badge" alt="Cursor" height="28"></a>
+<a href="#install-gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-1A73E8?logo=googlegemini&logoColor=white&style=for-the-badge" alt="Gemini CLI" height="28"></a>
+<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="28"></a>
+<a href="#install-github-copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-24292E?logo=githubcopilot&logoColor=white&style=for-the-badge" alt="GitHub Copilot" height="28"></a>
+</p>
+
+Chaque commande installe pour tous vos projets. Seulement ce projet : retirez `-g`.
+
+<a id="install-claude-code"></a>**Claude Code** (testé). Le plugin apporte les 14 skills, 5 commandes, 12 agents et le serveur MCP.
 
 ```bash
 claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
 ```
 
-**Tout autre agent qui lit les Agent Skills** (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot) :
+<a id="install-codex"></a>**Codex** (MCP testé, installation des skills testée)
 
 ```bash
-npx skills add Aboudjem/ui-ux-suite
+npx skills add Aboudjem/ui-ux-suite -g -a codex
 ```
 
-**Tout client MCP.** MCP est un standard ouvert qui permet à un agent d'appeler des outils. Le serveur ne demande ni clé ni réglage.
+<a id="install-cursor"></a>**Cursor** (MCP testé, installation des skills testée)
 
 ```bash
-claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+npx skills add Aboudjem/ui-ux-suite -g -a cursor
+```
+
+<a id="install-gemini-cli"></a>**Gemini CLI** (MCP testé, installation des skills testée)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a gemini-cli
+```
+
+<a id="install-opencode"></a>**OpenCode** (MCP testé, installation des skills testée)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a opencode
+```
+
+<a id="install-github-copilot"></a>**GitHub Copilot** (installation testée)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
+```
+
+**Ajoutez ensuite le serveur MCP.** Hors de Claude Code, les skills l'appellent. MCP est un standard ouvert qui permet à un agent d'appeler des outils.
+Cette ligne l'ajoute pour tous vos projets dans Claude Code. La config de chaque autre agent est dans [docs/editors.md](../docs/editors.md).
+
+```bash
+claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
 
 ```json
@@ -96,10 +135,11 @@ Chaque ligne est une vraie installation suivie d'une vérification, faite à la 
 | Codex                 | `codex mcp add ui-ux-suite`                                    | 2026-11-17 | `codex mcp list` montre le serveur activé                                |
 | Gemini CLI            | `gemini mcp add ui-ux-suite`, puis faire confiance au dossier  | 2026-11-17 | `gemini mcp list` montre le serveur connecté                             |
 | OpenCode              | `opencode.json`                                                | 2026-11-17 | `opencode mcp list` montre le serveur connecté                           |
-| Skills CLI 1.9.0      | `npx skills add Aboudjem/ui-ux-suite`                          | 2026-11-17 | Les 14 skills arrivent dans `.agents/skills` et `.claude/skills`         |
+| Skills CLI 1.9.0 | `npx skills add Aboudjem/ui-ux-suite -g -a <agent>`, pour chacun des 6 agents ci-dessus, dans un dossier personnel vierge | 2026-11-17 | Les 14 skills arrivent dans `~/.agents/skills`, ou `~/.claude/skills` pour Claude Code |
+| MCP Claude Code | `claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp`, dans un dossier personnel vierge | 2026-11-17 | `claude mcp list` dans un autre dossier montre le serveur connecté |
 | Tout client MCP | `npx -y ui-ux-suite --mcp`                                     | 2026-11-17 | Une session MCP brute liste 16 outils et note l'app de test à 3.7           |
 
-Documentés, non lancés à cette date : VS Code, GitHub Copilot, Windsurf, Continue, Zed, Pi et `install.sh`.
+Documentés, non lancés à cette date : la config MCP de VS Code et GitHub Copilot, Windsurf, Continue, Zed, Pi et `install.sh`.
 Leurs extraits de config sont dans [docs/editors.md](../docs/editors.md).
 
 Deux agents demandent une étape de plus avant de charger le serveur :
@@ -147,11 +187,7 @@ Chaque option et chaque code de sortie sont dans [docs/cli.md](../docs/cli.md). 
 
 ## Fonctionnement
 
-Voyez-le comme un ESLint pour le design. ESLint est un outil qui vérifie le style du code.
-Celui-ci vérifie le design de la même façon.
-Il trouve un contraste trop faible, un anneau de focus absent et une largeur fixe qui casse sur mobile.
-
-Il lit votre code source. Il ne lance pas votre app, et il n'a pas besoin de navigateur.
+Il lit votre source, mesure chaque valeur et affiche la correction. Il ne lance pas votre app et n'a pas besoin de navigateur.
 
 | Étape        | Ce qui se passe                                                                                                   |
 | :----------- | :---------------------------------------------------------------------------------------------------------------- |
@@ -159,17 +195,14 @@ Il lit votre code source. Il ne lance pas votre app, et il n'a pas besoin de nav
 | 2. Mesurer   | Il calcule des valeurs réelles : contraste en WCAG 2.2 et APCA, tailles de police, espacements, tailles de cible. |
 | 3. Localiser | Il relie chaque problème à un fichier, une ligne et un sélecteur.                                                 |
 | 4. Noter     | Il note 12 dimensions pondérées sur 10. L'accessibilité pèse le plus, à 12 %.                                     |
-| 5. Rapporter | Il affiche la note, trois corrections, puis chaque problème avec son `before` et son `after`.                     |
+| 5. Rapporter | Il affiche la note, trois corrections, puis chaque problème avec son `before`, son `after` et la règle WCAG ou la loi UX qui le justifie. |
 
-Un problème porte trois choses :
-
-- **Localisé.** Le fichier, la ligne et le sélecteur.
-- **Mesuré.** La vraie valeur fautive, pas un adjectif.
-- **Corrigé.** Le changement exact, avec le critère WCAG ou la loi UX nommée qui le justifie.
+Voyez-le comme un ESLint pour le design. ESLint est un outil qui vérifie le style du code.
+Il trouve un contraste trop faible, un anneau de focus absent et une largeur fixe qui casse sur mobile.
 
 Certains problèmes concernent tout le projet, comme "5 familles de polices, utilisez-en 1 ou 2". Ils comptent dans la note et n'ont pas de ligne unique.
 
-Voici un problème en entier, tiré de la même exécution sur la fixture :
+Voici un problème en entier, tiré de la même exécution sur l'app de test :
 
 ```text
 ### [!] Low text contrast on `.hero-subtitle`: 1.03:1

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ui-ux-suite - Design bugs by line number, each with the exact fix</title>
-  <meta name="description" content="Fix design bugs by line number: low contrast, no focus ring, broken layout. Each with the exact change. WCAG 2.2." />
+  <meta name="description" content="Find design bugs by line number, like low contrast or a missing focus ring. Get the exact fix for each. WCAG 2.2." />
   <meta property="og:title" content="ui-ux-suite - Design bugs by line number" />
   <meta property="og:description" content="Located, measured, fixed design findings across 12 dimensions. Zero dependencies, no API key, your code stays local." />
   <meta property="og:image" content="assets/social-preview.png" />
@@ -89,9 +89,10 @@
 
     <section>
       <h2>Install into your AI CLI</h2>
-      <p>One line links the ui-ux-suite skills into your CLI's skills directory. The MCP server is the universal fallback.</p>
-      <pre><code>curl -fsSL https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/install.sh | bash -s codex</code></pre>
-      <pre><code>claude mcp add ui-ux-suite npx ui-ux-suite --mcp</code></pre>
+      <p>Each line installs for all your projects. Put your agent after <code>-a</code>: codex, cursor, gemini-cli, opencode or github-copilot. Only this project: drop <code>-g</code>.</p>
+      <pre><code>npx skills add Aboudjem/ui-ux-suite -g -a codex</code></pre>
+      <p>Then add the MCP server, which the skills call:</p>
+      <pre><code>claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp</code></pre>
     </section>
 
     <section>

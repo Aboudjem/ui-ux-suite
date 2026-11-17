@@ -20,7 +20,11 @@
 |:--|:--|:--|
 | 在测试应用上有 46 个已定位问题，每个都有文件和行号。 | 对比度按 WCAG 2.2 测量；每个问题都引用一条 WCAG 准则或 UX 定律。 | 每个问题都给出实测值和改法，例如从 `#fbfbfb` 改为 `#767676`。 |
 
-**适用于：** 任何 MCP 客户端，以及任何读取技能的智能体。已测试：Claude Code、Cursor、Codex、Gemini CLI、OpenCode。审计是普通代码，所以不需要任何模型。
+**适用于：** 任何 MCP 客户端，以及任何读取技能的智能体。已测试：Claude Code、Cursor、Codex、Gemini CLI、OpenCode。
+
+可用于任何 Web 项目，在发布前或每次 push 时运行。它是普通代码，所以不需要任何 AI 模型。
+
+你会得到一个 10 分制的分数，以及最先要做的三项修复。下面是每个问题及其修复，有文件和行号时也会给出。
 
 ```bash
 npx ui-ux-suite .
@@ -46,33 +50,68 @@ npx ui-ux-suite .
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-这是一次真实运行，不是示意图。它是我们测试应用（0.7.1 版本）报告的开头。
-命令在“证据”一节。测试应用是故意做坏的，所以得分很低。
+这是在我们测试应用（0.7.1 版本）上的一次真实运行。命令在“证据”一节。
+测试应用是故意做坏的，所以得分很低。
 
 它读的是源代码而不是像素，高分也不能证明符合 WCAG。
 
 ## 安装
 
-选择你所用智能体的那一行。每行都只有一条命令。
-无需安装或配置，也不需要 API 密钥。
+**选择你的智能体。** 点击即可跳到它的命令。无需配置，也不需要 API 密钥。
 
-**Claude Code。** 插件包含 14 个技能、5 个命令、12 个智能体和 MCP 服务器。
+<p>
+<a href="#install-claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" alt="Claude Code" height="28"></a>
+<a href="#install-codex"><img src="https://img.shields.io/badge/Codex-000000?logoColor=white&style=for-the-badge" alt="Codex" height="28"></a>
+<a href="#install-cursor"><img src="https://img.shields.io/badge/Cursor-000000?logo=cursor&logoColor=white&style=for-the-badge" alt="Cursor" height="28"></a>
+<a href="#install-gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-1A73E8?logo=googlegemini&logoColor=white&style=for-the-badge" alt="Gemini CLI" height="28"></a>
+<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="28"></a>
+<a href="#install-github-copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-24292E?logo=githubcopilot&logoColor=white&style=for-the-badge" alt="GitHub Copilot" height="28"></a>
+</p>
+
+每条命令都会为你的所有项目安装。只装到当前项目：去掉 `-g`。
+
+<a id="install-claude-code"></a>**Claude Code** (已测试). 插件包含 14 个技能、5 个命令、12 个智能体和 MCP 服务器。
 
 ```bash
 claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
 ```
 
-**任何读取 Agent Skills 的其他智能体**（Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot）：
+<a id="install-codex"></a>**Codex** (MCP 已测试，技能安装已测试)
 
 ```bash
-npx skills add Aboudjem/ui-ux-suite
+npx skills add Aboudjem/ui-ux-suite -g -a codex
 ```
 
-**任何 MCP 客户端。** MCP 是一个开放标准，让智能体可以调用工具。服务器不需要密钥，也不需要配置。
+<a id="install-cursor"></a>**Cursor** (MCP 已测试，技能安装已测试)
 
 ```bash
-claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+npx skills add Aboudjem/ui-ux-suite -g -a cursor
+```
+
+<a id="install-gemini-cli"></a>**Gemini CLI** (MCP 已测试，技能安装已测试)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a gemini-cli
+```
+
+<a id="install-opencode"></a>**OpenCode** (MCP 已测试，技能安装已测试)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a opencode
+```
+
+<a id="install-github-copilot"></a>**GitHub Copilot** (安装已测试)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
+```
+
+**然后添加 MCP 服务器。** 在 Claude Code 之外，技能会调用它。MCP 是一个开放标准，让智能体可以调用工具。
+这一行会在 Claude Code 中为你的所有项目添加它。其他智能体的配置在 [docs/editors.md](../docs/editors.md) 中。
+
+```bash
+claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
 
 ```json
@@ -96,10 +135,11 @@ claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
 | Codex                 | `codex mcp add ui-ux-suite`                                    | 2026-11-17 | `codex mcp list` 显示服务器已启用                          |
 | Gemini CLI            | `gemini mcp add ui-ux-suite`，然后信任该文件夹                 | 2026-11-17 | `gemini mcp list` 显示服务器已连接                         |
 | OpenCode              | `opencode.json`                                                | 2026-11-17 | `opencode mcp list` 显示服务器已连接                       |
-| Skills CLI 1.9.0      | `npx skills add Aboudjem/ui-ux-suite`                          | 2026-11-17 | 14 个技能被放入 `.agents/skills` 和 `.claude/skills`       |
+| Skills CLI 1.9.0 | 在全新的主目录中，为上面 6 个智能体各运行一次 `npx skills add Aboudjem/ui-ux-suite -g -a <agent>` | 2026-11-17 | 14 个技能被放入 `~/.agents/skills`，Claude Code 则是 `~/.claude/skills` |
+| Claude Code MCP | 在全新的主目录中运行 `claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp` | 2026-11-17 | 在另一个文件夹运行 `claude mcp list`，显示服务器已连接 |
 | 任何 MCP 客户端 | `npx -y ui-ux-suite --mcp`                                     | 2026-11-17 | 一次原始 MCP 会话列出 16 个工具，并给测试应用打出 3.7 分   |
 
-已有文档、当天未运行：VS Code、GitHub Copilot、Windsurf、Continue、Zed、Pi 和 `install.sh`。
+已有文档、当天未运行：VS Code 和 GitHub Copilot 的 MCP 配置、Windsurf、Continue、Zed、Pi 和 `install.sh`。
 它们的配置片段在 [docs/editors.md](../docs/editors.md) 中。
 
 有两个智能体在加载服务器前还需要多一步：
@@ -147,11 +187,7 @@ deep 模式会增加实测对比度、axe-core 检查，以及小于 44 x 44 像
 
 ## 工作原理
 
-可以把它看作设计领域的 ESLint。ESLint 是检查代码风格的工具。
-这个工具用同样的方式检查设计。
-它能找出对比度太低、缺少焦点环、固定宽度在手机上错位等问题。
-
-它读取你的源代码。它不运行你的应用，也不需要浏览器。
+它读取你的源代码，测量每个值，并输出修复方法。它不运行你的应用，也不需要浏览器。
 
 | 步骤    | 发生了什么                                                                 |
 | :------ | :------------------------------------------------------------------------- |
@@ -159,17 +195,14 @@ deep 模式会增加实测对比度、axe-core 检查，以及小于 44 x 44 像
 | 2. 测量 | 计算真实数值：WCAG 2.2 和 APCA 对比度、字号、间距、目标尺寸。              |
 | 3. 定位 | 把每个问题对应到一个文件、一行和一个选择器。                               |
 | 4. 评分 | 对 12 个加权维度按 10 分制打分。可访问性权重最高，占 12%。                 |
-| 5. 报告 | 输出分数、三项修复，然后列出每个问题及其 `before` 和 `after`。             |
+| 5. 报告 | 输出分数、三项修复，然后列出每个问题及其 `before`、`after`，以及依据的 WCAG 准则或 UX 定律。 |
 
-每个问题包含三样东西：
-
-- **已定位。** 文件、行号和选择器。
-- **已测量。** 真实的错误数值，而不是一个形容词。
-- **已给出修复。** 确切的改动，以及依据的 WCAG 准则或有名称的 UX 法则。
+可以把它看作设计领域的 ESLint。ESLint 是检查代码风格的工具。
+它能找出对比度太低、缺少焦点环、固定宽度在手机上错位等问题。
 
 有些问题针对整个项目，比如“5 种字体族，只用 1 到 2 种”。它们计入分数，但没有对应的单独一行。
 
-下面是同一次夹具运行中的一个完整问题：
+下面是同一次测试应用运行中的一个完整问题：
 
 ```text
 ### [!] Low text contrast on `.hero-subtitle`: 1.03:1

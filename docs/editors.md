@@ -3,7 +3,7 @@
 ui-ux-suite reaches an editor two ways. Pick whichever fits.
 
 - **Skills.** The 14 `/design-*` skills load into any agent that reads the Agent Skills format.
-  One command installs them: `npx skills add Aboudjem/ui-ux-suite -a <agent>`.
+  One command installs them for all your projects: `npx skills add Aboudjem/ui-ux-suite -g -a <agent>`.
 - **MCP server.** `npx -y ui-ux-suite --mcp` starts a stdio MCP server that exposes the audit,
   scoring, contrast and token tools. Works in every MCP-capable client, no skills needed.
 
@@ -12,14 +12,14 @@ Both run locally. Nothing is uploaded, and no API key is involved.
 ## Install the skills
 
 ```bash
-npx skills add Aboudjem/ui-ux-suite -a codex
-npx skills add Aboudjem/ui-ux-suite -a cursor -y
-npx skills add Aboudjem/ui-ux-suite -a github-copilot --global
+npx skills add Aboudjem/ui-ux-suite -g -a codex
+npx skills add Aboudjem/ui-ux-suite -g -a cursor
+npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
 npx skills add Aboudjem/ui-ux-suite --list        # see the 14 skills without installing
 ```
 
 `-a` takes a comma-separated list, so `-a codex,cursor,gemini-cli` installs to three at once.
-`-y` skips the scope prompt, `-g` installs globally instead of into the current project.
+`-g` installs for all your projects. Only this project: drop `-g`. `-y` skips the prompts.
 
 | Agent | `-a` code | Where the skills land (global) |
 | --- | --- | --- |
@@ -76,7 +76,7 @@ shape change.
 **Claude Code**
 
 ```bash
-claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp
 claude mcp add --scope project ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
 

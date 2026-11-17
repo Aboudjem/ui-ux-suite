@@ -4,12 +4,12 @@
   "title": "UI/UX Suite",
   "description": "Design bugs by line number in CSS, JSX, HTML and Tailwind, each with the measured value and the fix.",
   "repository": { "url": "https://github.com/Aboudjem/ui-ux-suite", "source": "github" },
-  "version": "0.7.2",
+  "version": "0.7.3",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "ui-ux-suite",
-      "version": "0.7.2",
+      "version": "0.7.3",
       "transport": { "type": "stdio" },
       "packageArguments": [
         { "type": "named", "name": "--mcp", "description": "Start the MCP server over stdio" }

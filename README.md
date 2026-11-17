@@ -20,7 +20,11 @@ It reads your source code and prints what to change, line by line.
 |:--|:--|:--|
 | 46 located findings on the test app, each with a file and a line. | Contrast is measured against WCAG 2.2; each finding cites a WCAG rule or UX law. | Each one shows the measured value and the change, such as `#fbfbfb` to `#767676`. |
 
-**Works with:** any MCP client and any agent that reads skills. Tested: Claude Code, Cursor, Codex, Gemini CLI, OpenCode. The audit is plain code, so it needs no model.
+**Works with:** any MCP client and any agent that reads skills. Tested: Claude Code, Cursor, Codex, Gemini CLI, OpenCode.
+
+Use it on any web project, before you ship or on each push. It is plain code, so it needs no AI model.
+
+You get a score out of 10 and the three fixes to do first. Below them, every finding with its fix, and its file and line when it has one.
 
 ```bash
 npx ui-ux-suite .
@@ -46,33 +50,68 @@ The report opens with the score, then the three fixes to start with, then the de
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-This is a real run, not a mock-up. It shows the start of the report for our test app, version 0.7.1.
-The command is in Proof. The test app is broken on purpose, so it scores low.
+This is a real run on our test app, version 0.7.1. The command is in Proof.
+The test app is broken on purpose, so it scores low.
 
 It reads source, not pixels, and a high score does not prove WCAG conformance.
 
 ## Install
 
-Pick the line for your agent. Each one is a single command.
-Nothing to install or configure, and no API key.
+**Pick your agent.** Click it to jump to its one command. Nothing to configure, and no API key.
 
-**Claude Code.** The plugin brings the 14 skills, 5 commands, 12 agents and the MCP server.
+<p>
+<a href="#install-claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" alt="Claude Code" height="28"></a>
+<a href="#install-codex"><img src="https://img.shields.io/badge/Codex-000000?logoColor=white&style=for-the-badge" alt="Codex" height="28"></a>
+<a href="#install-cursor"><img src="https://img.shields.io/badge/Cursor-000000?logo=cursor&logoColor=white&style=for-the-badge" alt="Cursor" height="28"></a>
+<a href="#install-gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-1A73E8?logo=googlegemini&logoColor=white&style=for-the-badge" alt="Gemini CLI" height="28"></a>
+<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="28"></a>
+<a href="#install-github-copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-24292E?logo=githubcopilot&logoColor=white&style=for-the-badge" alt="GitHub Copilot" height="28"></a>
+</p>
+
+Each command installs for all your projects. Only this project: drop `-g`.
+
+<a id="install-claude-code"></a>**Claude Code** (tested). The plugin brings the 14 skills, 5 commands, 12 agents and the MCP server.
 
 ```bash
 claude plugin marketplace add Aboudjem/10x
 claude plugin install ui-ux-suite@10x
 ```
 
-**Any other agent that reads Agent Skills** (Cursor, Codex, Gemini CLI, OpenCode, GitHub Copilot):
+<a id="install-codex"></a>**Codex** (MCP tested, skills install tested)
 
 ```bash
-npx skills add Aboudjem/ui-ux-suite
+npx skills add Aboudjem/ui-ux-suite -g -a codex
 ```
 
-**Any MCP client.** MCP is an open standard that lets an agent call tools. The server needs no key and no setup.
+<a id="install-cursor"></a>**Cursor** (MCP tested, skills install tested)
 
 ```bash
-claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+npx skills add Aboudjem/ui-ux-suite -g -a cursor
+```
+
+<a id="install-gemini-cli"></a>**Gemini CLI** (MCP tested, skills install tested)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a gemini-cli
+```
+
+<a id="install-opencode"></a>**OpenCode** (MCP tested, skills install tested)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a opencode
+```
+
+<a id="install-github-copilot"></a>**GitHub Copilot** (install tested)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
+```
+
+**Then add the MCP server.** Outside Claude Code, the skills call it. MCP is an open standard that lets an agent call tools.
+This line adds it for all your projects in Claude Code. The snippet for each other agent is in [docs/editors.md](docs/editors.md).
+
+```bash
+claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp
 ```
 
 ```json
@@ -96,10 +135,11 @@ Each row is a real install and check, run on the date shown on macOS with Node 2
 | Codex | `codex mcp add ui-ux-suite` | 2026-11-17 | `codex mcp list` shows the server enabled |
 | Gemini CLI | `gemini mcp add ui-ux-suite`, then trust the folder | 2026-11-17 | `gemini mcp list` shows the server connected |
 | OpenCode | `opencode.json` | 2026-11-17 | `opencode mcp list` shows the server connected |
-| Skills CLI 1.9.0 | `npx skills add Aboudjem/ui-ux-suite` | 2026-11-17 | The 14 skills land in `.agents/skills` and `.claude/skills` |
+| Skills CLI 1.9.0 | `npx skills add Aboudjem/ui-ux-suite -g -a <agent>`, for each of the 6 agents above, in a fresh home folder | 2026-11-17 | The 14 skills land in `~/.agents/skills`, or `~/.claude/skills` for Claude Code |
+| Claude Code MCP | `claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp`, in a fresh home folder | 2026-11-17 | `claude mcp list` in another folder shows the server connected |
 | Any MCP client | `npx -y ui-ux-suite --mcp` | 2026-11-17 | A raw MCP session lists 16 tools and audits the test app at 3.7 |
 
-Documented, not run on that date: VS Code, GitHub Copilot, Windsurf, Continue, Zed, Pi and `install.sh`.
+Documented, not run on that date: the MCP setup for VS Code and GitHub Copilot, Windsurf, Continue, Zed, Pi and `install.sh`.
 Their snippets are in [docs/editors.md](docs/editors.md).
 
 Two agents need one more step before the server starts:
@@ -147,11 +187,7 @@ Every flag and exit code is in [docs/cli.md](docs/cli.md). Every MCP tool is in 
 
 ## How it works
 
-Think of it as ESLint for design. ESLint is a tool that checks code style.
-This one checks design in the same way.
-It finds low contrast, a missing focus ring, and a fixed width that breaks on phones.
-
-It reads your source. It does not run your app, and it does not need a browser.
+It reads your source, measures each value and prints the fix. It does not run your app or need a browser.
 
 | Step | What happens |
 |:--|:--|
@@ -159,13 +195,10 @@ It reads your source. It does not run your app, and it does not need a browser.
 | 2. Measure | It computes real values: contrast in WCAG 2.2 and APCA, font sizes, spacing, target sizes. |
 | 3. Locate | It ties each problem to a file, a line and a selector. |
 | 4. Score | It scores 12 weighted dimensions out of 10. Accessibility weighs the most, at 12%. |
-| 5. Report | It prints the score, three fixes, then every finding with its `before` and `after`. |
+| 5. Report | It prints the score, three fixes, then every finding with its `before`, its `after` and the WCAG rule or UX law behind it. |
 
-A finding carries three things:
-
-- **Located.** The file, the line and the selector.
-- **Measured.** The real wrong value, not an adjective.
-- **Fixed.** The exact change, plus the WCAG criterion or the named UX law behind it.
+Think of it as ESLint for design. ESLint is a tool that checks code style.
+It finds low contrast, a missing focus ring, and a fixed width that breaks on phones.
 
 Some findings are about the whole project, such as "5 font families, use 1 or 2". They count in the score and have no single line.
 

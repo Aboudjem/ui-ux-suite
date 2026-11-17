@@ -1,7 +1,7 @@
 {
   "name": "ui-ux-suite",
-  "version": "0.7.2",
-  "description": "Find the design bugs in your CSS, JSX, HTML and Tailwind. Each one names the file, the line, the measured value and the fix. WCAG 2.2 contrast.",
+  "version": "0.7.3",
+  "description": "Finds the design bugs in your CSS, JSX, HTML and Tailwind. Each one gets its file, line, measured value and exact fix. WCAG 2.2 contrast.",
   "author": "Adam Boudjemaa",
   "license": "MIT",
   "main": "lib/mcp-server.js",

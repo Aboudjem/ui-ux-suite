@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.3] - 2026-11-17
+
+Pick your agent, install for all your projects, and a shorter README. No change to the audit, the CLI or the MCP tools.
+
+### Changed
+
+- **Pick your agent.** The Install section opens with a row of agent badges: Claude Code, Codex, Cursor, Gemini CLI, OpenCode and GitHub Copilot. Each one jumps to its single command and says what was tested.
+- **Global install by default.** The skills command is now `npx skills add Aboudjem/ui-ux-suite -g -a <agent>`, and the MCP command uses `claude mcp add -s user`. Both install for all your projects. Drop `-g` for one project. Both were run today in a fresh home folder.
+- **Shorter first screen.** It says when to use it and what you get in four short sentences. How it works opens with its answer, and the repeated "a finding carries three things" list is gone.
+- **Descriptions.** Rewritten through the humanizer skill, with the same facts.
+- **Translations, site, llms.txt and docs/editors.md** carry the same install commands.
+
 ## [0.7.2] - 2026-11-17
 
 A simpler first screen in plain English, and new pictures. No change to the audit, the CLI or the MCP tools.
