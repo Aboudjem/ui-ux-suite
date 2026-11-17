@@ -77,8 +77,14 @@ jobs:
           DISABLE_TELEMETRY: '1'
         run: |
           npx --yes skills@1.9.0 add . --list > skills-list.txt 2>&1 || { cat skills-list.txt; exit 1; }
-          cat skills-list.txt
-          grep -q "Found 14 skills" skills-list.txt
+          sed 's/\x1b\[[0-9;]*m//g' skills-list.txt > skills-plain.txt
+          cat skills-plain.txt
+          # The "Found N skills" spinner line is not printed without a TTY, so check each name.
+          n=0; missing=""
+          for d in skills/*/; do name="$(basename "$d")"; n=$((n+1)); grep -qE "^[│ ]+$name\s*$" skills-plain.txt || missing="$missing $name"; done
+          [ -z "$missing" ] || { echo "Not listed by the skills CLI:$missing"; exit 1; }
+          [ "$n" -eq 14 ] || { echo "Expected 14 skill folders, found $n"; exit 1; }
+          echo "The skills CLI lists all $n skills"
 
       - name: Validate slash commands
         run: |
