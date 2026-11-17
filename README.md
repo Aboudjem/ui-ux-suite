@@ -38,11 +38,11 @@ The report opens with the score, then the three fixes to start with, then the de
 
 **Weakest areas:** Typography System 1.5/10, Accessibility 1.6/10, Component Quality 2/10.
 
-_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:33:48.104Z. The detail follows._
+_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
 This is a real run, not a mock-up. It is the top of the output of
-`npx ui-ux-suite test/fixtures/planted-ux-problems`, run from a checkout of version 0.7.0.
+`npx ui-ux-suite test/fixtures/planted-ux-problems`, run from a checkout of version 0.7.1.
 The fixture is broken on purpose, so it scores low.
 
 Low contrast, a missing focus ring, a fixed width that breaks on phones.

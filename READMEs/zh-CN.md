@@ -38,10 +38,10 @@ npx ui-ux-suite .
 
 **Weakest areas:** Typography System 1.5/10, Accessibility 1.6/10, Component Quality 2/10.
 
-_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:33:48.104Z. The detail follows._
+_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-这是一次真实运行，不是示意图。它是在 0.7.0 版本的代码副本中运行
+这是一次真实运行，不是示意图。它是在 0.7.1 版本的代码副本中运行
 `npx ui-ux-suite test/fixtures/planted-ux-problems` 的输出开头。
 这个测试样例是故意做坏的，所以得分很低。
 

@@ -38,11 +38,11 @@ El informe empieza con la nota, luego los tres arreglos por los que empezar y de
 
 **Weakest areas:** Typography System 1.5/10, Accessibility 1.6/10, Component Quality 2/10.
 
-_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:33:48.104Z. The detail follows._
+_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
 Es una ejecución real, no una maqueta. Es el principio de la salida de
-`npx ui-ux-suite test/fixtures/planted-ux-problems`, ejecutado desde una copia de la versión 0.7.0.
+`npx ui-ux-suite test/fixtures/planted-ux-problems`, ejecutado desde una copia de la versión 0.7.1.
 El fixture está roto a propósito, así que saca una nota baja.
 
 Poco contraste, un anillo de foco que falta, un ancho fijo que se rompe en el móvil.
