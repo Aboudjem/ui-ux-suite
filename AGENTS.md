@@ -27,7 +27,7 @@ then call the `uiux_audit_run` tool. Arguments:
 - `format` (`"full"` | `"summary"` | `"json"`, default `"full"`).
 
 The result includes `scoreCard.overall`, `scoreCard.grade`, `scoreCard.dimensions[]`, and
-`scoreCard.topFindings[]`. Each finding carries
+`scoreCard.topFindings[]`. Each located finding carries
 `evidence: { file, line, col, selector, measured, threshold }`, a `fix`, `before`/`after`,
 and a citation (`wcag: []` success criteria and/or `laws: []` slugs).
 

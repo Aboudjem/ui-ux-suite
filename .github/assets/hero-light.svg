@@ -125,7 +125,7 @@
   <g transform="translate(544,0)">
     <text class="mono eyebrow" x="0" y="134">DESIGN LINTER</text>
     <text class="disp head" x="0" y="186">ESLint for design</text>
-    <text class="disp sub" x="0" y="222">The exact line, the measured wrong value, and the exact fix.</text>
+    <text class="disp sub" x="0" y="222">The line, the measured value, the fix.</text>
     <g transform="translate(0,265)"><g class="uxp1"><circle cx="0" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp2"><circle cx="22" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp3"><circle cx="44" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp4"><circle cx="66" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp5"><circle cx="88" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp6"><circle cx="110" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp7"><circle cx="132" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp8"><circle cx="154" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp9"><circle cx="176" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp10"><circle cx="198" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp11"><circle cx="220" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp12"><circle cx="242" cy="0" r="4.5" fill="#006A80"/></g><text class="mono tag" x="278" y="4">12 WEIGHTED DIMENSIONS</text></g>
   </g>
   <text class="mono tag" x="76" y="352">zero dependencies  &#183;  audits, never edits  &#183;  runs locally</text>

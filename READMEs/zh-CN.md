@@ -12,9 +12,10 @@
 
 <p align="center"><a href="../README.md">English</a> · <b>简体中文</b> · <a href="ja.md">日本語</a> · <a href="es.md">Español</a> · <a href="fr.md">Français</a></p>
 
-<p align="center"><b>面向设计的 ESLint。它找到出问题的那一行、测出的错误数值，以及确切的修复方法。</b></p>
+<p align="center"><b>设计领域的 ESLint：指出行号、实测值和修复方法。</b></p>
 
-在任何 Web 项目里运行即可。无需安装，无需配置，无需密钥。
+在任何 Web 项目中运行它，找出源代码里的设计缺陷，能定位的都会精确到行。
+无需安装，无需配置，无需密钥。
 
 ```bash
 npx ui-ux-suite .
@@ -44,21 +45,16 @@ _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:
 `npx ui-ux-suite test/fixtures/planted-ux-problems` 的输出开头。
 这个测试样例是故意做坏的，所以得分很低。
 
-在这几行下面，报告会逐条列出每个问题。下面是其中一条：
+对比度太低、缺少焦点环、固定宽度在手机上错位。
+每个已定位的问题都会给出文件、行号和具体改法。
+审计只读取你的代码，从不修改。
+它读的是源代码而不是像素，高分也不能证明符合 WCAG。
 
-```text
-### [!] Low text contrast on `.hero-subtitle`: 1.03:1
-- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
-- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
-- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
-- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
-- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
-- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
-```
+**为什么用它**
 
-**什么是 APCA Lc？** 它是第二种对比度分数，按人眼实际看文字的方式设计。
-取值从 0（看不出对比）到约 106。本工具认为正文达到 Lc 90 即可，大号文字的下限是 60。
-是否通过仍由 WCAG 对比度比值决定。详见 [docs/science.md](../docs/science.md)。
+- **清楚知道要改什么。** 每个已定位的问题都有文件、行号、实测值和修复方法（在测试夹具上共 46 个）。
+- **以标准为依据。** 对比度按 WCAG 2.2 测量，每个已定位的问题都会引用对应的 WCAG 准则或 UX 定律。
+- **有 Node 18 的地方就能运行。** 没有运行时依赖：`npm view ui-ux-suite dependencies` 不输出任何内容。
 
 ## 安装
 
@@ -172,6 +168,22 @@ deep 模式会增加实测对比度、axe-core 检查，以及小于 44 x 44 像
 - **已给出修复。** 确切的改动，以及依据的 WCAG 准则或有名称的 UX 法则。
 
 有些问题针对整个项目，比如“5 种字体族，只用 1 到 2 种”。它们计入分数，但没有对应的单独一行。
+
+下面是同一次夹具运行中的一个完整问题：
+
+```text
+### [!] Low text contrast on `.hero-subtitle`: 1.03:1
+- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+```
+
+**什么是 APCA Lc？** 它是第二种对比度分数，按人眼实际看文字的方式设计。
+取值从 0（看不出对比）到约 106。本工具认为正文达到 Lc 90 即可，大号文字的下限是 60。
+是否通过仍由 WCAG 对比度比值决定。详见 [docs/science.md](../docs/science.md)。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-dark.svg">

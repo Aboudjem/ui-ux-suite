@@ -12,9 +12,10 @@
 
 <p align="center"><b>English</b> · <a href="READMEs/zh-CN.md">简体中文</a> · <a href="READMEs/ja.md">日本語</a> · <a href="READMEs/es.md">Español</a> · <a href="READMEs/fr.md">Français</a></p>
 
-<p align="center"><b>ESLint for design. It finds the exact line, the measured wrong value, and the exact fix.</b></p>
+<p align="center"><b>ESLint for design: the line, the measured value, the fix.</b></p>
 
-Run it in any web project. No install, no config, no key.
+Run it in any web project to find the design bugs in your source code, pinned to a line where it can.
+No install, no config, no key.
 
 ```bash
 npx ui-ux-suite .
@@ -44,21 +45,16 @@ This is a real run, not a mock-up. It is the top of the output of
 `npx ui-ux-suite test/fixtures/planted-ux-problems`, run from a checkout of version 0.7.0.
 The fixture is broken on purpose, so it scores low.
 
-Below those lines the report lists each finding in full. One of them:
+Low contrast, a missing focus ring, a fixed width that breaks on phones.
+Each located finding names the file, the line and the exact change.
+The audit reads your code and never edits it.
+It reads source, not pixels, and a high score is not proof of WCAG conformance.
 
-```text
-### [!] Low text contrast on `.hero-subtitle`: 1.03:1
-- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
-- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
-- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
-- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
-- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
-- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
-```
+**Why use it**
 
-**What is APCA Lc?** It is a second contrast score, built to match how people see text.
-It runs from 0, no visible contrast, to about 106. The tool calls Lc 90 fine for body text, and 60 the floor for large text.
-The WCAG ratio still decides pass or fail. See [docs/science.md](docs/science.md).
+- **Know exactly what to change.** Each located finding has a file, a line, a measured value and a fix (46 on the fixture).
+- **Backed by the standard.** Contrast is checked against WCAG 2.2, and each located finding cites the WCAG rule or UX law behind it.
+- **Runs wherever Node 18 runs.** It has no runtime dependency: `npm view ui-ux-suite dependencies` prints nothing.
 
 ## Install
 
@@ -172,6 +168,23 @@ A finding carries three things:
 - **Fixed.** The exact change, plus the WCAG criterion or the named UX law behind it.
 
 Some findings are about the whole project, such as "5 font families, use 1 or 2". They count in the score and have no single line.
+
+Here is one finding in full, from the same fixture run:
+
+```text
+### [!] Low text contrast on `.hero-subtitle`: 1.03:1
+- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+```
+
+**What is APCA Lc?** It is a second contrast score, built to match how people see text.
+It runs from 0, no visible contrast, to about 106. The tool calls Lc 90 fine for body text, and 60 the floor for large text.
+The WCAG ratio still decides pass or fail. See [docs/science.md](docs/science.md).
+
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-dark.svg">

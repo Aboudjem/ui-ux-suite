@@ -1,7 +1,7 @@
 {
   "name": "ui-ux-suite",
-  "version": "0.7.0",
-  "description": "Design audit tool. Scores projects across 12 dimensions: color, typography, accessibility, layout, and more. WCAG, APCA, OKLCH color science. Zero dependencies.",
+  "version": "0.7.1",
+  "description": "ESLint for design. Reads your CSS, JSX, HTML and Tailwind, then names the file, line, measured wrong value and fix. WCAG 2.2 contrast, no dependencies.",
   "author": {
     "name": "Adam Boudjemaa",
     "url": "https://github.com/Aboudjem"

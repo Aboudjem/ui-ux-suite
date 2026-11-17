@@ -12,9 +12,10 @@
 
 <p align="center"><a href="../README.md">English</a> · <a href="zh-CN.md">简体中文</a> · <a href="ja.md">日本語</a> · <a href="es.md">Español</a> · <b>Français</b></p>
 
-<p align="center"><b>ESLint pour le design. Il trouve la ligne exacte, la valeur mesurée qui cloche, et la correction exacte.</b></p>
+<p align="center"><b>ESLint pour le design : la ligne, la valeur mesurée, la correction.</b></p>
 
-Lancez-le dans n'importe quel projet web. Pas d'installation, pas de config, pas de clé.
+Lancez-le dans n'importe quel projet web pour trouver les bugs de design de votre code source, rattachés à une ligne quand c'est possible.
+Pas d'installation, pas de config, pas de clé.
 
 ```bash
 npx ui-ux-suite .
@@ -44,21 +45,16 @@ C'est une vraie exécution, pas une maquette. C'est le haut de la sortie de
 `npx ui-ux-suite test/fixtures/planted-ux-problems`, lancé depuis une copie de la version 0.7.0.
 La fixture est cassée exprès, donc elle obtient une note basse.
 
-Sous ces lignes, le rapport détaille chaque problème. En voici un :
+Un contraste trop faible, un anneau de focus absent, une largeur fixe qui casse sur mobile.
+Chaque problème localisé donne le fichier, la ligne et la modification exacte.
+L'audit lit votre code et ne le modifie jamais.
+Il lit le source, pas les pixels, et une bonne note ne prouve pas la conformité WCAG.
 
-```text
-### [!] Low text contrast on `.hero-subtitle`: 1.03:1
-- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
-- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
-- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
-- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
-- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
-- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
-```
+**Pourquoi l'utiliser**
 
-**Qu'est-ce que l'APCA Lc ?** C'est une seconde mesure du contraste, conçue pour suivre la façon dont on voit vraiment le texte.
-Elle va de 0, aucun contraste visible, à environ 106. L'outil juge Lc 90 correct pour le texte courant, et 60 comme plancher pour le grand texte.
-Le ratio WCAG décide toujours de la réussite ou de l'échec. Voir [docs/science.md](../docs/science.md).
+- **Savoir exactement quoi changer.** Chaque problème localisé a un fichier, une ligne, une valeur mesurée et une correction (46 sur la fixture).
+- **Appuyé sur la norme.** Le contraste est vérifié selon WCAG 2.2, et chaque problème localisé cite la règle WCAG ou la loi UX en jeu.
+- **Tourne partout où tourne Node 18.** Aucune dépendance d'exécution : `npm view ui-ux-suite dependencies` n'affiche rien.
 
 ## Installation
 
@@ -172,6 +168,22 @@ Un problème porte trois choses :
 - **Corrigé.** Le changement exact, avec le critère WCAG ou la loi UX nommée qui le justifie.
 
 Certains problèmes concernent tout le projet, comme "5 familles de polices, utilisez-en 1 ou 2". Ils comptent dans la note et n'ont pas de ligne unique.
+
+Voici un problème en entier, tiré de la même exécution sur la fixture :
+
+```text
+### [!] Low text contrast on `.hero-subtitle`: 1.03:1
+- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+```
+
+**Qu'est-ce que l'APCA Lc ?** C'est une seconde mesure du contraste, conçue pour suivre la façon dont on voit vraiment le texte.
+Elle va de 0, aucun contraste visible, à environ 106. L'outil juge Lc 90 correct pour le texte courant, et 60 comme plancher pour le grand texte.
+Le ratio WCAG décide toujours de la réussite ou de l'échec. Voir [docs/science.md](../docs/science.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-dark.svg">

@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2026-11-17
+
+A clearer first screen and truer wording. No change to the audit, the CLI or the MCP tools.
+
+### Changed
+
+- **README first screen.** A short tagline, one sentence, the command, the real sample, then a "Why use it" block with a proof per benefit. The honest limit sits next to the promise: it reads source, not pixels, and a high score is not proof of WCAG conformance.
+- **Listing descriptions.** The plugin manifests, `package.json` and `server.json` now say what you get: the file, the line, the measured wrong value and the fix.
+- **True wording.** "Every finding cites a rule" now reads "each located finding". Project-level observations, such as the font-family count, have no single line and some cite no rule.
+- **Visuals.** The hero sub-line and the social preview carry the new headline, the 397-test count and the `npx ui-ux-suite .` command.
+- **Translations.** The Chinese, Japanese, Spanish and French READMEs mirror every change. The full finding example and the APCA note moved under "How it works".
+- `docs/science.md` and the site state the current test count, 397 across 31 test files.
+
 ## [0.7.0] - 2026-11-17
 
 The report now opens with the verdict and the three fixes to start with. The CLI says what to type when an input is wrong.

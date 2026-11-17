@@ -132,9 +132,9 @@
     </g>
   </g>
   <text class="mono eyebrow" x="96" y="258">DESIGN LINTER</text>
-  <text class="disp head" x="96" y="416">ESLint for design.</text>
-  <text class="disp sub" x="96" y="458">It finds the exact line, the measured wrong value,</text>
-  <text class="disp sub" x="96" y="490">and the exact fix.</text>
-  <g transform="translate(0,506)"><rect x="96" y="0" width="111" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="118" y="25">v0.6.1</text><rect x="227" y="0" width="144" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="249" y="25">356 tests</text><rect x="391" y="0" width="189" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="413" y="25">12 dimensions</text><rect x="600" y="0" width="212" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="622" y="25">npx ui-ux-suite</text></g>
+  <text class="disp head" x="96" y="416">Design bugs, with line numbers.</text>
+  <text class="disp sub" x="96" y="458">Contrast, focus, layout and type, each with the exact fix.</text>
+  <text class="disp sub" x="96" y="490">ESLint for design. WCAG 2.2, zero dependencies.</text>
+  <g transform="translate(0,506)"><rect x="96" y="0" width="111" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="118" y="25">v0.7.1</text><rect x="227" y="0" width="144" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="249" y="25">397 tests</text><rect x="391" y="0" width="189" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="413" y="25">12 dimensions</text><rect x="600" y="0" width="234" height="38" rx="19" fill="#0E1524" stroke="#1E2A42" stroke-width="1"/><text class="mono chipbig" x="622" y="25">npx ui-ux-suite .</text></g>
   <text class="mono tag" x="96" y="604">github.com/Aboudjem/ui-ux-suite</text>
 </svg>

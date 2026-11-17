@@ -1,6 +1,6 @@
 # What the findings stand on
 
-Every finding cites something outside the tool's opinion. This page names the sources and shows
+Each located finding cites something outside the tool's opinion. This page names the sources and shows
 how to check them yourself.
 
 ## Contrast is computed, not estimated
@@ -54,7 +54,7 @@ sources under this project's MIT license, and an automated test asserts that no 
 
 ## The regression gate
 
-`npm test` runs 356 tests across 28 test files. They are not smoke tests. The suite walks the
+`npm test` runs 397 tests across 31 test files. They are not smoke tests. The suite walks the
 twelve planted problems in the shipped fixture and asserts that each one still produces a finding
 carrying `evidence.file`, `evidence.line` and a `fix`, so a change that makes the tool vaguer
 fails the build even when it still "detects" the problem.

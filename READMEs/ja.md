@@ -12,9 +12,10 @@
 
 <p align="center"><a href="../README.md">English</a> · <a href="zh-CN.md">简体中文</a> · <b>日本語</b> · <a href="es.md">Español</a> · <a href="fr.md">Français</a></p>
 
-<p align="center"><b>デザインのための ESLint。問題のある行、測定した誤りの値、そして正確な修正を示します。</b></p>
+<p align="center"><b>デザインのための ESLint: 該当行、実測値、修正。</b></p>
 
-どんな Web プロジェクトでも実行できます。インストール不要、設定不要、キー不要です。
+どの Web プロジェクトでも実行でき、ソースコードのデザインのバグを見つけ、可能なものは行まで特定します。
+インストール不要、設定不要、キー不要です。
 
 ```bash
 npx ui-ux-suite .
@@ -44,21 +45,16 @@ _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:
 `npx ui-ux-suite test/fixtures/planted-ux-problems` を実行した出力の冒頭です。
 このフィクスチャはわざと壊してあるので、スコアは低くなります。
 
-この下に、レポートは各指摘を詳しく並べます。その 1 つがこちらです。
+コントラスト不足、フォーカスリングの欠落、スマートフォンで崩れる固定幅。
+位置を特定できた指摘には、ファイル、行、具体的な変更が付きます。
+監査はコードを読むだけで、決して編集しません。
+ピクセルではなくソースを読みます。高いスコアは WCAG 準拠の証明ではありません。
 
-```text
-### [!] Low text contrast on `.hero-subtitle`: 1.03:1
-- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
-- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
-- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
-- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
-- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
-- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
-```
+**使う理由**
 
-**APCA Lc とは?** 人が実際に文字をどう見るかに合わせて作られた、2 つ目のコントラスト指標です。
-0 (コントラストが見えない) から約 106 までの値をとります。このツールは本文なら Lc 90 で十分、大きな文字なら 60 を下限とします。
-合格か不合格かは、引き続き WCAG の比で決まります。詳しくは [docs/science.md](../docs/science.md) を参照してください。
+- **何を変えればよいかが正確にわかる。** 位置を特定できた指摘には、ファイル、行、実測値、修正が付きます(フィクスチャで 46 件)。
+- **基準に裏付けられている。** コントラストは WCAG 2.2 で測り、位置を特定できた指摘はそれぞれ根拠となる WCAG の基準か UX の法則を示します。
+- **Node 18 が動く環境ならどこでも動く。** 実行時の依存関係はありません。`npm view ui-ux-suite dependencies` は何も出力しません。
 
 ## インストール
 
@@ -172,6 +168,22 @@ deep モードは、実測のコントラスト、axe-core のチェック、44 
 - **修正案つき。** 正確な変更と、その根拠となる WCAG 達成基準または名前のある UX の法則。
 
 プロジェクト全体に関する指摘もあります。たとえば「フォントファミリーが 5 つ、1 つか 2 つにする」です。これはスコアに数えられ、特定の 1 行はありません。
+
+同じフィクスチャの実行から、指摘を 1 件まるごと示します:
+
+```text
+### [!] Low text contrast on `.hero-subtitle`: 1.03:1
+- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+```
+
+**APCA Lc とは?** 人が実際に文字をどう見るかに合わせて作られた、2 つ目のコントラスト指標です。
+0 (コントラストが見えない) から約 106 までの値をとります。このツールは本文なら Lc 90 で十分、大きな文字なら 60 を下限とします。
+合格か不合格かは、引き続き WCAG の比で決まります。詳しくは [docs/science.md](../docs/science.md) を参照してください。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-dark.svg">

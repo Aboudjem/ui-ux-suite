@@ -2,14 +2,14 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Aboudjem/ui-ux-suite",
   "title": "UI/UX Suite",
-  "description": "UI/UX design-audit MCP server: scores a project on 12 dimensions vs WCAG 2.2 + APCA.",
+  "description": "ESLint for design: UI bugs in your source, with the file, line, measured value and fix. WCAG 2.2.",
   "repository": { "url": "https://github.com/Aboudjem/ui-ux-suite", "source": "github" },
-  "version": "0.7.0",
+  "version": "0.7.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "ui-ux-suite",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "transport": { "type": "stdio" },
       "packageArguments": [
         { "type": "named", "name": "--mcp", "description": "Start the MCP server over stdio" }
