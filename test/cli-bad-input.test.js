@@ -67,3 +67,43 @@ test('--version exits 0 and prints a version string', () => {
   assert.equal(r.status, 0);
   assert.match(r.stdout.trim(), /^\d+\.\d+\.\d+/);
 });
+
+test('an unknown option exits 1 and names --help (a typo must not pass in silence)', () => {
+  const r = run([FIXTURE, '--fail-udner', '7']);
+  assert.equal(r.status, 1, `expected exit 1, got ${r.status}. stderr: ${r.stderr}`);
+  assert.match(r.stderr, /unknown option --fail-udner/);
+  assert.match(r.stderr, /--help/);
+  assert.equal(r.stdout, '', 'no report is printed for a bad command line');
+});
+
+test('--flag=value is refused with the two-word form to type instead', () => {
+  const r = run([FIXTURE, '--fail-under=7']);
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /--fail-under 7/);
+});
+
+test('a value flag without its value shows an example', () => {
+  const r = run([FIXTURE, '--fail-under']);
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /--fail-under needs a value, for example: npx ui-ux-suite \. --fail-under 7/);
+});
+
+test('--fail-under refuses a value that is not a score from 0 to 10', () => {
+  for (const bad of ['abc', '11']) {
+    const r = run([FIXTURE, '--fail-under', bad]);
+    assert.equal(r.status, 1, `--fail-under ${bad} should exit 1`);
+    assert.match(r.stderr, /score from 0 to 10/);
+  }
+});
+
+test('the empty-directory report says what to type next', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'uiux-cli-empty-'));
+  try {
+    const r = run([dir]);
+    assert.equal(r.status, 3);
+    assert.match(r.stdout, /^# Design audit: no score/);
+    assert.match(r.stdout, /npx ui-ux-suite \.\/src/);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

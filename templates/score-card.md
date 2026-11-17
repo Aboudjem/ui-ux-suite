@@ -1,12 +1,10 @@
-# Design Score Card
-
-**Overall: {{overallScore}}/10 ({{grade}})**
+# Design score: {{overallScore}}/10 ({{grade}})
 
 {{#dimensions}}
 | {{label}} | {{score}}/10 | {{bar}} | {{weight}} |
 {{/dimensions}}
 
-## Top 5 Improvements
+## Fix these first
 
 {{#topFindings}}
 {{rank}}. [{{severity}}] **{{dimension}}**: {{title}}

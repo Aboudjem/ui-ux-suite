@@ -1,11 +1,11 @@
 /*
- * SCSS variant — exercises the .scss branch of walkFiles.
+ * SCSS variant: exercises the .scss branch of walkFiles.
  * Reinforces PLANTED[H] (off-scale spacing) and PLANTED[C] (low-contrast surface).
  */
 $muted-bg: #f4f5f6;
 
 .product-card {
-  background-color: $muted-bg;   // ~1.04:1 vs #ffffff page — invisible boundary
+  background-color: $muted-bg;   // ~1.04:1 vs #ffffff page, invisible boundary
   color: #cfd2d6;                // low-contrast text
   padding: 13px;                 // off-scale (PLANTED[H])
   margin: 19px 7px;              // off-scale (PLANTED[H])

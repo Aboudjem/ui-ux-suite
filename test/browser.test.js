@@ -2,14 +2,14 @@ const { describe, it, before } = require('node:test');
 const assert = require('node:assert/strict');
 const { probePeerDeps, runBrowserAudit, resetCachedProbe } = require('../lib/browser');
 
-describe('browser — optional peer-deps contract', () => {
+describe('browser: optional peer-deps contract', () => {
   before(() => { resetCachedProbe(); });
 
   it('probePeerDeps returns PLAYWRIGHT_MISSING when peer deps are not installed', async () => {
     resetCachedProbe();
     const r = await probePeerDeps();
     if (r.ok) {
-      // Running in a dev environment where peer deps ARE installed — acceptable, skip.
+      // Running in a dev environment where peer deps ARE installed: acceptable, skip.
       return;
     }
     assert.equal(r.ok, false);

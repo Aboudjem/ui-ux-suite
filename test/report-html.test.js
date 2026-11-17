@@ -135,3 +135,20 @@ test('does not throw on a minimal/empty audit result', () => {
   const out = renderHtmlReport({});
   assert.ok(out.startsWith('<!DOCTYPE html>'));
 });
+
+test('"Fix these first" sits above the score table, with three located actions', () => {
+  const first = html.indexOf('Fix these first');
+  const table = html.indexOf('Scores by dimension');
+  assert.ok(first > 0, 'the HTML report must carry a "Fix these first" panel');
+  assert.ok(first < table, 'the three fixes come before the score table');
+  const list = html.slice(first, table);
+  assert.equal((list.match(/<li>/g) || []).length, 3);
+  assert.equal((list.match(/class="first-where"/g) || []).length, 3, 'each action names a file and a line');
+  assert.equal((list.match(/class="first-fix"/g) || []).length, 3, 'each action carries its fix');
+});
+
+test('an unscored report shows "n/a", not a stray punctuation mark', () => {
+  const out = renderHtmlReport({ insufficientEvidence: true, scoreCard: {} });
+  assert.match(out, /<div class="score-num band-text-none">n\/a<\/div>/);
+  assert.equal(out.includes('Fix these first'), false);
+});

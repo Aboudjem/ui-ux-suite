@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Integration tests for lib/located-audit.js — runLocatedAudit over the planted fixture.
+ * Integration tests for lib/located-audit.js: runLocatedAudit over the planted fixture.
  *
  * The contract of a "serious" finding is: specific + located (file:line/selector) + measured +
  * FIXED. These tests assert that EVERY finding carries evidence.file, a non-null evidence.line,
@@ -51,7 +51,7 @@ function find(findings, pred) {
   return findings.find(pred);
 }
 
-test('planted A — hero-subtitle near-white contrast (1.03:1)', () => {
+test('planted A: hero-subtitle near-white contrast (1.03:1)', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'accessibility' &&
@@ -62,7 +62,7 @@ test('planted A — hero-subtitle near-white contrast (1.03:1)', () => {
   assert.equal(f.evidence.selector, '.hero-subtitle');
 });
 
-test('planted G — body-copy 11px (not the old 12px filter)', () => {
+test('planted G: body-copy 11px (not the old 12px filter)', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'typography' &&
@@ -73,7 +73,7 @@ test('planted G — body-copy 11px (not the old 12px filter)', () => {
   assert.equal(f.evidence.measured, '11px');
 });
 
-test('planted E-alt — at least one <img> missing alt', () => {
+test('planted E-alt, at least one <img> missing alt', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'accessibility' &&
@@ -83,7 +83,7 @@ test('planted E-alt — at least one <img> missing alt', () => {
   assert.ok(f.wcag && f.wcag.includes('1.1.1'));
 });
 
-test('planted E-label — at least one form input missing a label', () => {
+test('planted E-label, at least one form input missing a label', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'accessibility' &&
@@ -93,7 +93,7 @@ test('planted E-label — at least one form input missing a label', () => {
   assert.ok(f.wcag && f.wcag.includes('3.3.2'));
 });
 
-test('planted B — generic CTA "continue"', () => {
+test('planted B: generic CTA "continue"', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'flows' &&
@@ -102,7 +102,7 @@ test('planted B — generic CTA "continue"', () => {
   assert.ok(f, 'expected a generic-CTA "continue" finding');
 });
 
-test('planted H — off-grid spacing on .card', () => {
+test('planted H: off-grid spacing on .card', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'layout' &&
@@ -112,7 +112,7 @@ test('planted H — off-grid spacing on .card', () => {
   assert.equal(f.evidence.file, 'src/styles.css');
 });
 
-test('planted J — missing focus-visible (the comment false-positive is gone)', () => {
+test('planted J: missing focus-visible (the comment false-positive is gone)', () => {
   const { findings } = audit();
   const f = find(findings, x =>
     x.dimension === 'accessibility' &&

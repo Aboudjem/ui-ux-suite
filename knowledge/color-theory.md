@@ -7,14 +7,14 @@
 ## Color Spaces
 
 ### OKLCH (Recommended for 2026)
-Perceptually uniform — equal numeric steps produce equal perceived differences. Superior to HSL for palette generation.
-- `oklch(L% C H)` — Lightness (0-100%), Chroma (0-0.4), Hue (0-360)
+Perceptually uniform: equal numeric steps produce equal perceived differences. Superior to HSL for palette generation.
+- `oklch(L% C H)`: Lightness (0-100%), Chroma (0-0.4), Hue (0-360)
 - Browser support: 95%+ (Chrome 111+, Safari 15.4+, Firefox 113+)
 - Used by Linear, Figma for theme generation
 - CSS functions: `color-mix()`, `relative color syntax`, `light-dark()`
 
 ### HSL (Fallback)
-Intuitive but NOT perceptually uniform — a 50% lightness blue looks darker than 50% yellow.
+Intuitive but NOT perceptually uniform: a 50% lightness blue looks darker than 50% yellow.
 - Good for quick prototyping, not for systematic palette construction
 - Still widely used in Tailwind and most design systems
 
@@ -64,7 +64,7 @@ Each semantic color needs 3 variants: base (for text/icons), light (for backgrou
 | Harmony | Description | Best for UI |
 |---------|-------------|-------------|
 | Monochromatic | Single hue, varied L/C | Minimal UIs, dark mode, elegant |
-| Complementary | Opposite hues (180deg) | Primary + accent (use carefully — can clash) |
+| Complementary | Opposite hues (180deg) | Primary + accent (use carefully: can clash) |
 | Split-complementary | Base + 2 adjacent to complement | Most versatile for product UI |
 | Analogous | Adjacent hues (30deg apart) | Backgrounds, gradients, calm palettes |
 | Triadic | 3 equally spaced hues (120deg) | Playful/bold brands only |
@@ -93,8 +93,8 @@ Each semantic color needs 3 variants: base (for text/icons), light (for backgrou
 1. Higher elevation = lighter surface (opposite of light mode)
 2. Reduce color saturation by 10-20%
 3. Text opacity hierarchy: 87% primary, 60% secondary, 38% disabled
-4. Never pure black (#000) — use brand-tinted dark (#0a0a0a to #1a1a1a)
-5. Shadows barely visible — use borders (1px rgba(255,255,255,0.1)) instead
+4. Never pure black (#000), use brand-tinted dark (#0a0a0a to #1a1a1a)
+5. Shadows barely visible, use borders (1px rgba(255,255,255,0.1)) instead
 
 ---
 
@@ -135,8 +135,8 @@ Each semantic color needs 3 variants: base (for text/icons), light (for backgrou
 
 ## Color-Blind Safe Design
 
-- Never rely on color alone — always pair with text, icons, or patterns
+- Never rely on color alone: always pair with text, icons, or patterns
 - Blue + orange is the safest two-color combination (works for all types)
-- Red/green distinction fails for 8% of males — add icons to success/error states
+- Red/green distinction fails for 8% of males: add icons to success/error states
 - Test with simulators: Chrome DevTools > Rendering > Emulate vision deficiency
 - Patterns that work: shape coding, texture, position, size, labels

@@ -1,27 +1,19 @@
-# Design Audit Report
+# Design audit: {{overallScore}}/10 ({{grade}})
+
+**Verdict:** score {{overallScore}}/10, {{grade}}. {{findingCount}} findings, {{criticalCount}} critical.
+
+## Fix these first
+
+{{#firstFixes}}
+{{rank}}. {{title}} at `{{file}}:{{line}}`. Fix: {{fix}}
+{{/firstFixes}}
 
 **Project:** {{projectName}}
 **Date:** {{date}}
-**Audited by:** UI/UX Design Intelligence Suite
-
----
-
-## Project Profile
-
-| Attribute | Value |
-|-----------|-------|
-| Framework | {{framework}} |
-| Styling | {{styling}} |
-| Component Library | {{componentLib}} |
-| Theme System | {{themeSystem}} |
-| Dark Mode | {{hasDarkMode}} |
-| Design Maturity | {{maturity}} |
 
 ---
 
 ## Score Card
-
-**Overall: {{overallScore}}/10 ({{grade}})**
 
 | Dimension | Score | Weight |
 |-----------|-------|--------|
@@ -126,6 +118,19 @@
 {{#majorWork}}
 - [ ] {{description}}, **{{dimension}}** ({{severity}})
 {{/majorWork}}
+
+---
+
+## Project Profile
+
+| Attribute | Value |
+|-----------|-------|
+| Framework | {{framework}} |
+| Styling | {{styling}} |
+| Component Library | {{componentLib}} |
+| Theme System | {{themeSystem}} |
+| Dark Mode | {{hasDarkMode}} |
+| Design Maturity | {{maturity}} |
 
 ---
 

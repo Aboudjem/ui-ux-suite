@@ -1,4 +1,4 @@
-# Evidence Base — Research Findings with Confidence Levels
+# Evidence Base: Research Findings with Confidence Levels
 
 > Quantitative findings from research campaigns. Each with source confidence rating.
 

@@ -1,4 +1,4 @@
-# Viral-Readiness Audit — ui-ux-suite
+# Viral-Readiness Audit: ui-ux-suite
 
 > Generated 2026-05-30 by the [Supernova engine](https://github.com/Aboudjem/supernova).
 
@@ -8,7 +8,7 @@
 |:--|:--|
 | **Before** | 91 / 100 |
 | **After** | 100 / 100 (projected) |
-| **Tier** | Tier 1 — production-ready / viral-ready |
+| **Tier** | Tier 1: production-ready / viral-ready |
 | **Repo type** | `claude-plugin` |
 | **Recommended packaging** | `plugin` |
 
@@ -38,4 +38,4 @@ The `examples/` gap was real. The repo had `demo-output/` (video clips, GIF fram
 
 ---
 
-ui-ux-suite is well-positioned for a viral launch. The hook is visceral ("ESLint for design — tells you `src/styles.css:14 · color #fbfbfb on #ffffff = 1.03:1`"), friction is zero (one `npx` command, no keys, no network), and the MCP server works in every editor. 311 tests with a regression fixture. The missing surface is distribution — handled in `LAUNCH-PLAN.md`.
+ui-ux-suite is well-positioned for a viral launch. The hook is visceral ("ESLint for design: tells you `src/styles.css:14 · color #fbfbfb on #ffffff = 1.03:1`"), friction is zero (one `npx` command, no keys, no network), and the MCP server works in every editor. 311 tests with a regression fixture. The missing surface is distribution: handled in `LAUNCH-PLAN.md`.

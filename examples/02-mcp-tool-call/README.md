@@ -1,4 +1,4 @@
-# Example 02 — MCP tool call: `uiux_audit_run`
+# Example 02: MCP tool call: `uiux_audit_run`
 
 Call `uiux_audit_run` directly as an MCP tool from Claude Code, Cursor, VS Code, or any MCP-capable client.
 
@@ -46,7 +46,7 @@ Once the server is running, invoke:
       {
         "severity": "critical",
         "dimension": "color",
-        "title": "Low text contrast on `.hero-subtitle` — 1.03:1",
+        "title": "Low text contrast on `.hero-subtitle`, 1.03:1",
         "evidence": {
           "file": "styles.css",
           "line": 8,

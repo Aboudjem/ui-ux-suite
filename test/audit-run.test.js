@@ -81,7 +81,7 @@ describe('uiux_audit_run MCP tool', () => {
     assert.ok(result.overall !== null && result.overall >= 1 && result.overall <= 10, 'overall score should be in 1..10');
     assert.ok(result.grade, 'should have a grade');
     assert.equal(typeof result.markdown, 'string');
-    assert.ok(result.markdown.includes('Design Audit Report'), 'markdown should contain report header');
+    assert.match(result.markdown, /^# Design audit: \d+(\.\d+)?\/10 \(/, 'markdown should open with the verdict line');
     assert.ok(Array.isArray(result.topFindings), 'topFindings should be an array');
   });
 

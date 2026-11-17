@@ -57,6 +57,23 @@ function parseArgs(list) {
 const opts = parseArgs(argv);
 const has = f => opts.flags.has(f);
 
+// Every flag the CLI understands. Anything else is a typo, and a typo must not pass in silence:
+// `--fail-udner 7` would otherwise run the audit, skip the gate and exit 0.
+const KNOWN_FLAGS = new Set([
+  '--json', '--mcp', '--version', '-v', '--help', '-h', '--fail-on-regression', '--list-tags',
+]);
+const unknownFlags = [...opts.flags].filter(f => !KNOWN_FLAGS.has(f.split('=')[0]) || f.includes('='));
+if (unknownFlags.length) {
+  const f = unknownFlags[0];
+  const name = f.split('=')[0];
+  if (f.includes('=') && (VALUE_FLAGS.has(name) || KNOWN_FLAGS.has(name))) {
+    console.error(`Error: write ${name} and its value as two words, for example: ${name} ${f.split('=')[1] || 'VALUE'}`);
+  } else {
+    console.error(`Error: unknown option ${name}. Run "npx ui-ux-suite --help" to see every option.`);
+  }
+  process.exit(1);
+}
+
 if (has('--version') || has('-v')) {
   console.log(pkg.version);
   process.exit(0);
@@ -97,6 +114,9 @@ What you get: per-finding file:line + selector, the measured wrong value, and th
 (before -> after), across 12 dimensions grounded in WCAG 2.2, APCA, and the Laws of UX.
 It audits and SUGGESTS. It never edits your files.
 
+The report opens with the score, then the three fixes to start with, then the detail.
+Exit codes: 0 ok, 1 a gate tripped or an error, 2 path not found, 3 nothing to audit.
+
 Tags are derived from what each finding already cites: dimension:<id>, severity:<level>,
 wcag:<criterion>, wcag2a / wcag2aa / wcag2aaa, law:<slug>, nielsen:<n>. Filtering changes
 what is reported, never the score, so --fail-under is unaffected.
@@ -109,7 +129,17 @@ if (has('--mcp')) {
   createMcpServer().start();
 } else {
   if (opts.unknownValueFlags.length) {
-    console.error(`Error: ${opts.unknownValueFlags[0]} needs a value.`);
+    const flag = opts.unknownValueFlags[0];
+    const example = {
+      '--fail-under': '--fail-under 7',
+      '--html': '--html report.html',
+      '--sarif': '--sarif ui-ux.sarif',
+      '--write-baseline': '--write-baseline .uiux-baseline.json',
+      '--baseline': '--baseline .uiux-baseline.json',
+      '--tags': '--tags dimension:accessibility',
+      '--exclude-tags': '--exclude-tags severity:nice-to-have',
+    }[flag];
+    console.error(`Error: ${flag} needs a value, for example: npx ui-ux-suite . ${example}`);
     process.exit(1);
   }
 
@@ -128,12 +158,16 @@ if (has('--mcp')) {
   };
   const listTags = has('--list-tags');
 
+  if (failUnderRaw != null && !(failUnder >= 0 && failUnder <= 10)) {
+    console.error(`Error: --fail-under takes a score from 0 to 10, for example: --fail-under 7 (got "${failUnderRaw}").`);
+    process.exit(1);
+  }
   if (failOnRegression && !baselineFrom) {
-    console.error('Error: --fail-on-regression needs --baseline FILE.');
+    console.error('Error: --fail-on-regression needs --baseline FILE. Create one first: npx ui-ux-suite . --write-baseline .uiux-baseline.json');
     process.exit(1);
   }
   if (baselineFrom && !fs.existsSync(baselineFrom)) {
-    console.error(`Error: baseline file not found: ${baselineFrom}`);
+    console.error(`Error: baseline file not found: ${baselineFrom}. Create it first: npx ui-ux-suite . --write-baseline ${baselineFrom}`);
     process.exit(1);
   }
 
@@ -141,7 +175,7 @@ if (has('--mcp')) {
   process.stderr.write(`\nui-ux-suite v${pkg.version}\nScanning: ${projectPath}\n\n`);
 
   if (!fs.existsSync(projectPath)) {
-    console.error(`Error: directory not found: ${projectPath}`);
+    console.error(`Error: directory not found: ${projectPath}. Pass the folder that holds your CSS or components, for example: npx ui-ux-suite ./src`);
     process.exit(2);
   }
 
@@ -203,8 +237,13 @@ if (has('--mcp')) {
     }
 
     if (result.insufficientEvidence) {
-      process.stderr.write('Insufficient evidence: no CSS/JSX/HTML found, nothing to audit.\n');
+      process.stderr.write('Insufficient evidence, nothing to audit: no CSS, JSX/TSX/Vue/Svelte or HTML file under this path. Try the folder that holds your source, for example: npx ui-ux-suite ./src\n');
       process.exit(3);
+    }
+    if (!jsonOutput) {
+      // The verdict again, on stderr: it stays visible when stdout is piped into a file.
+      const n = (result.located && result.located.findings && result.located.findings.length) || 0;
+      process.stderr.write(`\nScore ${result.scoreCard.overall}/10 (${result.scoreCard.grade}), ${n} located finding${n === 1 ? '' : 's'}. The three fixes to start with are at the top of the report.\n`);
     }
     if (failUnder != null && result.scoreCard.overall != null && result.scoreCard.overall < failUnder) {
       process.stderr.write(`Overall ${result.scoreCard.overall} is below --fail-under ${failUnder}.\n`);

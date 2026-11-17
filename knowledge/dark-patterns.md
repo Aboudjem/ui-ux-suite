@@ -99,7 +99,7 @@ Check: Is the user's preferred action (decline, cancel, close) styled as ghost/t
 ### UK / Other
 - UK Online Safety Act covers manipulative design
 - Australia, Japan, South Korea developing frameworks
-- Global trend toward regulation — dark patterns are legal risk
+- Global trend toward regulation: dark patterns are legal risk
 
 ---
 
@@ -144,7 +144,7 @@ Building trust through design:
 
 ## Account Deletion Requirements
 
-- **GDPR Article 17:** Right to erasure — 30-day maximum response time
+- **GDPR Article 17:** Right to erasure, 30-day maximum response time
 - **EDPB 2025:** Enforcement focus area
 - **Best practice:**
   - Accessible in 2-3 clicks from account settings

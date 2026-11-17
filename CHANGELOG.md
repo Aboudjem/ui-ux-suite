@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2026-11-17
+
+The report now opens with the verdict and the three fixes to start with. The CLI says what to type when an input is wrong.
+
+### Changed
+
+- **Verdict first.** Line 1 of the report is the score and its grade. The next lines are "Fix these first", three located fixes of different kinds. The score table and the full detail follow. The MCP `full` format uses the same order.
+- **A summary on stderr.** After a run, the CLI prints the score, the finding count and where the fixes are. It stays visible when stdout goes to a file.
+- **The plugin runs its own copy of the server.** `.mcp.json` starts `bin/ui-ux-suite.js` from the plugin folder. No download, works offline, and the server version always equals the plugin version.
+- **Plain text everywhere.** Every em dash is gone from the docs, skills, knowledge files, report strings and tests. Each sentence was rewritten, not cut.
+
+### Fixed
+
+- An unknown flag such as `--fail-udner 7` now fails with exit 1 and points to `--help`. Before, it was ignored and the run passed.
+- A flag with a missing or bad value now prints an example of the right form.
+- An empty folder now says which folder to try, with a command, instead of naming an MCP argument.
+
+### Added
+
+- `docs/tools.md`, the 16 MCP tools and when to use each one. It is generated from the server, and a test fails when it drifts.
+- `server.json` lists the npm package, so MCP clients can install from the registry. The release workflow now publishes to the MCP registry after npm.
+- The GitHub release body is this CHANGELOG entry, read by `scripts/release-notes.js`.
+- `.claude-plugin/icon.png`, so `claude plugin validate . --strict` passes. `CLAUDE.md` moved to `.claude/CLAUDE.md` for the same reason.
+- The README has a real sample report, a works-with table of today's tests, proof commands, a FAQ and the limits.
+
 ## [0.6.1] - 2026-09-03
 
 A motion identity, and the literal synthwave scenery removed. No behaviour changes.

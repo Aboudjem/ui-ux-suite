@@ -1,12 +1,12 @@
 ---
-description: Run a typography-only audit — scale detection, font count, body size, line height, fluid type. Scoped variant of /ui-ux-suite:audit.
+description: Run a typography-only audit: scale detection, font count, body size, line height, fluid type. Scoped variant of /ui-ux-suite:audit.
 argument-hint: "[path]"
 model: sonnet
 user-invocable: false
 allowed-tools: [mcp__ui-ux-suite__uiux_audit_run, mcp__ui-ux-suite__uiux_extract_typography, mcp__ui-ux-suite__uiux_generate_type_scale, mcp__ui-ux-suite__uiux_score_dimension, mcp__ui-ux-suite__uiux_knowledge_query, Read, Grep, Glob]
 ---
 
-# /ui-ux-suite:typography — Typography-only audit
+# /ui-ux-suite:typography (typography-only audit)
 
 Scoped audit on typographic hygiene.
 
@@ -27,4 +27,4 @@ Scoped audit on typographic hygiene.
 - `next/font` / geist usage (performance signal)
 - Hierarchy signals (h1/h2/h3 ratios, single-h1-per-page expectation)
 
-Offer a generated scale only when the user's current setup is demonstrably off — don't "recommend" a scale when one exists.
+Offer a generated scale only when the user's current setup is demonstrably off. Do not "recommend" a scale when one already exists.

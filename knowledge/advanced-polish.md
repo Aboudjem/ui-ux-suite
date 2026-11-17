@@ -1,4 +1,4 @@
-# Advanced Polish — Design "Cheatcodes"
+# Advanced Polish: Design "Cheatcodes"
 
 > Subtle details that separate good UI from world-class. Each is implementable with CSS/JS.
 
@@ -11,7 +11,7 @@
 - 1px subtle border on cards in light mode (adds definition without heavy shadows)
 - Custom selection color matching brand: `::selection { background: oklch(85% 0.15 250); }`
 - Caret color on inputs: `caret-color: var(--color-primary);`
-- Never pure black (#000) for text — use #1a1a1a or brand-tinted dark
+- Never pure black (#000) for text, use #1a1a1a or brand-tinted dark
 
 ### Shapes & Borders
 - Border-radius consistency: pick ONE value and scale it (4, 8, 12, 16)
@@ -71,7 +71,7 @@
 ```
 
 ### Dark Mode Shadows
-- Shadows less visible on dark backgrounds — use border + subtle glow instead
+- Shadows less visible on dark backgrounds, use border + subtle glow instead
 - `box-shadow: 0 0 0 1px rgb(255 255 255 / 0.1)` for card edges
 
 ---
@@ -140,16 +140,16 @@
 
 Based on analysis of Linear, Vercel, Stripe, Raycast, Arc:
 
-1. **Monochrome + one accent** — restraint in color creates sophistication
-2. **Consistent 4px grid** — everything aligns, nothing feels off
-3. **Subtle transitions everywhere** — no jarring state changes
-4. **Custom everything** — scrollbars, selection, focus, cursors
-5. **Keyboard-first** — Cmd+K, shortcuts, power-user efficiency
-6. **Skeleton loading** — content-shaped placeholders, not spinners
-7. **OKLCH/LCH color** — perceptually uniform, professional palette
-8. **Dark-first design** — light mode secondary, dark mode primary
-9. **Inter or system fonts** — clean, readable, performant
-10. **Attention to whitespace** — generous spacing that makes content breathe
+1. **Monochrome + one accent**: restraint in color creates sophistication
+2. **Consistent 4px grid**: everything aligns, nothing feels off
+3. **Subtle transitions everywhere**, no jarring state changes
+4. **Custom everything**: scrollbars, selection, focus, cursors
+5. **Keyboard-first**: Cmd+K, shortcuts, power-user efficiency
+6. **Skeleton loading**: content-shaped placeholders, not spinners
+7. **OKLCH/LCH color**: perceptually uniform, professional palette
+8. **Dark-first design**: light mode secondary, dark mode primary
+9. **Inter or system fonts**: clean, readable, performant
+10. **Attention to whitespace**: generous spacing that makes content breathe
 
 ---
 

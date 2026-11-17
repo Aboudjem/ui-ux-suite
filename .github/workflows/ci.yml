@@ -57,6 +57,29 @@ jobs:
           }
           "
 
+      - name: Version parity across every manifest
+        run: |
+          node -e "
+          const fs = require('fs');
+          const v = require('./package.json').version;
+          const bad = ['.cursor-plugin/plugin.json', '.copilot-plugin/plugin.json', 'server.json']
+            .filter(f => JSON.parse(fs.readFileSync(f, 'utf8')).version !== v);
+          if (bad.length) { console.error('Version differs from package.json (' + v + ') in: ' + bad.join(', ')); process.exit(1); }
+          console.log('Every manifest is at ' + v);
+          "
+
+      - name: The CHANGELOG has an entry for this version
+        run: node scripts/release-notes.js "$(node -p "require('./package.json').version")" > /dev/null
+
+      - name: The skills CLI finds the 14 skills (pinned version)
+        if: matrix.node-version == 22
+        env:
+          DISABLE_TELEMETRY: '1'
+        run: |
+          npx --yes skills@1.9.0 add . --list > skills-list.txt 2>&1 || { cat skills-list.txt; exit 1; }
+          cat skills-list.txt
+          grep -q "Found 14 skills" skills-list.txt
+
       - name: Validate slash commands
         run: |
           node -e "

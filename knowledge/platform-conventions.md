@@ -1,4 +1,4 @@
-# Platform Conventions — Browser, iOS, Android
+# Platform Conventions: Browser, iOS, Android
 
 > Navigation patterns, touch targets, gestures, safe areas, responsive strategy.
 

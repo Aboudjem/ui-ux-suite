@@ -1,7 +1,7 @@
-# Insider UI/UX Secrets — April 2026
+# Insider UI/UX Secrets: April 2026
 
 > Source: Deep community scout across Reddit, HackerNews, X/Twitter, CSS-Tricks, Smashing Magazine, Josh Comeau, Wildbit/Postmark engineering, Stripe
-> 35 tips from practitioners with 10+ years experience — the craft details that separate pros from amateurs
+> 35 tips from practitioners with 10+ years experience: the craft details that separate pros from amateurs
 
 ---
 
@@ -10,7 +10,7 @@
 1. **Design all states, not just the happy path** (universal)
 2. **Shadow quality is the #1 cheap-vs-expensive tell** (4+ sources)
 3. **8pt grid is non-negotiable** (universal)
-4. **HSL is broken for accessible palettes — use OKLCH** (Stripe, Postmark engineering)
+4. **HSL is broken for accessible palettes, use OKLCH** (Stripe, Postmark engineering)
 5. **Test on real user hardware, not your Retina Mac** (multiple Reddit threads)
 
 ---
@@ -18,17 +18,17 @@
 ## Tier 1: The Tips That Get The Most Upvotes
 
 ### 1. Design every state, not just "happy path"
-**88 upvotes r/webdev** — u/harbzali: "hover states are useless on mobile. would love if designers considered loading states and error states more instead of just the happy path"
-**40 upvotes** — u/poweredbyearlgray: "What does it look like when you first log in and have no data? What if people write content with longer words than your bento grid?"
+**88 upvotes r/webdev**: u/harbzali: "hover states are useless on mobile. would love if designers considered loading states and error states more instead of just the happy path"
+**40 upvotes**: u/poweredbyearlgray: "What does it look like when you first log in and have no data? What if people write content with longer words than your bento grid?"
 
 **Minimum states for every component:** default, hover, active/pressed, disabled, loading, error. For data UIs add: empty, skeleton, partial data, overflow/truncation.
 
 ### 2. Test on user hardware
-**67 upvotes r/webdev** — FalseRegister: "We designed a bank system on Macbook Pros. Colors looked awesome. Then it came to Windows office monitors — complete shit. Only designers got Macs; contrast wasn't enough."
+**67 upvotes r/webdev**: FalseRegister: "We designed a bank system on Macbook Pros. Colors looked awesome. Then it came to Windows office monitors: complete shit. Only designers got Macs; contrast wasn't enough."
 
 **Rule:** Test on cheap IPS monitor, Windows laptop, OLED phone. What reads as subtle elegance on Retina becomes invisible on $300 HP monitor. WCAG 4.5:1 is the FLOOR, not target.
 
-### 3. Shadows are never grey — color-match to background
+### 3. Shadows are never grey: color-match to background
 **Josh W. Comeau (canonical reference):** Using `rgba(0,0,0,0.2)` gives you dead grey shadows. Pros match shadow hue to background:
 ```css
 /* Amateur */
@@ -56,10 +56,10 @@ Pure black + white text causes **halation** (glowing halo, eye strain). Google M
 - Elevated: `#2C2C2C`
 - Modal: `#333333`
 
-Each level +5% lighter. Don't "invert" light mode — breaks hierarchy (advancing elements become receding).
+Each level +5% lighter. Don't "invert" light mode: breaks hierarchy (advancing elements become receding).
 
 ### 6. Stop using HSL for color palettes
-**Postmark/Wildbit + Stripe engineering documented this.** HSL lies about perceived lightness — blue at L=50 looks darker than yellow at L=50. You can't build predictable contrast across hues with HSL.
+**Postmark/Wildbit + Stripe engineering documented this.** HSL lies about perceived lightness: blue at L=50 looks darker than yellow at L=50. You can't build predictable contrast across hues with HSL.
 
 **Use OKLCH instead.** `oklch(50% 0.15 220)` and `oklch(50% 0.15 90)` appear equally bright regardless of hue. Stripe rebuilt their entire color system on CIELAB for this reason.
 
@@ -78,7 +78,7 @@ Long gradients develop ugly banding. Fix: SVG noise filter layered underneath at
 This is how Linear, Vercel, Stripe make hero sections feel "printed, not digital."
 
 ### 8. Designers must understand HTML/CSS
-**r/webdev 20 upvotes** — u/ezhikov: "Designers who know that `border-radius` creates perfect circles, that `overflow: hidden` clips children, that `position: sticky` has stacking context limits — these designers create specs that are BUILDABLE."
+**r/webdev 20 upvotes**: u/ezhikov: "Designers who know that `border-radius` creates perfect circles, that `overflow: hidden` clips children, that `position: sticky` has stacking context limits, these designers create specs that are BUILDABLE."
 
 ---
 
@@ -98,17 +98,17 @@ Regular resize: bounding box only, radius/stroke/shadow stay fixed → broken sp
 Name component `.atom-button-base` → hidden from consumers. Only published components appear in search. How enterprise design systems keep internal atoms private.
 
 ### 13. Keyboard shortcuts pros use
-- `Shift + A` — Auto Layout instantly
-- `Ctrl/Cmd + Alt + C` → `Ctrl/Cmd + Alt + V` — copy/paste properties
-- `Enter` with multiple frames — step into ALL child layers simultaneously
-- `K` — Scale mode
+- `Shift + A`: Auto Layout instantly
+- `Ctrl/Cmd + Alt + C` → `Ctrl/Cmd + Alt + V`: copy/paste properties
+- `Enter` with multiple frames: step into ALL child layers simultaneously
+- `K`: Scale mode
 
 ---
 
 ## Typography Pro Tips
 
 ### 14. Define 4-5 type combinations, not infinite variations
-**HackerNews consensus.** Not 12 font sizes — pick Display, Heading, Subheading, Body, Caption. Fixed weight, line-height, tracking per combo. Typography magic-numbers = programming with hardcoded strings.
+**HackerNews consensus.** Not 12 font sizes: pick Display, Heading, Subheading, Body, Caption. Fixed weight, line-height, tracking per combo. Typography magic-numbers = programming with hardcoded strings.
 
 ### 15. Fluid typography with `clamp()`
 ```css
@@ -132,7 +132,7 @@ Large display (48px+) needs -0.02em to -0.04em (default tracking creates uneven 
 When you rebrand from blue to teal, every consumer of `color-action-primary` updates automatically. Literal names = find-and-replace hunts across entire system.
 
 ### 18. T-shirt sizing for scales (not numbers)
-`xs, sm, md, lg, xl` — you can insert `sm-plus` later. You cannot insert between `2` and `3` without renaming everything.
+`xs, sm, md, lg, xl`, you can insert `sm-plus` later. You cannot insert between `2` and `3` without renaming everything.
 
 ### 19. Token naming pattern (Smashing consensus)
 `[namespace]-[category]-[property]-[variant]-[state]`
@@ -147,11 +147,11 @@ Style guide = colors/fonts appearance. Design system = living code + docs with r
 
 ## Interaction Design Wisdom
 
-### 21. "Minimize clicks" is wrong — flow matters more
+### 21. "Minimize clicks" is wrong: flow matters more
 **HackerNews veteran (30-year practitioner):** "Making everything one click away creates overwhelming button interfaces. Flow is way more important than number of actions." A well-organized 3-step wizard beats a single-screen mess.
 
 ### 22. Information density is context-dependent
-Excel's cluttered interface works for power users. Don't add white space because Dribbble shots have it — add it where it serves the task.
+Excel's cluttered interface works for power users. Don't add white space because Dribbble shots have it: add it where it serves the task.
 
 ### 23. Make destructive actions slightly harder
 Delete button red + confirmation dialog + **type item name to confirm bulk deletes**. Friction is intentional UX, not poor design. Pros know friction has legitimate uses.
@@ -165,7 +165,7 @@ margin: -12px;
 Extends tappable area without changing layout impact.
 
 ### 25. Watch users fail WITHOUT helping
-**HN veteran:** "You won't create a good cat toy if you don't understand cats." Watch without guidance, without hints. One developer watched a user struggle 1 second with a fire extinguisher app — that second was worth weeks of assumptions. Formal user testing has limits — participants perform when they know they're watched.
+**HN veteran:** "You won't create a good cat toy if you don't understand cats." Watch without guidance, without hints. One developer watched a user struggle 1 second with a fire extinguisher app, that second was worth weeks of assumptions. Formal user testing has limits: participants perform when they know they're watched.
 
 ---
 
@@ -193,7 +193,7 @@ Not one technique. It's: every shadow same light source + every radius same scal
 **HN consensus.** Unplug mouse, use keyboard only for a week. Reveals: missing focus states, non-logical tab order, modal keyboard traps, inaccessible dropdowns, unlabeled icon buttons. Improvements benefit ALL users, not just a11y needs.
 
 ### 32. Study WHY elements are placed where, not just how they look
-**u/OkMetal220:** "Don't overuse AI. Doing this teaches you design, UX, SEO, deployment — all the things you only learn by going through the full process."
+**u/OkMetal220:** "Don't overuse AI. Doing this teaches you design, UX, SEO, deployment, all the things you only learn by going through the full process."
 
 Copying Dribbble screenshots without understanding reasoning = cargo-cult design. Breaks in context.
 
@@ -210,13 +210,13 @@ Copying Dribbble screenshots without understanding reasoning = cargo-cult design
 
 ## Contrarian Takes (from veterans)
 
-1. **"Fewer clicks = better UX" is wrong** — Flow and cognitive load matter more than click count
-2. **Information density is not the enemy** — Dense Excel interfaces are correct for power users
-3. **Formal user testing is overrated** — Open betas and watching users fail reveals more
-4. **AI-generated UI produces median outcomes** — Wow comes from studied taste
-5. **HSL is actively harmful for accessible palettes** — OKLCH is the replacement
-6. **Pure black in dark mode is wrong** — Universal beginner mistake causing halation
-7. **Care/taste is the competitive advantage in AI era** — @daltonuiux: "Great products aren't built with a few prompts. They're built on care, taste, attention to detail."
+1. **"Fewer clicks = better UX" is wrong**: Flow and cognitive load matter more than click count
+2. **Information density is not the enemy**: Dense Excel interfaces are correct for power users
+3. **Formal user testing is overrated**: Open betas and watching users fail reveals more
+4. **AI-generated UI produces median outcomes**: Wow comes from studied taste
+5. **HSL is actively harmful for accessible palettes**: OKLCH is the replacement
+6. **Pure black in dark mode is wrong**: Universal beginner mistake causing halation
+7. **Care/taste is the competitive advantage in AI era**: @daltonuiux: "Great products aren't built with a few prompts. They're built on care, taste, attention to detail."
 
 ---
 

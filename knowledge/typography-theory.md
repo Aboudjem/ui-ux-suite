@@ -30,7 +30,7 @@
 |-------|------|----------|
 | 1.067 | Minor Second | Very dense: dashboards, data tables |
 | 1.125 | Major Second | Compact: admin panels, utilities |
-| 1.200 | Minor Third | **Balanced — most common for apps** |
+| 1.200 | Minor Third | **Balanced: most common for apps** |
 | 1.250 | Major Third | Spacious: marketing, editorial |
 | 1.333 | Perfect Fourth | Bold: landing pages, magazines |
 | 1.414 | Augmented Fourth | Dramatic: hero sections only |
@@ -96,18 +96,18 @@
 - Load 3-4 weights maximum (performance)
 - Variable fonts can serve all weights from one file
 - Body text should never use weights below 300 (too light to read)
-- Weight contrast should be obvious — 400 vs 500 is subtle, 400 vs 700 is clear
+- Weight contrast should be obvious: 400 vs 500 is subtle, 400 vs 700 is clear
 
 ---
 
 ## Font Loading & Performance
 
 ### Strategies
-1. **font-display: swap** — show text immediately in fallback, swap when loaded (best for most)
-2. **Preload critical fonts** — `<link rel="preload" href="font.woff2" as="font" crossorigin>`
-3. **Variable fonts** — single file serves all weights, reduces requests
-4. **Subsetting** — strip unused characters (Latin-only: ~30KB vs ~200KB full Unicode)
-5. **size-adjust** — minimize layout shift when fallback swaps to web font
+1. **font-display: swap**: show text immediately in fallback, swap when loaded (best for most)
+2. **Preload critical fonts**: `<link rel="preload" href="font.woff2" as="font" crossorigin>`
+3. **Variable fonts**: single file serves all weights, reduces requests
+4. **Subsetting**: strip unused characters (Latin-only: ~30KB vs ~200KB full Unicode)
+5. **size-adjust**: minimize layout shift when fallback swaps to web font
 
 ### System Font Stacks (zero-cost performance)
 ```css

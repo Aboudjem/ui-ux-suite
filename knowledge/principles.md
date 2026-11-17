@@ -17,7 +17,7 @@ Use the user's language, not developer jargon.
 - **Modern extension:** Locale-aware formatting, context-sensitive terminology, AI-generated explanations
 
 ### 3. User Control and Freedom
-Undo, back, escape, cancel — always available.
+Undo, back, escape, cancel: always available.
 - **UI implications:** Undo for destructive actions, clear navigation history, close buttons on all overlays, cancel on long operations
 - **Modern extension:** Command palette (Cmd+K) for power users, keyboard shortcuts, bulk undo
 
@@ -44,7 +44,7 @@ Shortcuts for experts, simplicity for beginners.
 ### 8. Aesthetic and Minimalist Design
 Every element must earn its space.
 - **UI implications:** Remove decorative elements that don't serve function, reduce visual noise, whitespace is not wasted space
-- **Modern extension:** Strategic minimalism — minimal but with personality and craft
+- **Modern extension:** Strategic minimalism, minimal but with personality and craft
 
 ### 9. Help Users Recognize, Diagnose, Recover from Errors
 Plain language errors with solutions.
@@ -61,7 +61,7 @@ Contextual, searchable, task-oriented.
 ## Layout Principles
 
 ### Proximity
-Related items close together, unrelated items far apart. This is the most powerful grouping mechanism — spacing communicates relationships.
+Related items close together, unrelated items far apart. This is the most powerful grouping mechanism: spacing communicates relationships.
 
 ### Alignment
 Everything should align to something. Misaligned elements create visual tension and reduce perceived quality. Use a grid or alignment guides.
@@ -76,15 +76,15 @@ Important things should be visually distinct. Use size, color, weight, or spacin
 Visual weight guides attention order. The most important element should be the most visually prominent. Hierarchy is created through: size > color > weight > position.
 
 ### Balance
-Symmetrical (formal, stable) or asymmetrical (dynamic, energetic) — choose intentionally based on product personality.
+Symmetrical (formal, stable) or asymmetrical (dynamic, energetic): choose intentionally based on product personality.
 
 ---
 
 ## Interaction Principles
 
-- **Direct manipulation** over abstract commands — drag to reorder, click to edit inline
-- **Immediate feedback** for every action — within 100ms
-- **Reversible actions** where possible — undo, cancel, revert
-- **Progressive disclosure** — simple first, details on demand
-- **Reduce interaction cost** — fewer clicks, less typing, smarter defaults
-- **Forgiveness** — accept varied input formats, confirm destructive actions, auto-save
+- **Direct manipulation** over abstract commands: drag to reorder, click to edit inline
+- **Immediate feedback** for every action: within 100ms
+- **Reversible actions** where possible: undo, cancel, revert
+- **Progressive disclosure**: simple first, details on demand
+- **Reduce interaction cost**: fewer clicks, less typing, smarter defaults
+- **Forgiveness**: accept varied input formats, confirm destructive actions, auto-save

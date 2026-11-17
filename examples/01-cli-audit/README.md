@@ -1,4 +1,4 @@
-# Example 01 — CLI audit on a sample component
+# Example 01: CLI audit on a sample component
 
 Audit the sample component with `npx ui-ux-suite` and see the located, measured, fixed findings.
 
@@ -53,4 +53,4 @@ Low text contrast on `.hero-subtitle`: 1.03:1
        (meets 4.5:1 on #ffffff), or darken further.
 ```
 
-That is the whole point: **not "improve your contrast" — the exact line, the measured ratio, and the exact fix.**
+That is the whole point: **not "improve your contrast", the exact line, the measured ratio, and the exact fix.**

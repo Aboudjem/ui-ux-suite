@@ -1,9 +1,9 @@
-/* Sample component with deliberate design problems — for demonstration only.
+/* Sample component with deliberate design problems, for demonstration only.
    Run: npx ui-ux-suite examples/01-cli-audit/src
    Expected score: ~3.7/10 (Needs Work)
 */
 
-/* Problem 1: near-invisible text contrast (1.03:1 — WCAG 1.4.3 needs 4.5:1) */
+/* Problem 1: near-invisible text contrast (1.03:1, WCAG 1.4.3 needs 4.5:1) */
 .hero-subtitle {
   color: #fbfbfb;
   background-color: #ffffff;
@@ -16,7 +16,7 @@
   margin: 7px;
 }
 
-/* Problem 4: 43+ unique colors — no design system */
+/* Problem 4: 43+ unique colors, no design system */
 .btn-primary    { background: #ff4500; color: #fff; }
 .btn-secondary  { background: #ff6600; color: #fff; }
 .btn-danger     { background: #ff7700; color: #fff; }
@@ -32,7 +32,7 @@
 .highlight-c    { background: #ccddee; }
 .highlight-d    { background: #ddeeff; }
 
-/* Problem 5: multiple font families (5 — should be 1-2) */
+/* Problem 5: multiple font families (5, should be 1-2) */
 .hero-title    { font-family: 'Playfair Display', serif; }
 .body-copy     { font-family: 'Comic Sans MS', cursive; }
 .nav-link      { font-family: 'Bebas Neue', sans-serif; }

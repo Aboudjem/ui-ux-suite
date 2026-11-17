@@ -83,18 +83,18 @@ Collect all findings and score across 12 dimensions (1-10 each):
 
 ## Output Format
 
-Generate a structured report:
+Generate a structured report. The order is fixed: the verdict, then the three things to do, then the detail.
+A reader who stops after ten lines must still know the score and what to fix.
 
 ```markdown
-# Design Audit Report
+# Design audit: [overall]/10 ([grade])
 
-## Project Profile
-- Framework: [detected]
-- Styling: [detected]
-- Component Library: [detected]
-- Theme System: [detected]
-- Dark Mode: [yes/no]
-- Design Maturity: [early/developing/mature]
+**Verdict:** score [overall]/10, [grade]. [N] findings, [M] critical.
+
+## Fix these first
+1. [most severe finding] at `[file:line]`. Fix: [the exact change]
+2. [next finding, a different kind of problem] at `[file:line]`. Fix: [the exact change]
+3. [next finding, a different kind of problem] at `[file:line]`. Fix: [the exact change]
 
 ## Score Card
 [formatted score card with all 12 dimensions]
@@ -118,6 +118,14 @@ Generate a structured report:
 [...]
 ### Major Improvements (4+ hours)
 [...]
+
+## Project Profile
+- Framework: [detected]
+- Styling: [detected]
+- Component Library: [detected]
+- Theme System: [detected]
+- Dark Mode: [yes/no]
+- Design Maturity: [early/developing/mature]
 ```
 
 ## Principles

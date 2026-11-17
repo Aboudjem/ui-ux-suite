@@ -1,10 +1,10 @@
-# Command surface — design decisions
+# Command surface: design decisions
 
 ## What's visible in the `/` menu
 
 | Command | Visible | Reason |
 |:--------|:-------:|:-------|
-| `audit` | yes | Master orchestrator — runs the full 12-dimension pipeline. This is the one command users need. |
+| `audit` | yes | Master orchestrator: runs the full 12-dimension pipeline. This is the one command users need. |
 | `a11y` | no | Covered by `audit --dimensions=accessibility`. Claude invokes it directly when asked "check contrast" or "fix focus rings". |
 | `colors` | no | Covered by `audit --dimensions=color`. |
 | `components` | no | Covered by `audit --dimensions=components,interaction`. |
@@ -15,7 +15,7 @@
 ## Why
 
 The owner is ADHD. A five-item `/` menu where four entries are scoped variants of the
-fifth is pure friction — the user has to mentally diff them before picking one. Hiding
+fifth is pure friction: the user has to mentally diff them before picking one. Hiding
 the dimension-scoped commands removes that decision entirely.
 
 No capability is lost. `user-invocable: false` only suppresses the command from the

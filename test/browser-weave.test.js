@@ -41,7 +41,7 @@ function mockBrowserResult() {
   };
 }
 
-describe('browser-weave — weaveBrowserFindings', () => {
+describe('browser-weave: weaveBrowserFindings', () => {
   beforeEach(() => { resetFindingSeq(); });
 
   it('returns located Findings for the axe violation and touch target', () => {
@@ -126,7 +126,7 @@ describe('browser-weave — weaveBrowserFindings', () => {
   });
 });
 
-describe('annotate — overlayScript / removeOverlayScript', () => {
+describe('annotate: overlayScript / removeOverlayScript', () => {
   it('overlayScript returns a self-contained JS string embedding the boxes', () => {
     const boxes = [{ x: 10, y: 20, width: 28, height: 28, label: 'tiny target' }];
     const src = overlayScript(boxes);
@@ -135,7 +135,7 @@ describe('annotate — overlayScript / removeOverlayScript', () => {
     assert.ok(src.includes('createElement'), 'builds DOM nodes');
     assert.ok(src.includes('tiny target'), 'label is embedded');
     assert.ok(src.includes('28'), 'box geometry embedded');
-    // No DOM access happens at build time — must be a string only.
+    // No DOM access happens at build time: must be a string only.
     assert.ok(!src.startsWith('function'), 'returns an IIFE-style evaluatable expression');
   });
 
@@ -164,7 +164,7 @@ describe('annotate — overlayScript / removeOverlayScript', () => {
   });
 });
 
-describe('annotate — clampViewport', () => {
+describe('annotate: clampViewport', () => {
   it('clamps oversize viewport 4000x3000 → 1920x1080', () => {
     assert.deepEqual(clampViewport({ width: 4000, height: 3000 }), { width: 1920, height: 1080 });
   });
@@ -190,7 +190,7 @@ describe('annotate — clampViewport', () => {
   });
 });
 
-describe('browser — screenshot helpers exist and gate cleanly', () => {
+describe('browser: screenshot helpers exist and gate cleanly', () => {
   const browser = require('../lib/browser');
 
   it('still exports the original peer-dep contract plus new screenshot helpers', () => {

@@ -1,6 +1,6 @@
-# Example 03 — Contrast check: `uiux_check_contrast`
+# Example 03: Contrast check: `uiux_check_contrast`
 
-Check any color pair against WCAG 2.2 and APCA in one tool call — no audit needed.
+Check any color pair against WCAG 2.2 and APCA in one tool call, no audit needed.
 
 ## Via the MCP tool
 
@@ -41,7 +41,7 @@ Low text contrast on `.hero-subtitle`: 1.03:1
 ```
 
 This is what sets ui-ux-suite apart: the tool finds `#fbfbfb` at `styles.css:14` in your
-source and tells you it fails. Not "your contrast may be low" — the exact file, the exact
+source and tells you it fails. Not "your contrast may be low": the exact file, the exact
 line, the exact ratio, and the exact fix.
 
 ## WCAG thresholds at a glance

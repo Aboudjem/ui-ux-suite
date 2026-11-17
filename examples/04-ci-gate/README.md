@@ -1,4 +1,4 @@
-# Example 04 — CI gate with `--fail-under`
+# Example 04: CI gate with `--fail-under`
 
 Block merges when the design score drops below your threshold.
 
@@ -9,10 +9,10 @@ npx ui-ux-suite . --fail-under 7
 ```
 
 Exit codes:
-- `0` — score is at or above 7
-- `1` — score is below 7 (CI fails the step)
-- `2` — path not found
-- `3` — insufficient evidence (too few files to score)
+- `0`: score is at or above 7
+- `1`: score is below 7 (CI fails the step)
+- `2`: path not found
+- `3`: insufficient evidence (too few files to score)
 
 ## GitHub Actions workflow
 

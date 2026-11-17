@@ -1,7 +1,7 @@
-# Insane Web Animation Techniques — April 2026
+# Insane Web Animation Techniques: April 2026
 
 > Source: Deep research campaign, 100+ sources, 20 techniques ranked
-> Focus: WOW-factor techniques actually shipping in production — not basic fade-ins
+> Focus: WOW-factor techniques actually shipping in production, not basic fade-ins
 
 ---
 
@@ -29,7 +29,7 @@
 
 ---
 
-## Top 5 — Deep Dives
+## Top 5: Deep Dives
 
 ### 1. Scroll-Driven CSS Animations (native compositor)
 **Why insane in 2026:** 60fps even during heavy JS. Chromium 115+, Safari 18. Wipe/cover-flow/sticky-grid patterns that used to need GSAP ScrollSmoother now work in ~15 lines of CSS.
@@ -37,16 +37,16 @@
 **Advanced patterns beyond fade-in:**
 - Apple cover-flow rotation + z-index swap driven by same `view()` timeline
 - Sticky-grid scroll reveal (Codrops Mar 2026)
-- Wipe-on-pass — element animates only while intersecting visible frame
+- Wipe-on-pass: element animates only while intersecting visible frame
 - Scroll-linked progress bar via `scroll-timeline-name: --root`
 
 **Production:** Builder.io, Codrops, modern Apple-style marketing pages
 **Graceful degrade:** `@supports (animation-timeline: scroll())`
 
-### 2. View Transitions API — Cross-Document + Shared Element Morphs
+### 2. View Transitions API: Cross-Document + Shared Element Morphs
 **The biggest leap in web navigation polish since AJAX.**
 
-You can animate from `/index` to `/contact` with **zero JS**. Assign matching `view-transition-name` to a thumbnail and a hero on the detail page — browser interpolates position, size, opacity automatically across the navigation.
+You can animate from `/index` to `/contact` with **zero JS**. Assign matching `view-transition-name` to a thumbnail and a hero on the detail page: browser interpolates position, size, opacity automatically across the navigation.
 
 **Patterns:**
 - Product grid → detail page (card image morphs into hero)
@@ -61,9 +61,9 @@ You can animate from `/index` to `/contact` with **zero JS**. Assign matching `v
 **Biggest capability shift of the decade.** Ships by default in Chrome, Firefox, Safari, Edge since Nov 2025.
 
 **Real production wins:**
-- **Nexara Labs** — AR try-on, 58 FPS on iPhone 15 (vs 12 FPS WebGL), 3M users, +40% conversion
-- **ChartGPU** — 1M data points @ 60 FPS (WebGL would crawl)
-- **Babylon.js 7** — render bundles = 10x reuse speedup
+- **Nexara Labs**: AR try-on, 58 FPS on iPhone 15 (vs 12 FPS WebGL), 3M users, +40% conversion
+- **ChartGPU**: 1M data points @ 60 FPS (WebGL would crawl)
+- **Babylon.js 7**: render bundles = 10x reuse speedup
 
 **Use for:** data-viz with 100k+ points, AR, procedural textures, physics sims, generative backgrounds.
 
@@ -72,7 +72,7 @@ You can animate from `/index` to `/contact` with **zero JS**. Assign matching `v
 
 **Must-use patterns:**
 - `drei/ScrollControls` + `useScroll()` for scroll-linked 3D camera rigs
-- `MeshTransmissionMaterial` — liquid-glass refraction (Apple Vision Pro aesthetic)
+- `MeshTransmissionMaterial`: liquid-glass refraction (Apple Vision Pro aesthetic)
 - `EffectComposer` for bloom, DOF, chromatic aberration, vignette
 - `<Float speed={1.5}>` for idle breathing motion
 - `<Preload all />` and `dpr={[1,2]}` for perf
@@ -80,7 +80,7 @@ You can animate from `/index` to `/contact` with **zero JS**. Assign matching `v
 **Cost:** 3MB bundle penalty. Always code-split + lazy-load.
 
 ### 5. GSAP Flip + ScrollTrigger (FREE since 3.13)
-**GSAP became 100% free in mid-2024** — including Flip, SplitText, MorphSVG, ScrambleText, ScrollSmoother. No more $99/yr barrier.
+**GSAP became 100% free in mid-2024**, including Flip, SplitText, MorphSVG, ScrambleText, ScrollSmoother. No more $99/yr barrier.
 
 **Patterns:**
 - **Grid → detail Flip:** capture state → swap DOM → `Flip.from(state, { duration: 0.8, ease: 'power3.inOut' })`
@@ -94,7 +94,7 @@ You can animate from `/index` to `/contact` with **zero JS**. Assign matching `v
 
 ## Text Animation Techniques
 
-### Blur Reveal (React Bits BlurText — ubiquitous on AI SaaS)
+### Blur Reveal (React Bits BlurText: ubiquitous on AI SaaS)
 ```css
 @keyframes blur-in {
   from { filter: blur(10px); opacity: 0; }
@@ -107,7 +107,7 @@ Combine with `animation-delay` staggered per word/character.
 Free since 3.13. Split into characters, stagger with blur/rotate/scale per char.
 
 ### ScrambleText Hover Decode
-Free since 3.13. Decodes random characters into final text on hover — classic cyberpunk effect done tastefully.
+Free since 3.13. Decodes random characters into final text on hover: classic cyberpunk effect done tastefully.
 
 ### Apple-style Canvas Image Sequence
 Pre-render PNG sequence (2000+ frames), draw to canvas on scroll via `requestAnimationFrame`. Used on Apple marketing pages for product reveals. ~10MB payload but jaw-dropping effect.
@@ -143,20 +143,20 @@ Morph between any two SVG paths. Free in GSAP 3.13+. Use for logo transformation
 
 ## Production Site Recipes (decoded)
 
-### Linear — shimmer skeleton
+### Linear: shimmer skeleton
 1×100px white-to-transparent gradient (`rgba(255,255,255,0.6) → 0`)
 translateX(-100% → 200%) ease-out 1.5s infinite
 
-### Apple — image-sequence scroll
+### Apple: image-sequence scroll
 Canvas 2000-frame sequence, `ctx.drawImage` on scroll-linked frame index. 60fps on most devices with proper debouncing.
 
-### Vercel — `@property` mesh gradients + View Transitions
+### Vercel: `@property` mesh gradients + View Transitions
 Registered `<color>` custom properties animated on hover/route change. Cross-document view transitions on marketing nav.
 
-### Framer — dogfoods `layoutId`
+### Framer: dogfoods `layoutId`
 Every card/modal uses `layoutId` for automatic shared-element morphs. Design engineering team writes ZERO manual animation code.
 
-### Obys (Awwwards perennial) — magnetic elastic cursor
+### Obys (Awwwards perennial): magnetic elastic cursor
 Every interactive element has attractive force + elastic return. Reference implementation for "site feels alive" effects.
 
 ---
@@ -177,13 +177,13 @@ Every interactive element has attractive force + elastic return. Reference imple
 
 ## Performance Guardrails (non-negotiable)
 
-1. **`prefers-reduced-motion`** — always honored, every effect
-2. **GPU-accelerated properties only** — `transform`, `opacity`, `filter`, custom `@property` types. Never animate `width/height/top/left`
-3. **Pause on `visibilitychange`** — when tab is hidden, `cancelAnimationFrame`
-4. **Code-split WebGL/3D** — dynamic import, fallback on mobile
-5. **Debounce scroll handlers** — prefer passive listeners, `IntersectionObserver`
-6. **`will-change` carefully** — only on the actual animating element, remove after animation ends
-7. **Profile in DevTools** — Performance tab, check for layout thrashing on hot paths
+1. **`prefers-reduced-motion`**: always honored, every effect
+2. **GPU-accelerated properties only**: `transform`, `opacity`, `filter`, custom `@property` types. Never animate `width/height/top/left`
+3. **Pause on `visibilitychange`**, when tab is hidden, `cancelAnimationFrame`
+4. **Code-split WebGL/3D**: dynamic import, fallback on mobile
+5. **Debounce scroll handlers**: prefer passive listeners, `IntersectionObserver`
+6. **`will-change` carefully**, only on the actual animating element, remove after animation ends
+7. **Profile in DevTools**: Performance tab, check for layout thrashing on hot paths
 
 ---
 
@@ -197,9 +197,9 @@ Every interactive element has attractive force + elastic return. Reference imple
 - subgrid
 
 # Animation engine (one)
-- motion (motion.dev) — React
+- motion (motion.dev): React
   OR
-- gsap 3.13+ (free) — vanilla/any framework
+- gsap 3.13+ (free): vanilla/any framework
 
 # 3D (only if needed)
 - @react-three/fiber + @react-three/drei

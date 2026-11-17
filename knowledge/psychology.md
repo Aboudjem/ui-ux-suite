@@ -8,7 +8,7 @@
 
 ### Cognitive Load Theory
 Three types: intrinsic (task complexity), extraneous (poor design adding friction), germane (learning/understanding).
-- **UI implication:** Reduce extraneous load — remove unnecessary elements, simplify forms, use progressive disclosure
+- **UI implication:** Reduce extraneous load, remove unnecessary elements, simplify forms, use progressive disclosure
 - **Example:** A 20-field signup form has high extraneous load. Progressive profiling (3 fields now, rest later) reduces it.
 - **Misuse risk:** Over-simplifying to the point of hiding needed information
 
@@ -53,7 +53,7 @@ Consistent placement + reduced friction + satisfying completion = habit formatio
 People fear losing more than they desire gaining (2x more motivating).
 - **UI implication:** Frame around what users keep, not what they gain. "Don't lose your progress" > "Save to continue later"
 - **Example:** "Your trial expires in 3 days" (loss frame) vs "Upgrade for premium features" (gain frame)
-- **Misuse risk:** Confirmshaming ("No thanks, I don't want to save money") — NEVER do this
+- **Misuse risk:** Confirmshaming ("No thanks, I don't want to save money"), NEVER do this
 
 ### Endowment Effect
 People value what they already have more than equivalent alternatives.
@@ -70,7 +70,7 @@ First number/option seen sets expectations for all subsequent judgments.
 People look to others' behavior when uncertain.
 - **UI implication:** Show real usage counts, testimonials, customer logos, activity feeds. Must be real data.
 - **Example:** "Join 50,000+ teams" with recognizable logos
-- **Misuse risk:** Fake reviews, inflated numbers, manufactured urgency — destroys trust when discovered
+- **Misuse risk:** Fake reviews, inflated numbers, manufactured urgency, destroys trust when discovered
 
 ---
 
@@ -80,13 +80,13 @@ People look to others' behavior when uncertain.
 - **Consistency:** Same action = same result, every time
 - **Transparency:** Clear about data use, pricing, terms
 - **Social proof:** Real numbers, testimonials, recognizable logos
-- **Professional polish:** Aesthetic-usability effect — beautiful = perceived as more usable
+- **Professional polish:** Aesthetic-usability effect, beautiful = perceived as more usable
 - **Error recovery:** Graceful errors with clear resolution paths
 
 ### Aesthetic-Usability Effect
 Beautiful designs are perceived as more usable and more trustworthy. Users forgive more usability issues in visually appealing interfaces.
 - **UI implication:** Polish matters. Visual quality directly affects perceived usability and trust.
-- **Caution:** Beauty doesn't replace usability — it amplifies it
+- **Caution:** Beauty doesn't replace usability, it amplifies it
 
 ### Peak-End Rule
 Experiences are judged by the peak moment and the ending, not the average.

@@ -1,12 +1,12 @@
 ---
-description: Run a component-quality audit — state coverage, primitive consistency, cn()/CVA patterns. Scoped variant of /ui-ux-suite:audit.
+description: Run a component-quality audit: state coverage, primitive consistency, cn()/CVA patterns. Scoped variant of /ui-ux-suite:audit.
 argument-hint: "[path]"
 model: sonnet
 user-invocable: false
 allowed-tools: [mcp__ui-ux-suite__uiux_audit_run, mcp__ui-ux-suite__uiux_scan_project, mcp__ui-ux-suite__uiux_score_dimension, mcp__ui-ux-suite__uiux_knowledge_query, Read, Grep, Glob]
 ---
 
-# /ui-ux-suite:components — Component-quality audit
+# /ui-ux-suite:components (component-quality audit)
 
 Scoped audit on component patterns.
 
@@ -26,4 +26,4 @@ Scoped audit on component patterns.
 - Inline-component duplication heuristic (same button styles repeated 5+ times → missing primitive)
 - Icon library presence (lucide-react, heroicons, phosphor-icons, @radix-ui/react-icons)
 
-Don't count `<div>` as "low component quality" — devs use divs for layout intentionally. Focus on primitive reuse and state coverage.
+Don't count `<div>` as "low component quality", because devs use divs for layout on purpose. Focus on primitive reuse and state coverage.

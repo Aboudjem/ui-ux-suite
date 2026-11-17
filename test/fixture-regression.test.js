@@ -30,14 +30,14 @@ const FIXTURE = path.join(__dirname, 'fixtures', 'planted-ux-problems');
  * here we only encode "which finding is THE one for this planted id".
  */
 const PLANTED_MATCHERS = {
-  // A — near-white text on near-white bg (.hero-subtitle #fbfbfb on #ffffff = 1.03:1)
+  // A: near-white text on near-white bg (.hero-subtitle #fbfbfb on #ffffff = 1.03:1)
   A: (f) =>
     f.dimension === 'accessibility' &&
     /hero-subtitle/.test(f.title) &&
     /1\.03/.test(f.title) &&
     f.evidence && f.evidence.file === 'src/styles.css',
 
-  // B — buried/low-affordance primary CTA. Two signals exist (low contrast on .cta-primary AND
+  // B: buried/low-affordance primary CTA. Two signals exist (low contrast on .cta-primary AND
   // the generic "continue" CTA copy). We accept the located low-contrast .cta-primary finding.
   B: (f) =>
     f.dimension === 'accessibility' &&
@@ -45,61 +45,61 @@ const PLANTED_MATCHERS = {
     /2\.64/.test(f.title) &&
     f.evidence && f.evidence.selector === '.cta-primary',
 
-  // C — low-contrast section with an invisible boundary (.section-muted bg 1.09:1 vs page)
+  // C: low-contrast section with an invisible boundary (.section-muted bg 1.09:1 vs page)
   C: (f) =>
     f.dimension === 'hierarchy' &&
     /Invisible surface boundary/.test(f.title) &&
     /section-muted/.test(f.title),
 
-  // D — tiny touch targets (.icon-btn 28x28 / .nav-link 32px tall)
+  // D: tiny touch targets (.icon-btn 28x28 / .nav-link 32px tall)
   D: (f) =>
     f.dimension === 'platform' &&
     /Touch target too small/.test(f.title) &&
     f.evidence && /(icon-btn|nav-link)/.test(f.evidence.selector || ''),
 
-  // E-alt — <img> missing alt
+  // E-alt: <img> missing alt
   'E-alt': (f) =>
     f.dimension === 'accessibility' &&
     f.evidence && f.evidence.selector === '<img>' &&
     /missing `alt`/.test(f.title),
 
-  // E-label — form input with no programmatic label
+  // E-label: form input with no programmatic label
   'E-label': (f) =>
     f.dimension === 'accessibility' &&
     f.evidence && f.evidence.selector === '<input>' &&
     /no associated label/.test(f.title),
 
-  // F — desktop-only fixed-width layout (.layout width:1200px)
+  // F: desktop-only fixed-width layout (.layout width:1200px)
   F: (f) =>
     f.dimension === 'responsive' &&
     /Fixed 1200px width/.test(f.title) &&
     f.evidence && f.evidence.selector === '.layout',
 
-  // G — body text too small (.body-copy 11px — must not be filtered at 12)
+  // G: body text too small (.body-copy 11px, must not be filtered at 12)
   G: (f) =>
     f.dimension === 'typography' &&
     /body-copy/.test(f.title) &&
     /11px/.test(f.title) &&
     f.evidence && f.evidence.measured === '11px',
 
-  // H — off-scale spacing on .card (7/13/19px)
+  // H: off-scale spacing on .card (7/13/19px)
   H: (f) =>
     f.dimension === 'layout' &&
     /Off-scale spacing/.test(f.title) &&
     f.evidence && f.evidence.selector === '.card',
 
-  // I-colors — too many near-duplicate colors (swatch block, no token system)
+  // I-colors: too many near-duplicate colors (swatch block, no token system)
   'I-colors': (f) =>
     f.dimension === 'color' &&
     /Near-duplicate colors/.test(f.title),
 
-  // I-fonts — too many font families (5 declared)
+  // I-fonts: too many font families (5 declared)
   'I-fonts': (f) =>
     f.dimension === 'typography' &&
     /font families/.test(f.title) &&
     /^5 /.test(f.title),
 
-  // J — no :focus-visible anywhere (the comment false-positive must NOT suppress this)
+  // J, no :focus-visible anywhere (the comment false-positive must NOT suppress this)
   J: (f) =>
     f.dimension === 'accessibility' &&
     /No visible keyboard focus indicator/.test(f.title),
@@ -125,7 +125,7 @@ test('each planted id is detected as located + measured + fixed', () => {
   const { findings } = runLocatedAudit(FIXTURE);
   for (const id of PLANTED_IDS) {
     const match = findings.find(PLANTED_MATCHERS[id]);
-    assert.ok(match, `PLANTED[${id}] was NOT detected — specificity REGRESSION`);
+    assert.ok(match, `PLANTED[${id}] was NOT detected: specificity REGRESSION`);
     assert.ok(
       isLocatedMeasuredFixed(match),
       `PLANTED[${id}] matched finding ${match.id} but it is not fully located+measured+fixed`

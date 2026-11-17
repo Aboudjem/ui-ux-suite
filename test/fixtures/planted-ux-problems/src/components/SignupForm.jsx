@@ -2,10 +2,10 @@ import React from 'react';
 
 /*
  * Planted accessibility problems in JSX (scanned by walkFiles .jsx branch).
- * PLANTED[E-alt]: <img> with no alt attribute @ src/components/SignupForm.jsx — expect accessibility (missing alt text) finding
- * PLANTED[E-label]: form <input> elements with no associated <label> @ src/components/SignupForm.jsx — expect accessibility/flows (missing form labels) finding
- * PLANTED[B]: the primary CTA is rendered as a plain text link, not a button — expect hierarchy/components (CTA affordance) finding
- * PLANTED[J]: no focus-visible: utility anywhere in className — expect accessibility/interaction finding
+ * PLANTED[E-alt]: <img> with no alt attribute @ src/components/SignupForm.jsx, expect accessibility (missing alt text) finding
+ * PLANTED[E-label]: form <input> elements with no associated <label> @ src/components/SignupForm.jsx, expect accessibility/flows (missing form labels) finding
+ * PLANTED[B]: the primary CTA is rendered as a plain text link, not a button, expect hierarchy/components (CTA affordance) finding
+ * PLANTED[J]: no focus-visible: utility anywhere in className, expect accessibility/interaction finding
  */
 export default function SignupForm() {
   return (

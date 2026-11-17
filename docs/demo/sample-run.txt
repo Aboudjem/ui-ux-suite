@@ -1,39 +1,37 @@
 $ npx ui-ux-suite test/fixtures/planted-ux-problems
 
-# Design Audit Report
+# Design audit: 3.7/10 (Needs Work)
 
-**Generated:** 2026-05-29T06:25:01.345Z
-**Duration:** 0.03s
-**Files scanned:** 3 CSS, 1 JSX/TSX/Vue/Svelte, 1 HTML
+**Verdict:** score 3.7/10, Needs Work. 46 located findings, 8 critical.
 
-## Project Profile
+## Fix these first
 
-- **Framework:** react
-- **Styling:** vanilla-css
-- **Component Library:** *none detected*
-- **Theme System:** *none detected*
-- **Dark Mode:** not detected
+1. 9 `.swatch*` color variants fail WCAG AA contrast (worst 1.75:1) at `src/styles.css:118`. Fix: Rebuild this color set against the surface it sits on so each meets ≥ 4.5:1 (e.g. the worst, `#b5c6d7`, should be `#6d7882` or darker), or reserve ...
+2. No visible keyboard focus indicator anywhere at `src/styles.css:22`. Fix: Add a focus ring to all interactive elements: `:focus-visible { outline: 2px solid var(--ring, #2563eb); outline-offset: 2px; }`.
+3. Fixed 1200px width on `.layout` with 0 media queries at `src/styles.css:57`. Fix: Use `max-width: 1200px; width: 100%` and add responsive breakpoints (sm/md/lg).
+
+**Weakest areas:** Typography System 1.5/10, Accessibility 1.6/10, Component Quality 2/10.
+
+_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:30:08.513Z. The detail follows._
 
 ## Score Card
 
-# Design Score Card
-
-**Overall: 3.7/10 - Needs Work**
+**Overall: 3.7/10 (Needs Work)**
 
 | Dimension | Score | Weight |
 |-----------|-------|--------|
-| Color System | 3.8/10 |####......| | 10% |
-| Typography System | 1.5/10 |##........| | 10% |
-| Layout & Spacing | 3.7/10 |####......| | 10% |
-| Component Quality | 2/10 |##........| | 10% |
-| Accessibility | 1.6/10 |##........| | 12% |
-| Visual Hierarchy | 4.3/10 |####......| | 10% |
-| Interaction Quality | 4/10 |####......| | 8% |
-| Responsiveness | 3.1/10 |###.......| | 8% |
-| Visual Polish | 7/10 |#######...| | 7% |
-| Performance UX | 7.5/10 |########..| | 5% |
-| Information Architecture | 4.7/10 |#####.....| | 5% |
-| Platform Appropriateness | 5.2/10 |#####.....| | 5% |
+| Color System | 3.8/10 [####......] | 10% |
+| Typography System | 1.5/10 [##........] | 10% |
+| Layout & Spacing | 3.7/10 [####......] | 10% |
+| Component Quality | 2/10 [##........] | 10% |
+| Accessibility | 1.6/10 [##........] | 12% |
+| Visual Hierarchy | 4.3/10 [####......] | 10% |
+| Interaction Quality | 4/10 [####......] | 8% |
+| Responsiveness | 3.1/10 [###.......] | 8% |
+| Visual Polish | 7/10 [#######...] | 7% |
+| Performance UX | 7.5/10 [########..] | 5% |
+| Information Architecture | 4.7/10 [#####.....] | 5% |
+| Platform Appropriateness | 5.2/10 [#####.....] | 5% |
 
 ## Laws of UX Coverage
 
@@ -43,15 +41,227 @@ $ npx ui-ux-suite test/fixtures/planted-ux-problems
 | Aesthetic-Usability Effect (`aesthetic-usability-effect`) | 15 | Body text too small (11px) - minimum 14px, prefer 16px |
 | Law of Proximity (`law-of-proximity`) | 10 | Inconsistent spacing values - adopt a spacing scale |
 | Jakob's Law (`jakobs-law`) | 8 | No responsive breakpoints detected |
-| Doherty Threshold (`doherty-threshold`) | 7 | Only 2 hover: variants — interactive elements likely lack hover feedback |
+| Doherty Threshold (`doherty-threshold`) | 7 | Only 2 hover: variants, interactive elements likely lack hover feedback |
 | Law of Pragnanz (`law-of-pragnanz`) | 6 | No consistent type scale detected - sizes appear random |
-| Fitts's Law (`fittss-law`) | 4 | Insufficient focus-visible: variants (1) — keyboard users cannot see focus |
-| Postel's Law (`postels-law`) | 4 | No prefers-reduced-motion media query — motion-sensitive users have no escape |
+| Fitts's Law (`fittss-law`) | 4 | Insufficient focus-visible: variants (1), keyboard users cannot see focus |
+| Postel's Law (`postels-law`) | 4 | No prefers-reduced-motion media query: motion-sensitive users have no escape |
 | Miller's Law (`millers-law`) | 3 | 43 unique colors - too many, consolidate to a system |
 | Tesler's Law (`teslers-law`) | 3 | 43 unique colors - too many, consolidate to a system |
-| Occam's Razor (`occams-razor`) | 1 | 5 font families — use 1–2 max |
-| Peak-End Rule (`peak-end-rule`) | 1 | No onboarding flow detected — new users dropped at the deep end |
-| Von Restorff Effect (`von-restorff-effect`) | 1 | No display-size type (text-2xl or larger) — hero text likely underscaled for visual anchoring |
+| Occam's Razor (`occams-razor`) | 1 | 5 font families, use 1–2 max |
+| Peak-End Rule (`peak-end-rule`) | 1 | No onboarding flow detected: new users dropped at the deep end |
+| Von Restorff Effect (`von-restorff-effect`) | 1 | No display-size type (text-2xl or larger): hero text likely underscaled for visual anchoring |
+
+## Specific findings (located + measured + fixed)
+
+46 located finding(s). The highest-impact are detailed below; each names the exact element, the measured value, and the concrete fix.
+
+### [!] 9 `.swatch*` color variants fail WCAG AA contrast (worst 1.75:1)
+- **Where:** `src/styles.css:118` · selector `.swatch*`
+- **Measured:** 9 pairs, worst 1.75:1 (needs 4.5:1)
+- **Why:** 9 selectors matching `.swatch*` (src/styles.css:100–118) set text colors that fail WCAG 2.2 §1.4.3 on their background; the worst is `#b5c6d7` on `#ffffff` = 1.75:1.
+- **Impact:** A whole family of low-contrast colors is unreadable as text and signals a palette without an accessible-by-default scale.
+- **Fix:** Rebuild this color set against the surface it sits on so each meets ≥ 4.5:1 (e.g. the worst, `#b5c6d7`, should be `#6d7882` or darker), or reserve these as decorative-only (never text).
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.product-card`: 1.39:1
+- **Where:** `src/components/Card.scss:9` · selector `.product-card`
+- **Measured:** 1.39:1 (APCA Lc 17) (needs 4.5:1)
+- **Why:** Text `#cfd2d6` on `#f4f5f6` measures 1.39:1 (APCA Lc 17). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.product-card` from `#cfd2d6` to `#6f7073` (meets 4.5:1 on `#f4f5f6`), or darken further.
+```diff
+- color: #cfd2d6;
++ color: #6f7073;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.hero-subtitle`: 1.03:1
+- **Where:** `src/styles.css:14` · selector `.hero-subtitle`
+- **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
+- **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
+```diff
+- color: #fbfbfb;
++ color: #767676;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.cta-primary`: 2.64:1
+- **Where:** `src/styles.css:23` · selector `.cta-primary`
+- **Measured:** 2.64:1 (APCA Lc 48.9) (needs 4.5:1)
+- **Why:** Text `#9aa0a6` on page background `#ffffff` measures 2.64:1 (APCA Lc 48.9). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.cta-primary` from `#9aa0a6` to `#73777c` (meets 4.5:1 on `#ffffff`), or darken further.
+```diff
+- color: #9aa0a6;
++ color: #73777c;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] Low text contrast on `.section-muted`: 1.48:1
+- **Where:** `src/styles.css:37` · selector `.section-muted`
+- **Measured:** 1.48:1 (APCA Lc 20.2) (needs 4.5:1)
+- **Why:** Text `#c9ccd1` on `#f4f5f6` measures 1.48:1 (APCA Lc 20.2). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
+- **Fix:** Change `color` on `.section-muted` from `#c9ccd1` to `#6f7073` (meets 4.5:1 on `#f4f5f6`), or darken further.
+```diff
+- color: #c9ccd1;
++ color: #6f7073;
+```
+- **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
+
+### [!] No visible keyboard focus indicator anywhere
+- **Where:** `src/styles.css:22` · selector `.cta-primary`
+- **Measured:** 0 focus rules (needs WCAG 2.4.7)
+- **Why:** No `:focus-visible`/`:focus` rule or focus utility was found in any stylesheet or component, yet interactive elements exist (e.g. `.cta-primary`). Keyboard focus is invisible (WCAG 2.2 §2.4.7).
+- **Impact:** Keyboard and switch users cannot see which element is focused: the interface is unusable without a mouse.
+- **Fix:** Add a focus ring to all interactive elements: `:focus-visible { outline: 2px solid var(--ring, #2563eb); outline-offset: 2px; }`.
+```diff
+- /* no focus styles */
++ :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+```
+- **Cites:** WCAG 2.4.7 Focus Visible (AA)
+
+### [!] Fixed 1200px width on `.layout` with 0 media queries
+- **Where:** `src/styles.css:57` · selector `.layout`
+- **Measured:** width: 1200px, 0 @media (needs fluid + breakpoints)
+- **Why:** `.layout` is hard-coded to `width: 1200px` and the project has no `@media` queries: the layout cannot adapt below 1200px.
+- **Impact:** On any viewport narrower than 1200px the content overflows or is clipped; mobile is broken.
+- **Fix:** Use `max-width: 1200px; width: 100%` and add responsive breakpoints (sm/md/lg).
+```diff
+- width: 1200px;
++ max-width: 1200px; width: 100%;
+```
+- **Cites:** [Jakob's Law](https://lawsofux.com/jakobs-law/)
+
+### [!] Fixed 880px width on `.content` with 0 media queries
+- **Where:** `src/styles.css:65` · selector `.content`
+- **Measured:** width: 880px, 0 @media (needs fluid + breakpoints)
+- **Why:** `.content` is hard-coded to `width: 880px` and the project has no `@media` queries: the layout cannot adapt below 880px.
+- **Impact:** On any viewport narrower than 880px the content overflows or is clipped; mobile is broken.
+- **Fix:** Use `max-width: 880px; width: 100%` and add responsive breakpoints (sm/md/lg).
+```diff
+- width: 880px;
++ max-width: 880px; width: 100%;
+```
+- **Cites:** [Jakob's Law](https://lawsofux.com/jakobs-law/)
+
+### [*] Text too small on `.product-card .price`: 11px
+- **Where:** `src/components/Card.scss:15` · selector `.product-card .price`
+- **Measured:** 11px (needs 14px min / 16px ideal)
+- **Why:** `.product-card .price` sets `font-size: 11px`, below the 14px minimum (16px recommended) for body text.
+- **Impact:** Small body text strains readability, especially on mobile and for low-vision users.
+- **Fix:** Raise `font-size` on `.product-card .price` to `16px` (or ≥14px) with `line-height: 1.5`.
+```diff
+- font-size: 11px;
++ font-size: 16px; line-height: 1.5;
+```
+- **Cites:** [Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/)
+
+### [*] Text too small on `.body-copy`: 11px
+- **Where:** `src/styles.css:71` · selector `.body-copy`
+- **Measured:** 11px (needs 14px min / 16px ideal)
+- **Why:** `.body-copy` sets `font-size: 11px`, below the 14px minimum (16px recommended) for body text.
+- **Impact:** Small body text strains readability, especially on mobile and for low-vision users.
+- **Fix:** Raise `font-size` on `.body-copy` to `16px` (or ≥14px) with `line-height: 1.5`.
+```diff
+- font-size: 11px;
++ font-size: 16px; line-height: 1.5;
+```
+- **Cites:** [Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/)
+
+### [*] 5 font families, use 1–2 max
+- **Where:** `src/fonts.css:5` · selector `h1`
+- **Measured:** 5 families: Playfair Display, Bebas Neue, Lobster, Pacifico, Comic Sans MS (needs 1–2 families)
+- **Why:** 5 distinct `font-family` declarations found: `Playfair Display` (src/fonts.css:5), `Bebas Neue` (src/fonts.css:6), `Lobster` (src/fonts.css:7), `Pacifico` (src/fonts.css:8), `Comic Sans MS` (src/fonts.css:9). More than two typefaces fragments the visual system.
+- **Impact:** Too many fonts looks unprofessional, hurts brand coherence, and adds web-font payload.
+- **Fix:** Keep one display family + one body family; delete the rest and map usages to the two kept families.
+```diff
+- font-family: Playfair Display;
+- font-family: Bebas Neue;
+- font-family: Lobster;
+- font-family: Pacifico;
+- font-family: Comic Sans MS;
++ font-family: var(--font-display);  /* headings */
++ font-family: var(--font-body);     /* everything else */
+```
+- **Cites:** [Occam's Razor](https://lawsofux.com/occams-razor/) · [Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/)
+
+### [*] <img> missing `alt` at src/components/SignupForm.jsx:14
+- **Where:** `src/components/SignupForm.jsx:14` · selector `<img>`
+- **Measured:** no alt attribute (needs WCAG 1.1.1)
+- **Why:** `<img src="/logo.png" className="brand" />` has no `alt` attribute (WCAG 2.2 §1.1.1).
+- **Impact:** Screen-reader users get no description; the image is announced as a filename or skipped.
+- **Fix:** Add descriptive `alt="…"` for meaningful images, or `alt=""` for decorative ones.
+```diff
+- <img src="/logo.png" className="brand" />
++ <img alt="describe the image" src="/logo.png" className="brand" />
+```
+- **Cites:** WCAG 1.1.1 Non-text Content (A)
+
+### [*] <img> missing `alt` at src/components/SignupForm.jsx:15
+- **Where:** `src/components/SignupForm.jsx:15` · selector `<img>`
+- **Measured:** no alt attribute (needs WCAG 1.1.1)
+- **Why:** `<img src="/hero.jpg" width="600" height="300" />` has no `alt` attribute (WCAG 2.2 §1.1.1).
+- **Impact:** Screen-reader users get no description; the image is announced as a filename or skipped.
+- **Fix:** Add descriptive `alt="…"` for meaningful images, or `alt=""` for decorative ones.
+```diff
+- <img src="/hero.jpg" width="600" height="300" />
++ <img alt="describe the image" src="/hero.jpg" width="600" height="300" />
+```
+- **Cites:** WCAG 1.1.1 Non-text Content (A)
+
+### [*] Form input has no associated label at src/components/SignupForm.jsx:19
+- **Where:** `src/components/SignupForm.jsx:19` · selector `<input>`
+- **Measured:** no label/aria-label (needs WCAG 3.3.2)
+- **Why:** `<input type="email" placeholder="Email address" className="body-copy" />` has no `<label for>`, `aria-label`, or `aria-labelledby` (a placeholder is not a label) (WCAG 2.2 §3.3.2 / §1.1.1).
+- **Impact:** Screen-reader users cannot tell what the field is for; placeholder text disappears on input.
+- **Fix:** Add a `<label htmlFor="…">` + matching `id`, or an `aria-label`.
+```diff
+- <input type="email" placeholder="Email address" className="body-copy" />
++ <label htmlFor="field">Label</label>
++ <input id="field" type="email" placeholder="Email address" className="body-copy"
+```
+- **Cites:** WCAG 3.3.2 Labels or Instructions (A) · WCAG 1.1.1 Non-text Content (A)
+
+### [*] Form input has no associated label at src/components/SignupForm.jsx:20
+- **Where:** `src/components/SignupForm.jsx:20` · selector `<input>`
+- **Measured:** no label/aria-label (needs WCAG 3.3.2)
+- **Why:** `<input type="password" placeholder="Password" className="body-copy" />` has no `<label for>`, `aria-label`, or `aria-labelledby` (a placeholder is not a label) (WCAG 2.2 §3.3.2 / §1.1.1).
+- **Impact:** Screen-reader users cannot tell what the field is for; placeholder text disappears on input.
+- **Fix:** Add a `<label htmlFor="…">` + matching `id`, or an `aria-label`.
+```diff
+- <input type="password" placeholder="Password" className="body-copy" />
++ <label htmlFor="field">Label</label>
++ <input id="field" type="password" placeholder="Password" className="body-copy" /
+```
+- **Cites:** WCAG 3.3.2 Labels or Instructions (A) · WCAG 1.1.1 Non-text Content (A)
+
+_…and 31 more located findings (see JSON output for the full list)._
+
+## Project-level observations
+
+These are systemic (not tied to one line); evidence is the project as a whole.
+
+- [!] **typography**: Body text too small (11px) - minimum 14px, prefer 16px _([Aesthetic-Usability Effect](https://lawsofux.com/aesthetic-usability-effect/))_
+- [!] **layout**: No responsive breakpoints detected _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [!] **components**: Insufficient focus-visible: variants (1), keyboard users cannot see focus _([Fitts's Law](https://lawsofux.com/fittss-law/))_
+- [!] **accessibility**: No visible focus indicators for keyboard navigation _(WCAG 2.4.7 Focus Visible (AA))_
+- [!] **interaction**: No focus-visible: styling, keyboard navigation is invisible _([Fitts's Law](https://lawsofux.com/fittss-law/))_
+- [!] **responsive**: No responsive breakpoints (sm/md/lg/xl/2xl) used in className: UI is not adaptive _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [*] **color**: 43 unique colors - too many, consolidate to a system _([Tesler's Law](https://lawsofux.com/teslers-law/) · [Miller's Law](https://lawsofux.com/millers-law/))_
+- [*] **color**: Missing semantic colors: primary, error, success, warning _([Jakob's Law](https://lawsofux.com/jakobs-law/))_
+- [*] **typography**: No consistent type scale detected - sizes appear random _([Law of Prägnanz](https://lawsofux.com/law-of-pr%C3%A4gnanz/) · [Law of Similarity](https://lawsofux.com/law-of-similarity/))_
+- [*] **typography**: 5 different fonts - use 1-2 max _([Tesler's Law](https://lawsofux.com/teslers-law/) · [Miller's Law](https://lawsofux.com/millers-law/))_
+
+## Project Profile
+
+- **Framework:** react
+- **Styling:** vanilla-css
+- **Component Library:** *none detected*
+- **Theme System:** *none detected*
+- **Dark Mode:** not detected
 
 ## Color System
 
@@ -60,3 +270,54 @@ $ npx ui-ux-suite test/fixtures/planted-ux-problems
 - Near-duplicate pairs: **13**
 
 ## Typography
+
+- Fonts: **5** ("Playfair Display", serif, "Bebas Neue", sans-serif, "Lobster", cursive)
+- Sizes: **8**
+- Weights: **2**
+- Scale detected: **no**
+
+## Spacing
+
+- Consistency: **no**
+- Detected base: **4px**
+- Unique values: **7**
+- Issues:
+  - 4 values off the 4px grid: 6, 7, 13, 19px
+  - Near-duplicate spacing: 4px and 6px, consolidate
+  - Near-duplicate spacing: 6px and 7px, consolidate
+
+## Tailwind Usage
+
+- Total classes extracted: **8**
+- Unique colors: **1**
+- Unique spacings: **0**
+- Font sizes: **0**
+- Radii used: **0**
+- Shadows: **0**
+
+### State coverage (from className variants)
+
+- `hover:`: 2
+- `focus:`: 1
+- `active:`: 0
+- `disabled:`: 0
+- `dark:`: 0
+- `group-hover:`: 0
+- `aria-[...]:`: 0
+
+## Accessibility Signals
+
+- `:focus-visible` styling: **NO: add this**
+- `aria-label` usage: **1** occurrences
+- Skip-to-content link: **NO: add one**
+- Images without `alt`: **3**
+- `prefers-reduced-motion` support: **NO: add it**
+
+## Layout
+
+- Grid system: **flexbox**
+- Container queries: **no**
+- Media queries: **3** total
+- Breakpoints: none detected
+- Container max-widths: none detected
+

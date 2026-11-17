@@ -2,4 +2,4 @@
 # Set this in: Repository Settings > About > Description
 #
 # Current recommendation:
-ESLint for design. Audits your CSS/JSX/HTML for specific, located (file:line), measured findings with a concrete fix — across 12 dimensions, grounded in WCAG 2.2, APCA, and the Laws of UX. Read-only, zero-dependency. Works in Claude Code, Cursor, VS Code, Codex, and Gemini via MCP or npx.
+ESLint for design: finds the exact line, the measured wrong value and the fix. WCAG 2.2 and APCA, zero deps.

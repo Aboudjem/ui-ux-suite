@@ -16,7 +16,7 @@ const d = (selector, prop, value, line = 1, atRule = null) => ({ selector, prop,
 
 describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
   it('does NOT flag a faint rgba() tint over a dark page (alpha must be composited, not stripped)', () => {
-    // rgba(0,224,255,0.08) is an 8% cyan tint over a dark page — light-cyan text on it is readable.
+    // rgba(0,224,255,0.08) is an 8% cyan tint over a dark page: light-cyan text on it is readable.
     const r = analyzeTextContrast([
       d('body', 'background', '#150830'),
       d('.pill', 'color', '#00e0ff', 2),
@@ -67,7 +67,7 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     const decls = [
       d(':root', '--foreground', '#171717', 1),                  // global
       d(':root', '--background', '#ffffff', 2),                  // global
-      d('.page', '--foreground', '#ffffff', 10),                 // component-local — must NOT win for body
+      d('.page', '--foreground', '#ffffff', 10),                 // component-local: must NOT win for body
       d('.page', '--background', '#fafafa', 11),
     ];
     const vm = buildVarMap(decls);
@@ -105,7 +105,7 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
     assert.ok(!r.some(x => x.fg === '#ffffff'), 'white footer text must not be judged invisible on the light page');
   });
 
-  it('infers a dark SECTION surface for its descendants (BEM block root) — light text not flagged', () => {
+  it('infers a dark SECTION surface for its descendants (BEM block root): light text not flagged', () => {
     // Skeptic VERIFICATION-4: gold/white text in dark footer/announcement/cookie sections (ratio 2–3 on
     // the cream page) must be measured against the dark section, where it passes.
     const r = analyzeTextContrast([
@@ -113,7 +113,7 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
       d('.footer', 'background', '#2c1810', 2),                  // dark section (block: footer)
       d('.footer-brand-name span', 'color', '#c4993d', 3),      // gold descendant, no own bg → infer .footer
       d('.cookie-banner', 'background', 'rgba(26,26,26,.95)', 4),
-      d('.cookie-accept', 'background', '#ffffff', 5),          // a light BUTTON inside cookie — must NOT poison .cookie
+      d('.cookie-accept', 'background', '#ffffff', 5),          // a light BUTTON inside cookie: must NOT poison .cookie
       d('.cookie-text a', 'color', '#d4a0a8', 6),               // rose link, no own bg → infer dark cookie, not page
     ]);
     assert.ok(!r.some(x => x.bgFromPage), 'dark-section descendants must be measured on the inferred section, not the page');
@@ -138,13 +138,13 @@ describe('Contrast precision regressions (skeptic must-fix #1, #2)', () => {
       d('body', 'background', '#faf7f5', 1),
       d('.before-after-card', 'background', '#ffffff', 2),
       d('.ba-divider', 'background', '#b76e79', 3),            // decorative rose badge (child)
-      d('.ba-text', 'color', '#807470', 4),                   // taupe text — real surface is the white card
+      d('.ba-text', 'color', '#807470', 4),                   // taupe text: real surface is the white card
     ]);
     assert.ok(!r.some(x => x.selector === '.ba-text' && x.bg === '#b76e79'), '.ba-text must not inherit the rose badge surface');
     assert.ok(!r.some(x => x.selector === '.ba-text' && x.severity === 'critical'), 'no destructive critical from a poisoned block root');
   });
 
-  it('suppresses MARGINAL page-fallback fails (within 0.5 of threshold) — approximate surface', () => {
+  it('suppresses MARGINAL page-fallback fails (within 0.5 of threshold): approximate surface', () => {
     // taupe #807470 on a white card is 4.73 (pass); on the cream page fallback it is 4.43 (marginal fail).
     // Page fallback is approximate, so a marginal fail must not be emitted.
     const r = analyzeTextContrast([
@@ -192,7 +192,7 @@ describe('Markup detectors ignore commented-out elements (skeptic must-fix #3)',
     const r = runLocatedAudit(dir);
     const imgs = r.findings.filter(f => f.id.includes('img'));
     const inputs = r.findings.filter(f => f.id.includes('inp'));
-    // Only the real (line 5) <img>/<input> count — the commented ones (lines 2-3) must be ignored.
+    // Only the real (line 5) <img>/<input> count: the commented ones (lines 2-3) must be ignored.
     assert.ok(imgs.every(f => f.evidence.line === 5), `commented <img> leaked: ${JSON.stringify(imgs.map(f => f.evidence.line))}`);
     assert.ok(inputs.every(f => f.evidence.line === 5), `commented <input> leaked: ${JSON.stringify(inputs.map(f => f.evidence.line))}`);
     fs.rmSync(dir, { recursive: true, force: true });

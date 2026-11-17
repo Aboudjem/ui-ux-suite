@@ -6,11 +6,11 @@
 
 ## Redesign Traps
 
-- **Redesigning everything at once** — Ship incremental improvements. Full redesigns alienate existing users and multiply risk.
-- **Optimizing for first impression over returning users** — Power users generate most value. Don't sacrifice efficiency for "wow."
-- **Adding visual complexity to seem "modern"** — Complexity without usability benefit is decoration. Strategic minimalism wins.
-- **Breaking muscle memory** — Moving established elements forces users to relearn. Change must justify disruption.
-- **Not measuring before/after** — Without baselines, you can't know if the redesign helped or hurt.
+- **Redesigning everything at once**: Ship incremental improvements. Full redesigns alienate existing users and multiply risk.
+- **Optimizing for first impression over returning users**: Power users generate most value. Don't sacrifice efficiency for "wow."
+- **Adding visual complexity to seem "modern"**: Complexity without usability benefit is decoration. Strategic minimalism wins.
+- **Breaking muscle memory**: Moving established elements forces users to relearn. Change must justify disruption.
+- **Not measuring before/after**, Without baselines, you can't know if the redesign helped or hurt.
 
 ---
 
@@ -81,7 +81,7 @@
 
 | Friction | Impact | Fix |
 |----------|--------|-----|
-| Sign-up wall before value | Users bounce — they don't know if the product is worth it | Show value first, require auth for save/share |
+| Sign-up wall before value | Users bounce, they don't know if the product is worth it | Show value first, require auth for save/share |
 | Multi-step forms without progress | Users don't know how much is left, abandon | Step indicator: "Step 2 of 4" |
 | Error messages that don't say what to fix | Users can't recover, retry blindly | "Password needs 1 uppercase letter" not "Invalid password" |
 | Confirmation for non-destructive actions | Unnecessary friction on safe operations | Only confirm destructive/irreversible actions |

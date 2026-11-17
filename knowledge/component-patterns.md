@@ -41,13 +41,13 @@ Every interactive component should handle these states:
 
 ## Form Best Practices
 
-1. **Always visible labels** — never placeholder-only (disappears on focus, a11y failure)
+1. **Always visible labels**, never placeholder-only (disappears on focus, a11y failure)
 2. **Group related fields** and label the groups
-3. **Inline validation** — debounced as user types (not on every keystroke)
-4. **Error messages say what to fix** — "Enter a valid email (e.g., name@example.com)" not "Invalid input"
+3. **Inline validation**: debounced as user types (not on every keystroke)
+4. **Error messages say what to fix**: "Enter a valid email (e.g., name@example.com)" not "Invalid input"
 5. **Mark optional fields** not required (most fields should be required)
-6. **Use appropriate input types** — `email`, `tel`, `url`, `number` trigger correct keyboards
-7. **autocomplete attributes** — `name`, `email`, `tel`, `address-line1` for faster filling
+6. **Use appropriate input types**: `email`, `tel`, `url`, `number` trigger correct keyboards
+7. **autocomplete attributes**: `name`, `email`, `tel`, `address-line1` for faster filling
 8. **Multi-step forms:** show progress, allow going back, save state between steps
 
 ---
@@ -72,7 +72,7 @@ Every interactive component should handle these states:
 - Match actual content layout (prevents layout shift)
 - Use `aria-busy="true"` on loading containers
 - Shimmer animation: linear gradient moving right, 1.5-2s duration
-- Never skeleton for longer than 3 seconds — if it takes longer, show a message
+- Never skeleton for longer than 3 seconds, if it takes longer, show a message
 
 ---
 
@@ -115,9 +115,9 @@ Every interactive component should handle these states:
 ## Empty States
 
 Every data view needs an empty state with:
-1. **Illustration or icon** — visual context
-2. **Clear message** — what this area is for
-3. **Primary CTA** — action to populate it
+1. **Illustration or icon**: visual context
+2. **Clear message**: what this area is for
+3. **Primary CTA**: action to populate it
 4. **Optional:** template/sample data to demonstrate value
 
 **Three types:**

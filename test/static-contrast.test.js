@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Unit tests for lib/static-contrast.js — the marquee feature that was hardcoded OFF in v0.3.
+ * Unit tests for lib/static-contrast.js: the marquee feature that was hardcoded OFF in v0.3.
  *
  * Covers:
  *  - analyzeTextContrast flags #fbfbfb on #ffffff as a critical finding with ratio ~1.03, and the
@@ -76,7 +76,7 @@ test('suggestAccessibleColor lightens toward white on a dark background', () => 
 test('analyzeTextContrast falls back to the page background when a rule has no bg', () => {
   // Uses a genuine mid-gray (ratio ~2.85, well above the near-invisible artifact floor) so this
   // validates the page-fallback path. A near-white #fbfbfb here would be a backgroundless near-1:1
-  // artifact (white text meant for a dark ancestor) and is intentionally skipped — see
+  // artifact (white text meant for a dark ancestor) and is intentionally skipped: see
   // precision-regression.test.js "white text in a dark section on a light page".
   const decls = [
     { file: 'a.css', selector: 'body', prop: 'background', value: '#ffffff', line: 1, col: 1 },

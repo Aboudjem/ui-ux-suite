@@ -1,11 +1,11 @@
-# Design Trends — April 2026
+# Design Trends: April 2026
 
 > Source: Deep research campaign "Design Trends April 2026"
 > Evidence: 22 web searches, 10 page fetches, 4 Apify calls, 33 trends rated
 
 ---
 
-## CSS Features — Browser Support & Adoption
+## CSS Features: Browser Support & Adoption
 
 | Feature | Support | Rating | Durability |
 |---------|---------|--------|------------|
@@ -37,7 +37,7 @@
 | Skeleton loading for AI | ADOPT | 40% reduction in abandonment |
 | Ambient intelligence | ADAPT CAUTIOUSLY | Risk: loss of user control |
 | Voice-first interfaces | ADAPT CAUTIOUSLY | 65% YoY growth but not primary input yet |
-| Generative UI | ADAPT CAUTIOUSLY | Nascent — CopilotKit shipping, not mainstream |
+| Generative UI | ADAPT CAUTIOUSLY | Nascent: CopilotKit shipping, not mainstream |
 
 ---
 
@@ -57,12 +57,12 @@
 
 ---
 
-## Dark Mode — Settled Preference (not a trend)
+## Dark Mode: Settled Preference (not a trend)
 
 - 82% smartphone adoption (iOS 82.3%, Android 76.5%)
 - 64.6% expect auto system scheme matching
 - Developer tools: 87-91% dark mode usage
-- Rating: **ADOPT** — Durability: **Permanent**
+- Rating: **ADOPT**, Durability: **Permanent**
 
 ---
 
@@ -73,7 +73,7 @@
 - 2.6x longer fixation on larger grid items
 - **Works for:** Feature showcases, dashboards, landing pages
 - **Fails for:** Sequential content, >12 cards, screen reader-heavy contexts
-- Rating: **ADOPT** — Durability: **5+ years**
+- Rating: **ADOPT**, Durability: **5+ years**
 
 ---
 
@@ -108,4 +108,4 @@
 Container queries + media queries coexist permanently:
 - **Container queries:** Component adapts to its container
 - **Media queries:** Viewport layout, user preferences, print, img loading
-- This is settled — not a trend.
+- This is settled, not a trend.

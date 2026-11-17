@@ -1,12 +1,12 @@
 'use strict';
 
 /**
- * Unit tests for lib/locator.js — the located-token model.
+ * Unit tests for lib/locator.js: the located-token model.
  *
  * Covers:
  *  - indexToLineCol: a known character offset maps to the right 1-based {line, col}.
  *  - scanCss: a small CSS string yields declarations with correct {selector, prop, value, line}.
- *  - codeMask: a /* comment *\/ region is marked 0 (not code) while real code is 1 — this is the
+ *  - codeMask: a /* comment *\/ region is marked 0 (not code) while real code is 1, this is the
  *    regression guard for the v0.3 "focus-visible inside a comment read as a real focus rule" bug.
  */
 

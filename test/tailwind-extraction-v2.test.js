@@ -7,7 +7,7 @@ const {
   analyzeResponsiveCoverage,
 } = require('../lib/tailwind-parser');
 
-describe('extractClassesFromJSX — v1.1 enhancements', () => {
+describe('extractClassesFromJSX: v1.1 enhancements', () => {
   it('extracts from a plain string className', () => {
     const content = `<div className="p-4 md:p-6 text-sm">x</div>`;
     const classes = extractClassesFromJSX(content);

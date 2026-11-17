@@ -1,11 +1,11 @@
 /*
- * Planted UX problems — stylesheet.
+ * Planted UX problems: stylesheet.
  * This file is intentionally broken. Each issue is tagged PLANTED[id].
  * Measured values are real; see PLANTED.md for expected ideal findings.
  */
 
 /* ---------------------------------------------------------------------- */
-/* PLANTED[A]: near-white text (#fbfbfb) on near-white bg (#ffffff) — contrast ~1.04:1 @ src/styles.css .hero-subtitle — expect accessibility/color (WCAG AA contrast) finding */
+/* PLANTED[A]: near-white text (#fbfbfb) on near-white bg (#ffffff), contrast ~1.04:1 @ src/styles.css .hero-subtitle, expect accessibility/color (WCAG AA contrast) finding */
 .hero {
   background-color: #ffffff;
   padding: 64px;
@@ -16,7 +16,7 @@
   font-size: 13px;
 }
 
-/* PLANTED[B]: primary CTA styled like a low-affordance ghost link @ src/styles.css .cta-primary — expect hierarchy/components/color (CTA affordance) finding */
+/* PLANTED[B]: primary CTA styled like a low-affordance ghost link @ src/styles.css .cta-primary, expect hierarchy/components/color (CTA affordance) finding */
 .cta-primary {
   /* This is THE primary call to action but it looks like a tertiary text link. */
   background: transparent;          /* no fill */
@@ -28,7 +28,7 @@
   font-weight: 400;                 /* not emphasized */
 }
 
-/* PLANTED[C]: low-contrast section (#f4f5f6) vs surrounding page (#ffffff) — contrast ~1.04:1, section boundary invisible @ src/styles.css .section-muted — expect color/hierarchy (surface separation) finding */
+/* PLANTED[C]: low-contrast section (#f4f5f6) vs surrounding page (#ffffff), contrast ~1.04:1, section boundary invisible @ src/styles.css .section-muted, expect color/hierarchy (surface separation) finding */
 body {
   background-color: #ffffff;
 }
@@ -38,7 +38,7 @@ body {
   padding: 40px;
 }
 
-/* PLANTED[D]: tiny touch targets (28x28, well under 44x44) @ src/styles.css .icon-btn — expect platform/accessibility (WCAG 2.2 target size) finding */
+/* PLANTED[D]: tiny touch targets (28x28, well under 44x44) @ src/styles.css .icon-btn, expect platform/accessibility (WCAG 2.2 target size) finding */
 .icon-btn {
   width: 28px;   /* < 44px */
   height: 28px;  /* < 44px */
@@ -52,7 +52,7 @@ body {
   padding: 0 6px;
 }
 
-/* PLANTED[F]: NO responsive breakpoints — fixed desktop-only widths, zero @media queries @ src/styles.css .layout — expect responsive/layout finding */
+/* PLANTED[F]: NO responsive breakpoints, fixed desktop-only widths, zero @media queries @ src/styles.css .layout, expect responsive/layout finding */
 .layout {
   width: 1200px;       /* hard-coded desktop width, no max-width, no media query */
   margin: 0 auto;
@@ -66,7 +66,7 @@ body {
 }
 /* (Intentionally NO @media rules anywhere in this project.) */
 
-/* PLANTED[G]: body text too small (11px) @ src/styles.css .body-copy — expect typography (min 14px / 16px body) finding */
+/* PLANTED[G]: body text too small (11px) @ src/styles.css .body-copy, expect typography (min 14px / 16px body) finding */
 .body-copy {
   font-size: 11px;     /* far below the 14px minimum / 16px ideal */
   line-height: 1.2;    /* also too tight */
@@ -78,7 +78,7 @@ body {
   line-height: 1.15;
 }
 
-/* PLANTED[H]: random off-scale spacing (7px, 13px, 19px — none divisible by 4 or 8) @ src/styles.css spacing block — expect layout (spacing scale) finding */
+/* PLANTED[H]: random off-scale spacing (7px, 13px, 19px, none divisible by 4 or 8) @ src/styles.css spacing block, expect layout (spacing scale) finding */
 .card {
   padding: 7px;        /* off-scale */
   margin-bottom: 13px; /* off-scale */
@@ -89,7 +89,7 @@ body {
   padding-bottom: 19px;
 }
 
-/* PLANTED[I-colors]: 30+ unique hex colors with no system (part 1) @ src/styles.css palette — expect color (too many unique colors) finding */
+/* PLANTED[I-colors]: 30+ unique hex colors with no system (part 1) @ src/styles.css palette, expect color (too many unique colors) finding */
 .swatch-01 { color: #1a2b3c; }
 .swatch-02 { color: #2b3c4d; }
 .swatch-03 { color: #3c4d5e; }
@@ -124,7 +124,7 @@ body {
 .swatch-32 { color: #bb2244; }
 .swatch-33 { color: #cc3355; }
 
-/* PLANTED[J]: NO :focus-visible styles anywhere — interactive elements have only :hover @ src/styles.css — expect accessibility/interaction (focus indicator) finding */
+/* PLANTED[J]: NO :focus-visible styles anywhere, interactive elements have only :hover @ src/styles.css, expect accessibility/interaction (focus indicator) finding */
 .cta-primary:hover { color: #7a7f85; }
 .icon-btn:hover { background: #eeeeee; }
 .nav-link:hover { color: #555555; }
