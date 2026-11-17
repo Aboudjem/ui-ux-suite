@@ -90,6 +90,13 @@ claude mcp add --scope project ui-ux-suite -- npx -y ui-ux-suite --mcp
 }
 ```
 
+Cursor keeps a new server off until you approve it. Approve it once, then check that the 16 tools load:
+
+```bash
+cursor-agent mcp enable ui-ux-suite
+cursor-agent mcp list-tools ui-ux-suite
+```
+
 **VS Code and GitHub Copilot**, in `.vscode/mcp.json`. The top-level key is `servers`, not
 `mcpServers`. This is VS Code's own schema and it is the odd one out.
 
@@ -122,6 +129,10 @@ Or `codex mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp`.
 ```
 
 Or `gemini mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp`.
+
+Gemini CLI turns every MCP server off in a folder it does not trust. `gemini mcp list` then shows the server as `Disabled`.
+Run `gemini` in the folder once and pick "Trust folder". `gemini mcp list` then shows it `Connected`.
+For one session only, start with `gemini --skip-trust`.
 
 **Windsurf**, in `~/.codeium/windsurf/mcp_config.json`
 

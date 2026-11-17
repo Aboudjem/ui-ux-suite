@@ -96,3 +96,16 @@ peer dependencies (`playwright-core`, `@axe-core/playwright`) and pass a `baseUr
 MCP tool or a skill to also measure live contrast, flag touch targets under 44 by 44 pixels, and
 screenshot routes. With the dependencies absent it degrades to source-based findings rather than
 failing.
+
+The CLI has no deep flag. To turn deep mode on:
+
+1. Install the extra packages and a browser in your project.
+
+   ```bash
+   npm i -D playwright-core @axe-core/playwright
+   npx playwright install chromium
+   ```
+
+2. Start your app, for example on `http://localhost:3000`.
+3. Call the MCP tool `uiux_audit_run` with `depth: "deep"` and `baseUrl: "http://localhost:3000"`.
+   In an agent, ask for exactly that in plain words.

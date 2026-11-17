@@ -8,172 +8,244 @@
   <a href="https://github.com/Aboudjem/ui-ux-suite/actions/workflows/ci.yml"><img src="https://github.com/Aboudjem/ui-ux-suite/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://www.npmjs.com/package/ui-ux-suite"><img src="https://img.shields.io/npm/v/ui-ux-suite?color=00D4FF&logo=npm&label=npm&style=flat-square" alt="npm version"></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/license-MIT-00D4FF?style=flat-square" alt="License MIT"></a>
-  <a href="https://github.com/Aboudjem/ui-ux-suite/stargazers"><img src="https://img.shields.io/github/stars/Aboudjem/ui-ux-suite?style=flat-square&color=00D4FF" alt="Stars"></a>
 </p>
 
 <p align="center"><a href="../README.md">English</a> · <a href="zh-CN.md">简体中文</a> · <b>日本語</b> · <a href="es.md">Español</a> · <a href="fr.md">Français</a></p>
 
-<p align="center"><b>デザインのための ESLint。問題の行、実測した誤った値、そして具体的な直し方を返します。</b></p>
+<p align="center"><b>デザインのための ESLint。問題のある行、測定した誤りの値、そして正確な修正を示します。</b></p>
 
-<p align="center">
-  <a href="#何をするツールか">何をするツールか</a> · <a href="#インストール">インストール</a> · <a href="#使い方">使い方</a> · <a href="#得られるもの">得られるもの</a> · <a href="#エディタで使う">エディタで使う</a> · <a href="#知っておくこと">知っておくこと</a>
-</p>
-
-```bash
-claude plugin marketplace add Aboudjem/10x
-claude plugin install ui-ux-suite@10x
-```
-
-## 何をするツールか
-
-たいていのデザインレビューは「コントラストを上げましょう」で終わります。このツールはこう言い
-ます。`src/styles.css` の 14 行目の `.hero-subtitle` は `#fbfbfb` が `#ffffff` の上にあり、実測
-コントラストは 1.03 対 1、`#767676` にすれば通ります。lint のエラーとまったく同じ形を、デザイン
-に対して出します。
-
-読むのは CSS、JSX、HTML、Tailwind のクラスです。既定では何も実行せず、何もマシンの外に出さず、
-キーも一切要りません。指摘には二種類あります。実際に手を入れることになる「位置の特定された指摘」
-には、三つが付きます。
-
-- **位置。** ファイル、行番号、セレクタ。
-- **実測値。** 形容詞ではなく、実際に誤っている値。
-- **修正。** `before` から `after` への具体的な変更と、その根拠になる WCAG 達成基準または名前の
-  ある UX 法則。
-
-残りはプロジェクト単位の指摘です。たとえば「フォントファミリが 5 つある、1 つか 2 つに絞る」と
-いったもので、採点にも入り問題も名指ししますが、指し示すべき一行がありません。
-
-## インストール
-
-```bash
-claude plugin marketplace add Aboudjem/10x
-claude plugin install ui-ux-suite@10x
-```
-
-これは Claude Code の場合です。Agent Skills 形式を読むエージェントであれば、このリポジトリから
-14 個の skill を直接入れられます。
-
-```bash
-npx skills add Aboudjem/ui-ux-suite
-```
-
-コマンドラインツールはインストール手順が不要です。`npx ui-ux-suite .` で動きます。
-
-<details>
-<summary><b>開発依存として入れる場合</b></summary>
-
-```bash
-npm install -D ui-ux-suite
-```
-
-```json
-{ "scripts": { "design-audit": "ui-ux-suite . --fail-under 7" } }
-```
-
-Node 18 以降が必要です。ランタイム依存はゼロなので、これで他のパッケージが入ることはありません。
-</details>
-
-## 使い方
-
-**1. プロジェクトを指定する。**
+どんな Web プロジェクトでも実行できます。インストール不要、設定不要、キー不要です。
 
 ```bash
 npx ui-ux-suite .
 ```
 
-優先度順に並んだ指摘と、12 の観点にまたがる 10 点満点の加重スコアが返ります。設定ファイルも
-セットアップ手順もありません。
+## レポートの例
 
-**2. 指摘を読む。** 以下はこのリポジトリに同梱された「わざと壊した」フィクスチャの実際の出力
-です。壊れているのが仕様なので 3.7 点です。
+レポートはスコアから始まり、最初に直すべき 3 つの修正、そして詳細へと続きます。
 
+```text
+# Design audit: 3.7/10 (Needs Work)
+
+**Verdict:** score 3.7/10, Needs Work. 46 located findings, 8 critical.
+
+## Fix these first
+
+1. 9 `.swatch*` color variants fail WCAG AA contrast (worst 1.75:1) at `src/styles.css:118`. Fix: Rebuild this color set against the surface it sits on so each meets ≥ 4.5:1 (e.g. the worst, `#b5c6d7`, should be `#6d7882` or darker), or reserve ...
+2. No visible keyboard focus indicator anywhere at `src/styles.css:22`. Fix: Add a focus ring to all interactive elements: `:focus-visible { outline: 2px solid var(--ring, #2563eb); outline-offset: 2px; }`.
+3. Fixed 1200px width on `.layout` with 0 media queries at `src/styles.css:57`. Fix: Use `max-width: 1200px; width: 100%` and add responsive breakpoints (sm/md/lg).
+
+**Weakest areas:** Typography System 1.5/10, Accessibility 1.6/10, Component Quality 2/10.
+
+_Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.02s on 2026-11-17T11:33:48.104Z. The detail follows._
 ```
+
+これはモックではなく、実際の実行結果です。バージョン 0.7.0 のチェックアウトで
+`npx ui-ux-suite test/fixtures/planted-ux-problems` を実行した出力の冒頭です。
+このフィクスチャはわざと壊してあるので、スコアは低くなります。
+
+この下に、レポートは各指摘を詳しく並べます。その 1 つがこちらです。
+
+```text
+### [!] Low text contrast on `.hero-subtitle`: 1.03:1
 - **Where:** `src/styles.css:14` · selector `.hero-subtitle`
 - **Measured:** 1.03:1 (APCA Lc 0) (needs 4.5:1)
 - **Why:** Text `#fbfbfb` on `#ffffff` measures 1.03:1 (APCA Lc 0). WCAG 2.2 §1.4.3 requires ≥ 4.5:1 for normal text.
+- **Impact:** Users with low vision (and most users in bright light) cannot read this text.
 - **Fix:** Change `color` on `.hero-subtitle` from `#fbfbfb` to `#767676` (meets 4.5:1 on `#ffffff`), or darken further.
 - **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
 ```
 
-チェックアウトしたうえで `npx ui-ux-suite test/fixtures/planted-ux-problems` を実行すれば、自分
-の手で同じ出力を確認できます。
+**APCA Lc とは?** 人が実際に文字をどう見るかに合わせて作られた、2 つ目のコントラスト指標です。
+0 (コントラストが見えない) から約 106 までの値をとります。このツールは本文なら Lc 90 で十分、大きな文字なら 60 を下限とします。
+合格か不合格かは、引き続き WCAG の比で決まります。詳しくは [docs/science.md](../docs/science.md) を参照してください。
 
-**3. CI に組み込む。** パイプラインに合う出力形式とゲートを選んでください。
+## インストール
+
+使っているエージェントの行を選んでください。どれも 1 つのコマンドです。
+
+**Claude Code。** プラグインには 14 のスキル、5 つのコマンド、12 のエージェント、MCP サーバーが入っています。
 
 ```bash
-npx ui-ux-suite . --json | jq              # 機械可読、バナーは stderr へ
-npx ui-ux-suite . --html report.html       # 単体で開ける HTML レポート
-npx ui-ux-suite . --sarif ui-ux.sarif      # GitHub code scanning 向けの SARIF 2.1.0
-npx ui-ux-suite . --fail-under 7           # スコアが 7 を下回ったら終了コード 1
-npx ui-ux-suite . --write-baseline .uiux-baseline.json   # 今ある負債を凍結する
+claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x
+```
+
+**Agent Skills を読むその他のエージェント** (Cursor、Codex、Gemini CLI、OpenCode、GitHub Copilot):
+
+```bash
+npx skills add Aboudjem/ui-ux-suite
+```
+
+**任意の MCP クライアント。** サーバーにキーも設定も要りません。
+
+```bash
+claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
+```
+
+```json
+{
+  "mcpServers": {
+    "ui-ux-suite": { "command": "npx", "args": ["-y", "ui-ux-suite", "--mcp"] }
+  }
+}
+```
+
+**エージェントなしでも。** コマンドラインにインストール手順はありません。`npx ui-ux-suite .` で動きます。
+
+### 対応エージェント
+
+各行は、記載の日付に macOS と Node 22 で行った実際のインストールと確認です。
+
+| エージェント                  | インストール方法                                                 | テスト日   | テストで確認したこと                                                       |
+| :---------------------------- | :--------------------------------------------------------------- | :--------- | :------------------------------------------------------------------------- |
+| Claude Code                   | `claude --plugin-dir .` でプラグインを読み込み                   | 2026-11-17 | `claude plugin validate . --strict` が通り、MCP サーバーが接続する         |
+| Cursor                        | `.cursor/mcp.json`、続けて `cursor-agent mcp enable ui-ux-suite` | 2026-11-17 | `cursor-agent mcp list-tools ui-ux-suite` が 16 個のツールを一覧表示する   |
+| Codex                         | `codex mcp add ui-ux-suite`                                      | 2026-11-17 | `codex mcp list` でサーバーが有効と表示される                              |
+| Gemini CLI                    | `gemini mcp add ui-ux-suite`、続けてフォルダーを信頼する         | 2026-11-17 | `gemini mcp list` でサーバーが接続済みと表示される                         |
+| OpenCode                      | `opencode.json`                                                  | 2026-11-17 | `opencode mcp list` でサーバーが接続済みと表示される                       |
+| Skills CLI 1.9.0              | `npx skills add Aboudjem/ui-ux-suite`                            | 2026-11-17 | 14 のスキルが `.agents/skills` と `.claude/skills` に入る                  |
+| 任意の stdio MCP クライアント | `npx -y ui-ux-suite --mcp`                                       | 2026-11-17 | 素の MCP セッションが 16 個のツールを一覧し、フィクスチャを 3.7 と採点する |
+
+文書化済みで、その日には実行していないもの: VS Code、GitHub Copilot、Windsurf、Continue、Zed、Pi、`install.sh`。
+それらの設定例は [docs/editors.md](../docs/editors.md) にあります。
+
+2 つのエージェントは、サーバーを読み込む前にもう 1 手順必要です。
+
+- **Cursor** は、承認するまで新しいサーバーをオフにしておきます: `cursor-agent mcp enable ui-ux-suite`。
+- **Gemini CLI** は、信頼していないフォルダーではすべての MCP サーバーをオフにします。そのフォルダーで一度 `gemini` を起動し、"Trust folder" を選んでください。
+
+## 使い方
+
+**1. プロジェクトを指定します。**
+
+```bash
+npx ui-ux-suite .
+```
+
+**2. 冒頭の 3 行を直します。** それぞれがファイル、行、行うべき変更を示します。
+
+**3. CI に組み込みます。** パイプラインに合う出力とゲートを選んでください。
+
+```bash
+npx ui-ux-suite . --fail-under 7           # exit 1 when the score drops below 7
+npx ui-ux-suite . --json | jq              # machine-readable, banner goes to stderr
+npx ui-ux-suite . --html report.html       # standalone HTML report
+npx ui-ux-suite . --sarif ui-ux.sarif      # SARIF 2.1.0 for GitHub code scanning
+npx ui-ux-suite . --write-baseline .uiux-baseline.json   # freeze today's debt
 npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
 npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to-have
 ```
 
-すべてのフラグは [docs/cli.md](../docs/cli.md) にあります。
+エージェントでは、普通の言葉で頼めます: 「このプロジェクトのデザインを監査して」。Claude Code では `/ui-ux-suite:audit` と入力します。
 
-## 得られるもの
+**4. 任意: deep モードを有効にします。** 実行中のアプリを本物のブラウザーで確認します。CLI に deep 用のフラグはありません。deep モードは MCP ツール `uiux_audit_run` を通して動きます。
 
-- **並べ替え済みのレポート。** Markdown、JSON、HTML、SARIF から、読み手が人か機械かで選べます。
-- **10 点満点のスコア。** 12 の加重観点にまたがり、アクセシビリティの重みが最大です。
-- **CI ゲート。** `--fail-under` で絶対的な基準を引くか、ベースラインで新しい指摘とスコア低下を落とすか。
-- **14 個の skill と 16 個のツール。** エージェントから呼べるので、チャットで「このプロジェクトのデザインを監査して」が通ります。
+まず、追加の 2 つのパッケージとブラウザーをプロジェクトに入れます。
+
+```bash
+npm i -D playwright-core @axe-core/playwright
+npx playwright install chromium
+```
+
+次にアプリを起動し、エージェントにこう頼みます: "Run `uiux_audit_run` with `depth: "deep"` and `baseUrl: "http://localhost:3000"`."
+deep モードは、実測のコントラスト、axe-core のチェック、44 x 44 ピクセル未満のタッチターゲットを追加します。パラメーターは [docs/tools.md](../docs/tools.md) にあります。
+
+すべてのフラグと終了コードは [docs/cli.md](../docs/cli.md) にあります。すべての MCP ツールは [docs/tools.md](../docs/tools.md) にあります。
+
+## 仕組み
+
+ソースコードを読みます。アプリは実行せず、ブラウザーも必要ありません。
+
+| 手順        | 何が起きるか                                                                                    |
+| :---------- | :---------------------------------------------------------------------------------------------- |
+| 1. 読む     | フォルダーをたどり、CSS、SCSS、JSX、TSX、Vue、Svelte、HTML、Tailwind のクラスを読みます。       |
+| 2. 測る     | 実際の値を計算します: WCAG 2.2 と APCA のコントラスト、フォントサイズ、余白、ターゲットサイズ。 |
+| 3. 特定する | 各問題をファイル、行、セレクターに結びつけます。                                                |
+| 4. 採点する | 重み付けした 12 の観点を 10 点満点で採点します。最も重いのはアクセシビリティで 12% です。       |
+| 5. 報告する | スコア、3 つの修正、そして各指摘を `before` と `after` 付きで出力します。                       |
+
+1 つの指摘は 3 つの要素を持ちます。
+
+- **特定済み。** ファイル、行、セレクター。
+- **測定済み。** 形容詞ではなく、実際の誤った値。
+- **修正案つき。** 正確な変更と、その根拠となる WCAG 達成基準または名前のある UX の法則。
+
+プロジェクト全体に関する指摘もあります。たとえば「フォントファミリーが 5 つ、1 つか 2 つにする」です。これはスコアに数えられ、特定の 1 行はありません。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-light.svg">
-  <img alt="スコアカード: 総合スコア、観点別スコア、位置の特定された指摘" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-light.svg" width="100%">
+  <img alt="Scorecard: an overall score, per-dimension scores, and located findings" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/scorecard-light.svg" width="100%">
 </picture>
 
-## エディタで使う
+重みと採点ルールは [docs/scoring.md](../docs/scoring.md) にあります。指摘の根拠となる基準は [docs/science.md](../docs/science.md) にあります。
 
-| エージェント | 一行のインストールコマンド |
-|:--|:--|
-| Claude Code | `claude plugin install ui-ux-suite@10x` |
-| 70 以上のエージェントのいずれか | `npx skills add Aboudjem/ui-ux-suite` |
-| Codex、Gemini CLI、OpenCode、Pi | `./install.sh <agent>` |
-| VS Code と GitHub Copilot | `./install.sh copilot` |
-| それ以外すべて | [docs/editors.md](../docs/editors.md) を参照 |
+## 根拠
 
-`npx skills add` を通じて、Claude Code、Cursor、Codex、Copilot、Gemini CLI、そしてほかの 70 以上
-のエージェントで動きます。skill は Markdown なので、エディタが向いているモデルの上でそのまま
-動きます。
+このページの数字はすべてコマンドから出ています。実行して比べてください。
 
-<details>
-<summary><b>MCP サーバーとして追加する場合</b></summary>
+| 主張                                                        | それを出力するコマンド                               |
+| :---------------------------------------------------------- | :--------------------------------------------------- |
+| 397 件のテストが成功、失敗 0 件                             | `npm test`                                           |
+| 壊したフィクスチャは 10 点中 3.7 点、特定済みの指摘は 46 件 | `npx ui-ux-suite test/fixtures/planted-ux-problems`  |
+| MCP サーバーは 16 個のツールを公開                          | `node scripts/gen-tool-reference.js --check`         |
+| リポジトリには 14 のスキル                                  | `npx skills add Aboudjem/ui-ux-suite --list`         |
+| パッケージに実行時の依存はない                              | `npm view ui-ux-suite dependencies` が何も出力しない |
+| プラグインのマニフェストは有効                              | `claude plugin validate . --strict`                  |
 
-```bash
-claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
-codex mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
-```
+フィクスチャが回帰を防ぐゲートです。既知の問題を仕込んであり、[PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md) に一覧があります。
+そのどれかがファイル、行、修正つきで見つからなくなると、テストは失敗します。
 
-Cursor、VS Code、Gemini CLI、Windsurf、Continue、OpenCode、Zed も同じコマンドを、エディタに応じて
-JSON、TOML、YAML のいずれかのエントリとして書くだけです。キー名が異なる三つを含め、エディタごとの
-記述は [docs/editors.md](../docs/editors.md) にあります。
-</details>
+CI は、すべての push と pull request で同じ `npm test` を Node 18 と Node 22 で実行します。
 
-## 知っておくこと
+## よくある質問
 
-> [!IMPORTANT]
-> 監査はしますが、書き換えはしません。指定したプロジェクトのソースファイルを変更することはなく、
-> 修正案は `before` から `after` の形で表示されるだけです。書き出すのはレポートとベースラインの
-> ファイルだけで、しかもあなたが求めた場合に限られます。
+**自分のプロジェクトで実行しても安全ですか?**
+はい。ソースファイルを作成、編集、削除することはありません。書き込むのは、名前を指定したレポートまたはベースラインのファイルだけです。
 
-- **何もマシンの外に出ません。** Node の組み込みモジュールのみ。API キーもテレメトリもありません。静的な監査はネットワーク通信を一切行わず、ディープモードもあなたが渡した URL だけを開きます。
-- **既定は静的なソース解析です。** ディープモードは任意で、`playwright-core` と `@axe-core/playwright` が必要です。無い場合はソースベースの指摘に縮退します。
-- **数字にはゲートがあります。** `npm test` は 356 個のテストを実行し、わざと壊したフィクスチャはファイル、行番号、修正案を伴う指摘を出し続けなければなりません。
+**コードがマシンの外に出ますか?**
+いいえ。監査はネットワーク通信をせず、API キーも要らず、テレメトリーも送りません。deep モードが開くのは、指定した URL だけです。
+
+**アプリを起動しておく必要はありますか?**
+いいえ。標準の監査はソースファイルを読みます。deep モードは任意で、Playwright と axe-core による実地のチェックを追加します。
+
+**コードを自動で直してくれますか?**
+いいえ。各修正を `before` と `after` として出力します。適用するのはあなたか、あなたのエージェントです。
+
+**すでにスコアが低いプロジェクトでも CI のゲートにできますか?**
+はい。ベースラインを一度書き出し、新しい指摘やスコア低下のときだけ失敗させます。2 つのコマンドは上の手順 3 にあります。
+
+**どのスタックを読めますか?**
+React、Next.js、Vue、Svelte、Angular、素の HTML。Tailwind v3 と v4、CSS Modules、SCSS、styled-components、Emotion、素の CSS。
+
+**Lighthouse や axe とどう違いますか?**
+この 2 つは実行中のページが必要です。こちらはソースを読むので、ファイルと行を示せます。[docs/comparison.md](../docs/comparison.md) を参照してください。
+
+その他の質問は [docs/faq.md](../docs/faq.md) で答えています。
+
+## 制限事項
+
+- **ピクセルではなくソースを読みます。** JavaScript が実行時に設定するスタイルは、deep モードなしでは見えません。
+- **解決できないコントラストの組み合わせは飛ばします。** 背景が不明なときは、推測せずに何も報告しません。
+- **スコアは目安であって、証明書ではありません。** 高いスコアは WCAG への適合を証明しません。それには今も手作業のレビューが必要です。
+- **監査するだけで、編集はしません。** 修正を適用するのはあなたの手順です。
+- **スキルは MCP ツールを呼び出します。** Claude Code 以外では、スキルと一緒に MCP サーバーを追加してください。
+- **deep モードには追加のパッケージが 2 つ必要です。** `playwright-core` と `@axe-core/playwright` です。これがないと、ソースからの指摘だけになります。
+- **フォルダーは 6 階層までたどります。** とても深いリポジトリでは、ソースに近い場所を指定してください。
+- **Node 18 以降が必要です。**
 
 ## さらに詳しく
 
-- [docs/cli.md](../docs/cli.md)、全フラグ、終了コード、使用例
-- [docs/editors.md](../docs/editors.md)、エディタ別のインストールと MCP 設定
+- [docs/cli.md](../docs/cli.md)、すべてのフラグ、終了コード、レシピ
+- [docs/tools.md](../docs/tools.md)、16 個の MCP ツールとそれぞれの使いどころ
+- [docs/editors.md](../docs/editors.md)、エディターごとのインストールと MCP 設定
 - [docs/scoring.md](../docs/scoring.md)、12 の重みとスコアの組み立て方
-- [docs/science.md](../docs/science.md)、指摘の根拠になる WCAG 達成基準と UX 法則
-- [docs/faq.md](../docs/faq.md) と [docs/comparison.md](../docs/comparison.md)
-- [CHANGELOG.md](../CHANGELOG.md)、[CONTRIBUTING.md](../CONTRIBUTING.md)、[LICENSE](../LICENSE)
+- [docs/science.md](../docs/science.md)、指摘の根拠となる WCAG 達成基準と UX の法則
+- [CHANGELOG.md](../CHANGELOG.md)、[CONTRIBUTING.md](../CONTRIBUTING.md)、[SECURITY.md](../SECURITY.md)、[LICENSE](../LICENSE)
 
 ---
 
-<p align="center"><sub>MIT · 開発者 <a href="https://github.com/Aboudjem">Adam Boudjemaa</a></sub></p>
+<p align="center"><sub>MIT · 作者 <a href="https://github.com/Aboudjem">Adam Boudjemaa</a></sub></p>
 
 <sub>この文書は機械翻訳を用いて作成されています。内容に食い違いがある場合は <a href="../README.md">英語版</a> が正本です。</sub>

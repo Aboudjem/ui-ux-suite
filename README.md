@@ -56,6 +56,10 @@ Below those lines the report lists each finding in full. One of them:
 - **Cites:** WCAG 1.4.3 Contrast (Minimum) (AA)
 ```
 
+**What is APCA Lc?** It is a second contrast score, built to match how people see text.
+It runs from 0, no visible contrast, to about 106. The tool calls Lc 90 fine for body text, and 60 the floor for large text.
+The WCAG ratio still decides pass or fail. See [docs/science.md](docs/science.md).
+
 ## Install
 
 Pick the line for your agent. Each one is a single command.
@@ -96,15 +100,20 @@ Each row is a real install and check, run on the date shown on macOS with Node 2
 | Agent | How it was installed | Tested | What the test showed |
 |:--|:--|:--|:--|
 | Claude Code | Plugin loaded with `claude --plugin-dir .` | 2026-11-17 | `claude plugin validate . --strict` passes, and the MCP server connects |
-| Cursor | `.cursor/mcp.json` | 2026-11-17 | `cursor-agent mcp list-tools ui-ux-suite` lists the 16 tools |
+| Cursor | `.cursor/mcp.json`, then `cursor-agent mcp enable ui-ux-suite` | 2026-11-17 | `cursor-agent mcp list-tools ui-ux-suite` lists the 16 tools |
 | Codex | `codex mcp add ui-ux-suite` | 2026-11-17 | `codex mcp list` shows the server enabled |
-| Gemini CLI | `gemini mcp add ui-ux-suite` | 2026-11-17 | `gemini mcp list` shows the server connected |
+| Gemini CLI | `gemini mcp add ui-ux-suite`, then trust the folder | 2026-11-17 | `gemini mcp list` shows the server connected |
 | OpenCode | `opencode.json` | 2026-11-17 | `opencode mcp list` shows the server connected |
 | Skills CLI 1.9.0 | `npx skills add Aboudjem/ui-ux-suite` | 2026-11-17 | The 14 skills land in `.agents/skills` and `.claude/skills` |
 | Any stdio MCP client | `npx -y ui-ux-suite --mcp` | 2026-11-17 | A raw MCP session lists 16 tools and audits the fixture at 3.7 |
 
 Documented, not run on that date: VS Code, GitHub Copilot, Windsurf, Continue, Zed, Pi and `install.sh`.
 Their snippets are in [docs/editors.md](docs/editors.md).
+
+Two agents need one more step before the server loads:
+
+- **Cursor** keeps a new server off until you approve it: `cursor-agent mcp enable ui-ux-suite`.
+- **Gemini CLI** turns every MCP server off in a folder it does not trust. Run `gemini` there once and pick "Trust folder".
 
 ## Use it
 
@@ -129,6 +138,18 @@ npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to
 ```
 
 In an agent, ask for it in plain words: "audit this project's design". In Claude Code, type `/ui-ux-suite:audit`.
+
+**4. Optional: turn on deep mode.** It checks the running app in a real browser. The CLI has no deep flag. Deep mode runs through the MCP tool `uiux_audit_run`.
+
+First, install the two extra packages and a browser in your project:
+
+```bash
+npm i -D playwright-core @axe-core/playwright
+npx playwright install chromium
+```
+
+Then start your app and ask your agent: "Run `uiux_audit_run` with `depth: "deep"` and `baseUrl: "http://localhost:3000"`."
+Deep mode adds live contrast, axe-core checks and touch targets under 44 by 44 pixels. The parameters are in [docs/tools.md](docs/tools.md).
 
 Every flag and exit code is in [docs/cli.md](docs/cli.md). Every MCP tool is in [docs/tools.md](docs/tools.md).
 
@@ -166,7 +187,7 @@ Every number on this page comes from a command. Run it and compare.
 
 | Claim | Command that prints it |
 |:--|:--|
-| 377 tests pass, 0 fail | `npm test` |
+| 397 tests pass, 0 fail | `npm test` |
 | The broken fixture scores 3.7 out of 10, with 46 located findings | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
 | The MCP server exposes 16 tools | `node scripts/gen-tool-reference.js --check` |
 | The repo holds 14 skills | `npx skills add Aboudjem/ui-ux-suite --list` |
