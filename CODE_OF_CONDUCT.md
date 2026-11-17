@@ -8,7 +8,7 @@ We pledge to make participation in this project a harassment-free experience for
 
 Be welcoming, respectful, and constructive. Harassment, trolling, and personal attacks are not acceptable.
 
-Report violations to **adam@integralayer.com**. All reports are reviewed promptly and fairly.
+Report violations privately. For anything sensitive, use the form at https://github.com/Aboudjem/ui-ux-suite/security/advisories/new ("Report a vulnerability" on the Security tab). Otherwise, contact the maintainer through https://github.com/Aboudjem. All reports are reviewed promptly and fairly.
 
 ## Full Text
 

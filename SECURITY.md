@@ -6,7 +6,9 @@ If you discover a security vulnerability in UI/UX Suite, please report it respon
 
 **Do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, email **adam@integralayer.com** with:
+Instead, report it privately through GitHub: open
+https://github.com/Aboudjem/ui-ux-suite/security/advisories/new ("Report a vulnerability" on the
+Security tab) and include:
 
 1. Description of the vulnerability
 2. Steps to reproduce
