@@ -2,4 +2,4 @@
 # Set this in: Repository Settings > About > Description
 #
 # Current recommendation:
-Fix contrast, focus and layout bugs by line number: the measured value and the exact change. WCAG 2.2, zero deps.
+Fix design bugs by line number: low contrast, no focus ring, broken layout. Each with the exact change. WCAG 2.2.

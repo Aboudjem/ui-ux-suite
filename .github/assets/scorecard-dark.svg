@@ -114,7 +114,7 @@
 
   <text class="mono label" x="32" y="30">UI-UX-SUITE · DESIGN AUDIT SCORECARD</text>
   <text class="disp title" x="32" y="68">Your design, measured across 12 dimensions</text>
-  <text class="disp muted" x="32" y="90">ESLint for design: evidence-backed scores, real UX laws, code-ready fixes.</text>
+  <text class="disp muted" x="32" y="90">Design bugs by line number: the score, the UX law, the exact fix.</text>
 
   <!-- score card -->
   <g transform="translate(32,110)">

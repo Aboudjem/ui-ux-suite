@@ -2,7 +2,7 @@
 
 > ui-ux-suite is a zero-dependency design linter for web projects. It audits CSS, JSX, HTML, and Tailwind config and returns specific, located (file:line + selector), measured (the real wrong value), and fixed (before → after) findings across 12 design dimensions, grounded in WCAG 2.2, APCA contrast, and the Laws of UX. It is audit-then-suggest: read-only, it never edits the project it audits. It runs as an MCP server and an npx CLI, so it works in Claude Code, Cursor, VS Code, Codex, Gemini, Windsurf, and Continue.
 
-Canonical one-line definition: ui-ux-suite is "ESLint for design: the line, the measured value, the fix." It finds the design bugs in your source code and pins each one it can locate to a file and line, with a WCAG success criterion or named UX-law citation.
+Canonical one-line definition: ui-ux-suite gives "design bugs by line number, each with the exact fix." It finds the design bugs in your source code and ties each one it can locate to a file and line, with a WCAG success criterion or named UX-law citation.
 
 Key facts:
 

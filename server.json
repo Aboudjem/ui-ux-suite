@@ -2,14 +2,14 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Aboudjem/ui-ux-suite",
   "title": "UI/UX Suite",
-  "description": "ESLint for design: UI bugs in your source, with the file, line, measured value and fix. WCAG 2.2.",
+  "description": "Design bugs by line number in CSS, JSX, HTML and Tailwind, each with the measured value and the fix.",
   "repository": { "url": "https://github.com/Aboudjem/ui-ux-suite", "source": "github" },
-  "version": "0.7.1",
+  "version": "0.7.2",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "ui-ux-suite",
-      "version": "0.7.1",
+      "version": "0.7.2",
       "transport": { "type": "stdio" },
       "packageArguments": [
         { "type": "named", "name": "--mcp", "description": "Start the MCP server over stdio" }

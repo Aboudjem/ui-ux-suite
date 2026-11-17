@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg">
-  <img alt="ui-ux-suite" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
+  <img alt="ui-ux-suite: デザインのバグを行番号で示します。styles.css の 118 行目の文字色はコントラスト 1.75:1 で、修正後の値は 4.51:1 で合格します。" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -12,10 +12,15 @@
 
 <p align="center"><a href="../README.md">English</a> · <a href="zh-CN.md">简体中文</a> · <b>日本語</b> · <a href="es.md">Español</a> · <a href="fr.md">Français</a></p>
 
-<p align="center"><b>デザインのための ESLint: 該当行、実測値、修正。</b></p>
+<p align="center"><b>デザインのバグを行番号で示し、それぞれに正確な修正を付けます。</b></p>
 
-どの Web プロジェクトでも実行でき、ソースコードのデザインのバグを見つけ、可能なものは行まで特定します。
-インストール不要、設定不要、キー不要です。
+ソースコードを読み、変えるべき点を 1 行ずつ出力します。
+
+| 直すべき正確な行 | WCAG の基準を明記 | 修正後の値を提示 |
+|:--|:--|:--|
+| テスト用アプリで位置を特定した指摘 46 件。それぞれにファイルと行があります。 | コントラストは WCAG 2.2 で測ります。各指摘は WCAG の基準か UX の法則を示します。 | 各指摘は実測値と変更を示します。例: `#fbfbfb` から `#767676` へ。 |
+
+**対応:** すべての MCP クライアントと、スキルを読むすべてのエージェント。テスト済み: Claude Code、Cursor、Codex、Gemini CLI、OpenCode。監査は普通のコードなので、モデルは要りません。
 
 ```bash
 npx ui-ux-suite .
@@ -41,24 +46,15 @@ npx ui-ux-suite .
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-これはモックではなく、実際の実行結果です。バージョン 0.7.1 のチェックアウトで
-`npx ui-ux-suite test/fixtures/planted-ux-problems` を実行した出力の冒頭です。
-このフィクスチャはわざと壊してあるので、スコアは低くなります。
+これはモックではなく、実際の実行結果です。テスト用アプリ (バージョン 0.7.1) のレポートの冒頭です。
+コマンドは「根拠」にあります。テスト用アプリはわざと壊してあるので、スコアは低くなります。
 
-コントラスト不足、フォーカスリングの欠落、スマートフォンで崩れる固定幅。
-位置を特定できた指摘には、ファイル、行、具体的な変更が付きます。
-監査はコードを読むだけで、決して編集しません。
 ピクセルではなくソースを読みます。高いスコアは WCAG 準拠の証明ではありません。
-
-**使う理由**
-
-- **何を変えればよいかが正確にわかる。** 位置を特定できた指摘には、ファイル、行、実測値、修正が付きます(フィクスチャで 46 件)。
-- **基準に裏付けられている。** コントラストは WCAG 2.2 で測り、位置を特定できた指摘はそれぞれ根拠となる WCAG の基準か UX の法則を示します。
-- **Node 18 が動く環境ならどこでも動く。** 実行時の依存関係はありません。`npm view ui-ux-suite dependencies` は何も出力しません。
 
 ## インストール
 
 使っているエージェントの行を選んでください。どれも 1 つのコマンドです。
+インストールも設定も不要で、API キーも要りません。
 
 **Claude Code。** プラグインには 14 のスキル、5 つのコマンド、12 のエージェント、MCP サーバーが入っています。
 
@@ -73,7 +69,7 @@ claude plugin install ui-ux-suite@10x
 npx skills add Aboudjem/ui-ux-suite
 ```
 
-**任意の MCP クライアント。** サーバーにキーも設定も要りません。
+**任意の MCP クライアント。** MCP は、エージェントがツールを呼び出すためのオープンな標準です。サーバーにキーも設定も要りません。
 
 ```bash
 claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
@@ -101,15 +97,15 @@ claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
 | Gemini CLI                    | `gemini mcp add ui-ux-suite`、続けてフォルダーを信頼する         | 2026-11-17 | `gemini mcp list` でサーバーが接続済みと表示される                         |
 | OpenCode                      | `opencode.json`                                                  | 2026-11-17 | `opencode mcp list` でサーバーが接続済みと表示される                       |
 | Skills CLI 1.9.0              | `npx skills add Aboudjem/ui-ux-suite`                            | 2026-11-17 | 14 のスキルが `.agents/skills` と `.claude/skills` に入る                  |
-| 任意の stdio MCP クライアント | `npx -y ui-ux-suite --mcp`                                       | 2026-11-17 | 素の MCP セッションが 16 個のツールを一覧し、フィクスチャを 3.7 と採点する |
+| 任意の MCP クライアント | `npx -y ui-ux-suite --mcp`                                       | 2026-11-17 | 素の MCP セッションが 16 個のツールを一覧し、テスト用アプリを 3.7 と採点する |
 
 文書化済みで、その日には実行していないもの: VS Code、GitHub Copilot、Windsurf、Continue、Zed、Pi、`install.sh`。
 それらの設定例は [docs/editors.md](../docs/editors.md) にあります。
 
 2 つのエージェントは、サーバーを読み込む前にもう 1 手順必要です。
 
-- **Cursor** は、承認するまで新しいサーバーをオフにしておきます: `cursor-agent mcp enable ui-ux-suite`。
-- **Gemini CLI** は、信頼していないフォルダーではすべての MCP サーバーをオフにします。そのフォルダーで一度 `gemini` を起動し、"Trust folder" を選んでください。
+- **Cursor** は、承認するまで新しいサーバーを起動しません: `cursor-agent mcp enable ui-ux-suite`。
+- **Gemini CLI** は、信頼していないフォルダーではすべての MCP サーバーを無効にします。そのフォルダーで一度 `gemini` を起動し、"Trust folder" を選んでください。
 
 ## 使い方
 
@@ -121,21 +117,21 @@ npx ui-ux-suite .
 
 **2. 冒頭の 3 行を直します。** それぞれがファイル、行、行うべき変更を示します。
 
-**3. CI に組み込みます。** パイプラインに合う出力とゲートを選んでください。
+**3. CI に組み込みます。** CI は push のたびに動くチェックのことです。出力形式と、ビルドを失敗させる条件を選んでください。
 
 ```bash
 npx ui-ux-suite . --fail-under 7           # exit 1 when the score drops below 7
 npx ui-ux-suite . --json | jq              # machine-readable, banner goes to stderr
 npx ui-ux-suite . --html report.html       # standalone HTML report
 npx ui-ux-suite . --sarif ui-ux.sarif      # SARIF 2.1.0 for GitHub code scanning
-npx ui-ux-suite . --write-baseline .uiux-baseline.json   # freeze today's debt
+npx ui-ux-suite . --write-baseline .uiux-baseline.json   # save today's findings
 npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
 npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to-have
 ```
 
 エージェントでは、普通の言葉で頼めます: 「このプロジェクトのデザインを監査して」。Claude Code では `/ui-ux-suite:audit` と入力します。
 
-**4. 任意: deep モードを有効にします。** 実行中のアプリを本物のブラウザーで確認します。CLI に deep 用のフラグはありません。deep モードは MCP ツール `uiux_audit_run` を通して動きます。
+**4. 任意: deep モードを使います。** 実行中のアプリを本物のブラウザーで確認します。CLI に deep 用のフラグはありません。deep モードは MCP ツール `uiux_audit_run` を通して動きます。
 
 まず、追加の 2 つのパッケージとブラウザーをプロジェクトに入れます。
 
@@ -150,6 +146,10 @@ deep モードは、実測のコントラスト、axe-core のチェック、44 
 すべてのフラグと終了コードは [docs/cli.md](../docs/cli.md) にあります。すべての MCP ツールは [docs/tools.md](../docs/tools.md) にあります。
 
 ## 仕組み
+
+デザインのための ESLint と考えてください。ESLint はコードのスタイルをチェックするツールです。
+このツールは同じやり方でデザインをチェックします。
+コントラスト不足、フォーカスリングの欠落、スマートフォンで崩れる固定幅を見つけます。
 
 ソースコードを読みます。アプリは実行せず、ブラウザーも必要ありません。
 
@@ -200,13 +200,13 @@ deep モードは、実測のコントラスト、axe-core のチェック、44 
 | 主張                                                        | それを出力するコマンド                               |
 | :---------------------------------------------------------- | :--------------------------------------------------- |
 | 397 件のテストが成功、失敗 0 件                             | `npm test`                                           |
-| 壊したフィクスチャは 10 点中 3.7 点、特定済みの指摘は 46 件 | `npx ui-ux-suite test/fixtures/planted-ux-problems`  |
+| 壊したテスト用アプリは 10 点中 3.7 点、特定済みの指摘は 46 件 | `npx ui-ux-suite test/fixtures/planted-ux-problems`  |
 | MCP サーバーは 16 個のツールを公開                          | `node scripts/gen-tool-reference.js --check`         |
 | リポジトリには 14 のスキル                                  | `npx skills add Aboudjem/ui-ux-suite --list`         |
 | パッケージに実行時の依存はない                              | `npm view ui-ux-suite dependencies` が何も出力しない |
 | プラグインのマニフェストは有効                              | `claude plugin validate . --strict`                  |
 
-フィクスチャが回帰を防ぐゲートです。既知の問題を仕込んであり、[PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md) に一覧があります。
+テスト用アプリで回帰を検出します。既知の問題をわざと入れてあり、[PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md) に一覧があります。
 そのどれかがファイル、行、修正つきで見つからなくなると、テストは失敗します。
 
 CI は、すべての push と pull request で同じ `npm test` を Node 18 と Node 22 で実行します。
@@ -225,8 +225,8 @@ CI は、すべての push と pull request で同じ `npm test` を Node 18 と
 **コードを自動で直してくれますか?**
 いいえ。各修正を `before` と `after` として出力します。適用するのはあなたか、あなたのエージェントです。
 
-**すでにスコアが低いプロジェクトでも CI のゲートにできますか?**
-はい。ベースラインを一度書き出し、新しい指摘やスコア低下のときだけ失敗させます。2 つのコマンドは上の手順 3 にあります。
+**すでにスコアが低いプロジェクトでも CI で使えますか?**
+はい。ベースライン (今日の指摘を保存したファイル) を一度保存します。その後は、新しい指摘かスコア低下のときだけビルドが失敗します。2 つのコマンドは上の手順 3 にあります。
 
 **どのスタックを読めますか?**
 React、Next.js、Vue、Svelte、Angular、素の HTML。Tailwind v3 と v4、CSS Modules、SCSS、styled-components、Emotion、素の CSS。

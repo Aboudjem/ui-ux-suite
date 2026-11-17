@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.2] - 2026-11-17
+
+A simpler first screen in plain English, and new pictures. No change to the audit, the CLI or the MCP tools.
+
+### Changed
+
+- **README first screen.** One bold line, one short sentence, then three benefits in a table: the exact line to fix, the WCAG rule cited, the fix value given. Each one has its proof. Then the agents it works with, the command, the real sample and the one limit.
+- **Plain English.** Shorter sentences and common words across the README. Terms such as MCP, CI and baseline are explained where they first appear. The "Why use it" block is gone; its facts are in Proof, How it works and Limits.
+- **Hero and social preview.** One picture, built by `scripts/build-hero.js`: line 118 of the test app, its color at 1.75:1, the fix `#6d7882` at 4.51:1, the command and the tested agents.
+- **Descriptions.** The plugin manifests, `package.json`, `server.json`, `llms.txt` and the site say "design bugs by line number, each with the exact fix".
+- **Translations.** The Chinese, Japanese, Spanish and French READMEs mirror every change.
+
 ## [0.7.1] - 2026-11-17
 
 A clearer first screen and truer wording. No change to the audit, the CLI or the MCP tools.

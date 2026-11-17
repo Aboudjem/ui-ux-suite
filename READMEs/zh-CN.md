@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg">
-  <img alt="ui-ux-suite" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
+  <img alt="ui-ux-suite：按行号指出设计缺陷。styles.css 第 118 行的文字颜色对比度为 1.75:1，修复后的值以 4.51:1 通过。" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -12,10 +12,15 @@
 
 <p align="center"><a href="../README.md">English</a> · <b>简体中文</b> · <a href="ja.md">日本語</a> · <a href="es.md">Español</a> · <a href="fr.md">Français</a></p>
 
-<p align="center"><b>设计领域的 ESLint：指出行号、实测值和修复方法。</b></p>
+<p align="center"><b>按行号指出设计缺陷，每个都附带确切的修复。</b></p>
 
-在任何 Web 项目中运行它，找出源代码里的设计缺陷，能定位的都会精确到行。
-无需安装，无需配置，无需密钥。
+它读取你的源代码，逐行告诉你要改什么。
+
+| 要改的确切行号 | 引用 WCAG 准则 | 给出修复后的值 |
+|:--|:--|:--|
+| 在测试应用上有 46 个已定位问题，每个都有文件和行号。 | 对比度按 WCAG 2.2 测量；每个问题都引用一条 WCAG 准则或 UX 定律。 | 每个问题都给出实测值和改法，例如从 `#fbfbfb` 改为 `#767676`。 |
+
+**适用于：** 任何 MCP 客户端，以及任何读取技能的智能体。已测试：Claude Code、Cursor、Codex、Gemini CLI、OpenCode。审计是普通代码，所以不需要任何模型。
 
 ```bash
 npx ui-ux-suite .
@@ -41,24 +46,15 @@ npx ui-ux-suite .
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-这是一次真实运行，不是示意图。它是在 0.7.1 版本的代码副本中运行
-`npx ui-ux-suite test/fixtures/planted-ux-problems` 的输出开头。
-这个测试样例是故意做坏的，所以得分很低。
+这是一次真实运行，不是示意图。它是我们测试应用（0.7.1 版本）报告的开头。
+命令在“证据”一节。测试应用是故意做坏的，所以得分很低。
 
-对比度太低、缺少焦点环、固定宽度在手机上错位。
-每个已定位的问题都会给出文件、行号和具体改法。
-审计只读取你的代码，从不修改。
 它读的是源代码而不是像素，高分也不能证明符合 WCAG。
-
-**为什么用它**
-
-- **清楚知道要改什么。** 每个已定位的问题都有文件、行号、实测值和修复方法（在测试夹具上共 46 个）。
-- **以标准为依据。** 对比度按 WCAG 2.2 测量，每个已定位的问题都会引用对应的 WCAG 准则或 UX 定律。
-- **有 Node 18 的地方就能运行。** 没有运行时依赖：`npm view ui-ux-suite dependencies` 不输出任何内容。
 
 ## 安装
 
 选择你所用智能体的那一行。每行都只有一条命令。
+无需安装或配置，也不需要 API 密钥。
 
 **Claude Code。** 插件包含 14 个技能、5 个命令、12 个智能体和 MCP 服务器。
 
@@ -73,7 +69,7 @@ claude plugin install ui-ux-suite@10x
 npx skills add Aboudjem/ui-ux-suite
 ```
 
-**任何 MCP 客户端。** 服务器不需要密钥，也不需要配置。
+**任何 MCP 客户端。** MCP 是一个开放标准，让智能体可以调用工具。服务器不需要密钥，也不需要配置。
 
 ```bash
 claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
@@ -101,15 +97,15 @@ claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
 | Gemini CLI            | `gemini mcp add ui-ux-suite`，然后信任该文件夹                 | 2026-11-17 | `gemini mcp list` 显示服务器已连接                         |
 | OpenCode              | `opencode.json`                                                | 2026-11-17 | `opencode mcp list` 显示服务器已连接                       |
 | Skills CLI 1.9.0      | `npx skills add Aboudjem/ui-ux-suite`                          | 2026-11-17 | 14 个技能被放入 `.agents/skills` 和 `.claude/skills`       |
-| 任何 stdio MCP 客户端 | `npx -y ui-ux-suite --mcp`                                     | 2026-11-17 | 一次原始 MCP 会话列出 16 个工具，并给测试样例打出 3.7 分   |
+| 任何 MCP 客户端 | `npx -y ui-ux-suite --mcp`                                     | 2026-11-17 | 一次原始 MCP 会话列出 16 个工具，并给测试应用打出 3.7 分   |
 
 已有文档、当天未运行：VS Code、GitHub Copilot、Windsurf、Continue、Zed、Pi 和 `install.sh`。
 它们的配置片段在 [docs/editors.md](../docs/editors.md) 中。
 
 有两个智能体在加载服务器前还需要多一步：
 
-- **Cursor** 会让新服务器保持关闭，直到你批准它：`cursor-agent mcp enable ui-ux-suite`。
-- **Gemini CLI** 会在它不信任的文件夹里关闭所有 MCP 服务器。在该文件夹中运行一次 `gemini`，然后选择 "Trust folder"。
+- **Cursor** 在你批准之前不会启动新服务器：`cursor-agent mcp enable ui-ux-suite`。
+- **Gemini CLI** 会在它不信任的文件夹里禁用所有 MCP 服务器。在该文件夹中运行一次 `gemini`，然后选择 "Trust folder"。
 
 ## 使用
 
@@ -121,21 +117,21 @@ npx ui-ux-suite .
 
 **2. 修复顶部的三行。** 每一行都给出文件、行号和要做的改动。
 
-**3. 放进 CI。** 选择适合你流水线的输出格式和门槛。
+**3. 放进 CI。** CI 指每次 push 时运行的检查。选择输出格式，以及让构建失败的规则。
 
 ```bash
 npx ui-ux-suite . --fail-under 7           # exit 1 when the score drops below 7
 npx ui-ux-suite . --json | jq              # machine-readable, banner goes to stderr
 npx ui-ux-suite . --html report.html       # standalone HTML report
 npx ui-ux-suite . --sarif ui-ux.sarif      # SARIF 2.1.0 for GitHub code scanning
-npx ui-ux-suite . --write-baseline .uiux-baseline.json   # freeze today's debt
+npx ui-ux-suite . --write-baseline .uiux-baseline.json   # save today's findings
 npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
 npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to-have
 ```
 
 在智能体中，用平常的话提出即可：“审查这个项目的设计”。在 Claude Code 中，输入 `/ui-ux-suite:audit`。
 
-**4. 可选：开启 deep 模式。** 它会在真实浏览器中检查正在运行的应用。命令行没有 deep 参数：deep 模式通过 MCP 工具 `uiux_audit_run` 运行。
+**4. 可选：使用 deep 模式。** 它会在真实浏览器中检查正在运行的应用。命令行没有 deep 参数：deep 模式通过 MCP 工具 `uiux_audit_run` 运行。
 
 首先，在项目中安装两个额外的包和一个浏览器：
 
@@ -150,6 +146,10 @@ deep 模式会增加实测对比度、axe-core 检查，以及小于 44 x 44 像
 每个参数和退出码都在 [docs/cli.md](../docs/cli.md) 中。每个 MCP 工具都在 [docs/tools.md](../docs/tools.md) 中。
 
 ## 工作原理
+
+可以把它看作设计领域的 ESLint。ESLint 是检查代码风格的工具。
+这个工具用同样的方式检查设计。
+它能找出对比度太低、缺少焦点环、固定宽度在手机上错位等问题。
 
 它读取你的源代码。它不运行你的应用，也不需要浏览器。
 
@@ -200,13 +200,13 @@ deep 模式会增加实测对比度、axe-core 检查，以及小于 44 x 44 像
 | 结论                                                       | 输出它的命令                                        |
 | :--------------------------------------------------------- | :-------------------------------------------------- |
 | 397 个测试通过，0 个失败                                   | `npm test`                                          |
-| 故意做坏的测试样例得 3.7 分（满分 10），有 46 个已定位问题 | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
+| 故意做坏的测试应用得 3.7 分（满分 10），有 46 个已定位问题 | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
 | MCP 服务器提供 16 个工具                                   | `node scripts/gen-tool-reference.js --check`        |
 | 仓库包含 14 个技能                                         | `npx skills add Aboudjem/ui-ux-suite --list`        |
 | 这个包没有运行时依赖                                       | `npm view ui-ux-suite dependencies` 什么也不输出    |
 | 插件清单有效                                               | `claude plugin validate . --strict`                 |
 
-测试样例就是回归检查的关口。它埋入了已知问题，列在 [PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md) 中。
+测试应用用来发现回归。它故意带有已知问题，列在 [PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md) 中。
 如果其中任何一个不再带着文件、行号和修复被找出，测试就会失败。
 
 CI 在每次 push 和 pull request 时，在 Node 18 和 Node 22 上运行同样的 `npm test`。
@@ -225,8 +225,8 @@ CI 在每次 push 和 pull request 时，在 Node 18 和 Node 22 上运行同样
 **它会替我修改代码吗？**
 不会。它把每项修复输出为 `before` 和 `after`。由你或你的智能体来应用。
 
-**我的项目现在分数就很低。还能用它卡 CI 吗？**
-可以。先写一次基线，之后只在出现新问题或分数下降时失败。两条命令在上面的第 3 步。
+**我的项目现在分数就很低。还能在 CI 里用它吗？**
+可以。先保存一次基线：一个记录今天问题的文件。之后只有出现新问题或分数下降时，构建才会失败。两条命令在上面的第 3 步。
 
 **它能读哪些技术栈？**
 React、Next.js、Vue、Svelte、Angular 和纯 HTML。Tailwind v3 和 v4、CSS Modules、SCSS、styled-components、Emotion 和纯 CSS。

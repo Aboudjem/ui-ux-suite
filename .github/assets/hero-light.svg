@@ -1,132 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none" role="img"
-     aria-label="ui-ux-suite, a design linter: the exact line, the measured wrong value, and the exact fix">
-  <title>ui-ux-suite</title>
-  <defs>
-    <linearGradient id="ux-ground" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="55%" stop-color="#F7F8FB"/>
-      <stop offset="100%" stop-color="#EEF1F7"/>
-    </linearGradient>
-    <radialGradient id="ux-bloomA" cx="0.15" cy="0.13" r="0.44">
-      <stop offset="0%" stop-color="#006A80" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="#006A80" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ux-bloomB" cx="0.88" cy="0.85" r="0.50">
-      <stop offset="0%" stop-color="#0959D1" stop-opacity="0.09"/>
-      <stop offset="100%" stop-color="#0959D1" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ux-bloomC" cx="0.52" cy="0.04" r="0.36">
-      <stop offset="0%" stop-color="#5D4BD1" stop-opacity="0.06"/>
-      <stop offset="100%" stop-color="#5D4BD1" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ux-wash" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%"   stop-color="#006A80" stop-opacity="0.07"/>
-      <stop offset="42%"  stop-color="#0959D1" stop-opacity="0.043"/>
-      <stop offset="76%"  stop-color="#5D4BD1" stop-opacity="0.016"/>
-      <stop offset="100%" stop-color="#5D4BD1" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="ux-frame"><rect width="1200" height="400"/></clipPath>
-    <linearGradient id="ux-rule" gradientUnits="userSpaceOnUse" x1="500" y1="100" x2="500" y2="300">
-      <stop offset="0%"   stop-color="#006A80" stop-opacity="0"/>
-      <stop offset="45%"  stop-color="#006A80" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#0959D1" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="ux-ink" gradientUnits="userSpaceOnUse" x1="62" y1="60" x2="200" y2="220">
-      <stop class="uxk1" offset="0%"   stop-color="#006A80"/>
-      <stop class="uxk2" offset="52%"  stop-color="#006A80"/>
-      <stop class="uxk3" offset="100%" stop-color="#0959D1"/>
-    </linearGradient>
-    <clipPath id="ux-cal"><rect class="uxcal" x="62" y="208" width="132" height="12"/></clipPath>
-    <linearGradient id="ux-word" x1="0" y1="0" x2="1" y2="0.25">
-      <stop class="uxk1" offset="0%"   stop-color="#006A80"/>
-      <stop class="uxk2" offset="46%"  stop-color="#006A80"/>
-      <stop class="uxk3" offset="100%" stop-color="#0959D1"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img"
+     aria-label="ui-ux-suite: design bugs by line number. Line 118 of styles.css has text color #b5c6d7 at 1.75 to 1 contrast; the fix is #6d7882 at 4.51 to 1. Run npx ui-ux-suite dot.">
+  <title>ui-ux-suite: design bugs, by line number</title>
+  <!-- Built by scripts/build-hero.js. Do not edit by hand. -->
+  <rect width="1280" height="640" fill="#FFFFFF"/>
+  <text x="96" y="84" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="24" font-weight="700" fill="#006A80">ui-ux-suite</text>
+  <text x="96" y="160" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.5" fill="#0B1220">Design bugs, by line number</text>
+  <g transform="translate(0,196)"><rect x="96" y="0" width="275" height="48" rx="24" fill="#F2F7FB" stroke="#B9C7DA" stroke-width="1.5"/><circle cx="120" cy="24" r="5" fill="#006A80"/><text x="136" y="32" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="23" font-weight="600" fill="#0B1220">Exact line to fix</text><rect x="387" y="0" width="248" height="48" rx="24" fill="#F2F7FB" stroke="#B9C7DA" stroke-width="1.5"/><circle cx="411" cy="24" r="5" fill="#006A80"/><text x="427" y="32" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="23" font-weight="600" fill="#0B1220">WCAG rule cited</text><rect x="651" y="0" width="248" height="48" rx="24" fill="#F2F7FB" stroke="#B9C7DA" stroke-width="1.5"/><circle cx="675" cy="24" r="5" fill="#006A80"/><text x="691" y="32" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="23" font-weight="600" fill="#0B1220">Fix value given</text></g>
 
-  <style>
-    .disp { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
-    .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
-    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 4.5px; fill: #006A80; }
-    .head    { font-size: 34px; font-weight: 700; fill: #1A2233; letter-spacing: -0.5px; }
-    .sub     { font-size: 16.5px; font-weight: 500; fill: #48546B; }
-    .tag     { font-size: 11.5px; letter-spacing: 1.6px; fill: #48546B; }
-    .chip    { font-size: 11.5px; letter-spacing: 1.2px; fill: #48546B; }
-    @keyframes ux-breathe { 0%,100% { opacity:0.72; } 50% { opacity:1; } }
-    .uxbloom { animation: ux-breathe 11s ease-in-out infinite; }
-    @keyframes ux-sweep { 0% { transform: translateX(-360px); } 100% { transform: translateX(1560px); } }
-    .uxwash { animation: ux-sweep 17s cubic-bezier(.5,0,.5,1) infinite; }
-    @keyframes ux-pip { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
-    .uxp1 { animation: ux-pip 5s ease-in-out infinite 0.0s; }
-    .uxp2 { animation: ux-pip 5s ease-in-out infinite 0.35s; }
-    .uxp3 { animation: ux-pip 5s ease-in-out infinite 0.7s; }
-    .uxp4 { animation: ux-pip 5s ease-in-out infinite 1.05s; }
-    .uxp5 { animation: ux-pip 5s ease-in-out infinite 1.4s; }
-    .uxp6 { animation: ux-pip 5s ease-in-out infinite 1.75s; }
-    .uxp7 { animation: ux-pip 5s ease-in-out infinite 2.1s; }
-    .uxp8 { animation: ux-pip 5s ease-in-out infinite 2.45s; }
-    .uxp9 { animation: ux-pip 5s ease-in-out infinite 2.8s; }
-    .uxp10 { animation: ux-pip 5s ease-in-out infinite 3.15s; }
-    .uxp11 { animation: ux-pip 5s ease-in-out infinite 3.5s; }
-    .uxp12 { animation: ux-pip 5s ease-in-out infinite 3.85s; }
-    @keyframes ux-tick { 0%,100% { opacity: 0.34; } 44%,62% { opacity: 1; } }
-    .uxt1 { animation: ux-tick 6s ease-in-out infinite 0.0s; }
-    .uxt2 { animation: ux-tick 6s ease-in-out infinite 0.16s; }
-    .uxt3 { animation: ux-tick 6s ease-in-out infinite 0.32s; }
-    .uxt4 { animation: ux-tick 6s ease-in-out infinite 0.48s; }
-    .uxt5 { animation: ux-tick 6s ease-in-out infinite 0.64s; }
-    .uxt6 { animation: ux-tick 6s ease-in-out infinite 0.8s; }
-    .uxt7 { animation: ux-tick 6s ease-in-out infinite 0.96s; }
-    .uxt8 { animation: ux-tick 6s ease-in-out infinite 1.12s; }
-    .uxt9 { animation: ux-tick 6s ease-in-out infinite 1.28s; }
-    @keyframes ux-cal { 0%,8% { width: 0; } 62%,88% { width: 132px; } 98%,100% { width: 0; } }
-    .uxcal { animation: ux-cal 6s cubic-bezier(.3,0,.2,1) infinite; }
-    @keyframes ux-k1 { 0%,100% { stop-color:#006A80; } 50% { stop-color:#0959D1; } }
-    @keyframes ux-k2 { 0%,100% { stop-color:#006A80; } 50% { stop-color:#006A80; } }
-    @keyframes ux-k3 { 0%,100% { stop-color:#0959D1; } 50% { stop-color:#5D4BD1; } }
-    .uxk1 { animation: ux-k1 14s ease-in-out infinite; }
-    .uxk2 { animation: ux-k2 14s ease-in-out infinite; }
-    .uxk3 { animation: ux-k3 14s ease-in-out infinite; }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
-  </style>
+  <g transform="translate(96,292)">
+    <rect x="0" y="0" width="600" height="160" rx="14" fill="#F4F6FA" stroke="#D5DBE6" stroke-width="1.5"/>
+    <text x="26" y="-12" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" fill="#4A5670">src/styles.css</text>
+    <text x="26" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="400" fill="#4A5670">117</text><text x="90" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#4A5670">.swatch-25 { color: #a4b5c6; }</text><rect x="1" y="66" width="598" height="44" fill="rgba(0,106,128,0.10)"/><rect x="1" y="66" width="4" height="44" fill="#006A80"/><text x="26" y="96" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="700" fill="#006A80">118</text><text x="90" y="96" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#0B1220">.swatch-26 { color: #b5c6d7; }</text><text x="26" y="140" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" font-weight="400" fill="#4A5670">119</text><text x="90" y="140" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#4A5670">.swatch-27 { color: #c6d7e8; }</text>
+  </g>
 
-  <rect width="1200" height="400" fill="url(#ux-ground)"/>
-  <g class="uxbloom">
-    <rect width="1200" height="400" fill="url(#ux-bloomA)"/>
-    <rect width="1200" height="400" fill="url(#ux-bloomB)"/>
-    <rect width="1200" height="400" fill="url(#ux-bloomC)"/>
+  <g transform="translate(744,292)" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace">
+    <rect x="0" y="0" width="160" height="112" rx="12" fill="#FFFFFF" stroke="#D5DBE6" stroke-width="1.5"/>
+    <text x="80" y="74" text-anchor="middle" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="48" font-weight="700" fill="#b5c6d7">Aa</text>
+    <text x="80" y="140" text-anchor="middle" font-size="20" fill="#2A3550">#b5c6d7</text>
+    <text x="80" y="168" text-anchor="middle" font-size="20" font-weight="700" fill="#B4232F">1.75:1 fail</text>
+    <path d="M176 56 H 248" stroke="#006A80" stroke-width="4" stroke-linecap="round"/>
+    <path d="M236 44 L 250 56 L 236 68" fill="none" stroke="#006A80" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="266" y="0" width="160" height="112" rx="12" fill="#FFFFFF" stroke="#D5DBE6" stroke-width="1.5"/>
+    <text x="346" y="74" text-anchor="middle" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="48" font-weight="700" fill="#6d7882">Aa</text>
+    <text x="346" y="140" text-anchor="middle" font-size="20" fill="#2A3550">#6d7882</text>
+    <text x="346" y="168" text-anchor="middle" font-size="20" font-weight="700" fill="#0B7A4B">4.51:1 pass</text>
   </g>
-  <g clip-path="url(#ux-frame)">
-    <g transform="translate(0,196)">
-      <ellipse class="uxwash" cx="0" cy="0" rx="430" ry="300" fill="url(#ux-wash)"/>
-    </g>
+
+  <g transform="translate(96,500)">
+    <rect x="0" y="0" width="372" height="56" rx="10" fill="#F4F6FA" stroke="#006A80" stroke-width="1.5"/>
+    <text x="24" y="37" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="26" fill="#0B1220"><tspan fill="#006A80">$</tspan> npx ui-ux-suite .</text>
   </g>
-  <g transform="translate(66,56) scale(0.5781)">
-  <g opacity="0.26" stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
-    <path d="M62 62 L62 196 L196 196" stroke-width="12" stroke-linejoin="round"/>
-    <line x1="70" y1="84" x2="92" y2="84"/><line x1="70" y1="108" x2="83" y2="108"/><line x1="70" y1="132" x2="92" y2="132"/><line x1="70" y1="156" x2="83" y2="156"/><line x1="90" y1="188" x2="90" y2="166"/><line x1="114" y1="188" x2="114" y2="175"/><line x1="138" y1="188" x2="138" y2="166"/><line x1="162" y1="188" x2="162" y2="175"/><line x1="186" y1="188" x2="186" y2="166"/>
-  </g>
-  <g>
-    <path d="M62 62 L62 196 L196 196" fill="none" stroke="url(#ux-ink)" stroke-width="12"
-          stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <g stroke="url(#ux-ink)" stroke-width="8" stroke-linecap="round" fill="none">
-    <line class="uxt1" x1="70" y1="84" x2="92" y2="84"/><line class="uxt2" x1="70" y1="108" x2="83" y2="108"/><line class="uxt3" x1="70" y1="132" x2="92" y2="132"/><line class="uxt4" x1="70" y1="156" x2="83" y2="156"/><line class="uxt5" x1="90" y1="188" x2="90" y2="166"/><line class="uxt6" x1="114" y1="188" x2="114" y2="175"/><line class="uxt7" x1="138" y1="188" x2="138" y2="166"/><line class="uxt8" x1="162" y1="188" x2="162" y2="175"/><line class="uxt9" x1="186" y1="188" x2="186" y2="166"/>
-  </g>
-  <g clip-path="url(#ux-cal)">
-    <rect x="62" y="208" width="132" height="12" rx="6" fill="url(#ux-ink)"/>
-  </g>
-  </g>
-  <g>
-    <text class="disp" x="76" y="286" font-size="71" font-weight="800"
-          letter-spacing="-2.5" fill="url(#ux-word)">ui-ux-suite</text>
-  </g>
-  <line x1="500" y1="100" x2="500" y2="300" stroke="url(#ux-rule)" stroke-width="1.5"/>
-  <g transform="translate(544,0)">
-    <text class="mono eyebrow" x="0" y="134">DESIGN LINTER</text>
-    <text class="disp head" x="0" y="186">ESLint for design</text>
-    <text class="disp sub" x="0" y="222">The line, the measured value, the fix.</text>
-    <g transform="translate(0,265)"><g class="uxp1"><circle cx="0" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp2"><circle cx="22" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp3"><circle cx="44" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp4"><circle cx="66" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp5"><circle cx="88" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp6"><circle cx="110" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp7"><circle cx="132" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp8"><circle cx="154" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp9"><circle cx="176" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp10"><circle cx="198" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp11"><circle cx="220" cy="0" r="4.5" fill="#006A80"/></g><g class="uxp12"><circle cx="242" cy="0" r="4.5" fill="#006A80"/></g><text class="mono tag" x="278" y="4">12 WEIGHTED DIMENSIONS</text></g>
-  </g>
-  <text class="mono tag" x="76" y="352">zero dependencies  &#183;  audits, never edits  &#183;  runs locally</text>
+  <text x="96" y="604" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" fill="#4A5670">Any MCP client · Agent skills · CLI · Tested: Claude Code, Cursor, Codex, Gemini CLI, OpenCode</text>
 </svg>

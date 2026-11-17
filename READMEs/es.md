@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg">
-  <img alt="ui-ux-suite" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
+  <img alt="ui-ux-suite: fallos de diseño por número de línea. La línea 118 de styles.css tiene un color de texto con contraste 1.75:1, y el valor corregido pasa con 4.51:1." src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -12,10 +12,15 @@
 
 <p align="center"><a href="../README.md">English</a> · <a href="zh-CN.md">简体中文</a> · <a href="ja.md">日本語</a> · <b>Español</b> · <a href="fr.md">Français</a></p>
 
-<p align="center"><b>ESLint para el diseño: la línea, el valor medido, la corrección.</b></p>
+<p align="center"><b>Fallos de diseño por número de línea, cada uno con la corrección exacta.</b></p>
 
-Ejecútalo en cualquier proyecto web para encontrar los fallos de diseño de tu código fuente, ligados a una línea cuando es posible.
-Sin instalación, sin configuración, sin clave.
+Lee tu código fuente e imprime qué cambiar, línea por línea.
+
+| Línea exacta que corregir | Regla WCAG citada | Valor de corrección dado |
+|:--|:--|:--|
+| 46 hallazgos localizados en la app de prueba, cada uno con un archivo y una línea. | El contraste se mide con WCAG 2.2; cada hallazgo cita una regla WCAG o una ley UX. | Cada uno muestra el valor medido y el cambio, por ejemplo de `#fbfbfb` a `#767676`. |
+
+**Funciona con:** cualquier cliente MCP y cualquier agente que lea skills. Probado: Claude Code, Cursor, Codex, Gemini CLI, OpenCode. La auditoría es código simple, así que no necesita ningún modelo.
 
 ```bash
 npx ui-ux-suite .
@@ -41,24 +46,15 @@ El informe empieza con la nota, luego los tres arreglos por los que empezar y de
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-Es una ejecución real, no una maqueta. Es el principio de la salida de
-`npx ui-ux-suite test/fixtures/planted-ux-problems`, ejecutado desde una copia de la versión 0.7.1.
-El fixture está roto a propósito, así que saca una nota baja.
+Es una ejecución real, no una maqueta. Muestra el principio del informe de nuestra app de prueba, versión 0.7.1.
+El comando está en Pruebas. La app de prueba está rota a propósito, así que saca una nota baja.
 
-Poco contraste, un anillo de foco que falta, un ancho fijo que se rompe en el móvil.
-Cada hallazgo localizado indica el archivo, la línea y el cambio exacto.
-La auditoría lee tu código y nunca lo edita.
 Lee el código fuente, no los píxeles, y una nota alta no prueba la conformidad con WCAG.
-
-**Por qué usarlo**
-
-- **Sabes exactamente qué cambiar.** Cada hallazgo localizado tiene un archivo, una línea, un valor medido y una corrección (46 en la fixture).
-- **Respaldado por el estándar.** El contraste se comprueba con WCAG 2.2, y cada hallazgo localizado cita la regla WCAG o la ley UX que lo respalda.
-- **Funciona donde funcione Node 18.** No tiene dependencias de ejecución: `npm view ui-ux-suite dependencies` no imprime nada.
 
 ## Instalación
 
 Elige la línea de tu agente. Cada una es un solo comando.
+Nada que instalar ni configurar, y sin clave de API.
 
 **Claude Code.** El plugin trae las 14 skills, 5 comandos, 12 agentes y el servidor MCP.
 
@@ -73,7 +69,7 @@ claude plugin install ui-ux-suite@10x
 npx skills add Aboudjem/ui-ux-suite
 ```
 
-**Cualquier cliente MCP.** El servidor no necesita clave ni configuración.
+**Cualquier cliente MCP.** MCP es un estándar abierto que permite a un agente llamar a herramientas. El servidor no necesita clave ni configuración.
 
 ```bash
 claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
@@ -101,15 +97,15 @@ Cada fila es una instalación real seguida de una comprobación, hecha en la fec
 | Gemini CLI                  | `gemini mcp add ui-ux-suite`, luego confiar en la carpeta       | 2026-11-17 | `gemini mcp list` muestra el servidor conectado                           |
 | OpenCode                    | `opencode.json`                                                 | 2026-11-17 | `opencode mcp list` muestra el servidor conectado                         |
 | Skills CLI 1.9.0            | `npx skills add Aboudjem/ui-ux-suite`                           | 2026-11-17 | Las 14 skills llegan a `.agents/skills` y `.claude/skills`                |
-| Cualquier cliente MCP stdio | `npx -y ui-ux-suite --mcp`                                      | 2026-11-17 | Una sesión MCP en bruto lista 16 herramientas y puntúa el fixture con 3.7 |
+| Cualquier cliente MCP | `npx -y ui-ux-suite --mcp`                                      | 2026-11-17 | Una sesión MCP en bruto lista 16 herramientas y puntúa la app de prueba con 3.7 |
 
 Documentados, no ejecutados en esa fecha: VS Code, GitHub Copilot, Windsurf, Continue, Zed, Pi e `install.sh`.
 Sus fragmentos de configuración están en [docs/editors.md](../docs/editors.md).
 
 Dos agentes necesitan un paso más antes de cargar el servidor:
 
-- **Cursor** deja apagado un servidor nuevo hasta que lo apruebas: `cursor-agent mcp enable ui-ux-suite`.
-- **Gemini CLI** apaga todo servidor MCP en una carpeta en la que no confía. Ejecuta `gemini` una vez allí y elige "Trust folder".
+- **Cursor** no inicia un servidor nuevo hasta que lo apruebas: `cursor-agent mcp enable ui-ux-suite`.
+- **Gemini CLI** desactiva todo servidor MCP en una carpeta en la que no confía. Ejecuta `gemini` una vez allí y elige "Trust folder".
 
 ## Uso
 
@@ -121,21 +117,21 @@ npx ui-ux-suite .
 
 **2. Arregla las tres líneas de arriba.** Cada una nombra un archivo, una línea y el cambio que hacer.
 
-**3. Ponlo en CI.** Elige la salida y el umbral que encajan con tu pipeline.
+**3. Ponlo en CI.** CI son las comprobaciones que se ejecutan en cada push. Elige el formato de salida y la regla que hace fallar el build.
 
 ```bash
 npx ui-ux-suite . --fail-under 7           # exit 1 when the score drops below 7
 npx ui-ux-suite . --json | jq              # machine-readable, banner goes to stderr
 npx ui-ux-suite . --html report.html       # standalone HTML report
 npx ui-ux-suite . --sarif ui-ux.sarif      # SARIF 2.1.0 for GitHub code scanning
-npx ui-ux-suite . --write-baseline .uiux-baseline.json   # freeze today's debt
+npx ui-ux-suite . --write-baseline .uiux-baseline.json   # save today's findings
 npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
 npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to-have
 ```
 
 En un agente, pídelo con palabras sencillas: "audita el diseño de este proyecto". En Claude Code, escribe `/ui-ux-suite:audit`.
 
-**4. Opcional: activa el modo deep.** Revisa la app en marcha en un navegador real. La CLI no tiene opción deep: el modo deep funciona a través de la herramienta MCP `uiux_audit_run`.
+**4. Opcional: usa el modo deep.** Revisa la app en marcha en un navegador real. La CLI no tiene opción deep: el modo deep funciona a través de la herramienta MCP `uiux_audit_run`.
 
 Primero, instala los dos paquetes extra y un navegador en tu proyecto:
 
@@ -150,6 +146,10 @@ El modo deep añade contraste medido en vivo, comprobaciones de axe-core y objet
 Cada opción y cada código de salida están en [docs/cli.md](../docs/cli.md). Cada herramienta MCP está en [docs/tools.md](../docs/tools.md).
 
 ## Cómo funciona
+
+Piensa en él como un ESLint para el diseño. ESLint es una herramienta que revisa el estilo del código.
+Esta revisa el diseño de la misma forma.
+Encuentra poco contraste, un anillo de foco que falta y un ancho fijo que se rompe en el móvil.
 
 Lee tu código fuente. No ejecuta tu app y no necesita navegador.
 
@@ -200,13 +200,13 @@ Cada número de esta página sale de un comando. Ejecútalo y compara.
 | Afirmación                                                      | Comando que la imprime                              |
 | :-------------------------------------------------------------- | :-------------------------------------------------- |
 | 397 pruebas pasan, 0 fallan                                     | `npm test`                                          |
-| El fixture roto saca 3.7 sobre 10, con 46 hallazgos localizados | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
+| La app de prueba rota saca 3.7 sobre 10, con 46 hallazgos localizados | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
 | El servidor MCP expone 16 herramientas                          | `node scripts/gen-tool-reference.js --check`        |
 | El repositorio tiene 14 skills                                  | `npx skills add Aboudjem/ui-ux-suite --list`        |
 | El paquete no tiene dependencias de ejecución                   | `npm view ui-ux-suite dependencies` no imprime nada |
 | El manifiesto del plugin es válido                              | `claude plugin validate . --strict`                 |
 
-El fixture es la barrera contra regresiones. Planta problemas conocidos, listados en [PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md).
+La app de prueba sirve para detectar regresiones. Tiene problemas conocidos a propósito, listados en [PLANTED.md](../test/fixtures/planted-ux-problems/PLANTED.md).
 Las pruebas fallan si uno de ellos deja de encontrarse con un archivo, una línea y un arreglo.
 
 La CI ejecuta el mismo `npm test` en cada push y pull request, en Node 18 y Node 22.
@@ -225,8 +225,8 @@ No. La auditoría por defecto lee archivos fuente. El modo deep es opcional y a�
 **¿Arregla mi código por mí?**
 No. Imprime cada arreglo como un `before` y un `after`. Tú, o tu agente, lo aplicáis.
 
-**Mi proyecto ya saca mala nota. ¿Puedo bloquear la CI igualmente?**
-Sí. Escribe una baseline una vez y falla solo ante un hallazgo nuevo o una bajada de nota. Los dos comandos están en el paso 3 de arriba.
+**Mi proyecto ya saca mala nota. ¿Puedo usarlo en CI igualmente?**
+Sí. Guarda una baseline una vez: un archivo con los hallazgos de hoy. Después el build falla solo ante un hallazgo nuevo o una nota más baja. Los dos comandos están en el paso 3 de arriba.
 
 **¿Qué stacks lee?**
 React, Next.js, Vue, Svelte, Angular y HTML simple. Tailwind v3 y v4, CSS Modules, SCSS, styled-components, Emotion y CSS simple.

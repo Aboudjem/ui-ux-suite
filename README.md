@@ -1,7 +1,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg">
-  <img alt="ui-ux-suite" src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
+  <img alt="ui-ux-suite: design bugs by line number. Line 118 of styles.css has a text color at 1.75:1 contrast, and the fix value passes at 4.51:1." src="https://raw.githubusercontent.com/Aboudjem/ui-ux-suite/main/.github/assets/hero-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -12,10 +12,15 @@
 
 <p align="center"><b>English</b> · <a href="READMEs/zh-CN.md">简体中文</a> · <a href="READMEs/ja.md">日本語</a> · <a href="READMEs/es.md">Español</a> · <a href="READMEs/fr.md">Français</a></p>
 
-<p align="center"><b>ESLint for design: the line, the measured value, the fix.</b></p>
+<p align="center"><b>Design bugs by line number, each with the exact fix.</b></p>
 
-Run it in any web project to find the design bugs in your source code, pinned to a line where it can.
-No install, no config, no key.
+It reads your source code and prints what to change, line by line.
+
+| Exact line to fix | WCAG rule cited | Fix value given |
+|:--|:--|:--|
+| 46 located findings on the test app, each with a file and a line. | Contrast is measured against WCAG 2.2; each finding cites a WCAG rule or UX law. | Each one shows the measured value and the change, such as `#fbfbfb` to `#767676`. |
+
+**Works with:** any MCP client and any agent that reads skills. Tested: Claude Code, Cursor, Codex, Gemini CLI, OpenCode. The audit is plain code, so it needs no model.
 
 ```bash
 npx ui-ux-suite .
@@ -41,24 +46,15 @@ The report opens with the score, then the three fixes to start with, then the de
 _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:22:05.018Z. The detail follows._
 ```
 
-This is a real run, not a mock-up. It is the top of the output of
-`npx ui-ux-suite test/fixtures/planted-ux-problems`, run from a checkout of version 0.7.1.
-The fixture is broken on purpose, so it scores low.
+This is a real run, not a mock-up. It shows the start of the report for our test app, version 0.7.1.
+The command is in Proof. The test app is broken on purpose, so it scores low.
 
-Low contrast, a missing focus ring, a fixed width that breaks on phones.
-Each located finding names the file, the line and the exact change.
-The audit reads your code and never edits it.
-It reads source, not pixels, and a high score is not proof of WCAG conformance.
-
-**Why use it**
-
-- **Know exactly what to change.** Each located finding has a file, a line, a measured value and a fix (46 on the fixture).
-- **Backed by the standard.** Contrast is checked against WCAG 2.2, and each located finding cites the WCAG rule or UX law behind it.
-- **Runs wherever Node 18 runs.** It has no runtime dependency: `npm view ui-ux-suite dependencies` prints nothing.
+It reads source, not pixels, and a high score does not prove WCAG conformance.
 
 ## Install
 
 Pick the line for your agent. Each one is a single command.
+Nothing to install or configure, and no API key.
 
 **Claude Code.** The plugin brings the 14 skills, 5 commands, 12 agents and the MCP server.
 
@@ -73,7 +69,7 @@ claude plugin install ui-ux-suite@10x
 npx skills add Aboudjem/ui-ux-suite
 ```
 
-**Any MCP client.** The server needs no key and no setup.
+**Any MCP client.** MCP is an open standard that lets an agent call tools. The server needs no key and no setup.
 
 ```bash
 claude mcp add ui-ux-suite -- npx -y ui-ux-suite --mcp
@@ -101,15 +97,15 @@ Each row is a real install and check, run on the date shown on macOS with Node 2
 | Gemini CLI | `gemini mcp add ui-ux-suite`, then trust the folder | 2026-11-17 | `gemini mcp list` shows the server connected |
 | OpenCode | `opencode.json` | 2026-11-17 | `opencode mcp list` shows the server connected |
 | Skills CLI 1.9.0 | `npx skills add Aboudjem/ui-ux-suite` | 2026-11-17 | The 14 skills land in `.agents/skills` and `.claude/skills` |
-| Any stdio MCP client | `npx -y ui-ux-suite --mcp` | 2026-11-17 | A raw MCP session lists 16 tools and audits the fixture at 3.7 |
+| Any MCP client | `npx -y ui-ux-suite --mcp` | 2026-11-17 | A raw MCP session lists 16 tools and audits the test app at 3.7 |
 
 Documented, not run on that date: VS Code, GitHub Copilot, Windsurf, Continue, Zed, Pi and `install.sh`.
 Their snippets are in [docs/editors.md](docs/editors.md).
 
-Two agents need one more step before the server loads:
+Two agents need one more step before the server starts:
 
-- **Cursor** keeps a new server off until you approve it: `cursor-agent mcp enable ui-ux-suite`.
-- **Gemini CLI** turns every MCP server off in a folder it does not trust. Run `gemini` there once and pick "Trust folder".
+- **Cursor** does not start a new server until you approve it: `cursor-agent mcp enable ui-ux-suite`.
+- **Gemini CLI** disables every MCP server in a folder it does not trust. Run `gemini` there once and pick "Trust folder".
 
 ## Use it
 
@@ -121,21 +117,21 @@ npx ui-ux-suite .
 
 **2. Fix the three lines at the top.** Each one names a file, a line and the change to make.
 
-**3. Put it in CI.** Pick the output and the gate that fit your pipeline.
+**3. Put it in CI.** CI means the checks that run on each push. Pick the output format and the rule that fails the build.
 
 ```bash
 npx ui-ux-suite . --fail-under 7           # exit 1 when the score drops below 7
 npx ui-ux-suite . --json | jq              # machine-readable, banner goes to stderr
 npx ui-ux-suite . --html report.html       # standalone HTML report
 npx ui-ux-suite . --sarif ui-ux.sarif      # SARIF 2.1.0 for GitHub code scanning
-npx ui-ux-suite . --write-baseline .uiux-baseline.json   # freeze today's debt
+npx ui-ux-suite . --write-baseline .uiux-baseline.json   # save today's findings
 npx ui-ux-suite . --baseline .uiux-baseline.json --fail-on-regression
 npx ui-ux-suite . --tags dimension:accessibility --exclude-tags severity:nice-to-have
 ```
 
 In an agent, ask for it in plain words: "audit this project's design". In Claude Code, type `/ui-ux-suite:audit`.
 
-**4. Optional: turn on deep mode.** It checks the running app in a real browser. The CLI has no deep flag. Deep mode runs through the MCP tool `uiux_audit_run`.
+**4. Optional: use deep mode.** It checks the running app in a real browser. The CLI has no deep flag. Deep mode runs through the MCP tool `uiux_audit_run`.
 
 First, install the two extra packages and a browser in your project:
 
@@ -150,6 +146,10 @@ Deep mode adds live contrast, axe-core checks and touch targets under 44 by 44 p
 Every flag and exit code is in [docs/cli.md](docs/cli.md). Every MCP tool is in [docs/tools.md](docs/tools.md).
 
 ## How it works
+
+Think of it as ESLint for design. ESLint is a tool that checks code style.
+This one checks design in the same way.
+It finds low contrast, a missing focus ring, and a fixed width that breaks on phones.
 
 It reads your source. It does not run your app, and it does not need a browser.
 
@@ -169,7 +169,7 @@ A finding carries three things:
 
 Some findings are about the whole project, such as "5 font families, use 1 or 2". They count in the score and have no single line.
 
-Here is one finding in full, from the same fixture run:
+Here is one finding in full, from the same test app run:
 
 ```text
 ### [!] Low text contrast on `.hero-subtitle`: 1.03:1
@@ -201,13 +201,13 @@ Every number on this page comes from a command. Run it and compare.
 | Claim | Command that prints it |
 |:--|:--|
 | 397 tests pass, 0 fail | `npm test` |
-| The broken fixture scores 3.7 out of 10, with 46 located findings | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
+| The broken test app scores 3.7 out of 10, with 46 located findings | `npx ui-ux-suite test/fixtures/planted-ux-problems` |
 | The MCP server exposes 16 tools | `node scripts/gen-tool-reference.js --check` |
 | The repo holds 14 skills | `npx skills add Aboudjem/ui-ux-suite --list` |
 | The package has no runtime dependency | `npm view ui-ux-suite dependencies` prints nothing |
 | The plugin manifest is valid | `claude plugin validate . --strict` |
 
-The fixture is the regression gate. It plants known problems, listed in [PLANTED.md](test/fixtures/planted-ux-problems/PLANTED.md).
+The test app is the regression check. It has known problems on purpose, listed in [PLANTED.md](test/fixtures/planted-ux-problems/PLANTED.md).
 The tests fail if one of them stops being found with a file, a line and a fix.
 
 CI runs the same `npm test` on every push and pull request, on Node 18 and Node 22.
@@ -226,8 +226,8 @@ No. The default audit reads source files. Deep mode is optional and adds live ch
 **Does it fix my code for me?**
 No. It prints each fix as a `before` and an `after`. You, or your agent, apply it.
 
-**My project already scores badly. Can I still gate CI?**
-Yes. Write a baseline once, then fail only on a new finding or a score drop. The two commands are in step 3 above.
+**My project already scores badly. Can I still use it in CI?**
+Yes. Save a baseline once: a file with today's findings. Then the build fails only on a new finding or a lower score. The two commands are in step 3 above.
 
 **Which stacks does it read?**
 React, Next.js, Vue, Svelte, Angular and plain HTML. Tailwind v3 and v4, CSS Modules, SCSS, styled-components, Emotion and plain CSS.
