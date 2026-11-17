@@ -57,28 +57,34 @@ _Scanned 3 CSS, 1 JSX/TSX/Vue/Svelte and 1 HTML files in 0.03s on 2026-11-17T18:
 
 ## インストール
 
-**エージェントを選んでください。** クリックするとそのコマンドに移動します。設定も API キーも要りません。
+**おすすめ: すべてのエージェントとプロジェクトに 1 つのコマンドで。**
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g
+```
+
+<a href="https://skills.sh/aboudjem/ui-ux-suite"><img src="https://img.shields.io/badge/skills.sh-000000?logo=vercel&logoColor=white&style=for-the-badge" alt="skills.sh" height="24"></a>
+
+79 のエージェントで動きます。メニューで自分のものを選んでください ([一覧](https://github.com/vercel-labs/skills#supported-agents))。
+`npx skills` は Vercel のオープンなスキル用インストーラーです。ページ: [skills.sh/aboudjem/ui-ux-suite](https://skills.sh/aboudjem/ui-ux-suite)。
+
+入るのは 14 のスキルだけです。スキルが呼び出す MCP サーバーは、下にあるもう 1 行で追加します。このプロジェクトだけなら `-g` を外します。
+
+**または 1 つのエージェントに直接インストール。** クリックするとそのコマンドに移動します。設定も API キーも要りません。
 
 <p>
 <a href="#install-claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" alt="Claude Code" height="24"></a>
 <a href="#install-codex"><img src="https://img.shields.io/badge/Codex-000000?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBmaWxsPSJ3aGl0ZSIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BPHRpdGxlPk9wZW5BSTwvdGl0bGU%2BPHBhdGggZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4%3D" alt="Codex" height="24"></a>
 <a href="#install-cursor"><img src="https://img.shields.io/badge/Cursor-000000?logo=cursor&logoColor=white&style=for-the-badge" alt="Cursor" height="24"></a>
 <a href="#install-gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-1A73E8?logo=googlegemini&logoColor=white&style=for-the-badge" alt="Gemini CLI" height="24"></a>
-<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="24"></a>
 <a href="#install-github-copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-24292E?logo=githubcopilot&logoColor=white&style=for-the-badge" alt="GitHub Copilot" height="24"></a>
-<a href="https://skills.sh/aboudjem/ui-ux-suite"><img src="https://img.shields.io/badge/skills.sh-000000?logo=vercel&logoColor=white&style=for-the-badge" alt="skills.sh" height="24"></a>
+<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="24"></a>
 </p>
 
-**その他のエージェント** (Vercel の skills CLI): `npx skills add Aboudjem/ui-ux-suite -g` を実行し、メニューでエージェントを選びます。
-`npx skills` は Vercel のオープンなスキル用インストーラーです。ページ: [skills.sh/aboudjem/ui-ux-suite](https://skills.sh/aboudjem/ui-ux-suite)。
-
-どのコマンドも、すべてのプロジェクト向けにインストールします。このプロジェクトだけなら `-g` を外します。
-
-<a id="install-claude-code"></a>**Claude Code** (テスト済み). プラグインには 14 のスキル、5 つのコマンド、12 のエージェント、MCP サーバーが入っています。
+<a id="install-claude-code"></a>**Claude Code** (スキルのインストールをテスト済み)
 
 ```bash
-claude plugin marketplace add Aboudjem/10x
-claude plugin install ui-ux-suite@10x
+npx skills add Aboudjem/ui-ux-suite -g -a claude-code
 ```
 
 <a id="install-codex"></a>**Codex** (MCP テスト済み、スキルのインストールもテスト済み)
@@ -99,19 +105,26 @@ npx skills add Aboudjem/ui-ux-suite -g -a cursor
 npx skills add Aboudjem/ui-ux-suite -g -a gemini-cli
 ```
 
-<a id="install-opencode"></a>**OpenCode** (MCP テスト済み、スキルのインストールもテスト済み)
-
-```bash
-npx skills add Aboudjem/ui-ux-suite -g -a opencode
-```
-
 <a id="install-github-copilot"></a>**GitHub Copilot** (インストールをテスト済み)
 
 ```bash
 npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
 ```
 
-**次に MCP サーバーを追加します。** Claude Code 以外では、スキルがこれを呼び出します。MCP は、エージェントがツールを呼び出すためのオープンな標準です。
+<a id="install-opencode"></a>**OpenCode** (MCP テスト済み、スキルのインストールもテスト済み)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a opencode
+```
+
+**Claude Code プラグイン。** 14 のスキルに、5 つのスラッシュコマンド、12 のエージェント、MCP サーバーを加えます。テスト済み。
+
+```bash
+claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x
+```
+
+**次に MCP サーバーを追加します。** プラグインには含まれています。それ以外ではスキルがこれを呼び出すので、一度追加してください。MCP は、エージェントがツールを呼び出すためのオープンな標準です。
 この行で、Claude Code のすべてのプロジェクトに追加されます。ほかのエージェントの設定は [docs/editors.md](../docs/editors.md) にあります。
 
 ```bash

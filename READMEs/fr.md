@@ -57,28 +57,34 @@ Il lit le source, pas les pixels, et une bonne note ne prouve pas la conformité
 
 ## Installation
 
-**Choisissez votre agent.** Cliquez dessus pour aller à sa commande. Rien à configurer, et pas de clé API.
+**Recommandé : une commande pour tous vos agents et projets.**
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g
+```
+
+<a href="https://skills.sh/aboudjem/ui-ux-suite"><img src="https://img.shields.io/badge/skills.sh-000000?logo=vercel&logoColor=white&style=for-the-badge" alt="skills.sh" height="24"></a>
+
+Fonctionne dans 79 agents : choisissez le vôtre dans le menu ([la liste](https://github.com/vercel-labs/skills#supported-agents)).
+`npx skills` est l'installeur ouvert de Vercel pour les skills. Sa page : [skills.sh/aboudjem/ui-ux-suite](https://skills.sh/aboudjem/ui-ux-suite).
+
+Il installe seulement les 14 skills. Le serveur MCP, que les skills appellent, demande une ligne de plus, plus bas. Seulement ce projet : retirez `-g`.
+
+**Ou installez directement dans un agent.** Cliquez dessus pour aller à sa commande. Rien à configurer, et pas de clé API.
 
 <p>
 <a href="#install-claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?logo=claude&logoColor=white&style=for-the-badge" alt="Claude Code" height="24"></a>
 <a href="#install-codex"><img src="https://img.shields.io/badge/Codex-000000?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyBmaWxsPSJ3aGl0ZSIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BPHRpdGxlPk9wZW5BSTwvdGl0bGU%2BPHBhdGggZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4%3D" alt="Codex" height="24"></a>
 <a href="#install-cursor"><img src="https://img.shields.io/badge/Cursor-000000?logo=cursor&logoColor=white&style=for-the-badge" alt="Cursor" height="24"></a>
 <a href="#install-gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-1A73E8?logo=googlegemini&logoColor=white&style=for-the-badge" alt="Gemini CLI" height="24"></a>
-<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="24"></a>
 <a href="#install-github-copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-24292E?logo=githubcopilot&logoColor=white&style=for-the-badge" alt="GitHub Copilot" height="24"></a>
-<a href="https://skills.sh/aboudjem/ui-ux-suite"><img src="https://img.shields.io/badge/skills.sh-000000?logo=vercel&logoColor=white&style=for-the-badge" alt="skills.sh" height="24"></a>
+<a href="#install-opencode"><img src="https://img.shields.io/badge/OpenCode-111111?logo=opencode&logoColor=white&style=for-the-badge" alt="OpenCode" height="24"></a>
 </p>
 
-**Tout autre agent** (CLI skills de Vercel) : `npx skills add Aboudjem/ui-ux-suite -g`, puis choisissez votre agent dans son menu.
-`npx skills` est l'installeur ouvert de Vercel pour les skills. Sa page : [skills.sh/aboudjem/ui-ux-suite](https://skills.sh/aboudjem/ui-ux-suite).
-
-Chaque commande installe pour tous vos projets. Seulement ce projet : retirez `-g`.
-
-<a id="install-claude-code"></a>**Claude Code** (testé). Le plugin apporte les 14 skills, 5 commandes, 12 agents et le serveur MCP.
+<a id="install-claude-code"></a>**Claude Code** (installation des skills testée)
 
 ```bash
-claude plugin marketplace add Aboudjem/10x
-claude plugin install ui-ux-suite@10x
+npx skills add Aboudjem/ui-ux-suite -g -a claude-code
 ```
 
 <a id="install-codex"></a>**Codex** (MCP testé, installation des skills testée)
@@ -99,19 +105,26 @@ npx skills add Aboudjem/ui-ux-suite -g -a cursor
 npx skills add Aboudjem/ui-ux-suite -g -a gemini-cli
 ```
 
-<a id="install-opencode"></a>**OpenCode** (MCP testé, installation des skills testée)
-
-```bash
-npx skills add Aboudjem/ui-ux-suite -g -a opencode
-```
-
 <a id="install-github-copilot"></a>**GitHub Copilot** (installation testée)
 
 ```bash
 npx skills add Aboudjem/ui-ux-suite -g -a github-copilot
 ```
 
-**Ajoutez ensuite le serveur MCP.** Hors de Claude Code, les skills l'appellent. MCP est un standard ouvert qui permet à un agent d'appeler des outils.
+<a id="install-opencode"></a>**OpenCode** (MCP testé, installation des skills testée)
+
+```bash
+npx skills add Aboudjem/ui-ux-suite -g -a opencode
+```
+
+**Plugin Claude Code.** Il ajoute 5 commandes slash, 12 agents et le serveur MCP aux 14 skills. Testé.
+
+```bash
+claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x
+```
+
+**Ajoutez ensuite le serveur MCP.** Le plugin l'apporte. Ailleurs, les skills l'appellent, alors ajoutez-le une fois. MCP est un standard ouvert qui permet à un agent d'appeler des outils.
 Cette ligne l'ajoute pour tous vos projets dans Claude Code. La config de chaque autre agent est dans [docs/editors.md](../docs/editors.md).
 
 ```bash

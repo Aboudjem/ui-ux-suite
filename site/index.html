@@ -89,10 +89,15 @@
 
     <section>
       <h2>Install into your AI CLI</h2>
-      <p>Each line installs for all your projects. Put your agent after <code>-a</code>: codex, cursor, gemini-cli, opencode or github-copilot. Only this project: drop <code>-g</code>.</p>
+      <p>Recommended: one command for all your agents and projects.</p>
+      <pre><code>npx skills add Aboudjem/ui-ux-suite -g</code></pre>
+      <p>Works in 79 agents: pick yours in the menu (<a href="https://github.com/vercel-labs/skills#supported-agents">the list</a>). <code>npx skills</code> is Vercel's open installer for agent skills. Its page: <a href="https://skills.sh/aboudjem/ui-ux-suite">skills.sh/aboudjem/ui-ux-suite</a>. Only this project: drop <code>-g</code>.</p>
+      <p>Or install straight into one agent: put it after <code>-a</code> (claude-code, codex, cursor, gemini-cli, github-copilot or opencode).</p>
       <pre><code>npx skills add Aboudjem/ui-ux-suite -g -a codex</code></pre>
-      <p>Any other agent: <code>npx skills add Aboudjem/ui-ux-suite -g</code>, then pick your agent in its menu. <code>npx skills</code> is Vercel's open installer for agent skills. Its page: <a href="https://skills.sh/aboudjem/ui-ux-suite">skills.sh/aboudjem/ui-ux-suite</a>.</p>
-      <p>Then add the MCP server, which the skills call:</p>
+      <p>Claude Code plugin: it adds 5 slash commands, 12 agents and the MCP server to the 14 skills.</p>
+      <pre><code>claude plugin marketplace add Aboudjem/10x
+claude plugin install ui-ux-suite@10x</code></pre>
+      <p>The skills CLI installs the skills only. Add the MCP server, which the skills call, with one more line:</p>
       <pre><code>claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp</code></pre>
     </section>
 
