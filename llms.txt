@@ -26,7 +26,7 @@ Key facts:
 - Is it safe to run? Yes. Every audit is read-only; it never edits the audited project. Applying a fix is a separate, deliberate step.
 - Does it need dependencies or a network? No. It uses only Node built-ins and runs entirely locally; deep mode (Playwright + axe-core) is optional.
 - How do I run it? `npx ui-ux-suite .`, or start the MCP server with `npx ui-ux-suite --mcp` and call `uiux_audit_run`.
-- How do I install the skills for all my projects? `npx skills add Aboudjem/ui-ux-suite -g` (Vercel's skills CLI, 79 agents, pick yours in the menu), or add `-a <agent>` for one agent. It installs the skills only: add the MCP server with `claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp` (or your agent's MCP config). Drop `-g` for one project only. Claude Code plugin: `claude plugin install ui-ux-suite@10x` adds slash commands, agents and the MCP server.
+- How do I install the skills for all my projects? `npx skills add Aboudjem/ui-ux-suite -g` (Vercel's skills CLI, more than 70 agents, pick yours in the menu; in a script add `-a <agent>`, or it installs into every agent folder), or add `-a <agent>` for one agent. It installs the skills only: add the MCP server with `claude mcp add -s user ui-ux-suite -- npx -y ui-ux-suite --mcp` (or your agent's MCP config). Drop `-g` for one project only. Claude Code plugin: `claude plugin install ui-ux-suite@10x` adds slash commands, agents and the MCP server.
 - Can I use it in CI? Yes. `npx ui-ux-suite . --fail-under 7` exits non-zero below the threshold; `--json` is machine-readable.
 
 ## Ecosystem
